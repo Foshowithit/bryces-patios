@@ -5,7 +5,7 @@
 #   User-agent: *
 #   Allow: /
 #
-#   Sitemap: https://bycespatios.com/sitemap.xml
+#   Sitemap: https://brycespatios.work/sitemap.xml
 #
 # See LAUNCH.md §3.
 

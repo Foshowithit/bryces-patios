@@ -1,6 +1,7 @@
 # Byces Patios — website concept
 
-**Live preview:** https://foshowithit.github.io/byces-patios/
+**Live:** https://brycespatios.work
+**Repo fallback:** https://foshowithit.github.io/byces-patios/
 
 A single-page site concept for Byces Patios — custom patios, walkways and outdoor living
 in Attleboro, Massachusetts.

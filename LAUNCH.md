@@ -37,20 +37,22 @@ These are the only invented values on the site. Everything else is real or gener
 | What | Current placeholder | Where |
 |---|---|---|
 | **Phone** | `(508) 555-0134` | nav, mobile menu, form success, footer, sticky bar, structured data |
-| **Email** | `hello@bycespatios.com` | footer, `assets/js/main.js`, structured data |
-| **Domain** | `bycespatios.com` | `<head>`, `robots.txt`, `sitemap.xml`, structured data |
-| **Social handles** | `@bycespatios` | footer icons |
+| **Email** | `hello@brycespatios.work` | footer, `assets/js/main.js`, structured data |
+| **Social handles** | `@brycespatios` | footer icons |
 | **Project names & towns** | Norton MA, Cumberland RI, Rehoboth MA | featured work section |
 
 `555-01xx` is a reserved fiction number — it is **not** a working phone line. It must be
 replaced.
+
+The domain is **not** a placeholder — `brycespatios.work` is bought and pointed at this
+site. See §4.
 
 One command replaces the phone and email everywhere:
 
 ```bash
 cd byces-patios
 sed -i '' 's/(508) 555-0134/(508) 123-4567/g; s/+15085550134/+15081234567/g' index.html
-sed -i '' 's/hello@bycespatios.com/real@address.com/g' index.html assets/js/main.js
+sed -i '' 's/hello@brycespatios.work/real@address.com/g' index.html assets/js/main.js
 ```
 
 (Use the real digits — both the display version and the `tel:` version need changing.)
@@ -92,19 +94,45 @@ customers.
 
 ---
 
-## 4. Putting it online
+## 4. Where it's hosted
 
-**Fastest (2 minutes, free):** go to [app.netlify.com/drop](https://app.netlify.com/drop) and
-drag the `byces-patios` folder onto the page. Done. You get a live URL immediately.
+Already live on GitHub Pages at **https://brycespatios.work**.
 
-**Then point a domain at it:** buy `bycespatios.com` (Namecheap, Cloudflare, Porkbun — all
-fine, ~$10–12/year). In Netlify: *Domain settings → Add custom domain*. Netlify issues the
-HTTPS certificate automatically.
+| | |
+|---|---|
+| Repo | `github.com/Foshowithit/bryces-patios` (public) |
+| Fallback URL | `foshowithit.github.io/byces-patios/` |
+| Hosting | GitHub Pages — free |
+| DNS | Porkbun |
+| Running cost | the domain only, ~$10–12/year |
 
-**Alternatives:** Cloudflare Pages (same drag-and-drop, excellent free tier) or GitHub Pages
-(free, but needs a GitHub account and a small amount of setup).
+**How the DNS is set up** — already done, recorded here so it can be rebuilt:
 
-Do **not** upload `_masters/`. It's 28 MB of source files that the site never requests.
+- Four `A` records on the apex → `185.199.108.153`, `.109.153`, `.110.153`, `.111.153`
+- Four `AAAA` records → `2606:50c0:8000::153` through `2606:50c0:8003::153`
+- `CNAME www` → `foshowithit.github.io` (must point at the *user* domain, never include the
+  repo name)
+- Porkbun's default parking records were removed: an `ALIAS` on the apex, and a
+  **wildcard `CNAME *.brycespatios.work`** — GitHub specifically warns against wildcards
+  because they invite domain takeover.
+- The `CNAME` file in the repo root tells GitHub which domain to serve. Don't delete it.
+- A backup of the original DNS records is in `~/.agent-vault/domains/`.
+
+**To publish a change:** commit and push to `main`. GitHub rebuilds in about a minute.
+
+```bash
+cd byces-patios && git add -A && git commit -m "describe the change" && git push
+```
+
+**To move to different hosting** (Netlify, Cloudflare Pages, Vercel): drag the folder in,
+then repoint the domain by replacing those A/AAAA records at Porkbun. Delete the `CNAME`
+file at that point — it's GitHub-specific.
+
+**One gotcha:** GitHub needs to see the domain resolve before it can issue the HTTPS
+certificate. If the site loads on `http://` but not `https://`, the cert hasn't been issued
+yet. Check *Settings → Pages → Enforce HTTPS*; it becomes available once the cert lands.
+
+Do **not** upload `_masters/`. It's 28 MB of source files the site never requests.
 
 ---
 

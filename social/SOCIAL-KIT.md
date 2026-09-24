@@ -44,7 +44,7 @@ spaces in Attleboro, Massachusetts and across southeastern MA and Rhode Island.
 
 Owner-operated. Free on-site estimates. One crew, start to finish.
 
-bycespatios.com
+brycespatios.work
 ```
 
 ### Name field (all platforms)
@@ -62,7 +62,7 @@ identical across every platform so the brand is recognisable at thumbnail size.
 
 ### Link
 
-Point everything at `bycespatios.com`. Once it's live, use a link-in-bio only if there's a
+Point everything at `brycespatios.work`. Once it's live, use a link-in-bio only if there's a
 reason to — for now the site has everything, including the estimate form.
 
 ### Contact buttons
