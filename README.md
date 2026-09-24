@@ -1,9 +1,9 @@
-# Byces Patios — website concept
+# Bryce's Patios — website concept
 
 **Live:** https://brycespatios.work
-**Repo fallback:** https://foshowithit.github.io/byces-patios/
+**Repo fallback:** https://foshowithit.github.io/bryces-patios/
 
-A single-page site concept for Byces Patios — custom patios, walkways and outdoor living
+A single-page site concept for Bryce's Patios — custom patios, walkways and outdoor living
 in Attleboro, Massachusetts.
 
 Hand-built HTML, CSS and JavaScript. No build step, no framework, no dependencies. Open
@@ -15,14 +15,14 @@ Hand-built HTML, CSS and JavaScript. No build step, no framework, no dependencie
 
 This is a **concept**, not a finished site. Two things are not real:
 
-1. **The photography is AI-generated.** It is not Byce's work. It's there so the design
+1. **The photography is AI-generated.** It is not Bryce's work. It's there so the design
    can be reviewed as a finished thing rather than as an empty shell. The page says so
    out loud under the featured-work section.
 2. **The phone number, email, domain, social handles and project towns are placeholders.**
    `(508) 555-0134` is a reserved fiction number and does not ring.
 
 The site is set `noindex` and `Disallow: /` on purpose, so it can't surface in search
-results as Byce's real work before it is. Both are marked in the code with the exact
+results as Bryce's real work before it is. Both are marked in the code with the exact
 lines to reverse at launch.
 
 Full details, including the launch checklist: **[LAUNCH.md](LAUNCH.md)**.
@@ -63,7 +63,7 @@ service area → estimate form → footer.
 To try an alternative direction, drop it in a subfolder and it gets its own URL for free:
 
 ```
-v2/index.html   →  https://foshowithit.github.io/byces-patios/v2/
+v2/index.html   →  https://foshowithit.github.io/bryces-patios/v2/
 ```
 
 Push and it's live in about a minute. Nothing else to configure.

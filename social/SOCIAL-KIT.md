@@ -1,4 +1,4 @@
-# Byces Patios — social media launch kit
+# Bryce's Patios — social media launch kit
 
 The website is the anchor. Social is the top of the funnel: it's where a neighbour sees a
 before/after, taps the profile, and ends up on the estimate form.
@@ -14,13 +14,13 @@ out loud and easy to search.
 
 | Platform | Handle | Why |
 |---|---|---|
-| Instagram | `@bycespatios` | Primary. Where homeowners under 50 look. |
-| Facebook | `bycespatios` | Still the strongest platform for 45+ homeowners — and the biggest local-referral driver. Do not skip it. |
-| TikTok | `@bycespatios` | Best organic reach right now. A 15-second before/after can hit 100k views. |
-| YouTube | `@bycespatios` | For longer build videos. Also feeds Shorts. |
-| Google Business | Byces Patios | **Not social, but more important than all of the above.** See LAUNCH.md §7. |
+| Instagram | `@brycespatios` | Primary. Where homeowners under 50 look. |
+| Facebook | `brycespatios` | Still the strongest platform for 45+ homeowners — and the biggest local-referral driver. Do not skip it. |
+| TikTok | `@brycespatios` | Best organic reach right now. A 15-second before/after can hit 100k views. |
+| YouTube | `@brycespatios` | For longer build videos. Also feeds Shorts. |
+| Google Business | Bryce's Patios | **Not social, but more important than all of the above.** See LAUNCH.md §7. |
 
-If `bycespatios` is taken somewhere, use `bycespatiosma` — but keep it identical across all
+If `brycespatios` is taken somewhere, use `brycespatiosma` — but keep it identical across all
 platforms.
 
 ---
@@ -39,7 +39,7 @@ Free estimates ↓
 ### Bio (Facebook / YouTube — longer form)
 
 ```
-Byces Patios designs and builds custom stone patios, walkways and outdoor living
+Bryce's Patios designs and builds custom stone patios, walkways and outdoor living
 spaces in Attleboro, Massachusetts and across southeastern MA and Rhode Island.
 
 Owner-operated. Free on-site estimates. One crew, start to finish.
@@ -49,7 +49,7 @@ brycespatios.work
 
 ### Name field (all platforms)
 
-Set the display name to **`Byces Patios | Patios & Hardscaping Attleboro MA`**.
+Set the display name to **`Bryce's Patios | Patios & Hardscaping Attleboro MA`**.
 
 This is not vanity — Instagram and Facebook both index the name field for search. Someone
 typing "patio Attleboro" should find the account. Putting the service and the town in the
@@ -81,7 +81,7 @@ Rotate through these. Every post belongs to one of them.
 | **Before / After** | The slider shots, as a carousel or a video | The single highest-performing format in this trade. People cannot scroll past it. |
 | **Process** | Base prep, gravel, string lines, cutting stone | Proves competence. Most competitors only show the pretty finish, so showing the boring part is a differentiator. |
 | **Finished work** | Beauty shots, golden hour, lights on | Aspiration. This is what people save and send to their partner. |
-| **Education** | "Why we dig 8 inches", material comparisons, drainage | Positions Byce as the expert, not just a pair of hands. Also very shareable. |
+| **Education** | "Why we dig 8 inches", material comparisons, drainage | Positions Bryce as the expert, not just a pair of hands. Also very shareable. |
 | **Social proof** | Reviews, thank-you notes, repeat customers | Converts the people who are already interested. |
 | **Local** | Attleboro, the truck, the crew, New England seasons | Makes the business feel like a neighbour, not a franchise. |
 
@@ -98,7 +98,7 @@ video posts for TikTok and Shorts.
 
 | Day | Pillar | Post |
 |---|---|---|
-| 1 | Local | **Launch post.** "We started Byces Patios. Here's the first patio we finished." Best before/after photo you have. |
+| 1 | Local | **Launch post.** "We started Bryce's Patios. Here's the first patio we finished." Best before/after photo you have. |
 | 2 | Process | Carousel: 4 photos of a build in progress, base to finished stone. |
 | 3 | Education | "Why a patio fails: it's almost never the stone." Talk about the base. |
 | 4 | Finished | Golden-hour shot. One sentence. Let the photo work. |
@@ -112,7 +112,7 @@ video posts for TikTok and Shorts.
 | 7 | Process | Close-up of a cut edge. "This is the detail nobody notices. It's the one we care about most." |
 | 8 | Education | Material comparison: sandstone vs bluestone vs pavers. Which one for which yard. |
 | 9 | Before/After | Second pair. Carousel, before first, after last. |
-| 10 | Local | Byce on site, truck, tools, early morning. Human face. |
+| 10 | Local | Bryce on site, truck, tools, early morning. Human face. |
 
 ### Week 3 — Establish expertise
 

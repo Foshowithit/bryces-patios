@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════════
-   BYCES PATIOS — interactions
+   BRYCE'S PATIOS — interactions
    Vanilla JS. No dependencies, no build step.
 
    ▸ TO POINT THE FORM AT A REAL ENDPOINT: set FORM_ENDPOINT below to your
@@ -255,7 +255,7 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function asText(d) {
     return [
-      'New estimate request — Byces Patios',
+      'New estimate request — Bryce's Patios',
       '',
       'Project:  ' + d.types.join(', '),
       'Size:     ' + (d.size || 'Not specified'),

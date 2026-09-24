@@ -1,4 +1,4 @@
-# Byces Patios — launch guide
+# Bryce's Patios — launch guide
 
 Everything in this folder is the live website. Open `index.html` in a browser and it works —
 no build step, no npm, no framework. Drag the folder onto any host and it's online.
@@ -8,7 +8,7 @@ no build step, no npm, no framework. Drag the folder onto any host and it's onli
 ## 1. What's here
 
 ```
-byces-patios/
+bryces-patios/
 ├── index.html            ← the whole site (one page, 8 sections)
 ├── assets/
 │   ├── css/style.css     ← the design system
@@ -50,7 +50,7 @@ site. See §4.
 One command replaces the phone and email everywhere:
 
 ```bash
-cd byces-patios
+cd bryces-patios
 sed -i '' 's/(508) 555-0134/(508) 123-4567/g; s/+15085550134/+15081234567/g' index.html
 sed -i '' 's/hello@brycespatios.work/real@address.com/g' index.html assets/js/main.js
 ```
@@ -62,7 +62,7 @@ sed -i '' 's/hello@brycespatios.work/real@address.com/g' index.html assets/js/ma
 ## 3. Two honest caveats
 
 **The photography is AI-generated.** It is there so the site launches looking finished
-instead of looking empty. It is **not** Byce's work, and the site says so out loud under the
+instead of looking empty. It is **not** Bryce's work, and the site says so out loud under the
 featured-work section. Real job photos should replace these as soon as possible — see §5.
 When they do, delete this line in `index.html`:
 
@@ -73,8 +73,8 @@ When they do, delete this line in `index.html`:
 **The About section contains no invented biography.** No fake years in business, no made-up
 credentials, no fabricated family history. It describes how the work is done, which is true
 by construction. Two paragraphs are written generically so they can be personalised — the
-one starting *"Byces Patios is a local, owner-operated hardscaping business…"* and the one
-starting *"We keep the crew small on purpose…"*. Give those Byce's real story.
+one starting *"Bryce's Patios is a local, owner-operated hardscaping business…"* and the one
+starting *"We keep the crew small on purpose…"*. Give those Bryce's real story.
 
 **No licences, insurance, certifications, warranties, or reviews are claimed anywhere** —
 because none were verified. Add them only once confirmed. They are genuinely valuable for
@@ -82,14 +82,14 @@ conversion, so it's worth chasing them down.
 
 **The site is deliberately set to not be indexed by search engines.** Because the
 photography isn't real, letting Google index this page would mean it could surface as
-Byce's work — and that's hard to walk back once it's cached. Two things to reverse at
+Bryce's work — and that's hard to walk back once it's cached. Two things to reverse at
 launch, and only when real photos are in:
 
 1. Delete the `<meta name="robots" content="noindex, nofollow">` line in `index.html`
    (it's marked with a ⚠️ comment so it's easy to find)
 2. Replace `robots.txt` with the version quoted in the comment at the top of that file
 
-Until then it's a private-ish preview link: shareable with Byce, not discoverable by his
+Until then it's a private-ish preview link: shareable with Bryce, not discoverable by his
 customers.
 
 ---
@@ -101,7 +101,7 @@ Already live on GitHub Pages at **https://brycespatios.work**.
 | | |
 |---|---|
 | Repo | `github.com/Foshowithit/bryces-patios` (public) |
-| Fallback URL | `foshowithit.github.io/byces-patios/` |
+| Fallback URL | `foshowithit.github.io/bryces-patios/` |
 | Hosting | GitHub Pages — free |
 | DNS | Porkbun |
 | Running cost | the domain only, ~$10–12/year |
@@ -121,7 +121,7 @@ Already live on GitHub Pages at **https://brycespatios.work**.
 **To publish a change:** commit and push to `main`. GitHub rebuilds in about a minute.
 
 ```bash
-cd byces-patios && git add -A && git commit -m "describe the change" && git push
+cd bryces-patios && git add -A && git commit -m "describe the change" && git push
 ```
 
 **To move to different hosting** (Netlify, Cloudflare Pages, Vercel): drag the folder in,
@@ -151,7 +151,7 @@ site. Nothing else to change.
 | `transform-after.jpg` | slider, "after" | **Same spot, same height, same lens** |
 | `craft-base.jpg` | craftsmanship, large | Mid-build: base, gravel, tools |
 | `craft-edge.jpg` | craftsmanship, small | Close-up of an edge, joint, or cut |
-| `about-site.jpg` | about section | Jobsite, truck, tools, or Byce at work |
+| `about-site.jpg` | about section | Jobsite, truck, tools, or Bryce at work |
 
 **Priority order:** the before/after pair first (the slider is the most persuasive thing on
 the page and it only works if the two shots line up), then the three project photos, then
@@ -189,7 +189,7 @@ route if the endpoint ever fails.
 For a local contractor, this matters **more than the website**. It's how people find you on
 Maps, and it's free.
 
-1. [business.google.com](https://business.google.com) → add Byces Patios
+1. [business.google.com](https://business.google.com) → add Bryce's Patios
 2. Category: **Paving contractor** or **Landscaper** (whichever fits — pick the most specific)
 3. Service area: Attleboro plus the towns listed on the site
 4. Hours, phone, website URL
@@ -205,7 +205,7 @@ Then keep it alive: one new photo a week, and reply to every review.
 1. **Real photos** — the single biggest upgrade available
 2. **Google reviews** — add a reviews section once there are 5+; it's the highest-converting
    element a contractor site can have
-3. **A real film** — Byce's phone, one finished job, 30–45 seconds. Drop it at
+3. **A real film** — Bryce's phone, one finished job, 30–45 seconds. Drop it at
    `assets/video/hero-film.mp4` and the "Watch the build" button can play it instead of the
    photo sequence
 4. **A licence / insurance / warranty line** — once verified, in the hero meta row and footer
