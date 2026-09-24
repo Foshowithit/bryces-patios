@@ -1,0 +1,13 @@
+# PRE-LAUNCH ONLY.
+# This preview must not be indexed — the photography is AI-generated and is not
+# Byce's real work. At launch, replace this whole file with:
+#
+#   User-agent: *
+#   Allow: /
+#
+#   Sitemap: https://bycespatios.com/sitemap.xml
+#
+# See LAUNCH.md §3.
+
+User-agent: *
+Disallow: /

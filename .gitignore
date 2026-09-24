@@ -1,0 +1,10 @@
+# Full-size PNG originals — 28 MB, never requested by the site.
+# Keep them locally, don't ship them.
+_masters/
+
+# macOS
+.DS_Store
+._*
+
+# Editor cruft
+*.swp
