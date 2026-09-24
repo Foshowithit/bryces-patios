@@ -340,6 +340,12 @@ legend{padding:0}
   text-shadow:0 1px 14px rgba(9,10,12,.7);
 }
 .hero__cta{display:flex; flex-wrap:wrap; gap:.875rem; margin-bottom:2.75rem}
+/* Invert the primary CTA over the dark hero — a dark button on a dark scrim
+   has almost no contrast, and the nav CTA is already inverted. */
+.hero .btn--solid{background:var(--ink-inv); color:var(--ink); border-color:var(--ink-inv)}
+.hero .btn--solid:hover{background:#fff; border-color:#fff}
+.hero .btn--ghost{color:var(--ink-inv); border-color:rgba(247,244,238,.5)}
+.hero .btn--ghost:hover{background:rgba(247,244,238,.14); border-color:var(--ink-inv)}
 .hero__meta{
   display:flex; flex-wrap:wrap; gap:.6rem 1.75rem;
   font-size:.75rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase;
