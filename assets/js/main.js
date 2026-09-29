@@ -8,7 +8,7 @@
    ═══════════════════════════════════════════════════════════════════════ */
 
 const FORM_ENDPOINT = '';           // e.g. 'https://formspree.io/f/xxxxxxx'
-const CONTACT_EMAIL = 'hello@brycespatios.work';
+const CONTACT_EMAIL = 'bryces-patios@agentmail.to';
 
 const $  = (s, c = document) => c.querySelector(s);
 const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
