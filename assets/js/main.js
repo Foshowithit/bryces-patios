@@ -143,11 +143,22 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     else if (e.key === 'End')    { e.preventDefault(); pos = 100; render(); }
   });
 
+  // Keep the chip that starts active in sync for assistive tech on load.
+  function syncChips(activeBtn) {
+    $$('[data-compare-btn]').forEach(b => {
+      const on = b === activeBtn;
+      b.classList.toggle('is-active', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  }
+  const initial = $$('[data-compare-btn]').find(b => b.classList.contains('is-active'));
+  if (initial) syncChips(initial);
+
   $$('[data-compare-btn]').forEach(btn => {
     btn.addEventListener('click', () => {
       pos = Number(btn.dataset.compareBtn);
       render();
-      $$('[data-compare-btn]').forEach(b => b.classList.toggle('is-active', b === btn));
+      syncChips(btn);
     });
   });
 

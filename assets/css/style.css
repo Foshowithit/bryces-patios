@@ -59,6 +59,10 @@
 /* ── Reset ────────────────────────────────────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
+
+/* Fixed nav would cover the top of any in-page anchor target — reserve its height. */
+[id]{scroll-margin-top:calc(var(--nav-h) + 1.5rem)}
+section[id], .section{scroll-margin-top:calc(var(--nav-h) + 2rem)}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{
   margin:0;
