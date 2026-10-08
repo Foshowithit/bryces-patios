@@ -31,7 +31,7 @@ platforms.
 
 ```
 Custom patios, walkways & outdoor living
-Attleboro, MA · SE Mass & Rhode Island
+Mansfield, MA · SE Mass & Rhode Island
 Built with purpose. Made for living.
 Free estimates ↓
 ```
@@ -40,7 +40,7 @@ Free estimates ↓
 
 ```
 Bryce's Patios designs and builds custom stone patios, walkways and outdoor living
-spaces in Attleboro, Massachusetts and across southeastern MA and Rhode Island.
+spaces in Mansfield, Massachusetts and across southeastern MA and Rhode Island.
 
 Owner-operated. Free on-site estimates. One crew, start to finish.
 
@@ -49,10 +49,10 @@ brycespatios.work
 
 ### Name field (all platforms)
 
-Set the display name to **`Bryce's Patios | Patios & Hardscaping Attleboro MA`**.
+Set the display name to **`Bryce's Patios | Patios & Hardscaping Mansfield MA`**.
 
 This is not vanity — Instagram and Facebook both index the name field for search. Someone
-typing "patio Attleboro" should find the account. Putting the service and the town in the
+typing "patio Mansfield" should find the account. Putting the service and the town in the
 name is free local SEO.
 
 ### Profile photo
@@ -83,7 +83,7 @@ Rotate through these. Every post belongs to one of them.
 | **Finished work** | Beauty shots, golden hour, lights on | Aspiration. This is what people save and send to their partner. |
 | **Education** | "Why we dig 8 inches", material comparisons, drainage | Positions Bryce as the expert, not just a pair of hands. Also very shareable. |
 | **Social proof** | Reviews, thank-you notes, repeat customers | Converts the people who are already interested. |
-| **Local** | Attleboro, the truck, the crew, New England seasons | Makes the business feel like a neighbour, not a franchise. |
+| **Local** | Mansfield, the truck, the crew, New England seasons | Makes the business feel like a neighbour, not a franchise. |
 
 **Rule of thumb: for every 1 "look how nice this is" post, do 2 "here's what it took" posts.**
 
@@ -146,7 +146,7 @@ Short beats clever. The photo does the work; the caption just needs to not get i
 **Before/After**
 > Before → after.
 > Four days, one crew.
-> Attleboro, MA. Free estimates — link in bio.
+> Mansfield, MA. Free estimates — link in bio.
 
 **Process**
 > This is the part nobody photographs.
@@ -165,7 +165,7 @@ Short beats clever. The photo does the work; the caption just needs to not get i
 > Rehoboth, MA.
 
 **Local / CTA**
-> We build within about 40 minutes of Attleboro.
+> We build across southeastern Massachusetts and Rhode Island.
 > Booking for [month]. Free on-site estimates — link in bio.
 
 ---
@@ -173,7 +173,7 @@ Short beats clever. The photo does the work; the caption just needs to not get i
 ## 6. Hashtags
 
 Use 8–15. Mix broad, niche, and local. Local ones matter most — a post that reaches 400
-people in Attleboro beats one that reaches 40,000 people in Ohio.
+people in Mansfield beats one that reaches 40,000 people in Ohio.
 
 **Local (always include 4–6)**
 ```

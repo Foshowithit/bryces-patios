@@ -1,41 +1,44 @@
-# Bryce's Patios — website concept
+# Bryce's Patios — website
 
 **Live:** https://brycespatios.work
 **Repo fallback:** https://foshowithit.github.io/bryces-patios/
 
-A single-page site concept for Bryce's Patios — custom patios, walkways and outdoor living
-in Attleboro, Massachusetts.
+A single-page site for Bryce's Patios — custom patios, walkways and outdoor living
+in Mansfield, Massachusetts.
 
 Hand-built HTML, CSS and JavaScript. No build step, no framework, no dependencies. Open
 `index.html` in a browser and it runs.
 
 ---
 
-## ⚠️ Read this first
+## Read this first
 
-This is a **concept**, not a finished site. Two things are not real:
+The site is live. The photography is AI-generated and disclosed on the page; it exists so the
+site launches looking finished rather than empty. Real job photos should replace it as soon
+as Bryce can shoot them.
 
-1. **The photography is AI-generated.** It is not Bryce's work. It's there so the design
-   can be reviewed as a finished thing rather than as an empty shell. The page says so
-   out loud under the featured-work section.
-2. **The phone number, email, domain, social handles and project towns are placeholders.**
-   `(508) 555-0134` is a reserved fiction number and does not ring.
+Everything on the page is real:
 
-The site is set `noindex` and `Disallow: /` on purpose, so it can't surface in search
-results as Bryce's real work before it is. Both are marked in the code with the exact
-lines to reverse at launch.
+- **Phone:** (508) 212-6433
+- **Email:** bryces-patios@agentmail.to
+- **Address:** 885 West St, Mansfield, MA
+- **Service area:** Southeastern Massachusetts and Rhode Island, roughly a few hours of
+  travel when a job justifies it
 
-Full details, including the launch checklist: **[LAUNCH.md](LAUNCH.md)**.
+No licenses, insurance, certifications, warranties, or reviews are claimed anywhere,
+because none have been verified. Add them only once confirmed.
+
+Full details, including the remaining launch work: **[LAUNCH.md](LAUNCH.md)**.
 
 ---
 
 ## What's in here
 
 ```
-index.html                  the whole site — 8 sections
+index.html                  the whole site — one page
 assets/css/style.css        design system
 assets/js/main.js           nav, before/after slider, estimate form, film
-assets/img/                 9 photos, each in 900w and 1536w
+assets/img/                 photos and diagrams used by the page
 social/SOCIAL-KIT.md        handles, bios, 30-day content calendar, captions, hashtags
 social/highlight-covers/    8 Instagram highlight covers (1080×1920)
 LAUNCH.md                   what to replace, how to deploy, what to add next
@@ -45,25 +48,27 @@ LAUNCH.md                   what to replace, how to deploy, what to add next
 
 ## Sections
 
-Hero → the promise → featured work → before/after transformation → craftsmanship → about →
+Hero → the promise → featured work → process → craftsmanship → about → learn →
 service area → estimate form → footer.
 
 ## Interactions
 
 - Sticky nav with scroll progress and a mobile slide-out menu
 - **Draggable before/after slider** — mouse, touch, and arrow keys
-- **3-step estimate form** with per-step validation
-- **"Watch the build"** — an animated sequence built from the stills, so it works with no
-  video file. Swap in real footage later.
+- **3-step estimate form** with per-step validation; on finish it opens a pre-filled
+  text message to Bryce, with copy and email fallbacks
+- **"Watch the build"** — an animated sequence built from the stills. Swap in real
+  footage later.
 - Sticky call/estimate bar on phones
 - Responsive images via `srcset`, reduced-motion support, works without JavaScript
 
-## Making variants
+## Publishing
 
-To try an alternative direction, drop it in a subfolder and it gets its own URL for free:
+The site is live on GitHub Pages via the `CNAME` file in the repo root. Commit to `main`,
+push, and the change is usually live in about a minute:
 
+```bash
+git add -A && git commit -m "describe the change" && git push
 ```
-v2/index.html   →  https://foshowithit.github.io/bryces-patios/v2/
-```
 
-Push and it's live in about a minute. Nothing else to configure.
+Do **not** upload `_masters/`. It's 28 MB of source files the site never requests.
