@@ -294,7 +294,7 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   update();
 })();
 
-/* ── 7. Showreel (real jobs, Ken Burns) ───────────────────────────────── */
+/* ── 7. Showreel (real jobs, narrated, sentence-synced) ─────────────── */
 (function film() {
   const launch = $('#film-launch');
   const modal  = $('#film');
@@ -304,7 +304,6 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const close  = $('#film-close');
   if (!launch || !modal || !stage) return;
 
-  // Only real photos of Bryce's work. No AI scenes passed off as the build.
   // Only real photos of Bryce's work. No AI scenes passed off as the build.
   const SLIDES = [
     { src: 'assets/img/hero.jpg',
@@ -333,12 +332,29 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       alt: 'A multi-level gray paver patio with a walkway and three curved steps, four blue armchairs and a coffee table on a striped rug, beside an elevated white lattice deck.' }
   ];
 
-  const DURATION = 4200;
-  let index = 0, timer = null, raf = null, lastFocus = null;
+  // Narration: one real voice track over the whole reel. The slide changes
+  // are driven by each spoken line's start time so the words and the picture
+  // land together. Times are seconds from the top of the track.
+  const AUDIO_SRC = 'assets/audio/showreel.mp3';
+  const NARRATION = [
+    { at: 0.20,  slide: 0 },   // Every one of these starts with a hole in the ground.
+    { at: 3.53,  slide: 1 },   // We set the base, and we lay it to the grade…
+    { at: 8.97,  slide: 2 },   // Gray pavers, a border, and a pattern that fits the space.
+    { at: 12.75, slide: 3 },   // Walkway, edging, and the beds cleaned up after.
+    { at: 15.82, slide: 4 },   // A curve that ties the yard together.
+    { at: 18.22, slide: 5 },   // Two levels, one continuous build.
+    { at: 20.39, slide: 6 },   // New pavers, a fresh border, and a curve in the walk.
+    { at: 23.77, slide: 7 },   // Levels, steps, and somewhere to sit.
+    { at: 26.15, slide: 7 },   // Every one of these belongs to a neighbor.
+    { at: 29.12, slide: 7 }    // Call Bryce.
+  ];
+  const TAIL = 2.4;            // hold on the last slide after the voice ends
+
+  let index = 0, timer = null, raf = null, lastFocus = null, endTimer = null;
   const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 
-  // Build the slides once. Each slide holds two stacked copies of the same
-  // photo so we can crossfade, and a slow drift gives the stills life.
+  // Build the slides once. Each slide holds the photo; a slow drift gives
+  // the stills life.
   SLIDES.forEach((s, i) => {
     const slide = document.createElement('div');
     slide.className = 'film__slide';
@@ -349,16 +365,32 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     img.alt = s.alt;
     img.width = 1600;
     img.height = 1066;
-    img.loading = i < 2 ? 'eager' : 'lazy';
+    img.loading = 'eager';   // reel opens on click; a stalled first frame is worse than 8 small loads
     img.decoding = 'async';
-    img.style.objectPosition = ['50% 45%', '50% 50%', '50% 55%', '50% 50%', '50% 45%', '50% 50%', '50% 45%', '50% 50%'][i] || '50% 50%';
+    img.style.objectPosition = ['50% 42%', '50% 50%', '50% 55%', '50% 50%', '50% 45%', '50% 50%', '50% 45%', '50% 50%'][i] || '50% 50%';
     slide.appendChild(img);
     stage.appendChild(slide);
   });
 
   const slideEls = $$('.film__slide', stage);
 
+  // One audio element for the reel, kept in the DOM so it is inspectable
+  // and reused every open. Created once.
+  const audio = document.createElement('audio');
+  audio.id = 'film-audio';
+  audio.preload = 'auto';
+  audio.src = AUDIO_SRC;
+  audio.muted = false;
+  audio.setAttribute('playsinline', '');
+  audio.style.display = 'none';
+  modal.appendChild(audio);
+
   function show(i) {
+    if (i === index && slideEls[i]?.classList.contains('is-active')) {
+      caption.textContent = SLIDES[i].text;
+      return;
+    }
+    index = i;
     slideEls.forEach((el, n) => el.classList.toggle('is-active', n === i));
     caption.textContent = SLIDES[i].text;
     if (reduced) return;
@@ -366,36 +398,92 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (img) { img.style.animation = 'none'; void img.offsetWidth; img.style.animation = ''; }
   }
 
-  function progress() {
-    if (reduced) { fill.style.width = '100%'; return; }
-    const start = performance.now();
-    const tick = now => {
-      const t = Math.min(1, (now - start) / DURATION);
-      fill.style.width = ((index + t) / SLIDES.length) * 100 + '%';
-      if (t < 1) raf = requestAnimationFrame(tick);
-    };
+  function markProgress(t) {
+    const total = NARRATION[NARRATION.length - 1].at + TAIL;
+    fill.style.width = Math.min(100, (t / total) * 100) + '%';
+  }
+
+  // Drive the slide changes off the audio clock so picture and voice agree,
+  // even if the track stalls or the tab is throttled.
+  function tick() {
+    if (modal.hidden) return;
+    const t = audio.currentTime;
+    let want = 0;
+    for (let i = 0; i < NARRATION.length; i++) {
+      if (t >= NARRATION[i].at) want = NARRATION[i].slide; else break;
+    }
+    if (want !== index) show(want);
+    markProgress(t);
     raf = requestAnimationFrame(tick);
   }
 
-  function advance() { index = (index + 1) % SLIDES.length; show(index); progress(); }
+  function startFilm() {
+    show(0);
+    index = 0;
+    markProgress(0);
+    if (reduced) { fill.style.width = '100%'; return; }
+    const play = audio.play();
+    if (play && play.catch) play.catch(() => {}); // autoplay blocked → slides still work below
+    audio.currentTime = 0;
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(tick);
+
+    // Fallback: if audio can't play, still advance on a timer so the reel
+    // never sits frozen. Only used when the track is silent/blocked.
+    const guard = setInterval(() => {
+      if (modal.hidden || !audio.paused) { clearInterval(guard); return; }
+      show((index + 1) % SLIDES.length);
+    }, 4200);
+    endTimer = setTimeout(() => { clearInterval(guard); if (!modal.hidden) shut(); },
+      (NARRATION[NARRATION.length - 1].at + TAIL) * 1000);
+  }
 
   function open() {
     lastFocus = document.activeElement;
     modal.hidden = false;
     document.body.classList.add('is-locked');
-    index = 0; show(0); progress();
-    if (!reduced) timer = setInterval(advance, DURATION);
+    startFilm();
     close.focus();
   }
 
   function shut() {
-    clearInterval(timer); cancelAnimationFrame(raf);
-    timer = raf = null;
+    clearInterval(timer); clearTimeout(endTimer);
+    cancelAnimationFrame(raf);
+    timer = raf = null; endTimer = null;
+    audio.pause();
+    try { audio.currentTime = 0; } catch (_) {}
     modal.hidden = true;
     document.body.classList.remove('is-locked');
     fill.style.width = '0';
+    show(0);
     lastFocus?.focus();
   }
+
+  // Mute toggle (small, unobtrusive; only shown once the reel has audio).
+  const muteBtn = document.createElement('button');
+  muteBtn.type = 'button';
+  muteBtn.className = 'film__mute';
+  muteBtn.setAttribute('aria-pressed', 'false');
+  muteBtn.setAttribute('aria-label', 'Mute narration');
+  muteBtn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
+    '<path d="M4 9v6h4l5 4V5L8 9H4z"/>' +
+    '<path class="film__mute-x" d="M16.5 8.5l5 5M21.5 8.5l-5 5"/></svg>';
+  muteBtn.addEventListener('click', () => {
+    audio.muted = !audio.muted;
+    muteBtn.setAttribute('aria-pressed', String(audio.muted));
+    muteBtn.setAttribute('aria-label', audio.muted ? 'Unmute narration' : 'Mute narration');
+    muteBtn.classList.toggle('is-muted', audio.muted);
+  });
+  modal.appendChild(muteBtn);
+
+  // Warm the reel in the background once the page is idle, so the first
+  // open is instant. The images live in a hidden modal, so let them load
+  // off the critical path instead of competing with the page itself.
+  const warm = () => SLIDES.forEach(s => { const im = new Image(); im.src = s.src; });
+  if ('requestIdleCallback' in window) requestIdleCallback(warm, { timeout: 2500 });
+  else window.addEventListener('load', () => setTimeout(warm, 300), { once: true });
+  launch.addEventListener('mouseenter', warm, { once: true });
+  launch.addEventListener('focus', warm, { once: true });
 
   launch.addEventListener('click', open);
   close.addEventListener('click', shut);
