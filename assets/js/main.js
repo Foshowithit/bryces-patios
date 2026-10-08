@@ -305,31 +305,32 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!launch || !modal || !stage) return;
 
   // Only real photos of Bryce's work. No AI scenes passed off as the build.
+  // Only real photos of Bryce's work. No AI scenes passed off as the build.
   const SLIDES = [
     { src: 'assets/img/hero.jpg',
-      text: 'A circular fire-pit patio, mid-build.',
-      alt: 'A circular paver patio with a stone fire pit under construction, an orange skid steer parked beside it and two workers setting stone.' },
+      text: 'A fire-pit patio, mid-build.',
+      alt: 'A circular paver patio with a matched circular stone fire pit, a low retaining wall of tan block going up at the back, two orange compact tractors in the yard and three workers, beside a wooden shed.' },
     { src: 'assets/img/steps-detail.jpg',
-      text: 'Steps cut into the grade.',
-      alt: 'Wide stone steps with granite treads set into a grassy slope, with a fieldstone cheek wall along the side.' },
+      text: 'Laid up to the grade.',
+      alt: 'A gray paver area laid in a running-bond pattern with a lighter stone border, edged against bare soil and gravel, with a wooden step at the top of the paved surface.' },
     { src: 'assets/img/patio-herringbone.jpg',
-      text: 'Herringbone, laid off the back stairs.',
-      alt: 'A paver patio laid in a herringbone pattern running up to the base of a set of wooden deck stairs.' },
+      text: 'Laid off the back stairs.',
+      alt: 'A gray and white paver patio with a darker inset section and light border running up to the base of a white-railed wooden deck staircase on a white frame house.' },
     { src: 'assets/img/walkway.jpg',
       text: 'Walkway and a raised edge course.',
-      alt: 'A straight paver walkway running along a raised stone edge, with a broom and a blue bucket left on the pavers mid-job.' },
+      alt: 'A straight gray paver walkway bordered by a raised stone edge, alongside a mulch bed of shrubs and a white building, with a shovel, push broom and blue bucket left on the grass mid-job.' },
     { src: 'assets/img/big-yard.jpg',
       text: 'A curved patio that ties the yard together.',
-      alt: 'A curved paver patio with a stone seat wall and white deck railing, wrapping around an above-ground pool in a green backyard.' },
+      alt: 'A curved gray paver patio with steps and a raised white lattice deck, wrapping toward an above-ground pool with white safety fencing, blue chairs on a striped rug and a wooded backdrop.' },
     { src: 'assets/img/stone-arch.jpg',
-      text: 'Two levels, one continuous patio.',
-      alt: 'A multi-level backyard with a gray paver patio, a white-railed deck on one side, and an above-ground pool with a blue cover.' },
+      text: 'Two levels, one continuous build.',
+      alt: 'A large gray paver patio with a darker border in front of a two-level wooden deck, with firewood and a seating area stored under the lower deck and an orange compact tractor with loader and backhoe parked on the grass.' },
     { src: 'assets/img/yard.jpg',
-      text: 'The finished yard, tied together.',
-      alt: 'A finished paver patio and lawn running back toward a shed, with planting beds along the edge.' },
+      text: 'New pavers, a border, and a curve.',
+      alt: 'A newly laid gray paver patio with a darker gray border curving into a low block retaining wall, set against a wooden deck with open storage beneath, an orange compact tractor on the grass and a row of arborvitae behind.' },
     { src: 'assets/img/stairs-landing.jpg',
-      text: 'The finished job, swept clean.',
-      alt: 'A finished paver patio laid up to a set of stairs, with a garden hose coiled on the pavers.' }
+      text: 'Levels, steps, and a place to sit.',
+      alt: 'A multi-level gray paver patio with a walkway and three curved steps, four blue armchairs and a coffee table on a striped rug, beside an elevated white lattice deck.' }
   ];
 
   const DURATION = 4200;
