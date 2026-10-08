@@ -296,12 +296,17 @@ legend{padding:0}
 .hero__media{position:absolute; inset:0; z-index:-1}
 .hero__media img{
   width:100%; height:100%; object-fit:cover;
-  animation:heroDrift 28s var(--ease-io) infinite alternate;
-  will-change:transform;
+  /* the old heroDrift keyframe scaled this photo from 1.06 to 1.14 over 28s.
+     On a 920px source with a wall running through the frame, that crops an extra
+     ~14% off every edge and the composition visibly falls apart the longer you
+     look at it. Stills of real work do not need a slow zoom. */
+}
+@media (prefers-reduced-motion:no-preference){
+  .hero__media img{animation:heroDrift 40s var(--ease-io) infinite alternate}
 }
 @keyframes heroDrift{
-  from{transform:scale(1.06) translate3d(0,0,0)}
-  to{transform:scale(1.14) translate3d(-1.2%,-1.4%,0)}
+  from{transform:scale(1.00) translate3d(0,0,0)}
+  to{transform:scale(1.02) translate3d(0,0,0)}
 }
 .hero__scrim{
   position:absolute; inset:0;
@@ -524,10 +529,12 @@ legend{padding:0}
 }
 .craft__figure{margin:0; display:flex; flex-direction:column; gap:1.125rem; height:100%}
 .craft__figure--wide{grid-column:span 2}
-.craft__figure img{width:100%; object-fit:cover; border-radius:var(--r-md)}
-.craft__figure--wide img{aspect-ratio:16/9}
-/* the narrow figure stretches to match the wide one so both bottoms line up */
-.craft__figure:not(.craft__figure--wide) img{flex:1 1 auto; height:auto; min-height:11rem}
+.craft__figure img{width:100%; object-fit:cover; border-radius:var(--r-md); display:block}
+/* both figures hold the SAME aspect ratio. the previous rule let the narrow figure
+   stretch to the wide one's height, which upscaled it about 2x and cropped it so hard
+   the photo read as two unrelated stone textures. Matching the ratio keeps the bottoms
+   aligned (the original intent) without distorting either image. */
+.craft__figure img{aspect-ratio:3/2}
 .craft__figure figcaption{
   font-size:.875rem; line-height:1.68; color:var(--ink-inv-2); max-width:52ch;
 }
@@ -884,7 +891,7 @@ body.is-locked{overflow:hidden}
   .projects{grid-template-columns:1fr; gap:3rem}
   .craft__grid{grid-template-columns:1fr}
   .craft__figure--wide{grid-column:1 / -1}
-  .craft__figure:not(.craft__figure--wide) img{flex:none; aspect-ratio:16/9; min-height:0}
+  .craft__figure:not(.craft__figure--wide) img{flex:none; min-height:0}
   .about__grid{grid-template-columns:1fr; gap:2.5rem}
   .about__media img{aspect-ratio:16/10}
   .area__grid{grid-template-columns:1fr; gap:3rem}
