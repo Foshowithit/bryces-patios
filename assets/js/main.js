@@ -307,8 +307,8 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   // Only real photos of Bryce's work. No AI scenes passed off as the build.
   const SLIDES = [
     { src: 'assets/img/hero.jpg',
-      text: 'A fire-pit patio, mid-build.',
-      alt: 'A circular paver patio with a matched circular stone fire pit, a low retaining wall of tan block going up at the back, two orange compact tractors in the yard and three workers, beside a wooden shed.' },
+      text: 'A finished backyard, tied together.',
+      alt: 'A finished backyard with a curved gray paver patio, a low stone seat wall, blue Adirondack chairs on a striped rug, and a round above-ground pool ringed by a white-railed deck, backed by mature trees.' },
     { src: 'assets/img/steps-detail.jpg',
       text: 'Laid up to the grade.',
       alt: 'A gray paver area laid in a running-bond pattern with a lighter stone border, edged against bare soil and gravel, with a wooden step at the top of the paved surface.' },
