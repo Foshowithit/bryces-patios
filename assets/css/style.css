@@ -887,6 +887,19 @@ body.is-locked{overflow:hidden}
 
 
 /* ── LEARN (guides) ───────────────────────────────────────────────────── */
+.learn__figure{
+  grid-column:1 / -1; margin:0;
+  display:grid; grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);
+  gap:clamp(1.75rem, 4vw, 3rem); align-items:center;
+  background:var(--canvas); border:1px solid var(--line); border-radius:var(--r-md);
+  padding:clamp(1.25rem, 3vw, 2rem);
+}
+.learn__figure img{width:100%; height:auto; display:block; border-radius:var(--r-sm)}
+.learn__figure figcaption{font-size:.9375rem; line-height:1.7; color:var(--ink-2); text-wrap:pretty}
+.learn__figure figcaption strong{
+  display:block; color:var(--ink); font-weight:600; margin-bottom:.4rem; font-size:1rem;
+}
+
 .learn{background:var(--paper)}
 .learn__grid{
   display:grid; grid-template-columns:repeat(3,minmax(0,1fr));
@@ -935,7 +948,7 @@ body.is-locked{overflow:hidden}
 .guide--ask .guide__title{color:var(--ink-inv)}
 .guide--ask p{color:var(--ink-inv-2)}
 .guide--ask .guide__tag{color:var(--moss-soft)}
-@media (max-width:1024px){ .learn__grid{grid-template-columns:1fr 1fr} }
+@media (max-width:1024px){ .learn__grid{grid-template-columns:1fr 1fr} .learn__figure{grid-template-columns:1fr} }
 @media (max-width:760px){ .learn__grid{grid-template-columns:1fr} }
 
 /* ── Responsive ───────────────────────────────────────────────────────── */

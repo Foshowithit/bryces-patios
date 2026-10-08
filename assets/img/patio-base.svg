@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560" role="img" aria-labelledby="pbTitle pbDesc" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title id="pbTitle">Cross-section of a patio, layer by layer</title>
+  <desc id="pbDesc">A cutaway drawing showing pavers on top, a bedding layer of sand, a compacted crushed stone base built in two lifts, and undisturbed soil underneath, with the surface sloped to shed water.</desc>
+
+  <rect width="1000" height="560" fill="#FDFBF7"/>
+
+  <!-- Ground / soil -->
+  <rect x="60" y="360" width="880" height="150" fill="#6B5B49"/>
+  <g stroke="#7d6c58" stroke-width="1" opacity=".55">
+    <path d="M60 392h880M60 424h880M60 456h880M60 488h880"/>
+  </g>
+
+  <!-- Base: lift 2 (upper) -->
+  <rect x="60" y="300" width="880" height="60" fill="#B9BCC0"/>
+  <g fill="#9FA3A8">
+    <circle cx="120" cy="330" r="9"/><circle cx="168" cy="322" r="7"/><circle cx="212" cy="334" r="10"/>
+    <circle cx="262" cy="324" r="8"/><circle cx="312" cy="332" r="9"/><circle cx="360" cy="322" r="7"/>
+    <circle cx="410" cy="334" r="10"/><circle cx="462" cy="324" r="8"/><circle cx="512" cy="332" r="9"/>
+    <circle cx="562" cy="322" r="7"/><circle cx="612" cy="334" r="10"/><circle cx="664" cy="324" r="8"/>
+    <circle cx="714" cy="332" r="9"/><circle cx="764" cy="322" r="7"/><circle cx="814" cy="334" r="10"/>
+    <circle cx="864" cy="324" r="8"/><circle cx="908" cy="332" r="9"/>
+  </g>
+  <!-- Base: lift 1 (lower) -->
+  <rect x="60" y="336" width="880" height="24" fill="#AFB3B7"/>
+  <g stroke="#8f9398" stroke-width="2" stroke-dasharray="7 6" opacity=".9">
+    <path d="M60 336h880"/>
+  </g>
+
+  <!-- Bedding sand -->
+  <rect x="60" y="288" width="880" height="12" fill="#E4D8BF"/>
+
+  <!-- Pavers, top surface sloped (left higher than right) -->
+  <g>
+    <rect x="60" y="258" width="108" height="30" fill="#C6C9CD" stroke="#9aa0a6" stroke-width="1"/>
+    <rect x="168" y="261" width="108" height="30" fill="#BFC3C7" stroke="#9aa0a6" stroke-width="1"/>
+    <rect x="276" y="264" width="108" height="30" fill="#C6C9CD" stroke="#9aa0a6" stroke-width="1"/>
+    <rect x="384" y="267" width="108" height="30" fill="#BFC3C7" stroke="#9aa0a6" stroke-width="1"/>
+    <rect x="492" y="270" width="108" height="30" fill="#C6C9CD" stroke="#9aa0a6" stroke-width="1"/>
+    <rect x="600" y="273" width="108" height="30" fill="#BFC3C7" stroke="#9aa0a6" stroke-width="1"/>
+    <rect x="708" y="276" width="108" height="30" fill="#C6C9CD" stroke="#9aa0a6" stroke-width="1"/>
+    <rect x="816" y="279" width="124" height="30" fill="#BFC3C7" stroke="#9aa0a6" stroke-width="1"/>
+  </g>
+
+  <!-- Slope arrows (surface sheds water) -->
+  <defs>
+    <marker id="pbArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#55613E"/>
+    </marker>
+  </defs>
+  <g stroke="#55613E" stroke-width="2.4" fill="none">
+    <path d="M150 232 H300" marker-end="url(#pbArrow)"/>
+    <path d="M150 232 l0 -26"/>
+  </g>
+  <text x="158" y="226" fill="#55613E" font-size="17" font-weight="600">Water runs off</text>
+
+  <!-- Labels -->
+  <g font-size="16" fill="#3B4147">
+    <g stroke="#9aa0a6" stroke-width="1">
+      <path d="M966 272 h14" /><path d="M980 272 V294"/>
+    </g>
+    <text x="618" y="205" font-size="17" font-weight="600" fill="#14171A">Pavers / stone</text>
+    <text x="618" y="234">the part you see</text>
+
+    <text x="640" y="283" font-size="15" fill="#8a7a5c">Bedding layer</text>
+
+    <text x="632" y="326" font-size="16" font-weight="600" fill="#3B4147">Compacted crushed stone base</text>
+    <text x="632" y="352" font-size="14.5" fill="#5b6167">built in lifts, compacted between each</text>
+
+    <text x="640" y="452" font-size="17" font-weight="600" fill="#EFE9DD">Undisturbed soil</text>
+  </g>
+
+  <!-- Dimension: full dig depth -->
+  <g stroke="#14171A" stroke-width="1.4" opacity=".7">
+    <path d="M40 258 V510"/>
+    <path d="M34 258 h12M34 510 h12"/>
+  </g>
+  <text x="14" y="392" fill="#14171A" font-size="15" font-weight="600" transform="rotate(-90 14 392)">full dig depth</text>
+</svg>
