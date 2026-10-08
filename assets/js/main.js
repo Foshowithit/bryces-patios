@@ -93,78 +93,6 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   items.forEach(el => io.observe(el));
 })();
 
-/* ── 4. Before / after comparison slider ───────────────────────────────── */
-(function compare() {
-  const stage = $('#compare-stage');
-  const handle = $('#compare-handle');
-  if (!stage || !handle) return;
-
-  let pos = 50;
-  let dragging = false;
-
-  function render() {
-    stage.style.setProperty('--pos', pos + '%');
-    handle.setAttribute('aria-valuenow', Math.round(pos));
-    handle.setAttribute('aria-valuetext', Math.round(pos) + '% after');
-  }
-
-  function setFromClientX(clientX) {
-    const r = stage.getBoundingClientRect();
-    const p = ((clientX - r.left) / r.width) * 100;
-    pos = Math.max(0, Math.min(100, p));
-    render();
-  }
-
-  stage.addEventListener('pointerdown', e => {
-    dragging = true;
-    stage.setPointerCapture(e.pointerId);
-    setFromClientX(e.clientX);
-  });
-
-  stage.addEventListener('pointermove', e => {
-    if (dragging) setFromClientX(e.clientX);
-  });
-
-  ['pointerup', 'pointercancel'].forEach(evt =>
-    stage.addEventListener(evt, e => {
-      dragging = false;
-      if (stage.hasPointerCapture?.(e.pointerId)) stage.releasePointerCapture(e.pointerId);
-    })
-  );
-
-  handle.addEventListener('keydown', e => {
-    const step = e.shiftKey ? 10 : 3;
-    const map = { ArrowLeft: -step, ArrowRight: step, ArrowDown: -step, ArrowUp: step };
-    if (e.key in map) {
-      e.preventDefault();
-      pos = Math.max(0, Math.min(100, pos + map[e.key]));
-      render();
-    } else if (e.key === 'Home') { e.preventDefault(); pos = 0;   render(); }
-    else if (e.key === 'End')    { e.preventDefault(); pos = 100; render(); }
-  });
-
-  // Keep the chip that starts active in sync for assistive tech on load.
-  function syncChips(activeBtn) {
-    $$('[data-compare-btn]').forEach(b => {
-      const on = b === activeBtn;
-      b.classList.toggle('is-active', on);
-      b.setAttribute('aria-pressed', on ? 'true' : 'false');
-    });
-  }
-  const initial = $$('[data-compare-btn]').find(b => b.classList.contains('is-active'));
-  if (initial) syncChips(initial);
-
-  $$('[data-compare-btn]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      pos = Number(btn.dataset.compareBtn);
-      render();
-      syncChips(btn);
-    });
-  });
-
-  render();
-})();
-
 /* ── 5. Estimate form ──────────────────────────────────────────────────── */
 (function estimate() {
   const form = $('#estimate-form');
@@ -366,7 +294,7 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   update();
 })();
 
-/* ── 7. "Watch the build" film ─────────────────────────────────────────── */
+/* ── 7. Showreel (real jobs, Ken Burns) ───────────────────────────────── */
 (function film() {
   const launch = $('#film-launch');
   const modal  = $('#film');
@@ -376,43 +304,53 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const close  = $('#film-close');
   if (!launch || !modal || !stage) return;
 
+  // Only real photos of Bryce's work. No AI scenes passed off as the build.
   const SLIDES = [
-    { src: 'assets/img/transform-before.jpg', text: 'This is where most yards start.',
-      alt: 'A bare, uneven backyard before any patio work begins.' },
-    { src: 'assets/img/build-pavers.jpg',     text: 'Set out, then the digging starts.',
-      alt: 'A worker setting rectangular stone pavers on a prepared base.' },
-    { src: 'assets/img/build-stones.jpg',     text: 'Stone goes down one piece at a time.',
-      alt: 'A worker on hands and knees placing stone pavers by hand.' },
-    { src: 'assets/img/build-tiles.jpg',      text: 'Joint by joint, kept dead straight.',
-      alt: 'Workers laying a patio surface course by course in daylight.' },
-    { src: 'assets/img/craft-base.jpg',       text: 'Steps and grade handled together.',
-      alt: 'Granite stone steps rising through a wall between lawn and patio.' },
-    { src: 'assets/img/project-dining.jpg',   text: 'Then the shape arrives.',
-      alt: 'A finished stone patio with a curved seat wall and clean border.' },
-    { src: 'assets/img/build-finished.jpg',   text: 'A yard that finally works.',
-      alt: 'A finished stone patio surrounded by greenery with a central feature.' },
-    { src: 'assets/img/project-firepit.jpg',  text: 'And a space that works after dark.',
-      alt: 'A paver patio with a round stone fire pit and seating at dusk.' }
+    { src: 'assets/img/hero.jpg',
+      text: 'A circular fire-pit patio, mid-build.',
+      alt: 'A circular paver patio with a stone fire pit under construction, an orange skid steer parked beside it and two workers setting stone.' },
+    { src: 'assets/img/steps-detail.jpg',
+      text: 'Steps cut into the grade.',
+      alt: 'Wide stone steps with granite treads set into a grassy slope, with a fieldstone cheek wall along the side.' },
+    { src: 'assets/img/patio-herringbone.jpg',
+      text: 'Herringbone, laid off the back stairs.',
+      alt: 'A paver patio laid in a herringbone pattern running up to the base of a set of wooden deck stairs.' },
+    { src: 'assets/img/walkway.jpg',
+      text: 'Walkway and a raised edge course.',
+      alt: 'A straight paver walkway running along a raised stone edge, with a broom and a blue bucket left on the pavers mid-job.' },
+    { src: 'assets/img/big-yard.jpg',
+      text: 'A curved patio that ties the yard together.',
+      alt: 'A curved paver patio with a stone seat wall and white deck railing, wrapping around an above-ground pool in a green backyard.' },
+    { src: 'assets/img/stone-arch.jpg',
+      text: 'Two levels, one continuous patio.',
+      alt: 'A multi-level backyard with a gray paver patio, a white-railed deck on one side, and an above-ground pool with a blue cover.' },
+    { src: 'assets/img/yard.jpg',
+      text: 'The finished yard, tied together.',
+      alt: 'A finished paver patio and lawn running back toward a shed, with planting beds along the edge.' },
+    { src: 'assets/img/stairs-landing.jpg',
+      text: 'The finished job, swept clean.',
+      alt: 'A finished paver patio laid up to a set of stairs, with a garden hose coiled on the pavers.' }
   ];
 
   const DURATION = 4200;
-  let index = 0;
-  let timer = null;
-  let raf = null;
-  let lastFocus = null;
+  let index = 0, timer = null, raf = null, lastFocus = null;
+  const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 
-  // Build the slides once
+  // Build the slides once. Each slide holds two stacked copies of the same
+  // photo so we can crossfade, and a slow drift gives the stills life.
   SLIDES.forEach((s, i) => {
     const slide = document.createElement('div');
     slide.className = 'film__slide';
+    slide.setAttribute('role', 'group');
+    slide.setAttribute('aria-label', (i + 1) + ' of ' + SLIDES.length + ': ' + s.text);
     const img = document.createElement('img');
     img.src = s.src;
     img.alt = s.alt;
-    // Reserve space so the slide never collapses before the image decodes.
-    img.width = 900;
-    img.height = 600;
-    img.loading = 'lazy';
+    img.width = 1600;
+    img.height = 1066;
+    img.loading = i < 2 ? 'eager' : 'lazy';
     img.decoding = 'async';
+    img.style.objectPosition = ['50% 45%', '50% 50%', '50% 55%', '50% 50%', '50% 45%', '50% 50%', '50% 45%', '50% 50%'][i] || '50% 50%';
     slide.appendChild(img);
     stage.appendChild(slide);
   });
@@ -422,17 +360,13 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function show(i) {
     slideEls.forEach((el, n) => el.classList.toggle('is-active', n === i));
     caption.textContent = SLIDES[i].text;
-
-    // restart the push animation
+    if (reduced) return;
     const img = slideEls[i].querySelector('img');
-    if (img && !reduced) {
-      img.style.animation = 'none';
-      void img.offsetWidth;
-      img.style.animation = '';
-    }
+    if (img) { img.style.animation = 'none'; void img.offsetWidth; img.style.animation = ''; }
   }
 
   function progress() {
+    if (reduced) { fill.style.width = '100%'; return; }
     const start = performance.now();
     const tick = now => {
       const t = Math.min(1, (now - start) / DURATION);
@@ -442,26 +376,19 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     raf = requestAnimationFrame(tick);
   }
 
-  function advance() {
-    index = (index + 1) % SLIDES.length;
-    show(index);
-    progress();
-  }
+  function advance() { index = (index + 1) % SLIDES.length; show(index); progress(); }
 
   function open() {
     lastFocus = document.activeElement;
     modal.hidden = false;
     document.body.classList.add('is-locked');
-    index = 0;
-    show(0);
-    progress();
-    timer = setInterval(advance, DURATION);
+    index = 0; show(0); progress();
+    if (!reduced) timer = setInterval(advance, DURATION);
     close.focus();
   }
 
   function shut() {
-    clearInterval(timer);
-    cancelAnimationFrame(raf);
+    clearInterval(timer); cancelAnimationFrame(raf);
     timer = raf = null;
     modal.hidden = true;
     document.body.classList.remove('is-locked');

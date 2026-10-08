@@ -8,3 +8,6 @@ _masters/
 
 # Editor cruft
 *.swp
+
+# local working/scratch files (not part of the site)
+work/
