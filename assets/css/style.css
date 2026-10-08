@@ -422,7 +422,7 @@ legend{padding:0}
   will-change:transform;
 }
 .project:hover .project__media img{transform:scale(1.055)}
-.project__body{padding-top:1.5rem}
+.project__body{padding-top:1.5rem; display:flex; flex-direction:column; flex:1}
 .project__place{
   font-size:.6875rem; font-weight:600; letter-spacing:.15em; text-transform:uppercase;
   color:var(--moss-soft); margin-bottom:.6rem;
@@ -432,11 +432,11 @@ legend{padding:0}
   font-size:1.5rem; line-height:1.2; letter-spacing:-.018em; margin-bottom:.7rem;
 }
 .project__desc{font-size:.9375rem; color:var(--ink-inv-2); line-height:1.65; margin-bottom:1.1rem; text-wrap:pretty}
-.tags{display:flex; flex-wrap:wrap; gap:.4rem}
+.tags{display:flex; flex-wrap:wrap; gap:.35rem; margin-top:auto; column-gap:.3rem}
 .tags li{
-  font-size:.6875rem; font-weight:500; letter-spacing:.06em;
-  padding:.3rem .65rem; border:1px solid var(--line-inv); border-radius:100px;
-  color:var(--ink-inv-2);
+  font-size:.6875rem; font-weight:500; letter-spacing:.04em;
+  padding:.3rem .55rem; border:1px solid var(--line-inv); border-radius:100px;
+  color:var(--ink-inv-2); white-space:nowrap;
 }
 .work__note{
   margin-top:clamp(2.5rem, 5vw, 3.5rem);

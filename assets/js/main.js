@@ -4,7 +4,7 @@
 
    ▸ TO POINT THE FORM AT A REAL ENDPOINT: set FORM_ENDPOINT below to your
      Formspree / Netlify Forms / Basin URL. Until then the form falls back
-     to a pre-filled email, which needs no backend at all.
+     to a pre-filled text message, which needs no backend at all.
    ═══════════════════════════════════════════════════════════════════════ */
 
 const FORM_ENDPOINT = '';           // e.g. 'https://formspree.io/f/xxxxxxx'
@@ -226,12 +226,13 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         });
         if (!res.ok) throw new Error('Bad response');
       } catch (err) {
-        // Fall through to the email path rather than losing the lead
-        window.location.href = mailto(text);
+        // Fall through to the SMS path rather than losing the lead
+        window.location.href = smsTo(text);
       }
     }
 
     $('#summary-out').textContent = text;
+    $('#send-sms').href = smsTo(text);
     $('#send-mail').href = mailto(text);
 
     panels.forEach(p => p.classList.remove('is-active'));
@@ -245,6 +246,10 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function mailto(text) {
     const subject = encodeURIComponent('Estimate request — ' + $('#name').value.trim() + ', ' + $('#town').value.trim());
     return 'mailto:' + CONTACT_EMAIL + '?subject=' + subject + '&body=' + encodeURIComponent(text);
+  }
+
+  function smsTo(text) {
+    return 'sms:+15082126433?body=' + encodeURIComponent(text);
   }
 
   $('#copy-summary')?.addEventListener('click', async function () {
