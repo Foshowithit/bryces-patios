@@ -93,6 +93,82 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   items.forEach(el => io.observe(el));
 })();
 
+/* ── 4. Before/after compare ──────────────────────────────────────────── */
+(function compare() {
+  const stage  = $('#compare-stage');
+  const handle = $('#compare-handle');
+  if (!stage || !handle) return;
+
+  const clamp = (n) => Math.min(100, Math.max(0, n));
+  let pos = 50;
+  let ticking = false;
+  let pendingX = null;
+
+  function render() {
+    ticking = false;
+    if (pendingX === null) return;
+    const rect = stage.getBoundingClientRect();
+    pos = clamp(((pendingX - rect.left) / rect.width) * 100);
+    stage.style.setProperty('--pos', pos + '%');
+    handle.style.left = pos + '%';
+    handle.setAttribute('aria-valuenow', String(Math.round(pos)));
+  }
+
+  function queue(clientX) {
+    pendingX = clientX;
+    if (!ticking) { ticking = true; requestAnimationFrame(render); }
+  }
+
+  function setFromKey(delta) {
+    pendingX = null;
+    pos = clamp(pos + delta);
+    stage.style.setProperty('--pos', pos + '%');
+    handle.style.left = pos + '%';
+    handle.setAttribute('aria-valuenow', String(Math.round(pos)));
+  }
+
+  /* Pointer drag (mouse, touch, pen) */
+  stage.addEventListener('pointerdown', (e) => {
+    if (e.target.closest('.compare__handle') && e.pointerType === 'mouse') return;
+    stage.setPointerCapture(e.pointerId);
+    queue(e.clientX);
+    e.preventDefault();
+  });
+  stage.addEventListener('pointermove', (e) => {
+    if (!stage.hasPointerCapture || !stage.hasPointerCapture(e.pointerId)) return;
+    queue(e.clientX);
+  });
+  const release = (e) => {
+    if (stage.hasPointerCapture && stage.hasPointerCapture(e.pointerId)) {
+      stage.releasePointerCapture(e.pointerId);
+    }
+  };
+  stage.addEventListener('pointerup', release);
+  stage.addEventListener('pointercancel', release);
+
+  /* Click / tap anywhere on the stage jumps the seam there */
+  stage.addEventListener('click', (e) => {
+    if (e.target.closest('.compare__handle')) return;
+    pendingX = e.clientX;
+    render();
+  });
+
+  /* Keyboard: the handle itself is the slider */
+  handle.addEventListener('keydown', (e) => {
+    const step = e.shiftKey ? 10 : 2;
+    switch (e.key) {
+      case 'ArrowLeft':  setFromKey(-step); break;
+      case 'ArrowRight': setFromKey(step);  break;
+      case 'Home':       pendingX = null; pos = 0;   stage.style.setProperty('--pos', '0%');   handle.style.left = '0%';   handle.setAttribute('aria-valuenow', '0');   break;
+      case 'End':        pendingX = null; pos = 100; stage.style.setProperty('--pos', '100%'); handle.style.left = '100%'; handle.setAttribute('aria-valuenow', '100'); break;
+      default: return;
+    }
+    e.preventDefault();
+  });
+
+  stage.style.setProperty('--pos', '50%');
+})();
+
 /* ── 5. Estimate form ──────────────────────────────────────────────────── */
 (function estimate() {
   const form = $('#estimate-form');
