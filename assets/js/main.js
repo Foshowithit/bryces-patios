@@ -255,7 +255,7 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function asText(d) {
     return [
-      'New estimate request — Bryce's Patios',
+      'New estimate request \u2014 Bryce\u2019s Patios',
       '',
       'Project:  ' + d.types.join(', '),
       'Size:     ' + (d.size || 'Not specified'),
