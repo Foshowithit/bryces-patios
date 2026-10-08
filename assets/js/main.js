@@ -377,22 +377,22 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!launch || !modal || !stage) return;
 
   const SLIDES = [
-    { src: 'assets/img/craft-base.jpg',       text: 'Every patio starts with what you can\u2019t see.',
-      alt: 'A dug-out patio base partway through the build, before the stone goes down.' },
-    { src: 'assets/img/project-walkway.jpg',  text: 'Stone, string line, and a plan.',
-      alt: 'A flagstone path and steps being set out along a string line in a green lawn.' },
     { src: 'assets/img/transform-before.jpg', text: 'This is where most yards start.',
       alt: 'A bare, uneven backyard before any patio work begins.' },
-    { src: 'assets/img/craft-edge.jpg',       text: 'Base in lifts. Compacted between every one. Joints held tight.',
-      alt: 'Close detail of a dry-laid fieldstone wall laid in tight level courses.' },
-    { src: 'assets/img/transform-after.jpg',  text: 'Then the shape arrives.',
-      alt: 'A finished paver patio with a fire pit and seating in the backyard.' },
-    { src: 'assets/img/project-dining.jpg',   text: 'Straight lines. A clean border that reads from across the yard.',
-      alt: 'A wide bluestone patio with a curved stone seat wall and clean border.' },
-    { src: 'assets/img/hero.jpg',             text: 'Steps and walls that follow the grade instead of fighting it.',
-      alt: 'A curved fieldstone wall and granite steps following the yard\u2019s slope.' },
-    { src: 'assets/img/project-firepit.jpg',  text: 'And a space that works long after the sun goes down.',
-      alt: 'A paver patio with a round stone fire pit lit at dusk.' }
+    { src: 'assets/img/build-pavers.jpg',     text: 'Set out, then the digging starts.',
+      alt: 'A worker setting rectangular stone pavers on a prepared base.' },
+    { src: 'assets/img/build-stones.jpg',     text: 'Stone goes down one piece at a time.',
+      alt: 'A worker on hands and knees placing stone pavers by hand.' },
+    { src: 'assets/img/build-tiles.jpg',      text: 'Joint by joint, kept dead straight.',
+      alt: 'Workers laying a patio surface course by course in daylight.' },
+    { src: 'assets/img/craft-base.jpg',       text: 'Steps and grade handled together.',
+      alt: 'Granite stone steps rising through a wall between lawn and patio.' },
+    { src: 'assets/img/project-dining.jpg',   text: 'Then the shape arrives.',
+      alt: 'A finished stone patio with a curved seat wall and clean border.' },
+    { src: 'assets/img/build-finished.jpg',   text: 'A yard that finally works.',
+      alt: 'A finished stone patio surrounded by greenery with a central feature.' },
+    { src: 'assets/img/project-firepit.jpg',  text: 'And a space that works after dark.',
+      alt: 'A paver patio with a round stone fire pit and seating at dusk.' }
   ];
 
   const DURATION = 4200;
@@ -408,6 +408,9 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const img = document.createElement('img');
     img.src = s.src;
     img.alt = s.alt;
+    // Reserve space so the slide never collapses before the image decodes.
+    img.width = 900;
+    img.height = 600;
     img.loading = 'lazy';
     img.decoding = 'async';
     slide.appendChild(img);
