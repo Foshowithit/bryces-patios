@@ -366,14 +366,22 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!launch || !modal || !stage) return;
 
   const SLIDES = [
-    { src: 'assets/img/craft-base.jpg',       text: 'Every patio starts with what you can\u2019t see.' },
-    { src: 'assets/img/project-walkway.jpg',  text: 'Stone, string line, and a plan.' },
-    { src: 'assets/img/transform-before.jpg', text: 'This is where most yards start.' },
-    { src: 'assets/img/craft-edge.jpg',       text: 'Base in lifts. Compacted between every one. Joints held tight.' },
-    { src: 'assets/img/transform-after.jpg',  text: 'Then the shape arrives.' },
-    { src: 'assets/img/project-dining.jpg',   text: 'Straight lines. A clean border that reads from across the yard.' },
-    { src: 'assets/img/hero.jpg',             text: 'Steps and walls that follow the grade instead of fighting it.' },
-    { src: 'assets/img/project-firepit.jpg',  text: 'And a space that works long after the sun goes down.' }
+    { src: 'assets/img/craft-base.jpg',       text: 'Every patio starts with what you can\u2019t see.',
+      alt: 'A dug-out patio base partway through the build, before the stone goes down.' },
+    { src: 'assets/img/project-walkway.jpg',  text: 'Stone, string line, and a plan.',
+      alt: 'A flagstone path and steps being set out along a string line in a green lawn.' },
+    { src: 'assets/img/transform-before.jpg', text: 'This is where most yards start.',
+      alt: 'A bare, uneven backyard before any patio work begins.' },
+    { src: 'assets/img/craft-edge.jpg',       text: 'Base in lifts. Compacted between every one. Joints held tight.',
+      alt: 'Close detail of a dry-laid fieldstone wall laid in tight level courses.' },
+    { src: 'assets/img/transform-after.jpg',  text: 'Then the shape arrives.',
+      alt: 'A finished paver patio with a fire pit and seating in the backyard.' },
+    { src: 'assets/img/project-dining.jpg',   text: 'Straight lines. A clean border that reads from across the yard.',
+      alt: 'A wide bluestone patio with a curved stone seat wall and clean border.' },
+    { src: 'assets/img/hero.jpg',             text: 'Steps and walls that follow the grade instead of fighting it.',
+      alt: 'A curved fieldstone wall and granite steps following the yard\u2019s slope.' },
+    { src: 'assets/img/project-firepit.jpg',  text: 'And a space that works long after the sun goes down.',
+      alt: 'A paver patio with a round stone fire pit lit at dusk.' }
   ];
 
   const DURATION = 4200;
@@ -388,7 +396,7 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     slide.className = 'film__slide';
     const img = document.createElement('img');
     img.src = s.src;
-    img.alt = '';
+    img.alt = s.alt;
     img.loading = 'lazy';
     img.decoding = 'async';
     slide.appendChild(img);
