@@ -195,6 +195,18 @@ legend{padding:0}
   height:var(--nav-h);
   display:flex; align-items:center; gap:2rem;
 }
+/* Transparent nav needs its own grounding: the hero photo's top edge can be
+   bright foliage, which leaves white nav text floating on mid-tone noise.
+   A soft top-down scrim anchors the bar without turning it into a solid slab. */
+.nav::before{
+  content:''; position:absolute; inset:0; z-index:-1; pointer-events:none;
+  background:linear-gradient(to bottom,
+    rgba(9,10,12,.72) 0%,
+    rgba(9,10,12,.42) 58%,
+    rgba(9,10,12,0) 100%);
+  opacity:1; transition:opacity .4s var(--ease-io);
+}
+.nav.is-solid::before{opacity:0}
 .nav.is-solid{
   background:rgba(247,244,238,.88);
   backdrop-filter:saturate(160%) blur(14px);
@@ -213,7 +225,7 @@ legend{padding:0}
 
 .nav__links{display:flex; gap:clamp(1rem,2vw,2rem); margin-left:auto; min-width:0}
 .nav__links a{
-  font-size:.8125rem; font-weight:500; letter-spacing:.03em;
+  font-size:.78rem; font-weight:500; letter-spacing:.055em;
   color:var(--ink-2); position:relative; padding-block:.4rem;
   transition:color .25s var(--ease-io);
 }
@@ -316,11 +328,11 @@ legend{padding:0}
   position:absolute; inset:0;
   background:
     linear-gradient(to top,
-      rgba(9,10,12,.92) 0%,
-      rgba(9,10,12,.64) 28%,
-      rgba(9,10,12,.46) 50%,
-      rgba(9,10,12,.44) 72%,
-      rgba(9,10,12,.58) 100%);
+      rgba(9,10,12,.94) 0%,
+      rgba(9,10,12,.82) 26%,
+      rgba(9,10,12,.62) 50%,
+      rgba(9,10,12,.52) 72%,
+      rgba(9,10,12,.78) 100%);
 }
 .hero__content{
   width:100%; max-width:var(--wrap); margin-inline:auto;
@@ -346,6 +358,7 @@ legend{padding:0}
 }
 .hero .eyebrow--light{
   color:#C3CFA6;
+  margin-bottom:2rem; /* +0.75rem over base: hero display type needs more air */
   text-shadow:0 1px 14px rgba(9,10,12,.7);
 }
 .hero__cta{display:flex; flex-wrap:wrap; gap:.875rem; margin-bottom:2.75rem}
@@ -353,9 +366,10 @@ legend{padding:0}
    has almost no contrast, and the nav CTA is already inverted. */
 .hero .btn--solid{background:var(--ink-inv); color:var(--ink); border-color:var(--ink-inv)}
 .hero .btn--solid:hover{background:#fff; border-color:#fff}
-.hero .btn--ghost{color:var(--ink-inv); border-color:rgba(247,244,238,.5)}
+.hero .btn--ghost{color:var(--ink-inv); border-color:rgba(247,244,238,.5); padding-inline:1.6rem}
 .hero .btn--ghost:hover{background:rgba(247,244,238,.14); border-color:var(--ink-inv)}
 .hero__meta{
+  margin-top:2.75rem;
   display:flex; flex-wrap:wrap; gap:.6rem 1.75rem;
   font-size:.75rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase;
   color:rgba(247,244,238,.72);
@@ -365,25 +379,6 @@ legend{padding:0}
   content:''; position:absolute; left:0; top:.5em;
   width:5px; height:5px; background:var(--moss-soft); border-radius:50%;
 }
-
-.hero__materials{
-  width:100%; max-width:var(--wrap); margin:3rem auto 0;
-  padding-inline:var(--gut);
-  display:flex; flex-wrap:wrap; gap:.5rem 1.75rem;
-  padding-top:1.75rem;
-  border-top:1px solid rgba(247,244,238,.16);
-}
-.swatch{
-  display:inline-flex; align-items:center; gap:.55rem;
-  font-size:.6875rem; font-weight:500; letter-spacing:.14em; text-transform:uppercase;
-  color:rgba(247,244,238,.7);
-}
-.swatch i{width:.7rem; height:.7rem; border-radius:2px; flex:none; box-shadow:inset 0 0 0 1px rgba(255,255,255,.22)}
-.swatch--limestone i{background:var(--limestone)}
-.swatch--sandstone i{background:var(--sandstone)}
-.swatch--moss i{background:var(--moss-soft)}
-.swatch--slate i{background:var(--slate)}
-.swatch--obsidian i{background:#2A2E33}
 
 /* ── 01 Promise ───────────────────────────────────────────────────────── */
 .promise__grid{
@@ -1012,7 +1007,6 @@ body.is-locked{overflow:hidden}
   .hero__cta{flex-direction:column; align-items:stretch}
   .hero__cta .btn{width:100%}
   .hero__meta{flex-direction:column; gap:.5rem}
-  .hero__materials{gap:.4rem 1.25rem; margin-top:2rem}
   .craft__side{grid-template-columns:1fr}
   .timeline{grid-template-columns:1fr}
   .area__lists{grid-template-columns:1fr; gap:2rem}
