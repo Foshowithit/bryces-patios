@@ -166,7 +166,7 @@ legend{padding:0}
 .section--dark .section__sub{color:var(--ink-inv-2)}
 
 /* ── Wordmark ─────────────────────────────────────────────────────────── */
-.wordmark{display:inline-flex; align-items:center; gap:.6rem}
+.wordmark{display:inline-flex; align-items:center; gap:.6rem; flex:none; white-space:nowrap}
 .wordmark__mark{width:1.15rem; height:1.15rem; fill:var(--ink); flex:none; transition:fill .3s var(--ease-io)}
 .wordmark__text{
   font-family:var(--serif);
@@ -207,7 +207,7 @@ legend{padding:0}
 .nav:not(.is-solid) .btn--solid{background:var(--ink-inv); color:var(--ink); border-color:var(--ink-inv)}
 .nav:not(.is-solid) .nav__burger span{background:var(--ink-inv)}
 
-.nav__links{display:flex; gap:2rem; margin-left:auto}
+.nav__links{display:flex; gap:clamp(1rem,2vw,2rem); margin-left:auto; min-width:0}
 .nav__links a{
   font-size:.8125rem; font-weight:500; letter-spacing:.03em;
   color:var(--ink-2); position:relative; padding-block:.4rem;
@@ -885,6 +885,12 @@ body.is-locked{overflow:hidden}
 [data-reveal].is-in{opacity:1; transform:none}
 
 /* ── Responsive ───────────────────────────────────────────────────────── */
+@media (max-width:1180px){
+  .nav__links{gap:1.1rem}
+  .nav__links a{font-size:.75rem}
+  .nav__phone{font-size:.75rem}
+  .nav__actions{gap:.85rem}
+}
 @media (max-width:1024px){
   .promise__grid{grid-template-columns:1fr; gap:2.5rem}
   .pillars{grid-template-columns:1fr; gap:2rem}

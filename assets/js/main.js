@@ -366,14 +366,14 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!launch || !modal || !stage) return;
 
   const SLIDES = [
-    { src: 'assets/img/craft-base.jpg',      text: 'Every patio starts with what you can\u2019t see.' },
-    { src: 'assets/img/about-site.jpg',      text: 'Stone, string line, and a plan.' },
-    { src: 'assets/img/transform-before.jpg',text: 'This is where most yards start.' },
-    { src: 'assets/img/craft-base.jpg',      text: 'Excavated to depth. Stone in lifts. Compacted between every one.' },
-    { src: 'assets/img/transform-after.jpg', text: 'Then the shape arrives.' },
-    { src: 'assets/img/craft-edge.jpg',      text: 'Straight lines. Tight joints. A border that reads clean from across the yard.' },
-    { src: 'assets/img/project-walkway.jpg', text: 'Steps that follow the grade instead of fighting it.' },
-    { src: 'assets/img/project-firepit.jpg', text: 'And a space that works long after the sun goes down.' }
+    { src: 'assets/img/craft-base.jpg',       text: 'Every patio starts with what you can\u2019t see.' },
+    { src: 'assets/img/project-walkway.jpg',  text: 'Stone, string line, and a plan.' },
+    { src: 'assets/img/transform-before.jpg', text: 'This is where most yards start.' },
+    { src: 'assets/img/craft-edge.jpg',       text: 'Base in lifts. Compacted between every one. Joints held tight.' },
+    { src: 'assets/img/transform-after.jpg',  text: 'Then the shape arrives.' },
+    { src: 'assets/img/project-dining.jpg',   text: 'Straight lines. A clean border that reads from across the yard.' },
+    { src: 'assets/img/hero.jpg',             text: 'Steps and walls that follow the grade instead of fighting it.' },
+    { src: 'assets/img/project-firepit.jpg',  text: 'And a space that works long after the sun goes down.' }
   ];
 
   const DURATION = 4200;
