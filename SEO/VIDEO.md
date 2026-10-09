@@ -25,6 +25,27 @@ Repo files (`assets/video/`, cache-buster `dba670bb`):
 Rendered on the Dell (`~/bryce-reel/work/render-real-silent.sh`). The old
 narrated masters stay quarantined in `~/bryce-reel/out/rejected/`.
 
+## 2026-10-09 — second video: a 23 s explainer, "How a patio base is built"
+
+A second, different piece for the YouTube channel: a five-shot explainer cut from
+the real in-progress photos (the paver field over the aggregate base, the herringbone
+over the setting bed, the edge detail, then the finished patio). On-screen captions
+carry it, silent, so it autoplays anywhere. This is the kind of video that answers a
+real question ("what is under a paver patio?") rather than a montage, so it can rank
+for the query on its own.
+
+Repo files (`assets/video/`):
+
+| Cut | File | Size |
+|---|---|---|
+| 16:9 | `patio-base-explainer-1080p-silent.mp4` | 23.0 s, 1920×1080, 10,112,905 B |
+| 9:16 | `patio-base-explainer-9x16-silent.mp4` | 23.0 s, 1080×1920, 8,541,532 B |
+
+Rendered on the Dell (`~/bryce-reel/work/edu.sh`, `edu-deriv.sh`). Captions voice-gated
+SHIP. **Suggested YouTube title:** "What is actually under a paver patio (and why it
+matters in New England)". **Description:** paste the site blurb, link
+`https://brycespatios.work/learn/patio-base/`, phone `(508) 212-6433`.
+
 ---
 
 **Files (1920×1080 / 1080×1920 / 1080×1080, silent, no music):**
