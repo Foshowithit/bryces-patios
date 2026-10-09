@@ -1,5 +1,34 @@
 # Bryce's Patios - Search Baseline
 
+## 2026-10-09 (later) - the showreel was still AI; it is real now
+
+**Commit `1b2ae88` (reel) + `af1343b` (video docs).** Live and verified.
+
+Caught by pulling frames out of the shipped mp4 and looking at them
+(`ffmpeg -i … -vf fps=1/3.6`): the 29-second showreel was cut from the **old AI
+renders**, while the site captioned it "eight real jobs, start to finish". Eight
+frames, six of them renders.
+
+Fixed on the Dell render lane (`~/bryce-reel/work/render-real-silent.sh`): the reel
+is re-cut from **eight real photos now on the site** - finished patios, an
+in-progress paver build over the base, a walkway, steps. 29.0 s, 1920x1080,
+`ffprobe` shows one h264 stream and **zero audio streams**. No narration, no music.
+9:16 and 1:1 cuts re-derived. `/assets/video/showreel-1080p-silent-dba670bb.mp4`
+is live 200 (15,075,228 B); the old `…-f4a9c1d2.mp4` is 404.
+
+Live playback verified in-browser: modal opens, video `readyState:4`,
+`duration:29`, `muted:true`, `paused:false`, caption showing the new first cue.
+
+**Bug this surfaced and closed:** the JSON-LD `contentUrl` and the sitemap
+`<video:content_loc>` were built as `showreel-1080p-silent-{V}.mp4`, using the CSS
+cache-buster as if it were a content hash. That URL never existed. Video filename
+and cache-buster are now the same hash, `dba670bb`, so every reference resolves.
+
+**CTA labels changed in the same stretch** (commit `72215cf`): the two buttons now
+read `Bryce` and `Call Bryce` instead of `Get a free estimate` and a bare `Call`.
+
+---
+
 ## 2026-10-09 - every AI render is off the site (images now all real)
 
 **Commit `41dd5e9` (images) + `00ac9e9` (copy).** Live and verified.
