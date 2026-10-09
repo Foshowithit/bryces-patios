@@ -1205,3 +1205,20 @@ TTL:   default
 - After the record propagates, press **VERIFY** in Search Console, then **Sitemaps → submit `https://brycespatios.work/sitemap.xml`**.
 
 **Status:** GBP built (verification pending a human, ck130); Search Console property created (TXT pending a human); Facebook + citations not started.
+
+## ck132 — final repo sweep: last RI mention + absolute claims removed
+
+A repo-wide sweep (`grep` for RI towns, "decade"/"ten years"/"four days") after
+ck129 found two leftovers outside `SEO/`:
+
+- `LAUNCH.md` service-area row said "SE Massachusetts and Rhode Island" → now
+  "Southeastern Massachusetts (12 MA towns)".
+- `social/SOCIAL-KIT.md` captions still carried "Four days, one crew" and "still
+  be flat in ten years" → rewritten to "Base in, pavers down, edges locked" and
+  "A compacted aggregate base is what keeps the surface flat down the road."
+
+Everything else the sweep flagged is a false positive: the BASELINE/HANDOFF rows
+*describe* the fix; "near the Rhode Island line" on the Seekonk pages is geography
+(deliberately kept, ck126); "#1" is ranking language.
+
+Voice gate on the rewritten social captions: **SHIP** (fatal=0 tier1=0 p1=0).
