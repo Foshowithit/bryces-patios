@@ -822,3 +822,75 @@ fixed to `wide`. `work/*` is gitignored except `gen/`, `indexnow-ping.sh`,
 **New artifact for the human sitting:** `work/BRYCE-TEXT.md` is ready to hand to
 the user to send to Bryce. Off-site submission (GBP, GSC, citations) remains
 blocked on Bryce's Gmail / Porkbun DNS access and is the true remaining gap.
+
+---
+
+## ck119 — 2026-10-09 · the narrated-master name collision is dead (Dell)
+
+**What the user heard.** He opened the showreel and heard a synthetic voice
+("good, let's go" several times in an Asian accent). That is a **TTS-narrated
+master**, not anything the live site can play. The live site plays a **silent**
+file. Both halves of that are proven below.
+
+**Proof the live/shipped path is silent:**
+
+- Repo file `assets/video/showreel-1080p-silent-f4a9c1d2.mp4` → `ffprobe`
+  `-select_streams a` = **empty** (1 stream, h264 video, 0 audio). md5
+  `17e5eba2176e9ba383af7dd471f03a53`.
+- **Fresh download of the live file** (`https://brycespatios.work/assets/video/
+  showreel-1080p-silent-f4a9c1d2.mp4`, HTTP 200, 14,238,968 B) → md5
+  `17e5eba2176e9ba383af7dd471f03a53` (**byte-identical to the repo copy**) and
+  **0 audio streams**.
+- All three Mac reel files (`~/Movies/bryce-patios-reel/`) are video-only, 32.233 s.
+- Served `main.js?v=f4a9c1d2` sets `video.muted = true`; the `<video>` element is
+  JS-injected (`index.html` contains no literal `<video>`).
+
+**Root cause found and fixed — the Dell folder was a landmine.** The Dell render
+lane (`~/bryce-reel/work/render.sh` and `finish.sh`) writes its narrated output to
+the plain name `out/showreel-1080p.mp4`. Before this session the Dell held:
+
+```
+out/showreel-1080p.mp4        → 0,h264,video + 1,aac,audio   ← NARRATED
+out/showreel-reel-9x16.mp4    → 0,h264,video + 1,aac,audio   ← NARRATED
+out/showreel-square-1x1.mp4   → 0,h264,video + 1,aac,audio   ← NARRATED
+```
+
+So any tool or human that reached for "the showreel-1080p.mp4" on the Dell got the
+TTS voice. That is almost certainly what the user played.
+
+**Fix applied on the Dell (video-only derivation, no Mac render):**
+
+1. Quarantined the three narrated masters to
+   `~/bryce-reel/out/rejected/*.NARRATED-rejected-20261009.mp4` (bytes kept, the
+   shippable name gone).
+2. Derived silent cuts from the already-silent concat `~/bryce-reel/work/seg/video.mp4`
+   (1 h264 stream, 32.233 s, no audio):
+   - `out/showreel-1080p-silent.mp4` — 14,238,969 B
+   - `out/showreel-reel-9x16-silent.mp4` — 12,034,637 B
+   - `out/showreel-square-1x1-silent.mp4` — 7,746,370 B
+   All three `ffprobe` = **h264 only, no audio**.
+
+**Result:** a plain-named `showreel-1080p.mp4` no longer exists anywhere on the
+Dell. The landmine is disarmed; only the `-silent` names resolve.
+
+**Rule going forward (ck119):** the Dell render lane must keep writing narrated
+output to a **`.NARRATED`** name, never to the shippable name. Any plain-named
+`showreel-*.mp4` on the Dell is narrated by default — re-probe before it goes
+anywhere near the site or an upload.
+
+**Docs corrected in the same change:** `SEO/VIDEO.md` no longer claims the Dell
+file was renamed (it never was) and now warns off the plain name explicitly.
+
+**Script-level fix applied (same session, after the quarantine above).** To stop the
+collision recurring at the source, the Dell lane scripts themselves were patched and
+`bash -n`-verified:
+
+- `work/render.sh` L9 and `work/finish.sh` L6: `OUT=` now
+  `$ROOT/out/showreel-1080p.NARRATED.mp4` (was the shippable name).
+- `work/deriv.sh` L6: `SRC=` now points at `…showreel-1080p.NARRATED.mp4`, and the
+  derivative encode is `-an` (silent), replacing `-c:a copy` which had been copying
+  the narration into the 9:16 and 1:1 cuts.
+
+So a future `render.sh` run writes narration to a `.NARRATED` name only, and
+`deriv.sh` emits silent 9:16 / 1:1 cuts. The plain name can no longer be produced by
+the lane at all.

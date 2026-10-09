@@ -8,9 +8,21 @@ Google surfaces YouTube for "how to" patio queries. Upload these and you give
 Bryce a second front door.
 
 **Files (already rendered, 1920×1080 / 1080×1920 / 1080×1080, silent, no music):**
-- `~/Movies/bryce-patios-reel/showreel-1080p-silent.mp4` — 16:9, **14,238,968 B**, 32.233 s
-- `~/Movies/bryce-patios-reel/showreel-reel-9x16.mp4` — 9:16, **12,034,636 B**
-- `~/Movies/bryce-patios-reel/showreel-square-1x1.mp4` — 1:1, **7,746,369 B**
+
+Use these. They are the **silent** cuts. Upload them as-is.
+
+- Mac: `~/Movies/bryce-patios-reel/` — 16:9 `showreel-1080p.mp4` (**14,238,968 B**),
+  9:16 `showreel-reel-9x16.mp4` (**12,034,636 B**), 1:1 `showreel-square-1x1.mp4` (**7,746,369 B**).
+  All three are video-only (`ffprobe` = 1 h264 stream, 0 audio).
+- Dell render box: `~/bryce-reel/out/` — same cuts under `-silent` names:
+  `showreel-1080p-silent.mp4`, `showreel-reel-9x16-silent.mp4`,
+  `showreel-square-1x1-silent.mp4`. All three video-only, 32.233 s.
+
+> **Never upload a file named plain `showreel-1080p.mp4` / `showreel-reel-9x16.mp4` /
+> `showreel-square-1x1.mp4` from the Dell.** On the Dell those exact names were the
+> **narrated TTS masters**. They are now quarantined in `~/bryce-reel/out/rejected/`
+> as `*.NARRATED-rejected-20261009.mp4` (see `BASELINE.md` ck119). If you find a
+> plain-named one anywhere, treat it as narrated and re-probe before shipping.
 
 All three are **silent and captioned on-screen** on purpose: silent works autoplay
 on every platform, and captions mean it is readable with sound off (which is how
@@ -41,9 +53,12 @@ any finished-patio photo as the banner.
 
 ### Upload A — the 16:9 showreel (`showreel-1080p-silent.mp4`)
 
-> Renamed from `showreel-1080p.mp4` on 2026-10-09 so no browser or CDN cache
-> can serve the rejected narrated cut. The shipped file has **no audio stream**.
-> Upload the local file (silent); add YouTube's own music if wanted, never the TTS voice.
+> The shipped reel was renamed to `…-silent` on the Mac on 2026-10-09 (and `V`
+> was bumped to `f4a9c1d2` in the same commit) so no browser or CDN cache can serve
+> the rejected narrated cut. The shipped file has **no audio stream** — verified by
+> `ffprobe` on both the repo copy and a fresh download of the live file
+> (`BASELINE.md` ck119). Upload the **silent** file; add YouTube's own music if
+> wanted, never the TTS voice.
 **Title (pick one, keep under 70 chars):**
 ```
 Stone Patio Design in Mansfield, MA | Bryce's Patios
