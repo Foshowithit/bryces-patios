@@ -331,7 +331,7 @@ SERVICES = [
                "bedding layer, and pavers restrained at the edge so the field can't "
                "creep. The visible part is the last inch. Everything that decides "
                "whether it's still flat in ten years is underneath."),
-        img="project-dining", img_alt="A stone paver patio in dappled shade, with chairs and planters along the edge.",
+        img="project-dining", img_alt="A finished curved paver patio with a low seat wall and plantings along the edge.",
         prose=[
             "A patio is sized by how you use the yard, not by the biggest number that fits. A table for six "
             "wants about twelve by twelve of open stone, and the chairs need room to pull back without "
@@ -370,7 +370,7 @@ SERVICES = [
                "usually sits where water wants to run. That means the same discipline "
                "as a patio in a narrower trench: dig to depth, compact the base in "
                "lifts, set the slope so the path drains, and restrain both edges."),
-        img="project-walkway", img_alt="Flagstone steps and a low stacked-stone wall rising through a planted bed.",
+        img="project-walkway", img_alt="A curved paver walkway and steps with a low seat wall beside a house.",
         prose=[
             "A walkway gets laid out around the path people already take, not the one that looks neatest on "
             "paper. Watch where the grass is worn and that is usually the line. From there the width gets set "
@@ -518,7 +518,7 @@ GUIDES = [
         note=("<strong>Easiest test:</strong> after a heavy rain, look where the puddles "
               "sit. If the same spot is wet days later, the grade is telling you "
               "something before anyone digs."),
-        img="transform-after", img_alt="A graded patio surface shedding water away from a house.",
+        img="transform-after", img_alt="A finished curved paver patio with a soldier course border and a seat wall.",
     ),
     dict(
         key="frost", tag="03. Frost", title="Why the freeze beats shallow work",
@@ -543,7 +543,7 @@ GUIDES = [
         note=("<strong>Watch for:</strong> a quote far cheaper than the rest. Sometimes "
               "that is a lower labor rate. More often it is less digging, which you "
               "will never see."),
-        img="steps-detail", img_alt="A patio set to the grade, with steps and a landing, on a site built for a cold winter.",
+        img="steps-detail", img_alt="Pavers running up to a low stone wall along a mulched planting bed.",
     ),
     dict(
         key="materials", tag="04. Materials", title="Stone is a budget, not a style",
@@ -568,7 +568,7 @@ GUIDES = [
         note=("Stone choice is a budget conversation as much as a design one, and the "
               "right answer is usually a mix: a hard-wearing surface with one feature "
               "that carries the look."),
-        img="patio-herringbone", img_alt="Close view of a herringbone stone pattern on a patio surface.",
+        img="patio-herringbone", img_alt="Herringbone pavers set in a field over the prepared base course.",
     ),
     dict(
         key="the-quote", tag="05. The quote", title="What a real estimate includes",
@@ -597,7 +597,7 @@ GUIDES = [
         note=("<strong>The tell:</strong> a bidder who asks about your grade and how "
               "you'll use the space is planning a build. One who only asks how you want "
               "it to look is quoting a surface."),
-        img="craft-edge", img_alt="Edging detail on a finished stone patio.",
+        img="craft-edge", img_alt="Herringbone pavers meeting a stacked-stone wall and a mulched planting bed.",
     ),
     dict(
         key="your-questions", tag="06. Your questions", title="Ask us anything",
@@ -647,7 +647,7 @@ dict(
     ],
     note=("<strong>The tell:</strong> a real bid names the base and the drainage. "
           "A price with no breakdown is a number, not an estimate."),
-    img="project-dining", img_alt="A stone paver patio in dappled shade, with planters along the edge.",
+    img="project-dining", img_alt="A finished curved paver patio with a low seat wall and plantings along the edge.",
 ),
 dict(
     key="patio-vs-concrete", tag="08. Choices", title="Pavers, concrete or stamped concrete",
@@ -739,7 +739,7 @@ dict(
         ("Walkways", "slope away from the house, base as deep as a patio"),
         ("Aprons", "built for plow and traffic, water sent clear"),
     ],
-    img="project-walkway", img_alt="Flagstone steps and a stacked-stone wall in a planted bed.",
+    img="project-walkway", img_alt="A curved paver walkway and steps with a low seat wall beside a house.",
 ),
 dict(
     key="fire-pit-basics", tag="13. Fire pits", title="Fire pits that last",
