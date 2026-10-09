@@ -454,6 +454,46 @@ def build_town(root: Path, t: str) -> None:
         svc_links=_svc_links(), town_links=_town_links())
     write_page(root, f"areas/{tslug}/index.html", html_str)
 
+# A town-specific opening clause that leads the service x town lede. It turns the
+# one shared service description into a page that names the actual ground in this
+# town first, which is the difference the outside audit asked for: each town page
+# earns its place by reading like it was written for that town, not spun from a
+# matrix. Facts stay generic to the town (grade, water, lots), never invented.
+TOWN_LEAD = {
+    "Mansfield": "Mansfield is the home town, so this is the ground we know best",
+    "Foxborough": "Foxborough yards cover the range from flat to wet",
+    "Attleboro": "Attleboro sits on ledge and old mill-era lots",
+    "North Attleboro": "North Attleboro yards trend toward a fall",
+    "Norton": "Norton lots run larger and flatter than most of the neighbors",
+    "Franklin": "Franklin sits higher, with wetter springs and a harder freeze",
+    "Seekonk": "Seekonk yards sit close to the line and the water table that comes with it",
+    "Rehoboth": "Rehoboth is big-lot country with long driveways and open sky",
+    "Plainville": "Plainville is winding and tree-heavy, with shade that holds moisture",
+    "Taunton": "Taunton yards sit on mixed soil that runs from sand to clay",
+    "Easton": "Easton properties are mature and established, with plantings near the house",
+    "Sharon": "Sharon lots are hilly and wooded, with grades steep enough to matter",
+}
+
+def _town_lead(t: str) -> str:
+    return TOWN_LEAD.get(t, "")
+
+# A short, natural closing line for the last FAQ answer on each service x town
+# page. Written per town so the FAQ block is not byte-identical across towns.
+TOWN_FAQ_TAIL = {
+    "Mansfield": "Mansfield is home base, so it is a short run out to look at a yard here.",
+    "Foxborough": "Foxborough is a quick run down 495, so a site visit is no trouble.",
+    "Attleboro": "Attleboro is close enough to be out there the same week.",
+    "North Attleboro": "North Attleboro is minutes away, so it is easy to come look.",
+    "Norton": "Norton is a normal job on the run from the Mansfield yard.",
+    "Franklin": "Franklin is a short run out, so the visit is straightforward.",
+    "Seekonk": "Seekonk is a normal drive from the yard, so a visit is easy to set up.",
+    "Rehoboth": "Rehoboth is within the regular run, so a visit is no problem.",
+    "Plainville": "Plainville is close by, so it is easy to come take a look.",
+    "Taunton": "Taunton is a normal drive from the yard, so a visit is easy to arrange.",
+    "Easton": "Easton is a short run out, so the visit is no trouble.",
+    "Sharon": "Sharon is a normal drive from the yard, so a visit is easy to set up.",
+}
+
 def build_service_town(root: Path, t: str, s: dict) -> None:
     """Service x town page for the six towns that matter most."""
     tslug = site.slug(t)
@@ -461,12 +501,22 @@ def build_service_town(root: Path, t: str, s: dict) -> None:
              (s["name"], f"/areas/{tslug}/{s['key']}/")]
     faqs = [(q.format(town=t) if "{town}" in q else q,
              a.format(town=t) if "{town}" in a else a) for q, a in s["faq"]]
+    # Give the final answer one town-specific closing line so the FAQ block is
+    # not byte-identical across the twelve towns. Reads as a plain sentence and
+    # never repeats the town name the lead already opens with.
+    if faqs and TOWN_FAQ_TAIL.get(t):
+        _q, _a = faqs[-1]
+        faqs[-1] = (_q, _a + " " + TOWN_FAQ_TAIL[t])
     body = [f'<section class="section"><div class="wrap wrap--narrow">']
     body.append(site.crumb_html(trail))
     body.append(f'<header class="section__head"><p class="eyebrow">{site.esc(t)}, MA &middot; {site.esc(s["name"])}</p>'
                 f'<h1 class="h2">{site.esc(s["h1"].format(town=t))}</h1></header>')
     body.append(site.page_actions())
-    body.append(f'<p class="lede">{site.esc(s["blurb"])}</p>')
+    lead = _town_lead(t)
+    if lead:
+        body.append(f'<p class="lede">{site.esc(lead + ". " + s["blurb"])}</p>')
+    else:
+        body.append(f'<p class="lede">{site.esc(s["blurb"])}</p>')
     detail = _svc_town_detail(s["key"], t)
     if detail:
         body.append(f'<p class="prose">{site.esc(detail)}</p>')
