@@ -971,7 +971,112 @@ body.is-locked{overflow:hidden}
 .guide--ask p{color:var(--ink-inv-2)}
 .guide--ask .guide__tag{color:var(--moss-soft)}
 @media (max-width:1024px){ .learn__grid{grid-template-columns:1fr 1fr} .learn__figure{grid-template-columns:1fr} }
+/* ── Inner pages: breadcrumb, prose, Q&A, CTA band, linked cards ───────── */
+.crumb{
+  display:flex; flex-wrap:wrap; align-items:center; gap:.45rem;
+  font-size:.75rem; letter-spacing:.02em; color:var(--ink-3);
+  margin-bottom:clamp(1.25rem, 2.5vw, 1.9rem);
+}
+.crumb a{color:var(--ink-3); text-decoration:none; border-bottom:1px solid transparent; padding-bottom:1px}
+.crumb a:hover{color:var(--ink); border-bottom-color:var(--line-strong)}
+.crumb__sep{color:var(--line-strong); user-select:none}
+.crumb [aria-current="page"]{color:var(--ink-2)}
+
+.prose{
+  font-size:1.0625rem; line-height:1.75; color:var(--ink-2);
+  text-wrap:pretty; margin-top:1.1rem; max-width:62ch;
+}
+.prose:first-of-type{margin-top:1.35rem}
+.prose strong{color:var(--ink); font-weight:600}
+.prose--note{
+  margin-top:1.5rem; padding-top:1.15rem;
+  border-top:1px solid var(--line);
+  font-size:.9375rem; line-height:1.65; color:var(--ink-2);
+}
+
+.qa-list{display:flex; flex-direction:column; gap:.6rem; margin-top:1.75rem}
+.qa{
+  background:var(--canvas);
+  border:1px solid var(--line); border-radius:var(--r-md);
+  padding:0 clamp(1.1rem, 2.4vw, 1.5rem);
+  transition:border-color .35s var(--ease), background .35s var(--ease);
+}
+.qa:hover{border-color:var(--line-strong)}
+.qa[open]{background:var(--paper); border-color:var(--line-strong)}
+.qa summary{
+  list-style:none; cursor:pointer; position:relative;
+  padding:1.15rem 2.6rem 1.15rem 0;
+  font-family:var(--serif); font-optical-sizing:auto;
+  font-size:1.0625rem; line-height:1.35; letter-spacing:-.012em; color:var(--ink);
+}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{
+  content:''; position:absolute; right:.35rem; top:1.45rem;
+  width:.5rem; height:.5rem;
+  border-right:1.5px solid var(--moss); border-bottom:1.5px solid var(--moss);
+  transform:rotate(45deg); transform-origin:60% 60%;
+  transition:transform .3s var(--ease);
+}
+.qa[open] summary::after{transform:rotate(-135deg)}
+.qa summary:focus-visible{outline:2px solid var(--moss); outline-offset:3px; border-radius:var(--r-sm)}
+.qa p{
+  padding:0 0 1.25rem; margin:0;
+  font-size:.9375rem; line-height:1.7; color:var(--ink-2);
+  text-wrap:pretty; max-width:68ch;
+}
+
+.cta-band__inner{
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between;
+  gap:clamp(1.5rem, 3vw, 2.5rem);
+}
+.cta-band__inner > div:first-child{max-width:38ch}
+.cta-band .section__sub{margin:.45rem 0 0}
+.cta-band__actions{
+  display:flex; flex-wrap:wrap; align-items:center; gap:.75rem;
+}
+
+a.guide--link{
+  display:flex; text-decoration:none; color:inherit;
+  transition:transform .4s var(--ease), border-color .4s var(--ease), box-shadow .4s var(--ease);
+}
+a.guide--link:hover{
+  transform:translateY(-4px);
+  border-color:var(--line-strong);
+  box-shadow:var(--shadow);
+}
+a.guide--link:focus-visible{outline:2px solid var(--moss); outline-offset:3px}
+.guide__cta-text{
+  margin-top:auto; padding-top:1rem; border-top:1px solid var(--line);
+  font-size:.8125rem; font-weight:600; letter-spacing:.04em;
+  color:var(--moss);
+  display:inline-flex; align-items:center; gap:.4rem;
+  transition:gap .35s var(--ease), color .35s var(--ease);
+}
+a.guide--link:hover .guide__cta-text{gap:.7rem; color:var(--moss)}
+.guide--ask .guide__cta-text{border-top-color:var(--line-inv); color:var(--moss-soft)}
+
+@media (max-width:760px){
+  .cta-band__inner{flex-direction:column; align-items:flex-start}
+  .cta-band__actions{width:100%}
+  .qa summary{font-size:1rem}
+}
+
 @media (max-width:760px){ .learn__grid{grid-template-columns:1fr} }
+
+/* Above-the-fold action row on inner pages (no hero) */
+.page-actions{
+  display:flex; flex-wrap:wrap; gap:.85rem; align-items:center;
+  margin:1.6rem 0 2.2rem;
+}
+.page-actions--center{justify-content:center; text-align:center}
+.page-actions .btn{flex:0 1 auto}
+.page-actions .btn--ghost{background:transparent; color:var(--ink); border-color:var(--line-strong)}
+.page-actions .btn--ghost:hover{background:rgba(20,23,26,.05); border-color:var(--ink)}
+
+@media (max-width:560px){
+  .page-actions{gap:.7rem}
+  .page-actions .btn{flex:1 1 100%; justify-content:center}
+}
 
 /* ── Responsive ───────────────────────────────────────────────────────── */
 @media (max-width:1180px){

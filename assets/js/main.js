@@ -351,13 +351,15 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const bar = $('#sticky-cta');
   const hero = $('.hero');
   const estimateSection = $('#estimate');
-  if (!bar || !hero) return;
+  if (!bar) return;
 
   document.body.classList.add('has-sticky-cta');
 
   let ticking = false;
   function update() {
-    const pastHero = window.scrollY > hero.offsetHeight * 0.85;
+    const pastHero = hero
+      ? window.scrollY > hero.offsetHeight * 0.85
+      : window.scrollY > 260;
     const atForm = estimateSection
       ? estimateSection.getBoundingClientRect().top < window.innerHeight * 0.6
       : false;
