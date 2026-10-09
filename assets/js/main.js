@@ -387,162 +387,121 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const close  = $('#film-close');
   if (!launch || !modal || !stage) return;
 
-  // Only real photos of Bryce's work. No AI scenes passed off as the build.
-  const SLIDES = [
-    { src: 'assets/img/project-firepit.jpg',
-      text: 'The patio, and the fire pit at its center.',
-      alt: 'A wide gray stone patio with a circular stone fire pit set into the middle, ringed with weathered Adirondack seating on an open lawn at dusk.' },
-    { src: 'assets/img/steps-detail.jpg',
-      text: 'Laid up to the grade.',
-      alt: 'A gray paver area laid in a running-bond pattern with a lighter stone border, edged against bare soil and gravel, with a wooden step at the top of the paved surface.' },
-    { src: 'assets/img/patio-herringbone.jpg',
-      text: 'Laid off the back stairs.',
-      alt: 'A gray and white paver patio with a darker inset section and light border running up to the base of a white-railed wooden deck staircase on a white frame house.' },
-    { src: 'assets/img/walkway.jpg',
-      text: 'Walkway and a raised edge course.',
-      alt: 'A straight gray paver walkway bordered by a raised stone edge, alongside a mulch bed of shrubs and a white building, with a shovel, push broom and blue bucket left on the grass mid-job.' },
-    { src: 'assets/img/big-yard.jpg',
-      text: 'A curved patio that ties the yard together.',
-      alt: 'A curved gray paver patio with steps and a raised white lattice deck, wrapping toward an above-ground pool with white safety fencing, blue chairs on a striped rug and a wooded backdrop.' },
-    { src: 'assets/img/stone-arch.jpg',
-      text: 'Two levels, one continuous build.',
-      alt: 'A large gray paver patio with a darker border in front of a two-level wooden deck, with firewood and a seating area stored under the lower deck and an orange compact tractor with loader and backhoe parked on the grass.' },
-    { src: 'assets/img/yard.jpg',
-      text: 'New pavers, a border, and a curve.',
-      alt: 'A newly laid gray paver patio with a darker gray border curving into a low block retaining wall, set against a wooden deck with open storage beneath, an orange compact tractor on the grass and a row of arborvitae behind.' },
-    { src: 'assets/img/stairs-landing.jpg',
-      text: 'Levels, steps, and a place to sit.',
-      alt: 'A multi-level gray paver patio with a walkway and three curved steps, four blue armchairs and a coffee table on a striped rug, beside an elevated white lattice deck.' }
+  // The reel itself. Rendered on the Dell from eight real photos of Bryce's
+  // work, with the narration already muxed in. One file, so there is nothing
+  // to keep in sync and nothing that can drift off the voice.
+  const VIDEO_SRC = 'assets/video/showreel-1080p.mp4';
+  const POSTER    = 'assets/img/project-firepit.jpg';
+  const TOTAL     = 32.284;   // measured duration of the master, seconds
+
+  // Captions keyed to the same narration cues the edit was cut to. Each cue
+  // names the slide it belongs to, so the words on screen match the picture
+  // in the film even if the file is re-cut later.
+  const CUES = [
+    { at: 0.20,  text: 'Every one of these starts with a hole in the ground.' },
+    { at: 3.53,  text: 'We set the base, and we lay it to the grade.' },
+    { at: 8.97,  text: 'Gray pavers, a border, and a pattern that fits the space.' },
+    { at: 12.75, text: 'Walkway, edging, and the beds cleaned up after.' },
+    { at: 15.82, text: 'A curve that ties the yard together.' },
+    { at: 18.22, text: 'Two levels, one continuous build.' },
+    { at: 20.39, text: 'New pavers, a fresh border, and a curve in the walk.' },
+    { at: 23.77, text: 'Levels, steps, and somewhere to sit.' },
+    { at: 26.15, text: 'Every one of these belongs to a neighbor.' },
+    { at: 29.12, text: 'Call Bryce.' }
   ];
 
-  // Narration: one real voice track over the whole reel. The slide changes
-  // are driven by each spoken line's start time so the words and the picture
-  // land together. Times are seconds from the top of the track.
-  const AUDIO_SRC = 'assets/audio/showreel.mp3';
-  const NARRATION = [
-    { at: 0.20,  slide: 0 },   // Every one of these starts with a hole in the ground.
-    { at: 3.53,  slide: 1 },   // We set the base, and we lay it to the grade…
-    { at: 8.97,  slide: 2 },   // Gray pavers, a border, and a pattern that fits the space.
-    { at: 12.75, slide: 3 },   // Walkway, edging, and the beds cleaned up after.
-    { at: 15.82, slide: 4 },   // A curve that ties the yard together.
-    { at: 18.22, slide: 5 },   // Two levels, one continuous build.
-    { at: 20.39, slide: 6 },   // New pavers, a fresh border, and a curve in the walk.
-    { at: 23.77, slide: 7 },   // Levels, steps, and somewhere to sit.
-    { at: 26.15, slide: 7 },   // Every one of these belongs to a neighbor.
-    { at: 29.12, slide: 7 }    // Call Bryce.
-  ];
-  const TAIL = 2.4;            // hold on the last slide after the voice ends
+  // Start on the poster so the modal never flashes an empty stage while the
+  // file seeks to frame one.
+  caption.textContent = 'A Bryce\'s patio, start to finish.';
 
-  let index = 0, timer = null, raf = null, lastFocus = null, endTimer = null;
-  const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+  // One video element for the reel, created once and reused every open. The
+  // mp4 is not fetched until the first play, so a page view stays cheap.
+  const video = document.createElement('video');
+  video.className = 'film__video';
+  video.src = VIDEO_SRC;
+  video.poster = POSTER;
+  video.controls = true;
+  video.preload = 'none';
+  video.muted = false;
+  video.playsInline = true;
+  video.setAttribute('playsinline', '');
+  video.setAttribute('aria-label', 'Bryce\'s Patios showreel: eight real jobs, start to finish');
+  stage.appendChild(video);
 
-  // Build the slides once. Each slide holds the photo; a slow drift gives
-  // the stills life.
-  SLIDES.forEach((s, i) => {
-    const slide = document.createElement('div');
-    slide.className = 'film__slide';
-    slide.setAttribute('role', 'group');
-    slide.setAttribute('aria-label', (i + 1) + ' of ' + SLIDES.length + ': ' + s.text);
-    const img = document.createElement('img');
-    img.src = s.src;
-    img.alt = s.alt;
-    img.width = 1600;
-    img.height = 1066;
-    img.loading = 'eager';   // reel opens on click; a stalled first frame is worse than 8 small loads
-    img.decoding = 'async';
-    img.style.objectPosition = ['50% 62%', '50% 50%', '50% 55%', '50% 50%', '50% 45%', '50% 50%', '50% 45%', '50% 50%'][i] || '50% 50%';
-    slide.appendChild(img);
-    stage.appendChild(slide);
-  });
-
-  const slideEls = $$('.film__slide', stage);
-
-  // One audio element for the reel, kept in the DOM so it is inspectable
-  // and reused every open. Created once.
-  const audio = document.createElement('audio');
-  audio.id = 'film-audio';
-  audio.preload = 'auto';
-  audio.src = AUDIO_SRC;
-  audio.muted = false;
-  audio.setAttribute('playsinline', '');
-  audio.style.display = 'none';
-  modal.appendChild(audio);
-
-  function show(i) {
-    if (i === index && slideEls[i]?.classList.contains('is-active')) {
-      caption.textContent = SLIDES[i].text;
-      return;
+  // Keep the caption in step with the voice. Reading the frame clock rather
+  // than a separate timer means picture, words, and narration cannot drift.
+  function cueFor(t) {
+    let want = CUES[0].text;
+    for (let i = 0; i < CUES.length; i++) {
+      if (t >= CUES[i].at - 0.15) want = CUES[i].text; else break;
     }
-    index = i;
-    slideEls.forEach((el, n) => el.classList.toggle('is-active', n === i));
-    caption.textContent = SLIDES[i].text;
-    if (reduced) return;
-    const img = slideEls[i].querySelector('img');
-    if (img) { img.style.animation = 'none'; void img.offsetWidth; img.style.animation = ''; }
+    return want;
   }
 
   function markProgress(t) {
-    const total = NARRATION[NARRATION.length - 1].at + TAIL;
-    fill.style.width = Math.min(100, (t / total) * 100) + '%';
+    fill.style.width = Math.min(100, (t / TOTAL) * 100) + '%';
   }
 
-  // Drive the slide changes off the audio clock so picture and voice agree,
-  // even if the track stalls or the tab is throttled.
-  function tick() {
-    if (modal.hidden) return;
-    const t = audio.currentTime;
-    let want = 0;
-    for (let i = 0; i < NARRATION.length; i++) {
-      if (t >= NARRATION[i].at) want = NARRATION[i].slide; else break;
-    }
-    if (want !== index) show(want);
-    markProgress(t);
-    raf = requestAnimationFrame(tick);
+  function onTime() {
+    caption.textContent = cueFor(video.currentTime);
+    markProgress(video.currentTime);
   }
+
+  video.addEventListener('timeupdate', onTime);
+  video.addEventListener('durationchange', () => {
+    if (video.duration > 0) markProgress(video.currentTime);
+  });
+  video.addEventListener('ended', () => {
+    // The film is over. Close, same as the stills reel did after its tail.
+    shut();
+  });
+  video.addEventListener('error', () => {
+    // If the file cannot play we send the visitor to Bryce instead of
+    // leaving them on a black screen.
+    caption.textContent = 'The reel would not load. Call Bryce at (508) 212-6433.';
+  });
+
+  let lastFocus = null;
 
   function startFilm() {
-    show(0);
-    index = 0;
+    caption.textContent = CUES[0].text;
     markProgress(0);
-    if (reduced) { fill.style.width = '100%'; return; }
-    const play = audio.play();
-    if (play && play.catch) play.catch(() => {}); // autoplay blocked → slides still work below
-    audio.currentTime = 0;
-    cancelAnimationFrame(raf);
-    raf = requestAnimationFrame(tick);
-
-    // Fallback: if audio can't play, still advance on a timer so the reel
-    // never sits frozen. Only used when the track is silent/blocked.
-    const guard = setInterval(() => {
-      if (modal.hidden || !audio.paused) { clearInterval(guard); return; }
-      show((index + 1) % SLIDES.length);
-    }, 4200);
-    endTimer = setTimeout(() => { clearInterval(guard); if (!modal.hidden) shut(); },
-      (NARRATION[NARRATION.length - 1].at + TAIL) * 1000);
+    try { video.currentTime = 0; } catch (_) {}
+    // open() runs on a click, so sound is allowed. If a browser blocks it
+    // anyway the film still plays, just silent, and the mute button says so.
+    const play = video.play();
+    if (play && play.catch) play.catch(() => {
+      video.muted = true;
+      muteBtn.setAttribute('aria-pressed', 'true');
+      muteBtn.setAttribute('aria-label', 'Unmute narration');
+      muteBtn.classList.add('is-muted');
+      const retry = video.play();
+      if (retry && retry.catch) retry.catch(() => {});
+    });
   }
 
   function open() {
     lastFocus = document.activeElement;
     modal.hidden = false;
+    launch.setAttribute('aria-expanded', 'true');
     document.body.classList.add('is-locked');
     startFilm();
     close.focus();
   }
 
   function shut() {
-    clearInterval(timer); clearTimeout(endTimer);
-    cancelAnimationFrame(raf);
-    timer = raf = null; endTimer = null;
-    audio.pause();
-    try { audio.currentTime = 0; } catch (_) {}
+    video.pause();
+    try { video.currentTime = 0; } catch (_) {}
     modal.hidden = true;
+    launch.setAttribute('aria-expanded', 'false');
     document.body.classList.remove('is-locked');
     fill.style.width = '0';
-    show(0);
+    caption.textContent = 'A Bryce\'s patio, start to finish.';
     lastFocus?.focus();
   }
 
-  // Mute toggle (small, unobtrusive; only shown once the reel has audio).
+  // Mute toggle. It mirrors the video's own muted state; the native controls
+  // also work, and both stay honest about which one was used.
   const muteBtn = document.createElement('button');
   muteBtn.type = 'button';
   muteBtn.className = 'film__mute';
@@ -552,17 +511,24 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     '<path d="M4 9v6h4l5 4V5L8 9H4z"/>' +
     '<path class="film__mute-x" d="M16.5 8.5l5 5M21.5 8.5l-5 5"/></svg>';
   muteBtn.addEventListener('click', () => {
-    audio.muted = !audio.muted;
-    muteBtn.setAttribute('aria-pressed', String(audio.muted));
-    muteBtn.setAttribute('aria-label', audio.muted ? 'Unmute narration' : 'Mute narration');
-    muteBtn.classList.toggle('is-muted', audio.muted);
+    video.muted = !video.muted;
+    muteBtn.setAttribute('aria-pressed', String(video.muted));
+    muteBtn.setAttribute('aria-label', video.muted ? 'Unmute narration' : 'Mute narration');
+    muteBtn.classList.toggle('is-muted', video.muted);
+  });
+  video.addEventListener('volumechange', () => {
+    muteBtn.setAttribute('aria-pressed', String(video.muted));
+    muteBtn.setAttribute('aria-label', video.muted ? 'Unmute narration' : 'Mute narration');
+    muteBtn.classList.toggle('is-muted', video.muted);
   });
   modal.appendChild(muteBtn);
 
-  // Warm the reel in the background once the page is idle, so the first
-  // open is instant. The images live in a hidden modal, so let them load
-  // off the critical path instead of competing with the page itself.
-  const warm = () => SLIDES.forEach(s => { const im = new Image(); im.src = s.src; });
+  // Pull just the metadata once the page is idle, so the first open starts
+  // fast without downloading the whole file on a page view that ignores it.
+  const warm = () => {
+    if (video.preload === 'none') video.preload = 'metadata';
+    try { video.load(); } catch (_) {}
+  };
   if ('requestIdleCallback' in window) requestIdleCallback(warm, { timeout: 2500 });
   else window.addEventListener('load', () => setTimeout(warm, 300), { once: true });
   launch.addEventListener('mouseenter', warm, { once: true });
