@@ -1,4 +1,37 @@
-# Bryce's Patios — Search Baseline (session 17, 2026-10-08)
+# Bryce's Patios - Search Baseline
+
+## 2026-10-09 - every AI render is off the site (images now all real)
+
+**Commit `41dd5e9` (images) + `00ac9e9` (copy).** Live and verified.
+
+The last eight AI-rendered images are replaced with real photos of Bryce's work.
+Verified by normalized cross-correlation against the source shots (cv2
+`TM_CCOEFF_NORMED`), not by eye. Full method and per-image numbers in
+`work/PHOTO-AUDIT.md`.
+
+| Slot | Was | Now (source) |
+|---|---|---|
+| `craft-base`, `craft-edge`, `steps-detail` | AI render | real crop of an in-progress build (pic4) |
+| `transform-before` | AI render | real crop, pavers over the aggregate base (pic4) |
+| `patio-herringbone` | AI render | real herringbone pavers over the setting bed (pic4) |
+| `project-dining`, `project-walkway`, `transform-after` | AI render | real finished curved patios, walks and steps |
+
+Copy follow-up in the same push: every alt text, the work-section disclosure and the
+footer note now describe what the photo actually shows. The before/after slider no
+longer claims "same yard, a week apart". No page claims a render anywhere.
+`grep` for "AI-generated" returns zero files.
+
+**Provenance watch (open):** most of the source photos carry a small **"© Google"**
+watermark in the bottom corner. Every shipped web crop sits **above** that band, so no
+watermark is visible on the site (checked corner-by-corner at full res). But the
+watermark means we cannot prove these are Bryce's own shots. Bryce has been asked
+(`work/BRYCE-TEXT.md`) to send clean originals straight from his phone. Until they
+arrive, treat the current set as "unverified provenance, no visible watermark".
+
+**Still zero-indexed on Google.** `site:brycespatios.work` returns nothing. This is the
+real gap and it is off-site, not on-site (see the section below).
+
+---
 
 **Why this file exists:** you cannot prove SEO work did anything without a dated
 "before" snapshot. This is that snapshot. It is intentionally unflattering.
