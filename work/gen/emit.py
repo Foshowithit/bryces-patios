@@ -397,7 +397,7 @@ def build_services_hub(root: Path) -> None:
              'whether a visit is worth it.</p>'
              '</div></section>')
     body += '<section class="section"><div class="wrap wrap--narrow"><figure class="learn__figure">'
-    body += _img("patio-firepit-build", "A gray paver patio and circular fire pit under construction in Mansfield, MA.",
+    body += _img("patio-firepit-build", "A paver patio and circular fire pit under construction.",
                  "(max-width:1024px) 100vw, 900px")
     body += '<figcaption><strong>Patios, walls, walkways and fire pits.</strong> One crew, one standard of base work, on every job.</figcaption></figure></div></section>'
     body += ('<section class="section"><div class="wrap wrap--narrow">'
@@ -788,7 +788,7 @@ def build_areas_hub(root: Path) -> None:
              'whether it makes sense for both sides.</p>'
              '</div></section>')
     body += ('<section class="section"><div class="wrap wrap--narrow"><figure class="learn__figure">'
-             + _img("big-yard", "A curved stone patio tying a large yard together.",
+             + _img("big-yard", "A wide curved paver patio across a large back yard.",
                     "(max-width:1024px) 100vw, 900px")
              + '<figcaption><strong>Southeastern Massachusetts.</strong> Most of the work sits within a short drive of the Mansfield yard.</figcaption></figure></div></section>')
     body += ('<section class="section"><div class="wrap wrap--narrow">'
@@ -814,7 +814,7 @@ def build_sitemap(root: Path) -> None:
 
     # page -> hero image filename (for the Google image sitemap extension)
     img_for = {
-        f"{site.BASE}/": ("patio-firepit-build", "Paver patio and circular fire pit under construction in Mansfield, MA"),
+        f"{site.BASE}/": ("patio-firepit-build", "A paver patio and circular fire pit under construction"),
         f"{site.BASE}/services/": ("patio-firepit-build", "Paver patios, walls and fire pits built by Bryce's Patios"),
         f"{site.BASE}/areas/": ("big-yard", "Stone patio work across southeastern Massachusetts"),
         f"{site.BASE}/learn/": ("craft-base", "Patio base and craft guides from Bryce's Patios"),

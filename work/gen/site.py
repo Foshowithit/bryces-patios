@@ -53,18 +53,18 @@ TOWN_IMG = {
     "Easton": "craft-base", "Sharon": "craft-edge",
 }
 TOWN_IMG_ALT = {
-    "project-dining": "A curved paver patio finished with a low seat wall and plantings in Mansfield, MA.",
-    "project-walkway": "A curved paver walkway and steps with a low seat wall beside a house.",
-    "transform-after": "A finished curved paver patio with a soldier course border and a seat wall.",
-    "big-yard": "A curved stone patio tying a large back yard together.",
-    "patio-herringbone": "Herringbone pavers set in a field over the prepared base course.",
+    "project-dining": "A finished curved paver patio with a low seat wall.",
+    "project-walkway": "A curved paver walkway and steps beside a house.",
+    "transform-after": "A finished paver patio beside a house.",
+    "big-yard": "A wide curved paver patio across a large back yard.",
+    "patio-herringbone": "Herringbone pavers being laid across a patio field.",
     "walkway": "A paver walkway curving between a lawn and a planted bed.",
-    "yard": "A finished paver patio and lawn edge with planted beds at the side of a house.",
-    "steps-detail": "Pavers running up to a low stone wall along a mulched planting bed.",
-    "transform-before": "Pavers going down over the compacted aggregate base on a patio build.",
+    "yard": "A finished paver patio and lawn edge at the side of a house.",
+    "steps-detail": "Pavers running up to a low stone wall.",
+    "transform-before": "The same patio partway through the build, pavers still going down.",
     "stone-arch": "A large flat stone set as a step in a low garden wall.",
-    "craft-base": "Pavers going down over the compacted aggregate base on a patio build.",
-    "craft-edge": "Herringbone pavers meeting a stacked-stone wall and a mulched planting bed.",
+    "craft-base": "A paver patio partly laid, showing the base and bedding layer beneath.",
+    "craft-edge": "Pavers laid to a tight edge against a stone wall and planting bed.",
 }
 
 # Per-town read of the local yards. Two short paragraphs, town-specific.
@@ -338,7 +338,7 @@ SERVICES = [
                "bedding layer, and pavers restrained at the edge so the field can't "
                "creep. The visible part is the last inch. Everything that decides "
                "whether it holds its shape over the years is underneath."),
-        img="project-dining", img_alt="A finished curved paver patio with a low seat wall and plantings along the edge.",
+        img="project-dining", img_alt="A finished curved paver patio with a low seat wall.",
         video=dict(
             src="patio-base-explainer-1080p-silent.mp4",
             poster="craft-base",
@@ -384,7 +384,7 @@ SERVICES = [
                "usually sits where water wants to run. That means the same discipline "
                "as a patio in a narrower trench: dig to depth, compact the base in "
                "lifts, set the slope so the path drains, and restrain both edges."),
-        img="project-walkway", img_alt="A curved paver walkway and steps with a low seat wall beside a house.",
+        img="project-walkway", img_alt="A curved paver walkway and steps beside a house.",
         prose=[
             "A walkway gets laid out around the path people already take, not the one that looks neatest on "
             "paper. Watch where the grass is worn and that is usually the line. From there the width gets set "
@@ -424,7 +424,7 @@ SERVICES = [
                "hardscape where the hidden work is almost all of the job. A wall is "
                "only as good as its base course, its drainage and what's behind it. "
                "Get those right and the face is the easy part."),
-        img="transform-after", img_alt="A capped stone retaining wall stepping up a graded yard.",
+        img="transform-after", img_alt="A finished paver patio beside a house.",
         prose=[
             "A retaining wall is a simple machine: it takes the push of wet soil and sends it down into the "
             "ground instead of letting it tip the face. That is why the base course is buried and compacted "
@@ -464,7 +464,7 @@ SERVICES = [
                "dropped onto a patio that wasn't planned for it. Building it into the "
                "layout from the start is what makes it feel like part of the yard "
                "instead of an afterthought."),
-        img="patio-firepit-build", img_alt="A gray paver patio and circular fire pit under construction in Mansfield, MA.",
+        img="patio-firepit-build", img_alt="A paver patio and circular fire pit under construction.",
         prose=[
             "The size most people actually enjoy is smaller than they expect. A pit three to four feet across "
             "inside is a comfortable circle for four to six people, and it throws heat you can feel from the "
@@ -514,7 +514,7 @@ GUIDES = [
         note=("<strong>Ask anyone bidding:</strong> how deep are you digging, and how "
               "thick is the base? A real job has a number for both. A vague answer is "
               "an answer."),
-        img="craft-base", img_alt="A patio partly laid, showing the compacted stone base and bedding layer under the pavers.",
+        img="craft-base", img_alt="A paver patio partly laid, showing the base and bedding layer beneath.",
         video=dict(
             src="patio-base-explainer-1080p-silent.mp4",
             poster="craft-base",
@@ -540,7 +540,7 @@ GUIDES = [
         note=("<strong>Easiest test:</strong> after a heavy rain, look where the puddles "
               "sit. If the same spot is wet days later, the grade is telling you "
               "something before anyone digs."),
-        img="transform-after", img_alt="A finished curved paver patio with a soldier course border and a seat wall.",
+        img="transform-after", img_alt="A finished paver patio beside a house.",
     ),
     dict(
         key="frost", tag="03. Frost", title="Why the freeze beats shallow work",
@@ -565,7 +565,7 @@ GUIDES = [
         note=("<strong>Watch for:</strong> a quote far cheaper than the rest. Sometimes "
               "that is a lower labor rate. More often it is less digging, which you "
               "will never see."),
-        img="steps-detail", img_alt="Pavers running up to a low stone wall along a mulched planting bed.",
+        img="steps-detail", img_alt="Pavers running up to a low stone wall.",
     ),
     dict(
         key="materials", tag="04. Materials", title="Stone is a budget, not a style",
@@ -590,7 +590,7 @@ GUIDES = [
         note=("Stone choice is a budget conversation as much as a design one, and the "
               "right answer is usually a mix: a hard-wearing surface with one feature "
               "that carries the look."),
-        img="patio-herringbone", img_alt="Herringbone pavers set in a field over the prepared base course.",
+        img="patio-herringbone", img_alt="Herringbone pavers being laid across a patio field.",
     ),
     dict(
         key="the-quote", tag="05. The quote", title="What a real estimate includes",
@@ -619,7 +619,7 @@ GUIDES = [
         note=("<strong>The tell:</strong> a bidder who asks about your grade and how "
               "you'll use the space is planning a build. One who only asks how you want "
               "it to look is quoting a surface."),
-        img="craft-edge", img_alt="Herringbone pavers meeting a stacked-stone wall and a mulched planting bed.",
+        img="craft-edge", img_alt="Pavers laid to a tight edge against a stone wall and planting bed.",
     ),
     dict(
         key="your-questions", tag="06. Your questions", title="Ask us anything",
@@ -642,7 +642,7 @@ GUIDES = [
             ("\"Do you do repairs?\"", "Sunken pavers, spreading edges, a wall that's leaning. Small repairs are welcome, and we'll say if a rebuild makes more sense than a patch."),
     ],
         cta=True,
-        img="about-site", img_alt="A wide paver patio with a curved step and stone edging beside a house, with a green lawn and mature trees.",
+        img="about-site", img_alt="A paver patio and stone seat wall beside a house.",
     ),
 dict(
     key="paver-cost", tag="07. Cost", title="What a stone patio actually costs",
@@ -669,7 +669,7 @@ dict(
     ],
     note=("<strong>The tell:</strong> a real bid names the base and the drainage. "
           "A price with no breakdown is a number, not an estimate."),
-    img="project-dining", img_alt="A finished curved paver patio with a low seat wall and plantings along the edge.",
+    img="project-dining", img_alt="A finished curved paver patio with a low seat wall.",
 ),
 dict(
     key="patio-vs-concrete", tag="08. Choices", title="Pavers, concrete or stamped concrete",
@@ -692,7 +692,7 @@ dict(
         ("Stamped concrete", "pattern on a slab, same cracking behavior"),
         ("Pavers", "more up front, fixable in sections, forgiving of frost"),
     ],
-    img="transform-after", img_alt="A finished paver patio beside a home.",
+    img="transform-after", img_alt="A finished paver patio beside a house.",
 ),
 dict(
     key="winter-ready", tag="09. Seasons", title="Patios through a New England winter",
@@ -716,7 +716,7 @@ dict(
     ],
     note=("<strong>Easiest habit:</strong> shovel the same direction the water drains, "
           "so you are never pushing melt back against the house."),
-    img="craft-edge", img_alt="A finished patio edge showing tight paver joints.",
+    img="craft-edge", img_alt="Pavers laid to a tight edge against a stone wall and planting bed.",
 ),
 dict(
     key="choosing-contractor", tag="10. Hiring", title="How to spot a good crew from a bad one",
@@ -740,7 +740,7 @@ dict(
         "The crew doing the work is named",
         "You get a written scope, not just a price",
     ],
-    img="craft-base", img_alt="Preparing the base for a patio installation.",
+    img="craft-base", img_alt="A paver patio partly laid, showing the base and bedding layer beneath.",
 ),
 dict(
     key="driveway-aprons", tag="11. Walkways", title="Walkways, steps and aprons",
@@ -761,7 +761,7 @@ dict(
         ("Walkways", "slope away from the house, base as deep as a patio"),
         ("Aprons", "built for plow and traffic, water sent clear"),
     ],
-    img="project-walkway", img_alt="A curved paver walkway and steps with a low seat wall beside a house.",
+    img="project-walkway", img_alt="A curved paver walkway and steps beside a house.",
 ),
 dict(
     key="fire-pit-basics", tag="13. Fire pits", title="Fire pits that last",
@@ -792,7 +792,7 @@ dict(
     ],
     note=("<strong>Easiest thing to get right:</strong> put the pit on flat ground you already "
           "know drains well, and it will outlast one set in the yard's low spot."),
-    img="patio-firepit-build", img_alt="A gray paver patio and circular fire pit under construction in Mansfield, MA.",
+    img="patio-firepit-build", img_alt="A paver patio and circular fire pit under construction.",
 ),
 dict(
     key="yard-grades", tag="12. Drainage", title="Where does your yard drain?",
@@ -815,7 +815,7 @@ dict(
         "Check the corner against the house",
         "Take photos to show at the estimate",
     ],
-    img="craft-base", img_alt="A yard during base preparation, showing grade and drainage work.",
+    img="craft-base", img_alt="A paver patio partly laid, showing the base and bedding layer beneath.",
 ),
 ]
 
