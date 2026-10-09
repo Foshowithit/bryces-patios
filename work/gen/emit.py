@@ -139,6 +139,24 @@ def _svc_town_links(s: dict) -> str:
             '<p class="related__svc">Not seeing your town? '
             '<a href="/areas/">See every area we cover</a>.</p></nav>')
 
+def _svc_guide_links(s: dict) -> str:
+    """Guides whose subject is this service, as links from a service page."""
+    esc = site.esc
+    keys = [k for k, v in site.GUIDE_SERVICE.items() if v == s["key"]]
+    items = []
+    for k in keys:
+        g = _guide_by_key(k)
+        if not g:
+            continue
+        items.append(
+            f'<li><span class="related__tag">{esc(g["tag"])}</span>'
+            f'<a href="/learn/{g["key"]}/">{esc(g["title"])}</a></li>')
+    if not items:
+        return ""
+    return ('<nav class="related" aria-label="Guides about this work">'
+            '<h2 class="related__h">Read this first</h2>'
+            '<ul class="related__list">' + "".join(items) + "</ul></nav>")
+
 def _sibling_svc_links(s: dict) -> str:
     """Links to the other three services from a service page."""
     esc = site.esc
@@ -286,7 +304,7 @@ def build_service(root: Path, s: dict) -> None:
                 + _sec_head("Common questions", f"{s['name']} questions, answered")
                 + _faq_block(faqs) + '</div></section>')
     body.append(f'<section class="section"><div class="wrap wrap--narrow">'
-                + _svc_town_links(s) + _sibling_svc_links(s) + '</div></section>')
+                + _svc_town_links(s) + _sibling_svc_links(s) + _svc_guide_links(s) + '</div></section>')
     body.append(_cta(trail, f"Planning {s['short']}?", "Tell Bryce about the yard and get a free estimate."))
     html_str = site.render_shell(
         title=f'{s["name"]} Built Right | Bryce\'s Patios',

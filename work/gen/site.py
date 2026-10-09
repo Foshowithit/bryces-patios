@@ -740,6 +740,37 @@ dict(
     img="project-walkway", img_alt="Flagstone steps and a stacked-stone wall in a planted bed.",
 ),
 dict(
+    key="fire-pit-basics", tag="13. Fire pits", title="Fire pits that last",
+    h1="Fire pits: what makes one last",
+    meta="How a fire pit is built in Massachusetts, what separates a pit that lasts from one that cracks, and the choices to make before you dig: wood or gas, ring or block, and where it can sit.",
+    lede="A fire pit looks simple: a ring, some stone, a fire inside. What decides whether it still looks right after five winters happens in the ground under it.",
+    paras=[
+        "A fire pit is a small retaining wall shaped like a circle, and it fails the same way a wall fails. Water gets under the base, freezes, and lifts a course. A pit set on bare ground, or on a base that was not dug and compacted, will show the first lifted ring after one hard frost. The ring above ground is the visible part. The footing under it is the work.",
+        "The first choice is wood or gas. Wood is cheap to run and you get the crackle, but you deal with ash, smoke on a still night, and cleaning it out. Gas lights with a switch and burns clean with no ash, but it costs more up front and needs a line run and a place for the burner. Neither is better; they are different jobs. Pick yours before the pit is built, because a gas pit needs the burner and the line planned into the build, not added later.",
+        "Then the ring. A kit of stacked blocks is fast and repeatable. A mortared block pit with a seat wall attached looks more built-in and can double as seating. A dry-stacked natural stone ring reads more rustic and drains through the gaps. All three can last if they are footed right; the material is not the trick. Ask where the seat wall ties in and how water leaves the base.",
+        "Where the pit sits is the part people rush. Keep it clear of the house, the deck, and anything with an overhang, and check the local setback rules before you dig, because they vary town to town. It wants to sit on flat ground, not on a slope, and not in the low corner where water collects. A pit that sits in the yard's wet spot will fight its footing every winter.",
+        "A fire pit wants a base that drains. Crushed stone under and around the ring, dug below the frost line and compacted, keeps water moving instead of pooling against the block. Some rings get a wet-set bed and some are dry-set to let water pass through. Which one belongs on your site depends on the grade and the soil, and that is a call to make on the ground, not over the phone.",
+        "Two small details separate a pit that gets used from one that does not. A smooth, level seat wall at the right height is what makes people stay out there on a cool night. And a safe clear zone of stone or gravel around the ring keeps the fire off grass and mulch, which is both a safety and a looks decision. Neither one is expensive. Both are easy to leave out.",
+        "Expect the pit to change with the season. Wood ash and moisture are hard on the block over time, and a cover or a clean-out in the fall saves a lot of scrubbing come spring. A gas pit wants the burner and the line checked before the first cold night. Five minutes a year is the difference between a pit that reads as new and one that reads as neglected.",
+        "If you are weighing a fire pit against a patio, they usually belong together. The pit is the reason people sit outside after dark, and the patio is where the chairs go. Build the pit into the patio layout from the start and the whole thing reads as one space instead of two. Add it later and you are cutting into a finished surface.",
+    ],
+    bullets=[
+        ("Wood or gas", "pick before the build; a gas pit needs the line planned in"),
+        ("Ring type", "kit, mortared seat wall, or dry-stacked stone"),
+        ("Footing", "dug below frost, crushed stone, compacted, drains"),
+        ("Placement", "flat ground, clear of overhangs, check local setback"),
+    ],
+    checklist=[
+        "Decide wood or gas before the pit is built",
+        "Keep it clear of the house, deck and any overhang",
+        "Check the local setback rule in your town",
+        "Foot it below frost on compacted, draining stone",
+    ],
+    note=("<strong>Easiest thing to get right:</strong> put the pit on flat ground you already "
+          "know drains well, and it will outlast one set in the yard's low spot."),
+    img="project-firepit", img_alt="A stone fire pit ring set into a paver patio with seating around it.",
+),
+dict(
     key="yard-grades", tag="12. Drainage", title="Where does your yard drain?",
     h1="How to read the water in your own yard",
     meta="A simple way for homeowners to watch water move across their yard after rain, and why that matters before any patio, walkway or wall project.",
@@ -1034,6 +1065,7 @@ RELATED = {
     "choosing-contractor": ["the-quote", "your-questions", "materials"],
     "driveway-aprons": ["materials", "drainage", "patio-base"],
     "yard-grades": ["drainage", "frost", "driveway-aprons"],
+    "fire-pit-basics": ["materials", "patio-base", "winter-ready"],
 }
 
 # ── FAQ sets for the pages that never had them (WS8 depth) ─────────────────
@@ -1098,4 +1130,5 @@ GUIDE_SERVICE = {
     "choosing-contractor": "patios",
     "driveway-aprons": "walkways",
     "yard-grades": "retaining-walls",
+    "fire-pit-basics": "fire-pits",
 }
