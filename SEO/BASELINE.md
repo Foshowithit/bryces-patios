@@ -462,3 +462,106 @@ real SERP / browser read is `ego-browser`** (real Chromium), and Google probing
 stays ≤3 queries/session, 10–20 s apart, ≤1×/hour.
 
 ---
+
+## Session 18 — ck112–ck113 (2026-10-09)
+
+### ck112 — the showreel audio defect, fixed and shipped *silent*
+**The bug the user actually heard:** the shipped showreel carried a TTS voice track
+that repeated *"You understand? Good, let's go."* roughly **8 times** over a
+32 s reel. It sounded broken and wrong for a patio company. It is **gone**.
+
+**What was wrong, exactly:** `assets/video/showreel-1080p.mp4` and a sibling
+`assets/audio/showreel.mp3` both shipped; `main.js` ran a narration path that
+unmuted/played that track behind the muted film. The strip commit (`6e34d59`)
+deleted the audio file, re-encoded the mp4 video-only, and cut the narration code.
+
+**Measured, before → after:**
+- mp4 bytes **`14,921,367` → `14,238,968`** (−682,399 B).
+- `assets/audio/` **deleted** — the directory does not exist in the tree.
+- `ffprobe` on the live file → **`0,h264,video,1920,1080,32.233333`** — **exactly
+  one stream, no audio**. There is no voice-on-the-reel failure mode left to hit.
+- `main.js` narration block −42/+11 lines; `grep -c 'muted\|volume\|narration'` in
+  the live bundle = **1**, and that one hit is the `aria-label` string
+  *"…silent: eight real jobs…"*, not a control. `node --check assets/js/main.js` = **OK**.
+- The dead `#film__mute` CSS block was removed in the layout commit.
+
+**Root cause of the delay (recorded so it never repeats):** the fix was
+**committed but never pushed** in the prior session, so `brycespatios.work` was
+still serving the old **14,921,367 B** file with the bad voice. The user was
+correct that the reel was still broken. It is now pushed (`6e34d59` … `c456d4d`)
+and **live-verified**: `GET /assets/video/showreel-1080p.mp4` → **HTTP 200,
+`content-length: 14238968`, `content-type: video/mp4`**.
+
+**Proof of the transcript, for the record:** the repeated line was
+*"You understand? Good, let's go."* — an artifact of the TTS generation, not a
+script we wrote. Removing the track removes it completely. **Lesson: a fix is not
+shipped until it is pushed AND read back from the live URL.**
+
+### ck113 — layout pass + live re-verification (this checkpoint)
+Own eyes and byte-reads, not prior claims.
+
+**Layout commit `9d04333`** (41 lines, 18 ins / 23 del, 7 hunks) — confirmed numbers:
+1. `.promise__grid` `align-items:center`→`start` + `.promise__body` `padding-top`
+   `.5rem`→`.35rem` — killed a **58px** lead/body offset (all three columns now `top:1012`).
+2. `.form-progress` margin-bottom `clamp(2rem,4vw,2.75rem)`→`clamp(1.25rem,2.5vw,1.75rem)` — gap **44 → 28**.
+3. `.step-panel__legend` `2rem`→`1.5rem` (row `t12867 h94`) · `.step-panel__num`
+   `.75rem`→`.5rem` · `.step-panel__hint` gained `margin-top:.35rem`.
+4. `.chips` gained `margin-bottom:1.75rem` — chips→size gap **0 → 28**.
+5. `.step-nav` margin-top `2.25rem`→`1.75rem`, padding-top `1.75rem`→`1.5rem`
+   (row `t13225 h78 b13303`).
+6. `.film__mute` CSS block removed (dead after the ck112 JS cleanup).
+7. `.learn__grid` `align-items:start`→`stretch` + `grid-auto-rows:1fr`;
+   `.guide__list` / `.guide__checklist` → `flex column; gap .55rem; margin-top:auto;
+   margin-bottom:0; padding-top:1rem; border-top:1px solid var(--line)`.
+
+**Guide-grid fix, verified:** the **15rem checklist cap is REMOVED** — `hiddenPx 0`
+at every breakpoint (`overflows=false`). At 1440 the guide grid is `rows=2`,
+`cols=[3,3]`, **`h=[763,763]`** — both rows now equal height, checklist cards
+pinned to the bottom by `margin-top:auto`. Row 1 all `t8529 h763 b9292`; row 2 all
+`t9328 h763 b10091`. `.guide__list` bottom `10058`. At 1024/820 → `[2,2,2]`
+`h701/h723`; at 760/390 → 6×`[1]`. `.guide__checklist` renders only on
+`/learn/the-quote/` at its natural height (372).
+
+**One intended change:** `#learn` section height **`2433 → 2624`** (+191px). This
+is the `grid-auto-rows:1fr` stretch doing its job (equal card heights), not a
+regression.
+
+**Two instrument artifacts disproven this session (do not re-litigate):**
+- **Playwright blank PNGs** = instrument artifact, not a site bug.
+- **Vision "blank image" reports** = artifacts; DOM audit found **`BROKEN: []`,
+  `ZERO_SIZE: []`, 16/16 `complete:true`** with natural widths. Images are fine.
+
+**Also fixed:** a `404.html` cache-buster **straggler** (it still carried token
+`d18aa156` while the other 81 pages had moved on). Token reconciled to
+**`8f6a48a0`** everywhere — `index.html` + `404.html` hand-edited, the other 81
+emitted by `work/gen/emit.py`. Single source of truth: `work/gen/site.py:17`
+`V = "8f6a48a0"`. **Note: running `site.py` directly is a no-op — `emit.py` is the
+generator.**
+
+**Live re-verification (curl, this checkpoint):**
+| URL | Result |
+|---|---|
+| `/` | 200, 62,862 B |
+| `/learn/` | 200, 26,808 B |
+| `/services/` | 200, 19,783 B |
+| `/areas/` | 200, 19,586 B |
+| `/areas/mansfield/patios/` | 200, 17,569 B |
+| `/learn/the-quote/` | 200, 19,532 B |
+| `/404.html` | 200, 6,390 B |
+| `/sitemap.xml` | 200, **81 `<loc>`** |
+| `/llms.txt` | 200, 2,049 B |
+| `/feed.xml` | 200, 6,057 B |
+| `/robots.txt` | 200, 164 B |
+| `/assets/video/showreel-1080p.mp4` | 200, **14,238,968 B**, `video/mp4` |
+
+`last-modified: Fri, 09 Oct 2026 04:49:49 GMT` — confirms `c456d4d` is what GitHub
+Pages is serving.
+
+### Recorded: `/about/` and `/contact/` 404s are NOT a bug — do not "fix" them
+There are **no `/about/` or `/contact/` routes, and none are linked.** They are
+**on-page anchors** on the homepage: `#about` (`index.html:636`) and `#estimate`
+(`index.html:923`). Every "About" link in the footer points at `href="#about"`.
+`grep -rn 'href="about\|href="contact\|href="/about\|href="/contact' --include='*.html' .`
+→ **exit 1, zero matches** (quote the glob; unquoted `*.html` makes zsh fail with
+*no matches found*). **Do not invent `/about/` or `/contact/` pages.**
+
