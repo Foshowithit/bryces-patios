@@ -1,5 +1,23 @@
 # Bryce's Patios - Search Baseline
 
+## 2026-10-09 (ck123) - image weight cut 13 percent, live
+
+Commit `cff76d7`. The masters had been exported at q90 with metadata: 273-324 KB
+per megapixel, over-encoded for photos that are already soft upscales of phone
+shots. Re-encoded all 40 at q82, progressive, metadata stripped.
+
+- Total image weight **8,981 KB -> 7,834 KB (13 percent smaller)**, same pixels.
+  No visible artifacts (checked a 500px crop at 1:1).
+- Realness re-verified after: hero-finished NCC 0.9966 vs pic5, craft-base 0.9984
+  vs pic4, project-dining 0.9975 vs pic6. The re-encode did not touch content.
+- Live after the GitHub Pages build: `hero-finished.jpg` 393,414 -> 313,824 B;
+  `hero-finished-900.jpg` 128,363 -> 107,153 B. Phones download the -900 variant,
+  so a mobile first view is measurably lighter.
+- Homepage TTFB from here: **42 ms**. HTML is gzip-compressed (62,688 -> 15,645 B
+  on the wire).
+
+---
+
 ## 2026-10-09 (ck122) - the crawl path is clean; IndexNow is genuinely accepted
 
 The open question was whether our IndexNow pings were being silently rejected, which
