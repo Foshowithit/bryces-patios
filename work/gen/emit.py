@@ -876,7 +876,6 @@ def build_sitemap(root: Path) -> None:
                 f'<video:title>{vid["title"]}</video:title>'
                 f'<video:description>{vid["desc"]}</video:description>'
                 f'<video:content_loc>{vid["content"]}</video:content_loc>'
-                f'<video:player_loc>{vid["player"]}</video:player_loc>'
                 f'<video:duration>{vid["dur"]}</video:duration>'
                 '<video:publication_date>2026-10-09T09:00:00-04:00</video:publication_date>'
                 '<video:family_friendly>yes</video:family_friendly>'
