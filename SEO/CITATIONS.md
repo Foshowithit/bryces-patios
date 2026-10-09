@@ -36,7 +36,10 @@ Service area: Mansfield MA + 21 surrounding towns (list below)
 > where a "hide address / customers come to me" toggle exists. Consistency of the
 > **address string** matters; public visibility of it does not.
 
-**22-town service area (MA 12 / RI 10):**
+**22-town service area (MA 12 / RI 10)** — use this full list on every directory that
+accepts free text. Google's own profile field caps at 20, so `SEO/GBP.md` §4 lists the
+top-20 subset; everywhere else use all 22:
+
 Massachusetts — Mansfield, Attleboro, North Attleboro, Norton, Foxborough, Seekonk,
 Rehoboth, Plainville, Franklin, Taunton, Easton, Sharon.
 Rhode Island — Pawtucket, Cumberland, Lincoln, Central Falls, Providence,
@@ -136,6 +139,48 @@ write a second, different long description — pick one and reuse it.
   property, verify via the DNS TXT record Porkbun exposes. Then submit the sitemap
   (`https://brycespatios.work/sitemap.xml`) under Sitemaps. This is what turns
   "invisible in search" into measurable impressions/clicks over time.
+
+### Extended free-directory set (added 2026-10-08 ck112) — `FREE` unless noted
+
+Same NAP block from §0. These are the phase-3 breadth citations; see `SEO/PLAN.md`
+§F for the reasoning and the BLOCKED rows.
+
+- **Foursquare** — `https://foursquare.com` (verified 200). Free business listing.
+  Its place data feeds many navigation and map apps, so it is worth more than a
+  single directory normally is.
+- **Bing Places for Business** — `https://www.bingplaces.com`. Free; mirrors GBP.
+- **BuildZoom** — `https://www.buildzoom.com` (verified 200). Free contractor
+  profile. It already ranked in our own baseline SERP, so claim it rather than let
+  it describe him badly.
+- **D&B (Dun & Bradstreet)** — `https://www.dnb.com` (301 → 200). Free basic
+  profile; feeds a lot of B2B entity data.
+- **Bark.com** — `https://www.bark.com` (301). Free pro profile exists; leads are
+  paid. `FREE+PAID` — free profile only, **do not buy shared leads**.
+- **Tri-Town Chamber of Commerce** — `https://www.tri-townchamber.org` (verified
+  200). `PAID` membership, but the member directory entry is a strong,
+  geo-relevant citation. Decide with Bryce.
+- **Patch.com Mansfield** — `mansfield.patch.com` is up; the
+  `patch.com/massachusetts/mansfield` path 404s, so confirm the current hub first.
+  Town news + local business directory. `VERIFY` before promising it.
+- **Pinterest** — design-led; patio/walkway imagery travels and links back. Use the
+  real-photo slots, or AI imagery with the same disclosure rule the site uses.
+- **YouTube** — the mini showreel. Assets already rendered in
+  `~/Movies/bryce-patios-reel/` (16:9 · 9:16 · 1:1). Upload = HUMAN.
+- **Yandex Business** — `https://yandex.com/sprav`. `VERIFY` the self-serve URL in a
+  browser; `biz.yandex.ru` does not resolve from our host.
+- **MA HIC registry** — Massachusetts publishes a public HIC registration lookup.
+  **Only pursue if Bryce actually holds an HIC registration.** Never claim a
+  licence he does not have. `VERIFY`.
+- **Reddit** (r/massachusetts · r/landscaping · r/HomeImprovement) —
+  **HUMAN, reputation not citation.** Genuine photo-backed answers only.
+  **No link-dropping** — that is an instant ban.
+- **Facebook Marketplace + local groups** — HUMAN. Where local jobs actually get
+  posted. Finished-yard photos, a plain price range, no spam.
+
+**BLOCKED — do not chase:** Waze, TomTom, Here WeGo (`wego.here.com`) have **no
+direct contractor self-serve**. Place data reaches them downstream from
+Apple/Bing/Yelp/Foursquare. The action is Foursquare + Bing Places + Apple
+Business Connect, not a Waze signup.
 
 ---
 

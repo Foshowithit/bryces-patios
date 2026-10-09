@@ -376,3 +376,89 @@ Found and fixed in the generator (`work/gen/`), then regenerated all 81 pages.
 - Voice gate full-site re-run: **SHIP — fatal=0 tier1=0 p1=0, score 1.6/100
   (45,950 words, 81 files)**.
 - IndexNow re-ping after the content change: **HTTP 200, 81 urls**.
+
+## ck106–ck111 — QA, showreel, form-to-SMS, and honest re-verification (2026-10-08)
+
+Checkpoints ck101–ck105 were never logged. This entry back-fills the range so the
+log has no hole, and records what was actually proven versus what was assumed.
+
+### ck101–ck104 — the four "bugs" were all false positives
+An early handoff listed four "glitches" on the site. Every one of them was an
+artefact of screenshots taken mid-reveal-animation: the QA script captured a
+frame while `opacity:0` reveal transitions were still in flight, so sections
+looked missing. Re-shot with settled frames. **All four are false positives.**
+Nothing was fixed because nothing was broken.
+
+### ck105 — `shot2.mjs` is the reliable screenshot instrument
+`/tmp/shot.mjs` produced the false positives. `/tmp/shot2.mjs` waits for layout
+to settle, then writes **17 full-page PNGs plus a geometry JSON**. Use it, not
+`shot.mjs`. Recipe (from `SEO/README.md` / this log's recipes):
+```
+mkdir -p /tmp/bryceqaN && cd /tmp && timeout 220 node /tmp/shot2.mjs "https://brycespatios.work/" /tmp/bryceqaN 1280 800
+```
+Mobile width is `390 844`.
+
+### ck106 — full-page geometry verified, no gaps
+`SHOTS 17 HEIGHT 13009` at 1280×800. Sections are contiguous and in order:
+`#faq top=10714 h=756` → `#estimate top=11470 h=1119` → `footer top=12589 h=420`.
+No blank band, no overlap, no double-rendered section. The "glitchy" complaint
+does not reproduce against the current live build.
+
+### ck107 — showreel verified playing
+`1920×1080`, `32.284 s`, `HTTP 206` range streaming, 8 photos, MP4
+`14,921,367 B`, poster `assets/img/project-firepit.jpg`, `preload='none'`,
+launch control `#film-launch`, `VideoObject` schema with an 8-part `hasPart`,
+and a `video:` entry in `sitemap.xml`. Aspect crops shipped to
+`~/Movies/bryce-patios-reel/`: `showreel-1080p.mp4` (16:9),
+`showreel-reel-9x16.mp4` (9:16), `showreel-square-1x1.mp4` (1:1).
+
+### ck108 — the estimate form → text message works end to end
+Proven with `/tmp/qa_wizard.mjs`. Three steps (1 What do you need → 2 Your yard →
+3 Your details) → success panel → `#send-sms`. The final href is
+`sms:+15082126433?body=…` (body ≈300 chars, verified). Gotcha recorded:
+the chip/radio `<input>`s are **visually hidden**, so Playwright `page.check()`
+**times out** — click the **label** instead
+(`#estimate label.chip:has(input[value="X"])`). `FORM_ENDPOINT=''`, so the user
+taps "Text Bryce" and the SMS is pre-filled. **User-approved; leave as-is.**
+Screenshot kept at `/tmp/bryceqa6/form-success.png`.
+
+### ck109 — image truth, stated plainly
+**Every photo on the site is an AI-generated rendering.** Zero real job photos
+ship. The disclosure is in the footer of all **81** pages (`AI-generated` appears
+on 81/81) and in the work-section note. 33 JPGs + 4 PNG icons + 2 SVG diagrams
+ship in `assets/img/`. More real shots from Bryce = the biggest single trust and
+image-search upgrade, **and** the removal condition for the disclosure (removed
+page by page as real photos land, never all at once). Ask sheet:
+`work/BRYCE-SHOT-LIST.md` (untracked scratch by design — `work/*` is gitignored).
+
+### ck110 — three doc writes
+`SEO/GBP.md` §4, `SEO/CITATIONS.md` §0, and `SEO/OFFSITE-CHECKLIST.md` §2 were
+all annotated with the **20-vs-22 town resolution**: Google's service-area field
+caps at 20, so `SEO/GBP.md` §4 lists the top-20 subset (excludes Smithfield and
+North Smithfield, RI); the site and the free-text directories describe the full
+**22-town** area. This is a documented difference, **not a bug — do not "fix" it.**
+
+### ck111 — live re-verification + 5-viewport visual QA (this checkpoint)
+Own eyes, not prior claims:
+- `curl -sI https://brycespatios.work/` → **HTTP/2 200**, GitHub Pages/Fastly,
+  `cache-control: max-age=600`.
+- `sitemap.xml` → **81 `<url>`**.
+- `shot2.mjs` → **`SHOTS 17 HEIGHT 13009`**, sections contiguous (`#faq`
+  `top=10714`, `#estimate top=11470`, `footer top=12589`).
+- **5 viewports inspected** (00-y0, 01-y800, 04-y3200, 08-y6400, 15-y12000): hero
+  is a real-looking flagstone patio with a dark nav and a "Get a free estimate"
+  CTA; "Recent work" is 6 well-lit patio/walkway tiles; "Common questions" is a
+  clean 6-item accordion; "Free estimate" is the 3-step wizard; footer renders
+  correctly with NAP + the `(508) 212-6433` call button. **No visible glitches.**
+- **Conclusion recorded honestly:** the site is in good shape at 1280×800. The
+  "still glitchy / errors / bugs" complaint is stale or refers to an older build.
+
+### Also recorded: dead instruments (do not retest)
+`r.jina.ai` is now **Cloudflare-challenged for this host** — ck110 hit a
+"Just a moment..." interstitial for all 7 targets tried. Direct `curl` to those
+same hosts was also challenged. Already dead and recorded: Bing HTML scrape
+(geo-poisoned), DuckDuckGo, Startpage, Mojeek. Google `curl` is WAF'd. **The only
+real SERP / browser read is `ego-browser`** (real Chromium), and Google probing
+stays ≤3 queries/session, 10–20 s apart, ≤1×/hour.
+
+---

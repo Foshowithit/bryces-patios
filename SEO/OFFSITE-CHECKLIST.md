@@ -22,7 +22,8 @@ names get listings suspended.
 - [ ] Primary category: `Paving Contractor` (from the dropdown). Secondaries:
       `Masonry Contractor`, `Landscaper`
 - [ ] Address: `885 West St, Mansfield, MA 02048` — then set **"show address" = NO**
-- [ ] Service area: paste the 20 towns from `SEO/GBP.md` §4
+- [ ] Service area: paste the **20 towns** from `SEO/GBP.md` §4 (Google caps this field at
+      20; the site + directories describe the full 22-town area, see `SEO/CITATIONS.md` §0)
 - [ ] Phone: `(508) 212-6433` · Website: `https://brycespatios.work`
 - [ ] Hours: Mon–Fri `8:00 AM – 6:00 PM`, Sat/Sun closed (say "by appointment" in the
       description text instead)
@@ -85,6 +86,44 @@ Paste the NAP block from `SEO/CITATIONS.md` §0 everywhere, exactly as written.
 - [ ] **Houzz** — https://pro.houzz.com/pro (free pro profile; design-led)
 - [ ] **Angi** — https://signup.angi.com/pro (free profile only — do NOT buy leads,
       a one-man shop loses money on shared leads)
+
+---
+
+## 5b. Phase-3 breadth — do these AFTER Google is live (each ~10 min, all free)
+
+These add citation depth once the profile exists. Order by impact. Full detail in
+`SEO/PLAN.md` §F.
+
+- [ ] **Foursquare** — https://foursquare.com (free listing; its place data feeds
+      a lot of navigation + map apps, so it punches above its weight)
+- [ ] **Bing Places** — https://www.bingplaces.com (free, mirrors the GBP copy;
+      Bing is also where our IndexNow pings land)
+- [ ] **BuildZoom** — https://www.buildzoom.com (free contractor profile; it
+      already appeared in our own search baseline, so claim it)
+- [ ] **D&B** — https://www.dnb.com (free basic business profile)
+- [ ] **Bark** — https://www.bark.com (free profile only; do NOT buy shared leads)
+- [ ] **Tri-Town Chamber** — https://www.tri-townchamber.org (member directory
+      entry is a strong local citation; membership is paid — decide with Bryce)
+- [ ] **Pinterest** — design-led, patio photos travel well and link back
+- [ ] **YouTube** — upload the mini showreel (`~/Movies/bryce-patios-reel/`,
+      16:9 / 9:16 / 1:1 all rendered and ready)
+- [ ] **Facebook Marketplace + local groups** — finished-yard photos, plain price
+      range, no spam. This is where local jobs actually get seen.
+- [ ] **Reddit** (r/massachusetts, r/landscaping, r/HomeImprovement) — real answers
+      only, **no link-dropping** (instant ban). Reputation, not a citation.
+- [ ] **Patch Mansfield** — confirm the current Mansfield hub in a browser
+      (`patch.com/massachusetts/mansfield` 404s; `mansfield.patch.com` is up), then
+      check for a free business listing
+- [ ] **Yandex Business** — https://yandex.com/sprav (verify the self-serve URL in a
+      browser first; `biz.yandex.ru` does not resolve from our host)
+- [ ] **MA HIC registry** — Massachusetts publishes a HIC registration lookup.
+      **Only pursue if Bryce is actually registered.** Never claim a licence he
+      does not hold. If he is registered, this is a top-tier trust citation.
+
+**Do not bother with:** Waze, TomTom, Here WeGo marketplaces, or Yandex
+"map" signups — there is **no direct contractor self-serve** for those; place data
+reaches them downstream from Apple/Bing/Yelp/Foursquare. Marked BLOCKED in
+`SEO/PLAN.md` §F14 so nobody hunts a signup that does not exist.
 
 ---
 

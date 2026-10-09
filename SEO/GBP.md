@@ -116,6 +116,11 @@ want. Enter the real address so Google can verify the business exists, then turn
 
 ## 4. Service area — add these 20 towns
 
+> **Why 20 here but 22 elsewhere:** Google caps the profile's service-area list at 20
+> entries, so this is the highest-job-density 20. The site and the directories describe
+> the full **22-town** service area (`SEO/CITATIONS.md` §0). If Google's box ever accepts
+> more, add the two left out here — **Smithfield, RI** and **North Smithfield, RI**.
+
 Google caps service areas at **20** entries, and it advises the total area should stay within
 roughly **two hours of driving time** from the base town. These 20 are chosen to fit inside
 that radius while covering the strongest job-dense towns.

@@ -108,6 +108,30 @@ E1–E3. Everything else is a HUMAN checklist item. So the job is: (1) knock out
 every OURS row, (2) keep the HUMAN rows as tight copy-paste lists so Bryce does
 them in one sitting.
 
+### F. Extra surfaces we had not written down (added 2026-10-08 ck112)
+
+Everything the user could reasonably mean by *"think of everything"*. Same legend:
+**OURS** = no human identity needed · **HUMAN** = needs Bryce's (or Adam's) login ·
+**BLOCKED** = an external gate we cannot pass · **VERIFY** = reachability checked,
+self-serve path unconfirmed, must be confirmed in a real browser before promising it.
+
+| # | Surface | Who | Status | Note |
+|---|---|---|---|---|
+| F1 | **Yandex Business** (`yandex.com/sprav`) | HUMAN | **VERIFY** | Free listing. `biz.yandex.ru` did not resolve from this host (000). IndexNow already pings Yandex, so a verified Yandex listing is a real citation. Confirm the self-serve URL in a browser first. |
+| F2 | **Foursquare** (`foursquare.com`) | HUMAN | reachable (200) | Free business listing. Foursquare place data feeds many navigation and map apps, so it is a high-leverage citation for a service-area trade. |
+| F3 | **Reddit** (r/massachusetts, r/landscaping, r/HomeImprovement) | HUMAN | reachable | Highest-trust local answers, but **no link-dropping** — that is an instant ban. Only genuine, photo-backed answers from Bryce's real account. Treat as reputation, not a citation. |
+| F4 | **Facebook Marketplace + local groups** (Mansfield / Bristol County buy-sell + homeowner groups) | HUMAN | reachable | Where actual local jobs get posted. Post finished-yard photos with a plain price-range line. Never spam a group. |
+| F5 | **Patch.com Mansfield** | HUMAN | **VERIFY** | `mansfield.patch.com` returns 200 but `patch.com/massachusetts/mansfield` 404s, so confirm the current Mansfield hub in a browser. Patch carries town news + a business directory — a strong geo-relevant citation. |
+| F6 | **Tri-Town Chamber of Commerce** | HUMAN | reachable (200) | `tri-townchamber.org` is up. Paid membership, **but the member directory entry is a strong, geo-relevant citation** and it is the local institution. |
+| F7 | **BuildZoom** | HUMAN | reachable (200) | Appeared in our own SERP baseline. Free contractor profile; claim it so the aggregator stops representing him worse than his own site does. |
+| F8 | **D&B / `dnb.com`** | HUMAN | reachable (301→200) | Free basic business profile. Feeds a lot of B2B/entity data. |
+| F9 | **Bark.com** | HUMAN | reachable (301) | Free pro signup exists; leads are paid. Sign up for the free profile only, same rule as Angi: **do not buy shared leads** for a one-man shop. |
+| F10 | **Pinterest** | HUMAN | reachable | Design-led; patio/walkway/fire-pit imagery travels well here and links back. Needs owned photos ideally — AI imagery only with the same disclosure rule. |
+| F11 | **YouTube** (the mini showreel) | HUMAN | covers ready | The 16:9 / 9:16 / 1:1 cuts are rendered and sitting in `~/Movies/bryce-patios-reel/`. Upload = HUMAN. This is the one off-site surface where we already have finished, real assets. |
+| F12 | **MA HIC (Home Improvement Contractor) registry** | HUMAN | **VERIFY — never assert** | Massachusetts publishes a public HIC registration lookup. **Only useful if Bryce actually holds an HIC registration.** We must not claim a licence he does not have. If he is registered, a matching registry entry is a top-tier trust citation; if he is not, this row is struck and nothing is written anywhere. |
+| F13 | **Apple Business Connect** | HUMAN | **DONE** as B5 | Listed here only so nobody adds it twice. |
+| F14 | **Map-data partners** (Waze · TomTom · Here WeGo `wego.here.com`) | — | **BLOCKED (no direct self-serve)** | There is no free contractor signup for these. Place data reaches them downstream via Apple/Bing/Yelp/Foursquare-style providers. So the *real* action is F2 + B4 + B5, not signing up for Waze directly. Marking them here stops a future session from burning hours hunting a signup that does not exist. |
+
 ---
 
 ## Where we are (verified 2026-10-08)
@@ -314,12 +338,24 @@ to its guides (`GUIDE_SERVICE` reverse map). Gap fixed in ck88: `fire-pit-basics
 
 ## Off-site platform order (do in this order)
 
+Phase 1 — identity (unblocks everything else):
 1. **Google Business Profile** — #1 leverage, still NONE. Copy ready in `SEO/GBP.md`.
 2. **Google Search Console** — the only fast path to get Google to index 81 URLs.
 3. **Facebook page** — `@brycespatios`; verify site link in NAP. Never edit without Bryce's OK.
+
+Phase 2 — anchor citations (once identity exists):
 4. **Yelp** · 5. **BBB** · 6. **Nextdoor** · 7. **Houzz** · 8. **Angi** — per `SEO/CITATIONS.md`.
    SAB rule: hide the street address on Google/Nextdoor; put it on Yelp/Angi/Houz/BBB/FB.
    Business name must be exactly `Bryce's Patios` everywhere.
+
+Phase 3 — depth (the F table above, §F1–F12): **Foursquare** (feeds map apps) ·
+**Bing Places** (B4) · **Apple Business Connect** (B5) · **Yandex** (F1) ·
+**BuildZoom** (F7) · **D&B** (F8) · **Bark free tier** (F9) · **Tri-Town Chamber**
+(F6) · **Patch Mansfield** (F5) · **Pinterest** (F10) · **YouTube showreel** (F11) ·
+**Facebook Marketplace + local groups** (F4) · **Reddit** (F3, no link-dropping) ·
+**MA HIC registry** (F12 — verify he is registered before writing anything).
+Phase 3 is *breadth*, and it is strictly after Phase 1. Fifty citations with no GBP
+still lose to one competitor with a verified profile and five reviews.
 
 ## ck89 change note
 
@@ -361,3 +397,42 @@ Closed the AI-extractibility + crawl-plumbing gaps; no copy changed.
   local pack is decided by GBP + reviews, which is why GBP is item #1.
 - **Do not promise a timeline.** The honest lever we control is: GBP live,
   Search Console claimed, 30+ citations, then real reviews.
+
+## ck112 change note (2026-10-08) — discoverability stack made complete
+
+The user's charge was correct: the plan claimed to "think of everything" but the
+F table did not exist. This checkpoint adds it.
+
+- **Added `§F. Extra surfaces we had not written down`** to the Full
+  discoverability stack: 14 rows covering Foursquare, Yandex, Reddit, Facebook
+  Marketplace + local groups, Patch Mansfield, Tri-Town Chamber, BuildZoom, D&B,
+  Bark (free tier only), Pinterest, YouTube, the MA HIC registry, Apple Business
+  Connect (dedupe pointer to B5), and the map-data partners (Waze/TomTom/Here
+  WeGo) marked **BLOCKED — no direct self-serve** so nobody hunts a signup that
+  does not exist. Every row is tagged OURS / HUMAN / BLOCKED / VERIFY, and
+  **VERIFY rows are explicitly unconfirmed** — reachability was curl-checked from
+  this host, nothing more.
+- **Rewrote the off-site platform order into three phases.** Phase 1 is identity
+  (GBP + GSC + Facebook), Phase 2 the anchor citations, Phase 3 the F-table
+  breadth. Breadth is strictly after identity, with the reason stated: fifty
+  citations without a verified profile still lose to one competitor with a live
+  profile and five reviews.
+- **Back-filled `SEO/BASELINE.md` ck106–ck111** (ck101–ck105 were never logged, so
+  that hole is closed too).
+- No site files changed. No copy changed. `PAGES 81` unchanged.
+
+### Honest reachability results from this host (curl, 2026-10-08)
+| Host | HTTP | Read |
+|---|---|---|
+| `foursquare.com` | 200 | reachable |
+| `buildzoom.com` | 200 | reachable |
+| `tri-townchamber.org` | 200 | reachable |
+| `business.apple.com` | 200 | reachable |
+| `mansfield.patch.com` | 200 | reachable (but `patch.com/massachusetts/mansfield` = 404) |
+| `dnb.com` | 301 → 200 | reachable |
+| `bark.com` | 301 | reachable |
+| `yelp.com` | 403 | WAF — not a real read, do not conclude it is down |
+| `biz.yandex.ru` | 000 | did not resolve here — **unverified** |
+| `mass.gov` (HIC pages) | 403 | WAF — **registry path unverified, must be checked in a browser** |
+
+---
