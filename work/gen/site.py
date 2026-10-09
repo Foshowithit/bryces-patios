@@ -328,7 +328,8 @@ def slug(s: str) -> str:
 
 SERVICES = [
     dict(
-        key="patios", name="Stone Patios", short="patios",
+        key="patios",
+        title="Stone Patio Installation in Mansfield, MA | Free Estimates", name="Stone Patios", short="patios",
         h1="Stone patio installation in {town}, MA",
         meta=("Stone patios built on a full-depth compacted base in {town}, MA and "
               "across southeastern Massachusetts. Owner-operated. Free estimates."),
@@ -374,7 +375,8 @@ SERVICES = [
     ],
     ),
     dict(
-        key="walkways", name="Walkways & Paths", short="walkways",
+        key="walkways",
+        title="Walkway & Path Installation in Mansfield, MA | Free Estimates", name="Walkways & Paths", short="walkways",
         h1="Stone walkway installation in {town}, MA",
         meta=("Stone walkways and garden paths installed in {town}, MA with a proper "
               "compacted base and drainage. Owner-operated. Free estimates."),
@@ -413,7 +415,8 @@ SERVICES = [
     ],
     ),
     dict(
-        key="retaining-walls", name="Retaining Walls", short="retaining walls",
+        key="retaining-walls",
+        title="Retaining Wall Installation in Mansfield, MA | Free Estimates", name="Retaining Walls", short="retaining walls",
         h1="Retaining wall installation in {town}, MA",
         meta=("Segmental and stone retaining walls built in {town}, MA with proper "
               "drainage and compaction. Owner-operated. Free estimates."),
@@ -452,7 +455,8 @@ SERVICES = [
     ],
     ),
     dict(
-        key="fire-pits", name="Fire Pits", short="fire pits",
+        key="fire-pits",
+        title="Fire Pit Installation in Mansfield, MA | Free Estimates", name="Fire Pits", short="fire pits",
         h1="Fire pit installation in {town}, MA",
         meta=("Stone fire pits, seat walls and patio living spaces built in {town}, MA. "
               "Designed into the patio from the start, on a base that does not heave."),

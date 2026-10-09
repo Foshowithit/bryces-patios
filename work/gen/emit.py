@@ -344,7 +344,7 @@ def build_service(root: Path, s: dict) -> None:
                 + _svc_town_links(s) + _sibling_svc_links(s) + _svc_guide_links(s) + '</div></section>')
     body.append(_cta(trail, f"Planning {s['short']}?", "Tell Bryce about the yard and get a free estimate."))
     html_str = site.render_shell(
-        title=f'{s["name"]} Built Right | Bryce\'s Patios',
+        title=s["title"],
         desc=s["meta"].format(town=town), url=f'{site.BASE}/services/{s["key"]}/', trail=trail,
         body="".join(body), ld_extra=(
             [_faq_ld(faqs, f'{site.BASE}/services/{s["key"]}/')]
@@ -405,7 +405,7 @@ def build_services_hub(root: Path) -> None:
              + _faq_block(site.FAQS_HUB["services"]) + '</div></section>')
     body += _cta(trail, "Not sure which you need?", "Tell Bryce what the yard is doing and he'll say straight.")
     html_str = site.render_shell(
-        title="Services | Patios, Walkways, Walls, Fire Pits",
+        title="Patio, Walkway & Wall Services in Mansfield, MA | Bryce's Patios",
         desc="Stone patios, walkways, retaining walls and fire pits installed across southeastern Massachusetts. Owner-operated, free estimates.",
         url=f"{site.BASE}/services/", trail=trail, body=body,
         ld_extra=[_faq_ld(site.FAQS_HUB["services"], f"{site.BASE}/services/")],
