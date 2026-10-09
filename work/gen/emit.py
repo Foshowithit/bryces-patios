@@ -51,7 +51,7 @@ def _img(name: str, alt: str, sizes: str, *, cls: str = "", loading="lazy") -> s
     c = f' class="{cls}"' if cls else ""
     return (
         f'<img{c} src="/assets/img/{name}.jpg" '
-        f'srcset="/assets/img/{name}-900.jpg 900w, /assets/img/{name}.jpg 2000w" '
+        f'srcset="/assets/img/{name}-900.jpg 900w, /assets/img/{name}.jpg {w}w" '
         f'sizes="{sizes}" width="{w}" height="{h}" loading="{loading}" decoding="async" '
         f'alt="{esc(alt)}">'
     )
