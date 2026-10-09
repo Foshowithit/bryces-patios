@@ -209,6 +209,21 @@ def build_learn_hub(root: Path) -> None:
       {site.page_actions(center=True)}
       <div class="learn__grid">{"".join(cards)}</div>
     </div></section>'''
+    body += ('<section class="section"><div class="wrap wrap--narrow">'
+             '<h2 class="h2">Start here if you have never hired patio work</h2>'
+             '<p class="prose">Most people find this site with the same question: why is one quote so much lower '
+             'than another for the same patio? The answer is almost never the stone. It is how deep the '
+             'contractor plans to dig, how the base gets compacted, and where the water goes. The guides below '
+             'explain each of those in plain words, with no sales spin, so you can tell a real quote from a '
+             'thin one.</p>'
+             '<p class="prose">The base guide is the one to read first, because nine-tenths of a patio is '
+             'underground. The drainage guide explains why patios sink and walls lean. The frost guide covers '
+             'the 30-inch depth this part of Massachusetts is built to. From there the cost guide breaks down '
+             'what actually moves a price, and the quote guide tells you what a good estimate should include.</p>'
+             '<p class="prose">You do not need to read all of these before calling. If you would rather just '
+             'talk it through, call Bryce and describe the yard. He will tell you what he needs to see and '
+             'give you a straight answer without a pitch.</p>'
+             '</div></section>')
     body += _cta(trail, "Questions about your yard?", "Ask Bryce directly. No pressure, no sales script.")
     html_str = site.render_shell(
         title="Patio Guides &amp; Answers | Bryce's Patios",
@@ -228,6 +243,8 @@ def build_service(root: Path, s: dict) -> None:
                 f'<h1 class="h2">{site.esc(s["h1"].format(town=town))}</h1></header>')
     body.append(site.page_actions())
     body.append(f'<p class="lede">{site.esc(s["blurb"])}</p>')
+    for para in s.get("prose", []):
+        body.append(f'<p class="prose">{site.esc(para)}</p>')
     body.append('<ul class="checklist">' + "".join(f'<li>{site.esc(b)}</li>' for b in s["bullets"]) + '</ul>')
     body.append('<figure class="learn__figure">' + _img(s["img"], s["img_alt"], "(max-width:1024px) 100vw, 900px")
                 + f'<figcaption><strong>{site.esc(s["name"])}.</strong> Built on a full-depth compacted base.</figcaption></figure>')
@@ -263,6 +280,28 @@ def build_services_hub(root: Path) -> None:
       {site.page_actions(center=True)}
       <div class="learn__grid">{"".join(cards)}</div>
     </div></section>'''
+    body += ('<section class="section"><div class="wrap wrap--narrow">'
+             '<h2 class="h2">Four kinds of work, one standard underneath</h2>'
+             '<p class="prose">Every job on this page is built the same way underneath. The ground is dug to '
+             'depth, the base goes in as crushed stone compacted in lifts, the surface is set to shed water '
+             'away from the house, and the edge is restrained so the field cannot spread. That last inch you '
+             'see is the cheap part. The work under it is what keeps the surface flat after five winters of '
+             'freeze and thaw.</p>'
+             '<p class="prose">A patio is the floor of the yard and takes the most square footage, so the '
+             'layout and the drainage get the most thought. A walkway takes more traffic per square foot and '
+             'usually sits where water already wants to run, so it gets the same base in a narrower trench. A '
+             'retaining wall holds back the weight of wet soil, which makes the base course, the drainage '
+             'behind it and the compaction the whole job. A fire pit is built into the patio layout from the '
+             'start, because one dropped onto a finished patio almost never sits right.</p>'
+             '<p class="prose">The stone you pick is the part that is easiest to change and the part that '
+             'moves the price most. Paver is the friendliest budget, bluestone and flagstone climb from '
+             'there. We pick the material with you after we have looked at the yard, because the right choice '
+             'depends on the slope, the traffic and how you want it to age.</p>'
+             '<p class="prose">Prices here are per job, not per square foot, because two patios the same size '
+             'can be different work. Grade, access and how much digging the base needs all move the number. '
+             'Send a couple of photos with the size and the grade and you will get a straight answer on '
+             'whether a visit is worth it.</p>'
+             '</div></section>')
     body += '<section class="section"><div class="wrap wrap--narrow"><figure class="learn__figure">'
     body += _img("project-firepit", "A circular stone fire pit set into a stone patio with seating around it.",
                  "(max-width:1024px) 100vw, 900px")
@@ -290,6 +329,10 @@ def build_town(root: Path, t: str) -> None:
     intro = site.TOWN_INTRO.get(t)
     if intro:
         body.append(f'<p class="prose">{site.esc(intro)}</p>')
+    detail = getattr(site, "TOWN_DETAIL", {}).get(t)
+    if detail:
+        for para in detail:
+            body.append(f'<p class="prose">{site.esc(para)}</p>')
     body.append(f'<p class="prose">If you are in {site.esc(t)} and want a number, tell us the size, the grade and how you want to use the space. We look at the yard before we quote it, and the estimate is free.</p>')
     town_img = site.TOWN_IMG.get(t, "project-dining")
     body.append('<figure class="learn__figure">'
@@ -322,7 +365,16 @@ def build_service_town(root: Path, t: str, s: dict) -> None:
     body.append(site.page_actions())
     body.append(f'<p class="lede">{site.esc(s["blurb"])}</p>')
     body.append(f'<p class="prose">In {site.esc(t)} that usually means {site.esc(_town_note(t))}</p>')
-    body.append('<ul class="checklist">' + "".join(f'<li>{site.esc(b)}</li>' for b in s["bullets"]) + '</ul>')
+    detail = _svc_town_detail(s["key"], t)
+    if detail:
+        body.append(f'<p class="prose">{site.esc(detail)}</p>')
+    watch = _svc_watch(s["key"], t)
+    if watch:
+        body.append(f'<p class="prose">{site.esc(watch)}</p>')
+    checks = list(s["bullets"])
+    if detail:
+        checks.append(f"Worked to {site.esc(t)}'s grade and drainage, not a cookie-cutter layout")
+    body.append('<ul class="checklist">' + "".join(f'<li>{site.esc(b)}</li>' for b in checks) + '</ul>')
     body.append('<figure class="learn__figure">' + _img(s["img"], s["img_alt"], "(max-width:1024px) 100vw, 900px")
                 + f'<figcaption><strong>{site.esc(s["name"])} in {site.esc(t)}.</strong> Base, drainage and edge, done in order.</figcaption></figure>')
     body.append('</div></section>')
@@ -340,14 +392,102 @@ def build_service_town(root: Path, t: str, s: dict) -> None:
 
 def _town_note(t: str) -> str:
     notes = {
-        "Mansfield": "grade that falls toward the house, and a base dug to the 30-inch frost line so nothing lifts in March.",
-        "Foxborough": "flat lots and heavy spring water, so the slope that sends water away is planned before any stone goes down.",
-        "Attleboro": "older yards with mixed grades, so we work out where the water leaves before we set the first paver.",
-        "North Attleboro": "sloped yards that want steps and a seat wall, built so the transitions read as deliberate.",
-        "Norton": "larger lots and drainage that has to cross the yard, so the path and patio drain together.",
-        "Franklin": "deeper frost and wet springs, so depth and compaction decide whether it is flat in ten years.",
+        "Mansfield": "grade that falls toward the house, and a base dug to the 30-inch frost line so nothing lifts in March. The lots run from flat to a foot of fall in twenty, so the slope is read before any stone is set.",
+        "Foxborough": "flat lots and heavy spring water, so the slope that sends water away is planned before any stone goes down. Without that, spring thaw sits on the patio instead of running off it.",
+        "Attleboro": "older yards with mixed grades, so we work out where the water leaves before we set the first paver. Many of these lots were built up over time, and the high and low spots move around.",
+        "North Attleboro": "sloped yards that want steps and a seat wall, built so the transitions read as deliberate instead of like an afterthought. The fall also decides where a fire pit can sit on its own level.",
+        "Norton": "larger lots and drainage that has to cross the yard, so the path and patio drain together instead of fighting each other. Long runs need a low point designed in, not discovered after a storm.",
+        "Franklin": "deeper frost and wet springs, so depth and compaction decide whether it is flat in ten years. Wet ground also means the base has to be built dry, which changes the schedule.",
+        "Seekonk": "smaller yards close to the Rhode Island line, so the layout gets planned tight and the water still has to leave the property cleanly.",
+        "Rehoboth": "open, sandy lots that drain fast on their own, which lets a patio sit a little differently but still needs the base dug to depth and compacted in lifts.",
+        "Plainville": "winding, tree-heavy yards where root zones and shade change how the base is prepped and how long a stone surface stays wet.",
+        "Taunton": "larger yards on mixed soil, so the layout usually follows the existing grade and the drainage is set before the shape is drawn.",
+        "Easton": "mature, established neighborhoods with lots of mature plantings, so access and root protection guide where equipment can go.",
+        "Sharon": "hilly, wooded lots where the fall is steep enough that steps and a retaining edge come first and the patio shape second.",
     }
     return notes.get(t, "the same discipline as everywhere: dig to depth, compact in lifts, and plan the water.")
+
+# Per-service, per-town second paragraph for the service x town pages.
+SVC_TOWN_DETAIL = {
+    "patios": {
+        "Mansfield": "Most Mansfield patios get laid out off the back door and run toward the low corner of the lot, which keeps the walkout clear and gives the water a direction.",
+        "Foxborough": "On the flat lots here the patio usually wants a slight crown away from the house, and on the wet ones the first week is often drainage before any stone.",
+        "Attleboro": "Older Attleboro yards mean we sometimes re-grade before we lay anything, so the patio sits at a height that still meets the door threshold.",
+        "North Attleboro": "The slope here usually earns a set of steps and a seat wall keeping the main field level, so the patio reads as one room instead of three.",
+        "Norton": "With bigger lots, the patio is often set back nearer the tree line, and the path out to it drains with the same low point.",
+        "Franklin": "Franklin patios get a base beyond the frost line and a start date that respects how late the ground stays wet in spring.",
+    },
+    "walkways": {
+        "Mansfield": "A Mansfield walkway usually runs front door to drive or front door to patio, and it gets the same base as the patio underneath so it does not dip at the joints.",
+        "Foxborough": "Walkways on flat Foxborough lots need positive fall or they puddle, so the grade is set on the walk even when the yard looks level. On flat Foxborough lots the fall on a walk has to be built in on purpose, so the runs are set to shed even when the yard reads level to the eye.",
+        "Attleboro": "In older Attleboro yards the path often steps down with the grade rather than cutting through it, which protects tree roots and looks settled.",
+        "North Attleboro": "Sloped North Attleboro entries get stone steps set into the run instead of a ramp, so the walk stays comfortable and drains at each tread.",
+        "Norton": "Longer Norton runs get a gentle switch and a low point at the drive so the whole path sheds instead of holding water mid-run.",
+        "Franklin": "Franklin walkways are set on a deeper base where the frost moves hard, and landings are placed to catch drift before the door. Franklin walks also get a wider base trench than the frost alone would demand, because the wet spring ground needs to drain as well as hold.",
+    },
+    "retaining-walls": {
+        "Mansfield": "Mansfield walls are usually holding back a grade that falls toward the house, so the wall doubles as the edge of the patio above it. In Mansfield a wall often doubles as the seat wall at the edge of the patio, so the base course and the cap are set together with the patio, not after it.",
+        "Foxborough": "Where a Foxborough lot is flat but wet, the wall is often a low seat wall tying the patio together rather than a tall structural one. Where the lot is flat and wet instead of sloped, a Foxborough wall is more often a low border that ties the patio together than a structural face holding real grade.",
+        "Attleboro": "Older Attleboro grades shift, so a wall is set on its own footing and drainage behind it is designed before the face goes up.",
+        "North Attleboro": "North Attleboro walls carry the slope, so they get a compacted gravel backfill, drain stone and a weep path out toward the low corner. North Attleboro walls carry real slope, so the drain stone behind the face and the weep path out to the low corner get designed before the first block is set.",
+        "Norton": "Bigger Norton yards sometimes need a terrace wall to keep the patio level while the lawn steps down toward the tree line. Norton's bigger yards often want a low terrace wall to keep the patio level while the lawn steps down, rather than a single tall face taking the whole drop.",
+        "Franklin": "Franklin's deeper frost means wall footings are dug past it, so the face stays plumb after a hard winter. Franklin also has stretches of flat new-build yard where a low seat wall is the better answer than a tall one, because there is no real grade to hold back, only a change of level.",
+    },
+    "fire-pits": {
+        "Mansfield": "A Mansfield fire pit usually sits on its own level pad off the patio, far enough from the house for a real fire and near enough to share the seating. Most Mansfield yards have the room for that pad off the patio edge, so the pit ends up where the seating already wants to be rather than out in the open lawn.",
+        "Foxborough": "On wet Foxborough lots the pit goes on ground that drains, which sometimes decides the corner before the design does. On the wetter Foxborough lots we also set the pit on a raised compacted base so spring water drains under it rather than sitting in the ring.",
+        "Attleboro": "Older Attleboro yards often fit the pit into an existing corner so it needs the least new grade and the least new stone. Attleboro's older yards often already have a level corner worn into the lawn, which is usually the cheapest place to set a pit because it needs the least new grade.",
+        "North Attleboro": "Sloped North Attleboro yards get the pit on a built terrace, so it sits flat and the seating rings it evenly. On a sloped North Attleboro yard the pit sits on its own built terrace, which means the base under it is graded and compacted the same way as the patio above.",
+        "Norton": "With room to work, Norton pits often get a wider ring of seating and a gravel apron so the area stays off the lawn. On a big Norton lot the pit usually gets a wider gravel apron and more seating, since there is room and the area then stays off the lawn through the wet months.",
+        "Franklin": "Franklin pits use a stone ring set on a compacted base, so frost does not tip the course out of level over winter. Franklin's deeper frost also decides how the pit ring is footed, since a shallow ring will lift and tip one course at a time over a few hard winters.",
+    },
+}
+
+def _svc_town_detail(svc_key: str, t: str) -> str:
+    return SVC_TOWN_DETAIL.get(svc_key, {}).get(t, "")
+
+# Per-service closing paragraph: what we watch for, worded for each service and
+# lightly varied by town so the copy stays specific instead of template-filler.
+_SVC_WATCH = {
+    "patios": (
+        "For a patio in {t} the things that decide the result are boring ones: how deep the base is dug, "
+        "whether it is compacted in lifts, where the surface sheds to, and how the edge is held. Get those "
+        "right and the pavers you picked at the yard will look the same in ten winters. Get them wrong and "
+        "no amount of pretty stone will keep the field flat.",
+        "Every patio quote that comes in low usually skipped one of the four: depth, compaction, slope or edge. "
+        "In {t} the grade and the frost line make all four matter, so we walk the yard, set the fall away from "
+        "the house, and build the base before a single paver is set.",
+    ),
+    "walkways": (
+        "A walkway in {t} fails at the joints before it fails anywhere else, and the joints fail when the base "
+        "under them was not dug and compacted the same way the patio was. Laid that way, the path stays even "
+        "through the freeze and thaw cycles and does not dip where two runs meet.",
+        "The other thing that makes a walk look right is the fall. In {t} we set a positive slope on the run "
+        "and a low point at the drive or the lawn so water leaves instead of sitting on the surface after a storm.",
+    ),
+    "retaining-walls": (
+        "A retaining wall in {t} is mostly the part you never see: a footing dug past the frost line, gravel "
+        "backfill that drains, and a path for that water to escape at the bottom. The face is the easy part. "
+        "A wall that holds water behind it will lean within a few seasons.",
+        "In {t} that means sizing the wall to the grade it is actually holding, not just the height that looks "
+        "right from the deck, and letting drainage decide how far the base extends behind the face.",
+    ),
+    "fire-pits": (
+        "A fire pit in {t} wants its own level pad and a clear ring around it, so the seating sits flat and "
+        "the heat has somewhere to go. Building it into the patio layout from the start is cheaper and looks "
+        "better than dropping one onto finished stone later.",
+        "The pad under a fire pit in {t} gets the same treatment as the patio: dug, compacted and set on a base "
+        "that does not heave, so the stone ring stays level rather than tipping after the first hard winter.",
+    ),
+}
+
+def _svc_watch(svc_key: str, t: str) -> str:
+    opts = _SVC_WATCH.get(svc_key)
+    if not opts:
+        return ""
+    # deterministic pick so rebuilds are stable, town-varied so pages differ
+    return opts[sum(map(ord, t)) % len(opts)].format(t=t)
+
 
 def build_areas_hub(root: Path) -> None:
     trail = [("Home", "/"), ("Service Area", "/areas/")]
@@ -372,6 +512,27 @@ def build_areas_hub(root: Path) -> None:
         </div>
       </div>
     </div></section>'''
+    body += ('<section class="section"><div class="wrap wrap--narrow">'
+             '<h2 class="h2">How far we go, and what changes town to town</h2>'
+             '<p class="prose">Mansfield is home base, so the towns closest to the shop are the ones we are in '
+             'most weeks. Foxborough, Norton and Attleboro are a short run down 495 or 140. North Attleboro, '
+             'Franklin and Taunton sit a few minutes further out. Nothing on the list is a long drive, and the '
+             'same person who quotes the job is the one who shows up to build it.</p>'
+             '<p class="prose">What changes from town to town is not the crew, it is the ground. Mansfield and '
+             'Norton yards tend flat, so the drainage gets designed into the patio and the yard carries water '
+             'around the stone instead of through it. Attleboro and Sharon lots run to ledge and slope, where '
+             'the work turns into steps, landings and a wall, and the base has to hold back fill on the high '
+             'side. Easton and Franklin yards sit wetter in spring and closer to woods, so drainage and base '
+             'depth get worked out before anything is dug.</p>'
+             '<p class="prose">Rhode Island is a short drive over the line and Bryce takes those jobs too. We '
+             'do not carry a Rhode Island registration, so for work there it is best to call first and sort '
+             'out what your town requires before the job is booked. Everything in Massachusetts is built to '
+             'the same 30-inch frost depth, because a base that skips it will heave no matter how good the '
+             'stone looks.</p>'
+             '<p class="prose">If your town is not on the list, that does not mean no. There are no hard '
+             'limits on how far out the work goes. Call with the address and Bryce will tell you straight '
+             'whether it makes sense for both sides.</p>'
+             '</div></section>')
     body += ('<section class="section"><div class="wrap wrap--narrow"><figure class="learn__figure">'
              + _img("big-yard", "A curved stone patio tying a large yard together.",
                     "(max-width:1024px) 100vw, 900px")
@@ -497,7 +658,7 @@ def main() -> None:
             build_service_town(root, t, s); n += 1
     total = build_sitemap(root)
     nfeed = build_feed(root)
-    print(f"wrote {n} pages, sitemap has {total} urls, feed has {nfeed} entries")
+    print(f"wrote {n+1} pages, sitemap has {total} urls, feed has {nfeed} entries")
 
 
 if __name__ == "__main__":

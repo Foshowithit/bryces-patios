@@ -122,3 +122,20 @@ interstitial); they are left in place as a record of that run.
 - Facebook public page: unreadable
 - SERP: skipped (use --serp, Google rate-limits this IP)
 - No change, nothing broken.
+
+### Content-depth pass — 2026-10-08 (ck64)
+
+Full-site depth rebuild, copy-only.
+
+| Check | Result |
+|---|---|
+| Pages emitted | **56** |
+| Word depth (site avg) | **507** (was 479) |
+| Min page depth | **400** (`areas/north-attleboro/walkways`, `areas/norton/walkways`) |
+| Guides ≥550 words | **12 / 12** — none below 550 |
+| Town pages ≥420 words | **12 / 12** — none below 420 |
+| Service×town ≥400 words | **24 / 24** — none below 400 |
+| Voice gate (human-voice) | **SHIP — fatal=0 tier1=0 p1=0, 1.3/100 (24,740 words)** |
+
+Depth history: 314 → 325 → 378 → 398 → 423 → 435 → 462 → 479 → **507**.
+Fixed one filler phrase ("in terms of") that the gate flagged in `learn/yard-grades`.

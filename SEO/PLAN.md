@@ -40,13 +40,14 @@ layout and copy in one commit. Google probing: ≤3 queries/session, 10–20 s a
 | Live site | `https://brycespatios.work` — 56 pages, GitHub Pages, `main` |
 | Pages | 1 home · 1 learn hub · 12 guides · 1 services hub · 4 service · 1 areas hub · 12 town · 24 service×town = **56** |
 | Sitemap | **56 URLs**, `<image:image>` on key photos |
+| Content depth | site avg **507** words · guides ≥550 · towns ≥420 · service×town ≥400 (all met) |
 | Rich results | `LocalBusiness` (`LandscapingBusiness`) + `FAQPage` + `BreadcrumbList`, `@id`-linked |
 | Google Business Profile | **NONE.** Biggest single reason he is invisible on Maps. |
 | Indexed pages | ~1 (fresh URL, no GBP, no backlinks yet) |
 | Reviews | 0 |
 | Citations | 0 live (package ready in `SEO/CITATIONS.md`) |
 | Monitoring | weekly crontab watcher live (`~/tmp/bryce-seo-watch/watch.py`, Mon 09:00) |
-| Voice gate | last full-site run **SHIP, 0/0/0, 0.9/100 (21,467 words)** |
+| Voice gate | last full-site run **SHIP, 0/0/0, 1.3/100 (24,740 words)** |
 
 ---
 
