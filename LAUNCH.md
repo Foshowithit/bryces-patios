@@ -39,7 +39,7 @@ These are live values. Change them in one pass if they ever change:
 | **Phone** | `(508) 212-6433` / `+15082126433` | nav, mobile menu, form success, footer, sticky bar, structured data |
 | **Email** | `bryces-patios@agentmail.to` | footer, `assets/js/main.js`, structured data |
 | **Address** | 885 West St, Mansfield, MA | structured data |
-| **Service area** | SE Massachusetts and Rhode Island | service area section, structured data |
+| **Service area** | Southeastern Massachusetts (12 MA towns) | service area section, structured data |
 | **Social handles** | `@brycespatios` | footer icons (unclaimed as of 2026-10-08) |
 
 The social handles are placeholders until claimed. The footer links point at the URLs

@@ -145,12 +145,12 @@ Short beats clever. The photo does the work; the caption just needs to not get i
 
 **Before/After**
 > Before → after.
-> Four days, one crew.
+> Base in, pavers down, edges locked.
 > Mansfield, MA. Free estimates — link in bio.
 
 **Process**
 > This is the part nobody photographs.
-> 8 inches of compacted base. It's why the surface will still be flat in ten years.
+> A compacted aggregate base is what keeps the surface flat down the road.
 > Norton, MA.
 
 **Education**
