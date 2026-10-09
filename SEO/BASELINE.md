@@ -565,3 +565,43 @@ There are **no `/about/` or `/contact/` routes, and none are linked.** They are
 → **exit 1, zero matches** (quote the glob; unquoted `*.html` makes zsh fail with
 *no matches found*). **Do not invent `/about/` or `/contact/` pages.**
 
+
+---
+
+## ck114 — 2026-10-09 — LIVE QA via real browser + BOTH-engine index truth
+
+**Tool:** ego-browser (real Chromium) against `https://brycespatios.work/`, 7 viewport
+shots `y=0…13,000`, plus the film modal. Screenshots: `/Users/adam26/bryce-live-qa/`.
+
+### Live page health (measured, not assumed)
+- title `Stone Patio Installation in Mansfield, MA | Bryce's Patios`
+- imgs **17**, **broken 0** · `tel:` **5** · `sms:` **0** (the one text CTA is
+  `#send-sms` → `sms:` deep link on tap, by design) · exactly **1 `<h1>`**
+- `overflowX: false` · viewport 1602 · `docH` 13,908
+- section tops all present: work 1753 · process 2973 · craft 4972 · about 6341 ·
+  learn 7255 · area 10227 · faq 11578 · estimate 12358
+- **Film modal works:** `#film-launch` → `<video>` `showreel-1080p.mp4`, `muted:true`,
+  `paused:false`, `readyState:4`, `duration:32.233`, `1920×1080`, `currentTime` advancing.
+  The AI-rendering disclosure line renders under the film as intended.
+
+### ⚠️ THE REAL GAP — both engines index ZERO pages (re-measured this session)
+- **Google** `site:brycespatios.work` → *"Your search … did not match any documents."*
+  (`resBlocks 0`). Same SERP shows Google's own promo:
+  *"Do you own brycespatios.work? Get indexing and ranking data from Google."*
+  → **proves Search Console is NOT verified.** No GSC = Google has no submission path.
+- **Bing** `site:brycespatios.work` → *"There are no results"*; the 10 `b_algo`
+  blocks are irrelevant fallbacks (`abrhs.abschools.org` etc.). Bing = **0 indexed**.
+- Conclusion: IndexNow `HTTP 200` does **not** index a brand-new domain (confirmed
+  3rd time). The only fast path to Google is **GSC (DNS TXT via Porkbun)**; Bing's
+  is **Bing WMT**. Both are BLOKED on Bryce's account/identity.
+
+### IndexNow re-ping (81 live URLs, this session)
+Re-submitted all 81 `<loc>` URLs to `api.indexnow.org` + `www.bing.com/indexnow`
+with `keyLocation https://brycespatios.work/b8be78077b664cf338d750ff4799d248.txt`
+(keyfile serves 200). Kept as hygiene; **do not expect indexation from it.**
+
+### Honest status
+The site is **live, clean, and fast** (17 imgs, 0 broken, 1 h1, no overflow, film
+plays). It is **invisible in search** and that is **not fixable by us** — it needs:
+(1) Bryce's Gmail for GBP + GSC (DNS TXT), (2) Bing WMT (imports from GSC), then
+(3) citations. On-site work is at target; discovery is 100% identity-blocked.
