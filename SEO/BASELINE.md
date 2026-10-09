@@ -1,5 +1,30 @@
 # Bryce's Patios - Search Baseline
 
+## 2026-10-09 (ck121) - full-site health after the photo + reel push
+
+`[OURS]` monitoring pass, all measured against the live domain:
+
+- **81/81 sitemap URLs return HTTP 200.** No redirects, no 404s.
+- **0 broken internal links** across every page (checked every `href`/`src` that
+  starts with `/` against the filesystem).
+- **0 accessibility blockers**: every `<img>` has an `alt`, every page has exactly
+  one `<h1>`, no empty links.
+- **0 JSON-LD parse failures**; `sitemap.xml` and `feed.xml` both well-formed XML.
+- **Voice gate SHIP** (fatal 0, tier1 0, p1 0) on all 82 pages and on the GBP
+  description + Q&As.
+- IndexNow re-pinged after the push (HTTP 200, 81 urls).
+
+**Identity entry points verified in a browser** (was: unverified): GBP
+`business.google.com/add`, GSC `search.google.com/search-console/welcome`, Apple
+`business.apple.com`, Bing Places `bingplaces.com`. **Adam's Google session
+(`adamnorm4wd@gmail.com`) is signed in on this box**, so the Google rows are one
+sitting with Adam as Manager, not a hard block.
+
+**Still 0 indexed on Google and Bing.** Unchanged and expected: the domain is new
+and the profile does not exist. Nothing on-site moves this.
+
+---
+
 ## 2026-10-09 (later) - the showreel was still AI; it is real now
 
 **Commit `1b2ae88` (reel) + `af1343b` (video docs).** Live and verified.
