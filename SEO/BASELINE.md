@@ -1187,3 +1187,21 @@ Built live via the ego browser at `business.google.com`. Location id `1285038938
 **Docs fixed in the same change (commit `ddcd449`):** `SEO/GBP.md`, `SEO/CITATIONS.md`, `SEO/OFFSITE-CHECKLIST.md` no longer advertise the 10 RI towns or the "decade of freeze-thaw" claim — they now match the RI-free site.
 
 **Next off-site (unchanged order):** Search Console (add `brycespatios.work`, DNS TXT via Porkbun, submit `sitemap.xml`), Facebook page website+phone, then Yelp/BBB/Nextdoor/Houzz/Angi citations.
+
+## ck131 — Search Console domain property created (DNS TXT pending on Porkbun)
+
+**Date:** 2026-10-09 · ego browser, Adam's Google session.
+
+- Added a **Domain property** `brycespatios.work` in Search Console (Adam's account, which already had `bearingbrain.com`).
+- Search Console is now waiting on the DNS TXT record. **The record to add at Porkbun:**
+
+```
+Type:  TXT
+Host:  @            (root domain — Porkbun may show it blank or as brycespatios.work)
+Value: google-site-verification=51P1vKUCkN9qk1Xc8qmDLSS6jGG2rMKTcRNYOExjhjU
+TTL:   default
+```
+
+- After the record propagates, press **VERIFY** in Search Console, then **Sitemaps → submit `https://brycespatios.work/sitemap.xml`**.
+
+**Status:** GBP built (verification pending a human, ck130); Search Console property created (TXT pending a human); Facebook + citations not started.
