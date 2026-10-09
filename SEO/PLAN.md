@@ -128,7 +128,7 @@ self-serve path unconfirmed, must be confirmed in a real browser before promisin
 | F9 | **Bark.com** | HUMAN | reachable (301) | Free pro signup exists; leads are paid. Sign up for the free profile only, same rule as Angi: **do not buy shared leads** for a one-man shop. |
 | F10 | **Pinterest** | HUMAN | reachable | Design-led; patio/walkway/fire-pit imagery travels well here and links back. Needs owned photos ideally — AI imagery only with the same disclosure rule. |
 | F11 | **YouTube** (the mini showreel) | HUMAN | **assets real + ready (ck120)** | The 16:9 / 9:16 / 1:1 cuts are re-rendered from **eight real job photos** and committed under `assets/video/` (`…-dba670bb.mp4`). Silent, 29 s, no audio stream. Upload = HUMAN. This is the one off-site surface where we already have finished, real assets. |
-| F12 | **MA HIC (Home Improvement Contractor) registry** | HUMAN | **VERIFY — never assert** | Massachusetts publishes a public HIC registration lookup. **Only useful if Bryce actually holds an HIC registration.** We must not claim a licence he does not have. If he is registered, a matching registry entry is a top-tier trust citation; if he is not, this row is struck and nothing is written anywhere. |
+| F12 | **MA HIC (Home Improvement Contractor) registry** | HUMAN | **URL VERIFIED (ck120); never assert a licence** | Massachusetts publishes a public HIC registration lookup. **Only useful if Bryce actually holds an HIC registration.** We must not claim a licence he does not have. If he is registered, a matching registry entry is a top-tier trust citation; if he is not, this row is struck and nothing is written anywhere. |
 | F13 | **Apple Business Connect** | HUMAN | **DONE** as B5 | Listed here only so nobody adds it twice. |
 | F14 | **Map-data partners** (Waze · TomTom · Here WeGo `wego.here.com`) | — | **BLOCKED (no direct self-serve)** | There is no free contractor signup for these. Place data reaches them downstream via Apple/Bing/Yelp/Foursquare-style providers. So the *real* action is F2 + B4 + B5, not signing up for Waze directly. Marking them here stops a future session from burning hours hunting a signup that does not exist. |
 
@@ -433,6 +433,6 @@ F table did not exist. This checkpoint adds it.
 | `bark.com` | 301 | reachable |
 | `yelp.com` | 403 | WAF — not a real read, do not conclude it is down |
 | `biz.yandex.ru` | 000 | did not resolve here — **unverified** |
-| `mass.gov` (HIC pages) | 403 | WAF — **registry path unverified, must be checked in a browser** |
+| `hicsearch.attorneygeneral.gov` | 200 | **the real MA HIC lookup** (verified in-browser 2026-10-09). Fields: Registration No., Business Name, Primary Applicant, Address, City, State. The old `elicensing21.mass.gov` ePLACE paths now **404** — DOL moved to eLIPSE. `contractorhub.mass.gov/s/hic-contractor-search` is the newer state hub. |
 
 ---

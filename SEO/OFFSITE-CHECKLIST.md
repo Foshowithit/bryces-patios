@@ -131,9 +131,13 @@ These add citation depth once the profile exists. Order by impact. Full detail i
       self-serve add-business page is `https://business.yandex.ru/sprav/index`
       (`yandex.com/sprav` redirects there). A contractor self-serve does exist.
       HUMAN signs up and copies the NAP block from `SEO/CITATIONS.md` §0.
-- [ ] `[OURS]` **MA HIC registry** — check the state lookup to see whether Bryce is
-      registered. Never claim a licence he does not hold. If he is registered, this
-      is a top-tier trust citation, and HUMAN adds it to the listings.
+- [ ] `[OURS]`/`[HUMAN]` **MA HIC registry** — the lookup is
+      **`https://hicsearch.attorneygeneral.gov`** (verified in-browser 2026-10-09;
+      fields: Registration No., Business Name, Primary Applicant, City, State). Search
+      `Bryce` + State `Massachusetts`. Never claim a licence he does not hold. If he
+      is registered, this is a top-tier trust citation and HUMAN adds it to the
+      listings. (Do not use `elicensing.mass.gov` — DOL moved to eLIPSE and the old
+      paths 404.)
 
 **Do not bother with:** Waze, TomTom, Here WeGo marketplaces, or Yandex
 "map" signups — there is **no direct contractor self-serve** for those; place data
