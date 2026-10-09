@@ -1,5 +1,30 @@
 # Bryce's Patios - Search Baseline
 
+## 2026-10-09 (ck122) - the crawl path is clean; IndexNow is genuinely accepted
+
+The open question was whether our IndexNow pings were being silently rejected, which
+would explain Bing's 0 index. Answer: they are not.
+
+- IndexNow key file is live and exact: `/_<key>.txt` returns 200 with the key
+  string, so the ownership proof Bing requires is satisfied.
+- A direct POST to `api.indexnow.org/indexnow` for two URLs returns **HTTP 200**
+  from Microsoft's edge (`x-msedge-ref` present). Accepted, not rejected.
+- **Googlebot and bingbot both fetch the homepage and get 200 with the full
+  62,688-byte page.** No WAF, no consent wall, no cloaking. Hosting is GitHub
+  Pages behind Fastly; no Cloudflare bot challenge.
+- `robots.txt` allows all and advertises both the sitemap and `LLMs-Txt`.
+
+So the 0-index is the plain new-domain + no-profile reality, not a technical fault
+we can fix on-site. What moves it is a verified GBP and Search Console, which are
+account actions.
+
+**Content-thinness check (the risk with 61 area pages):** pairwise 6-gram Jaccard
+between area pages is **0.19-0.23**, i.e. roughly 80% unique text per pair. Not
+doorway pages. Site prose totals **46,242 words** across 82 pages; guides run
+710-940 words each.
+
+---
+
 ## 2026-10-09 (ck121) - full-site health after the photo + reel push
 
 `[OURS]` monitoring pass, all measured against the live domain:
