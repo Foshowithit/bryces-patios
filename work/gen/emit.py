@@ -333,6 +333,9 @@ def build_service(root: Path, s: dict) -> None:
     body.append('<ul class="checklist">' + "".join(f'<li>{site.esc(b)}</li>' for b in s["bullets"]) + '</ul>')
     body.append('<figure class="learn__figure">' + _img(s["img"], s["img_alt"], "(max-width:1024px) 100vw, 900px")
                 + f'<figcaption><strong>{site.esc(s["name"])}.</strong> Built on a full-depth compacted base.</figcaption></figure>')
+    if s.get("video"):
+        v = s["video"]
+        body.append(_video_block(v["src"], v["poster"], v["caption"], v["label"]))
     body.append('</div></section>')
     body.append(f'<section class="section"><div class="wrap wrap--narrow">'
                 + _sec_head("Common questions", f"{s['name']} questions, answered")
@@ -343,7 +346,11 @@ def build_service(root: Path, s: dict) -> None:
     html_str = site.render_shell(
         title=f'{s["name"]} Built Right | Bryce\'s Patios',
         desc=s["meta"].format(town=town), url=f'{site.BASE}/services/{s["key"]}/', trail=trail,
-        body="".join(body), ld_extra=[_faq_ld(faqs, f'{site.BASE}/services/{s["key"]}/')],
+        body="".join(body), ld_extra=(
+            [_faq_ld(faqs, f'{site.BASE}/services/{s["key"]}/')]
+            + ([_video_ld({"title": s["name"], "video": s["video"]}, f'{site.BASE}/services/{s["key"]}/')]
+               if s.get("video") else [])
+        ),
         svc_links=_svc_links(), town_links=_town_links())
     write_page(root, f"services/{s['key']}/index.html", html_str)
 

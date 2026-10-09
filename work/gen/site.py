@@ -335,6 +335,12 @@ SERVICES = [
                "creep. The visible part is the last inch. Everything that decides "
                "whether it's still flat in ten years is underneath."),
         img="project-dining", img_alt="A finished curved paver patio with a low seat wall and plantings along the edge.",
+        video=dict(
+            src="patio-base-explainer-1080p-silent.mp4",
+            poster="craft-base",
+            caption="Twenty-three seconds, no sound: how the base under a patio is dug, built and compacted.",
+            label="How a patio base is built: a silent, captioned walk through the dig, the compacted base, the setting bed and the finished pavers.",
+        ),
         prose=[
             "A patio is sized by how you use the yard, not by the biggest number that fits. A table for six "
             "wants about twelve by twelve of open stone, and the chairs need room to pull back without "
