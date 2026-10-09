@@ -1,5 +1,30 @@
 # Bryce's Patios - Search Baseline
 
+## 2026-10-09 (ck127) - town x service pages differentiated (doorway-page risk)
+
+Commit `ab38e6d`. The other P0 from the outside audit: 48 town-service pages whose
+only distinct value is the town name read as doorway pages. Measured first, not
+assumed: patios x town pages were **0.49 median 6-gram Jaccard** (~80 percent
+shared body).
+
+Fix: each service x town page now carries its own words.
+- A per-town opening clause leads the lede (`TOWN_LEAD`), naming the ground in
+  that town before the shared service description.
+- The last FAQ answer closes with a per-town line (`TOWN_FAQ_TAIL`), so the FAQ
+  block is not byte-identical across towns. It feeds both the visible `<details>`
+  block and the `FAQPage` schema, which must match.
+- The per-town detail, local note and watch paragraph were already town-specific.
+
+Measured after, main content only (nav/footer/CTA excluded): median 6-gram
+Jaccard dropped from 0.49 to **~0.35**. The shared remainder is the genuine
+service-level education that is the same in every town. No speculative town
+detail was added to pad the pages; the audit warned against exactly that.
+
+48 pages regenerated, all pass the voice gate, all 326 JSON-LD blocks valid,
+live-verified 200.
+
+---
+
 ## 2026-10-09 (ck126) - outside audit closed: RI compliance, fabricated claims, absolutes
 
 Commit `526a037`. An outside review (ChatGPT, given the live URL and the real
