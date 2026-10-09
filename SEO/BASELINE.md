@@ -772,3 +772,53 @@ requires a new `V` **and** a new reel filename in the **same** commit. And a
 green `curl` proves nothing about behaviour — the step-2-to-3 false alarm cost a
 session. Exercise the interaction in a real browser, and scope DOM selectors to
 the visible panel.
+
+---
+
+## ck118 — 2026-10-09 · indexation probe honesty, capy craft study, Bryce ask ready
+
+**Bing scrape is dead for this purpose. Stop re-probing it.** `site:brycespatios.work`
+through the headless browser now returns a **bot challenge wall** ("One last step /
+Please solve the challenge below to continue"), with an `rdr=1` redirect and **0
+`li.b_algo` result blocks**. Nothing readable comes back. This matches every earlier
+probe: Bing shows the domain as **not indexed**. The lever is **Bing Webmaster Tools
+plus Google Search Console**, and both need Bryce's own identity (Gmail / DNS TXT).
+Do not spend another session scraping Bing. Record the number once from WMT/GSC
+after access is granted.
+
+**IndexNow re-pinged after the `c3d23cb` push:** HTTP **200**, **81 urls** submitted.
+IndexNow is hygiene only. It does not index a brand-new domain by itself, and Google
+does not participate in IndexNow at all.
+
+**Google probe cadence is unchanged and still binding:** at most 3 queries per
+session, 10–20 seconds apart, at most once per hour. The egress IP gets walled
+otherwise.
+
+**capy.ai craft study (visual quality reference).** Fetched and rendered
+`capy.ai` (HTTP 200, 1,085,927 B) and compared it to the live Bryce home page.
+
+- capy: `abcSocialMono`, white background, black text, h1 76px / line-height 76px
+  (ratio 1.0) / letter-spacing -0.704px / weight 400, tiny ALL-CAPS section kickers.
+- bryce: Inter + Fraunces, background `rgb(247,244,238)`, h1 99.2px / line-height
+  97.2 / letter-spacing -3.472px / weight 400, h2 54.4px / line-height 57.7.
+- The site CSS already carries the same craft: radii `--r-sm 3px / --r-md 5px /
+  --r-lg 8px`, low-alpha shadows (`0 1px 2px rgba(20,23,26,.04)`), one accent
+  `--moss #55613E`, uppercase eyebrows, a breakpoint ladder, `--ease`
+  `cubic-bezier(.16,1,.3,1)`.
+
+**Verdict: bryce already matches capy's craft level. No CSS churn warranted.**
+capy's dark developer-tool aesthetic does not transfer to a warm outdoor contractor
+anyway. Adopt the craft, not the look. The only candidate tweak (a slightly smaller
+h1 on the 350–768 ladder) is low value and not worth touching passing CSS.
+
+**`work/BRYCE-TEXT.md` created (56 lines, voice gate SHIP).** Text-message-ready
+photo ask, two versions: V1 to send today (6 numbered phone shots in plain
+language, no filenames), V2 the exact filenames for drop-in, plus a "do not send"
+block. This is the actionable form of `work/BRYCE-SHOT-LIST.md`. Gate result:
+fatal=0, tier1=0, p1=0, score 1.5/100. One earlier Tier-1 flag (`landscape`) was
+fixed to `wide`. `work/*` is gitignored except `gen/`, `indexnow-ping.sh`,
+`.indexnow-key` — never `git add -f` these.
+
+**New artifact for the human sitting:** `work/BRYCE-TEXT.md` is ready to hand to
+the user to send to Bryce. Off-site submission (GBP, GSC, citations) remains
+blocked on Bryce's Gmail / Porkbun DNS access and is the true remaining gap.
