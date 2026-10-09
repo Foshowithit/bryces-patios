@@ -667,3 +667,50 @@ plays). It is **invisible in search** and that is **not fixable by us** — it n
 On-site is at target and maintenance-only. **Both engines still index ZERO pages** —
 the only fast paths are **GSC (DNS TXT via Porkbun)** and **Bing WMT**, both blocked on
 Bryce's identity. Nothing in this ck changes that.
+
+## ck116 — 2026-10-09 · showreel "voice" root-caused: a stale cache, not a bad build
+
+**The report:** the owner heard a synthetic TTS voice in the showreel, saying
+"good, let's go" repeatedly, and asked for it fixed.
+
+**What the deployed build actually was (verified before touching anything):**
+silent and correct. `assets/js/main.js` had **0** references to `muteBtn` or an
+`Audio()` object, `video.muted = true`, and an aria-label reading
+*"silent: eight real jobs"*. The shipped mp4 had **1 video stream, 0 audio
+streams**. The narrated TTS cut was stripped in `6e34d59`.
+
+**So why did the owner hear a voice? Two stale-cache holes, both now closed.**
+
+1. **The asset cache-buster was never bumped after the strip.** `V` in
+   `work/gen/site.py:17` stayed at `8f6a48a0`, so `main.js?v=8f6a48a0` kept
+   resolving to the older script that still built the audio element. GitHub Pages
+   serves `max-age=600` with an etag that never changed, so a reload inside the
+   window — and any CDN edge holding the old object — handed back the narrated
+   script. The build was right; the URL lied.
+2. **The mp4 had no cache-buster and shared its filename with the narrated Dell
+   master.** `main.js` fetched `assets/video/showreel-1080p.mp4` with no query
+   string, and the Dell's `~/bryce-reel/out/showreel-1080p.mp4` (14,921,367 B,
+   with the aac voice track) carried the same name as the shipped silent file
+   (14,238,968 B). A cached mp4 could therefore serve the voice even after the
+   script was fixed.
+
+**The fix (commit `837df6b`):**
+- `V` bumped `8f6a48a0` → `c41d7b93` in `work/gen/site.py:17`; all 81 emitted
+  pages regenerated; `index.html` and `404.html` hand-patched to match. **82/82
+  pages** now carry `v=c41d7b93` on both `style.css` and `main.js` (164 refs).
+- The reel renamed to **`showreel-1080p-silent.mp4`** so the narrated file can
+  never resolve to that URL again. Updated `main.js` `VIDEO_SRC`, `index.html`
+  JSON-LD `contentUrl`, the sitemap `<video:content_loc>`, and `SEO/VIDEO.md`.
+- Verified: **0** refs to the old video name anywhere in the repo;
+  `node --check assets/js/main.js` passes.
+
+**Live verification (real browser, not curl):** a fresh page load requests
+`main.js?v=c41d7b93`, `style.css?v=c41d7b93`, and
+`assets/video/showreel-1080p-silent.mp4` — nothing else. The served `main.js`
+is byte-identical to local (md5 `ea9fb9555f7a048a66e3ac4662c6d5f8`). The old
+video URL returns **404**; the new one returns **200**, `video/mp4`.
+
+**Lesson recorded:** docs mention the cache-buster must be bumped on every asset
+change; the miss was letting the strip commit and the bump commit come from
+different windows so the *URL* never moved. Any change to `main.js` or the reel
+now requires a new `V` **and** a new reel filename in the same commit.
