@@ -1313,3 +1313,12 @@ their page `loc`. Google clears the error banner on its next read.
 **Why this matters:** this is the first actual indexing feedback the site has
 ever received, and it was actionable. The Search Console + Porkbun API
 verification is already paying for itself.
+
+## ck136 — sitemap resubmitted after the video fix
+
+Resubmitted `https://brycespatios.work/sitemap.xml` in Search Console after the
+`player_loc` fix went live. Search Console confirmed: **"Sitemap submitted
+successfully — Google will periodically check…"** The status row still shows
+the cached "2 errors" from the read before the fix; Google's re-read clears it
+on its own schedule (typically hours). Nothing left to do on this item — the
+fix is live and the resubmission is accepted.
