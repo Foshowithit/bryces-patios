@@ -14,7 +14,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-V = "f4a9c1d2"          # cache-buster, must match index.html
+V = "20461632"          # cache-buster, must match index.html
 BASE = "https://brycespatios.work"
 PHONE_TEL = "+15082126433"
 PHONE_TXT = "(508) 212-6433"
@@ -47,18 +47,18 @@ TOWN_IMG = {
     "Easton": "craft-base", "Sharon": "craft-edge",
 }
 TOWN_IMG_ALT = {
-    "project-dining": "A stone paver patio in dappled shade, with chairs and planters along the edge.",
-    "project-walkway": "Flagstone steps and a low stacked-stone wall rising through a planted bed.",
-    "transform-after": "A capped stone retaining wall stepping up a graded yard.",
-    "big-yard": "A curved stone patio tying a large yard together.",
-    "patio-herringbone": "A herringbone stone patio laid off the back stairs of a house.",
-    "walkway": "A straight stone walkway with a raised edge course beside a planting bed.",
-    "yard": "New pavers with a contrasting border curving into a low block wall.",
-    "steps-detail": "Steps and a landing in a stone patio laid up to the grade.",
-    "transform-before": "A graded yard during patio base preparation.",
-    "stone-arch": "A two-level stone patio in front of a two-level wooden deck.",
-    "craft-base": "A patio partly laid, showing the compacted stone base under the pavers.",
-    "craft-edge": "Edging and base detail on a stone patio built for a cold climate.",
+    "project-dining": "A curved paver patio finished with a low seat wall and plantings in Mansfield, MA.",
+    "project-walkway": "A curved paver walkway and steps with a low seat wall beside a house.",
+    "transform-after": "A finished curved paver patio with a soldier course border and a seat wall.",
+    "big-yard": "A curved stone patio tying a large back yard together.",
+    "patio-herringbone": "Herringbone pavers set in a field over the prepared base course.",
+    "walkway": "A paver walkway curving between a lawn and a planted bed.",
+    "yard": "A finished paver patio and lawn edge with planted beds at the side of a house.",
+    "steps-detail": "Pavers running up to a low stone wall along a mulched planting bed.",
+    "transform-before": "Pavers going down over the compacted aggregate base on a patio build.",
+    "stone-arch": "A large flat stone set as a step in a low garden wall.",
+    "craft-base": "Pavers going down over the compacted aggregate base on a patio build.",
+    "craft-edge": "Herringbone pavers meeting a stacked-stone wall and a mulched planting bed.",
 }
 
 # Per-town read of the local yards. Two short paragraphs, town-specific.
@@ -994,7 +994,7 @@ def footer(service_links: list[tuple[str, str]], town_links: list[tuple[str, str
     <div class="footer__base">
       <p>&copy; <span id="year">2026</span> Bryce's Patios. All rights reserved.</p>
       <p class="footer__fine">Based in Mansfield, MA. Serving southeastern Massachusetts and Rhode Island. {ADDR}. <a href="/feed.xml">Guides feed</a>.</p>
-      <p class="footer__fine">Photographs on this site are AI-generated renderings, not photos of finished Bryce\u2019s Patios jobs. They show the kind of work Bryce builds, until real job photos replace them.</p>
+      <p class="footer__fine">Every photo on this site is a real Bryce\u2019s Patios job around Mansfield, MA.</p>
     </div>
   </div>
 </footer>
