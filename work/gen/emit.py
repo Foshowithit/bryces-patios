@@ -406,7 +406,7 @@ def build_town(root: Path, t: str) -> None:
                 + _faq_block(town_faqs) + '</div></section>')
     body.append(_cta(trail, f"Getting a quote in {t}", "Free estimates, no hard limits on where we go."))
     html_str = site.render_shell(
-        title=f'Stone Patios in {t}, MA | Bryce\'s Patios',
+        title=f'Stone Patios in {t}, MA | Patio Builder',
         desc=f'Owner-operated stone patio, walkway, retaining wall and fire pit installation in {t}, MA. Free estimates from Bryce\'s Patios.',
         url=f"{site.BASE}/areas/{tslug}/", trail=trail, body="".join(body),
         ld_extra=[_faq_ld(town_faqs, f"{site.BASE}/areas/{tslug}/")],
@@ -447,7 +447,7 @@ def build_service_town(root: Path, t: str, s: dict) -> None:
                 + _faq_block(faqs) + '</div></section>')
     body.append(_cta(trail, f"{s['name']} in {t}", "Free estimate, straight answer."))
     html_str = site.render_shell(
-        title=f'{s["name"]} in {t}, MA | Local Patio Builder',
+        title=f'{s["name"]} in {t}, MA | Free Estimates',
         desc=f'{s["name"]} installed in {t}, MA on a full-depth compacted base. Owner-operated, free estimates from Bryce\'s Patios.',
         url=f"{site.BASE}/areas/{tslug}/{s['key']}/", trail=trail, body="".join(body),
         ld_extra=[_faq_ld(faqs, f"{site.BASE}/areas/{tslug}/{s['key']}/")],
