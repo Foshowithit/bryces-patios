@@ -47,8 +47,8 @@ TOWN_IMG = {
     "Easton": "craft-base", "Sharon": "craft-edge",
 }
 TOWN_IMG_ALT = {
-    "project-dining": "A finished stone patio with a dining table, laid on a compacted base.",
-    "project-walkway": "A curved stone walkway leading to a house, set on a compacted base.",
+    "project-dining": "A stone paver patio in dappled shade, with chairs and planters along the edge.",
+    "project-walkway": "Flagstone steps and a low stacked-stone wall rising through a planted bed.",
     "transform-after": "A capped stone retaining wall stepping up a graded yard.",
     "big-yard": "A curved stone patio tying a large yard together.",
     "patio-herringbone": "A herringbone stone patio laid off the back stairs of a house.",
@@ -329,7 +329,7 @@ SERVICES = [
                "bedding layer, and pavers restrained at the edge so the field can't "
                "creep. The visible part is the last inch. Everything that decides "
                "whether it's still flat in ten years is underneath."),
-        img="project-dining", img_alt="A finished stone patio with a dining table, laid on a compacted base.",
+        img="project-dining", img_alt="A stone paver patio in dappled shade, with chairs and planters along the edge.",
         prose=[
             "A patio is sized by how you use the yard, not by the biggest number that fits. A table for six "
             "wants about twelve by twelve of open stone, and the chairs need room to pull back without "
@@ -368,7 +368,7 @@ SERVICES = [
                "usually sits where water wants to run. That means the same discipline "
                "as a patio in a narrower trench: dig to depth, compact the base in "
                "lifts, set the slope so the path drains, and restrain both edges."),
-        img="project-walkway", img_alt="A curved stone walkway leading to a house, set on a compacted base.",
+        img="project-walkway", img_alt="Flagstone steps and a low stacked-stone wall rising through a planted bed.",
         prose=[
             "A walkway gets laid out around the path people already take, not the one that looks neatest on "
             "paper. Watch where the grass is worn and that is usually the line. From there the width gets set "
@@ -645,7 +645,7 @@ dict(
     ],
     note=("<strong>The tell:</strong> a real bid names the base and the drainage. "
           "A price with no breakdown is a number, not an estimate."),
-    img="project-dining", img_alt="A finished stone patio with a dining area behind a house.",
+    img="project-dining", img_alt="A stone paver patio in dappled shade, with planters along the edge.",
 ),
 dict(
     key="patio-vs-concrete", tag="08. Choices", title="Pavers, concrete or stamped concrete",
@@ -737,7 +737,7 @@ dict(
         ("Walkways", "slope away from the house, base as deep as a patio"),
         ("Aprons", "built for plow and traffic, water sent clear"),
     ],
-    img="project-walkway", img_alt="A finished stone walkway leading to a home.",
+    img="project-walkway", img_alt="Flagstone steps and a stacked-stone wall in a planted bed.",
 ),
 dict(
     key="yard-grades", tag="12. Drainage", title="Where does your yard drain?",
