@@ -876,6 +876,7 @@ def head(*, title, desc, canonical, ld_blocks, extra_head="") -> str:
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Inter:wght@300..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/style.css?v={V}">
 <link rel="alternate" type="application/atom+xml" title="Bryce's Patios guides" href="{BASE}/feed.xml">
+<link rel="alternate" type="text/plain" title="llms.txt" href="{BASE}/llms.txt">
 {extra_head}{blocks}
 </head>"""
 

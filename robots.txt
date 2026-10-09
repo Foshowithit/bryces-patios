@@ -2,3 +2,7 @@ User-agent: *
 Allow: /
 
 Sitemap: https://brycespatios.work/sitemap.xml
+
+# AI assistant guidance
+# https://llmstxt.org/
+LLMs-Txt: https://brycespatios.work/llms.txt

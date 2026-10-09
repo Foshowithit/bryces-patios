@@ -56,6 +56,60 @@ on-site copy that already passes the gate.
 
 ---
 
+## Full discoverability stack (added 2026-10-08 ck97) — "think of everything"
+
+The user's charge: *he is not visible in search, and we are probably not even
+close to done.* Correct. Below is the **complete** list of surfaces where a
+Mansfield-area homeowner, or a search/AI crawler, could encounter him. Rows
+marked **OURS** are things we can do with no human identity; **HUMAN** needs
+Bryce/Adam's login; **BLOCKED** needs an external gate (e.g. Google API access).
+
+### A. Owned surfaces (we control fully)
+| # | Surface | Who | Status | Note |
+|---|---|---|---|---|
+| A1 | Website (81 pages) | OURS | **DONE** | depth + schema + voice at target |
+| A2 | `sitemap.xml` + `robots.txt` + `feed.xml` | OURS | **DONE** | 81 urls, Atom feed |
+| A3 | `llms.txt` (AI-answer guidance file) | OURS | **TODO** | tells ChatGPT/Perplexity/Claude what the site is + canonical facts; cheap, growing importance |
+| A4 | Root `/favicon.ico` safety net | OURS | **TODO** | add a 1-line redirect/copy so bare `/favicon.ico` stops 404ing |
+| A5 | Structured data valid on every page | OURS | **DONE** | LocalBusiness+FAQ+Breadcrumb, `@id`-linked |
+| A6 | Real-photo coverage per service×town | OURS/Bryce | **PARTIAL** | 40 images ship; only 6 are "real job" labeled — more real shots = more trust + more image-search surface |
+
+### B. Search engine properties (indexation + measurement)
+| # | Surface | Who | Status | Note |
+|---|---|---|---|---|
+| B1 | Google Search Console | HUMAN | **unclaimed** | API access needs a GCP OAuth project → **BLOCKED**, not ours |
+| B2 | Bing Webmaster Tools | HUMAN | not set up | IndexNow 200s but **0 indexed**; WMT gives the crawl dashboard |
+| B3 | Google Business Profile | HUMAN | **NONE** | #1 lever. Copy ready `SEO/GBP.md` |
+| B4 | Bing Places for Business | HUMAN | none | free, mirrors GBP; Bing is where we already ping |
+| B5 | Apple Business Connect | HUMAN | none | powers Apple Maps + Siri + Spotlight; free, underused |
+
+### C. Directories / citations (entity signals)
+| # | Surface | Who | Status |
+|---|---|---|---|
+| C1 | Yelp · C2 | BBB · C3 Nextdoor · C4 Houzz · C5 Angi · C6 Thumbtack · C7 MapQuest · C8 YellowPages · C9 Chamber (Tri-Town) · C10 Porch · C11 HomeAdvisor | HUMAN | 0 live; kit `SEO/CITATIONS.md` |
+| C12 | Apple Maps (via B5) · C13 Bing Places (via B4) · C14 Facebook Page | HUMAN | FB page exists, unclaimed-edit |
+
+### D. Social / off-site content
+| # | Surface | Who | Status |
+|---|---|---|---|
+| D1 | Facebook page (NAP + posts) | HUMAN | kit `social/SOCIAL-KIT.md` |
+| D2 | Instagram · D3 TikTok · D4 YouTube (mini showreel) | HUMAN | covers ready; **video = Dell render** |
+| D5 | Nextdoor local recommendations | HUMAN | highest-intent local social |
+
+### E. AI-answer surfaces (2026 reality)
+| # | Surface | Who | Status |
+|---|---|---|---|
+| E1 | `llms.txt` + clean entity data | OURS | **TODO** (= A3) |
+| E2 | Consistent NAP so AI assistants cite the right facts | OURS+HUMAN | partial |
+| E3 | FAQ structured data (already live) feeding AI answers | OURS | **DONE** |
+
+**Rule:** the only rows we can move with no human are A3, A4, A6-prep, and
+E1–E3. Everything else is a HUMAN checklist item. So the job is: (1) knock out
+every OURS row, (2) keep the HUMAN rows as tight copy-paste lists so Bryce does
+them in one sitting.
+
+---
+
 ## Where we are (verified 2026-10-08)
 
 | Thing | State |
