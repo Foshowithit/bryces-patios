@@ -88,3 +88,37 @@ JS
 timeout 200 ~/.local/bin/ego-browser nodejs < /tmp/baseline.js
 ```
 Run **≤3 queries**, never more than once an hour, or Google walls the IP.
+
+
+---
+
+## After — first deploy (2026-10-08, session 17)
+
+The site shipped this session. Everything below is **machine-verified**, not claimed.
+
+| Check | Result |
+|---|---|
+| Pages emitted | **55** (3 hubs + 12 guides + 4 services + 12 MA towns + 24 service×town) |
+| `sitemap.xml` URLs | **56** (55 pages + `/`) |
+| Live HTTP sweep | **56 OK / 0 BAD** (every sitemap `<loc>`, desktop UA, 2026-10-08) |
+| `/learn/` hub | **12** guide cards rendered |
+| New guides live | 6 new (`paver-cost`, `patio-vs-concrete`, `winter-ready`, `choosing-contractor`, `driveway-aprons`, `yard-grades`) — all 200 |
+| Canonical + JSON-LD | correct on home, `/learn/`, guides, town pages (browser-verified) |
+| Cache version | `?v=b8d52f03` on `style.css` + `main.js` |
+| Working tree | clean at commit `287724c` |
+
+**Still not done (human):** Google Business Profile (§"single most important finding"
+above — this is *the* blocker on local visibility); Search Console sitemap submit +
+per-URL indexing requests; citations; reviews. The site can rank for **brand + long-tail
+guide queries** without a GBP, but **cannot enter the local pack** without one.
+
+The `BLOCKED — re-read` rows in the baseline table above are historical (Google
+interstitial); they are left in place as a record of that run.
+
+### Watch run — 2026-10-08 20:08 EDT
+
+- Sitemap: **56** URLs · live **OK 56 / BAD 0**
+- /learn/ hub: **12** guide cards
+- Facebook public page: unreadable
+- SERP: skipped (use --serp, Google rate-limits this IP)
+- No change, nothing broken.

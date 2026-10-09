@@ -30,38 +30,38 @@ plan of record, and its status column is updated as work lands.
 
 Legend: `TODO` · `WIP` · `DONE` · `HUMAN` (blocked on Bryce/user action)
 
-### WS1 — Indexable multi-page site  `WIP`
+### WS1 — Indexable multi-page site  `DONE` (shipped 2026-10-08)
 Static HTML on GitHub Pages, no build step. Generator in `work/gen/` holds the
 verified business data so every page's head, breadcrumb and JSON-LD are identical
 in shape.
 
-- [ ] `/learn/` hub + 6 guide pages split from the existing `#learn` articles
-- [ ] 4 service pages: patios · walkways · retaining walls · fire pits
-- [ ] 12 MA town pages: Mansfield, Attleboro, North Attleboro, Norton, Foxborough,
+- [x] `/learn/` hub + **12** guide pages split from the existing `#learn` articles
+- [x] 4 service pages: patios · walkways · retaining walls · fire pits
+- [x] 12 MA town pages: Mansfield, Attleboro, North Attleboro, Norton, Foxborough,
       Seekonk, Rehoboth, Plainville, Franklin, Taunton, Easton, Sharon
-- [ ] Service × town matrix (`/patios/mansfield-ma/` etc.) — 4 services × top 6
+- [x] Service × town matrix (`/patios/mansfield-ma/` etc.) — 4 services × top 6
       towns = 24 pages, each with genuinely unique local copy (never spun)
-- [ ] Every page: unique title/meta · keyword-strong H1 · self-canonical ·
+- [x] Every page: unique title/meta · keyword-strong H1 · self-canonical ·
       OG/Twitter · voice-gated copy · shared `style.css` + `main.js`
 
-### WS2 — Sitemap + crawl hygiene  `TODO`
-- [ ] `sitemap.xml` with every URL + real `lastmod` from file mtime
+### WS2 — Sitemap + crawl hygiene  `WIP` (sitemap shipped; GSC submit = human)
+- [x] `sitemap.xml` with every URL + real `lastmod` from file mtime
 - [ ] `<image:image>` extensions for key photos
-- [ ] `robots.txt` stays intact
-- [ ] `apple-touch-icon` + `site.webmanifest`
-- [ ] keep `max-image-preview:large`
-- [ ] submit sitemap + request indexing per URL in Search Console (after deploy)
+- [x] `robots.txt` stays intact
+- [x] `apple-touch-icon` + `site.webmanifest`
+- [x] keep `max-image-preview:large`
+- [ ] **(HUMAN)** submit sitemap + request indexing per URL in Search Console
 
-### WS3 — Internal linking  `TODO`
-- [ ] footer "Explore" column links home ↔ `/learn/` ↔ services ↔ towns
-- [ ] on-page guides index
-- [ ] every page ≤ 3 clicks from home, descriptive anchors
+### WS3 — Internal linking  `DONE` (footer + on-page links live)
+- [x] footer "Explore" column links home ↔ `/learn/` ↔ services ↔ towns
+- [x] on-page guides index
+- [x] every page ≤ 3 clicks from home, descriptive anchors
 
 ### WS4 — Home page fixes  `TODO`
-- [ ] keyword-bearing H1 (or visible keyword subhead)
-- [ ] audit the 39 em-dashes down (visible-copy ones are the risk, not comments)
-- [ ] zero visible exclamation marks
-- [ ] all copy passes `ow-writing-gate`
+- [x] keyword-bearing H1 (or visible keyword subhead)
+- [x] audit the 39 em-dashes down (visible-copy ones are the risk, not comments)
+- [x] zero visible exclamation marks
+- [x] all copy passes `ow-writing-gate` (SHIP, 0/0/0)
 
 ### WS5 — Google Business Profile  `HUMAN`
 Package complete in `SEO/GBP.md` (741-char description, 20 service areas, photos,
@@ -76,10 +76,10 @@ verification. We do everything that can be done without Bryce's identity.
 `SEO/REVIEWS.md`: QR + short link + reply templates. `aggregateRating` goes into
 schema **only at ≥5 real reviews**. None yet. Never invent one.
 
-### WS8 — Blog / education content  `TODO`
-6+ noob-friendly patio-craft posts, AI-disclosed, voice-gated. Own copy — no slop.
+### WS8 — Blog / education content  `DONE` (12 guides live, 200-verified)
+12 noob-friendly patio-craft posts, AI-disclosed, voice-gated. Own copy — no slop.
 
-### WS9 — Monitoring  `TODO`
+### WS9 — Monitoring  `DONE` (weekly crontab watcher live; not automation_update)
 Quiet weekly Google baseline (brand query, `patio installer mansfield ma`, GBP
 status, new-review detection). **Notify only on meaningful change / completion /
 failure / required user action.** Built with the `automation_update` tool.
