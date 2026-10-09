@@ -299,3 +299,44 @@ linking, voice and crawl plumbing are all at target and verified. **Visibility i
 blocked on human actions that need Bryce's identity:** create the GBP, claim
 Search Console, set up Bing Webmaster Tools, then citations and reviews. Nothing
 we can do on the site will move a 0-index, no-profile business into Maps.
+
+---
+
+## ck97 → ck98 (2026-10-08) — llms.txt, root favicon, AI-extractibility
+
+Closed the remaining OURS gaps on the AI-answer / crawl-plumbing surface. No
+visible copy changed.
+
+**Shipped**
+- `llms.txt` — AI-assistant guidance file live at `https://brycespatios.work/llms.txt`,
+  pointed to from `robots.txt` with an `LLMs-Txt:` line.
+- `<link rel="alternate" type="text/plain" title="llms.txt" href=".../llms.txt">`
+  added to every page head (emitted in `site.py render_shell` + the
+  hand-maintained `index.html`), so 81/81 pages advertise it.
+- Real root `/favicon.ico` shipped (byte-identical to `assets/img/favicon.ico`);
+  the bare `/favicon.ico` path now returns 200 instead of 404.
+
+**Verified live (200):** `/` · `/llms.txt` · `/favicon.ico` · `/robots.txt` ·
+`/site.webmanifest` · `/assets/img/favicon.ico` · `/assets/img/icon-512.png`.
+
+**Unchanged / at target**
+- Sitemap **81 `<loc>`**; `<image:image>` on **81/81** URLs.
+- Alt text **100/100 `<img>`**; every one of the 81 pages has ≥1 image.
+- JSON-LD parse: **0 failures** on all 81 pages.
+- Content depth unchanged: guides min 732 / avg 779 (n=13) · towns min 617 /
+  avg 642 (n=12) · service×town min 415 / avg 444 (n=48).
+- Voice gate full-site re-run: **SHIP — fatal=0 tier1=0 p1=0, score 1.6/100
+  (45,950 words, 81 files)**.
+
+**Indexation re-probe (ck98)**
+- IndexNow ping: HTTP 200, 81 urls + 2 new files.
+- Bing `site:brycespatios.work`: **still 0 indexed** — the SERP returns the
+  empty-result widget. Repeated 200 pings are not producing indexation; the real
+  lever is Bing Webmaster Tools + citations, not more pings.
+- Google: unmeasurable from this host (WAF). GBP still the #1 gap.
+
+**Read after ck98:** every OURS row in `SEO/PLAN.md` is now DONE. The honest
+remaining surface is (a) human identity actions — GBP, GSC, Bing WMT, Bing
+Places, Apple Business Connect, 30+ citations, reviews — and (b) more **real
+photos** from Bryce (40 ship, only 6 real-labeled), plus a real video for the
+showreel (Dell render lane only).

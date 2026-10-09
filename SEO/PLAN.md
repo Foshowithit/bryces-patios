@@ -69,10 +69,10 @@ Bryce/Adam's login; **BLOCKED** needs an external gate (e.g. Google API access).
 |---|---|---|---|---|
 | A1 | Website (81 pages) | OURS | **DONE** | depth + schema + voice at target |
 | A2 | `sitemap.xml` + `robots.txt` + `feed.xml` | OURS | **DONE** | 81 urls, Atom feed |
-| A3 | `llms.txt` (AI-answer guidance file) | OURS | **TODO** | tells ChatGPT/Perplexity/Claude what the site is + canonical facts; cheap, growing importance |
-| A4 | Root `/favicon.ico` safety net | OURS | **TODO** | add a 1-line redirect/copy so bare `/favicon.ico` stops 404ing |
+| A3 | `llms.txt` (AI-answer guidance file) | OURS | **DONE** (ck98) | live at `/llms.txt`, linked from `robots.txt` (`LLMs-Txt:`) and from a `<link rel=alternate>` in all 81 heads |
+| A4 | Root `/favicon.ico` safety net | OURS | **DONE** (ck98) | real root `/favicon.ico` shipped (byte-identical to `assets/img/favicon.ico`); bare path now 200 |
 | A5 | Structured data valid on every page | OURS | **DONE** | LocalBusiness+FAQ+Breadcrumb, `@id`-linked |
-| A6 | Real-photo coverage per service×town | OURS/Bryce | **PARTIAL** | 40 images ship; only 6 are "real job" labeled — more real shots = more trust + more image-search surface |
+| A6 | Real-photo coverage per service×town | OURS/Bryce | **PARTIAL — needs Bryce** | 40 images ship, alt=100%, image sitemap 81/81; only 6 are "real job" labeled. More real shots = more trust + image-search surface. We cannot create these; this is a photo request to Bryce. |
 
 ### B. Search engine properties (indexation + measurement)
 | # | Surface | Who | Status | Note |
@@ -99,7 +99,7 @@ Bryce/Adam's login; **BLOCKED** needs an external gate (e.g. Google API access).
 ### E. AI-answer surfaces (2026 reality)
 | # | Surface | Who | Status |
 |---|---|---|---|
-| E1 | `llms.txt` + clean entity data | OURS | **TODO** (= A3) |
+| E1 | `llms.txt` + clean entity data | OURS | **DONE** (ck98) (= A3) |
 | E2 | Consistent NAP so AI assistants cite the right facts | OURS+HUMAN | partial |
 | E3 | FAQ structured data (already live) feeding AI answers | OURS | **DONE** |
 
@@ -116,7 +116,7 @@ them in one sitting.
 |---|---|
 | Live site | `https://brycespatios.work` — 81 pages, GitHub Pages, `main` |
 | Pages | 1 home · 1 learn hub · 13 guides · 1 services hub · 4 service · 1 areas hub · 12 town · 48 service×town = **81** |
-| Sitemap | **81 URLs**, `<image:image>` on key photos |
+| Sitemap | **81 URLs**, `<image:image>` on **81/81** URLs |
 | Content depth | site avg **536** words (n=73) · guides min **732** avg 779 (n=13) · towns min **617** avg 642 (n=12) · service×town min **415** avg 444 (n=48) (all met) |
 | Rich results | `LocalBusiness` (`LandscapingBusiness`) + `FAQPage` + `BreadcrumbList`, `@id`-linked |
 | Google Business Profile | **NONE.** Biggest single reason he is invisible on Maps. |
@@ -124,7 +124,10 @@ them in one sitting.
 | Reviews | 0 |
 | Citations | 0 live (package ready in `SEO/CITATIONS.md`) |
 | Monitoring | weekly crontab watcher live (`~/tmp/bryce-seo-watch/watch.py`, Mon 09:00) |
-| Voice gate | last full-site run **SHIP, 0/0/0, 1.6/100 (45,938 words, 81 pages)** |
+| Extractibility | `llms.txt` live + linked from `robots.txt` (`LLMs-Txt:`) and a `<link rel=alternate>` in all 81 heads |
+| Icon/crawl plumbing | root `/favicon.ico` real (200), `assets/img/favicon.ico`, `icon-192/512`, `apple-touch-icon`, `site.webmanifest` all 200 |
+| Image search | 100/100 `<img>` carry alt text; image sitemap 81/81 |
+| Voice gate | last full-site run **SHIP, 0/0/0, 1.6/100 (45,950 words, 81 pages)** (ck98) |
 | Discovery | `feed.xml` (Atom) + `rel=alternate` in every head (incl. home) · IndexNow key + ping script live · footer feed link |
 
 ---
@@ -330,12 +333,27 @@ rows in the map above show "yes". Rebuilt (81 pages), re-gated (**SHIP 1.6/100,
 45,938 words**), committed `e978d12`, deployed, IndexNow re-pinged (HTTP 200, 81
 urls).
 
+## ck98 change note
+
+Closed the AI-extractibility + crawl-plumbing gaps; no copy changed.
+- `llms.txt` shipped and linked from `robots.txt` (`LLMs-Txt:` line) and from a
+  `<link rel="alternate" type="text/plain">` in all 81 heads (emitted in
+  `site.py render_shell` + the hand-maintained `index.html`).
+- Real root `/favicon.ico` shipped (was 404 on the bare path).
+- Verified live: `/`, `/llms.txt`, `/favicon.ico`, `/robots.txt`,
+  `/site.webmanifest`, `/assets/img/favicon.ico`, `/assets/img/icon-512.png`
+  all **200**; sitemap **81 `<loc>`**; alt text **100/100**; image sitemap
+  **81/81**; JSON-LD **0 failures**; voice gate **SHIP 0/0/0 1.6/100**.
+- **Bing re-probe: still 0 indexed** (site: returns the empty-result widget)
+  despite repeated IndexNow 200s. Indexation remains the blocker, not quality.
+
 ## Honest status of visibility (2026-10-08)
 
 - **Site quality is fine.** 81/81 pages live 200; depth, schema, linking, voice
   all meet target.
 - **Indexation is the blocker, not quality.** Bing has not indexed the domain
-  despite repeated IndexNow 200s. Google is unmeasurable from this IP (WAF) —
+  despite repeated IndexNow 200s (re-confirmed ck98: `site:brycespatios.work`
+  returns the empty-result widget). Google is unmeasurable from this IP (WAF);
   Search Console is the only real read, and it is unclaimed.
 - **Off-site authority is the other blocker.** Zero citations, zero reviews, no
   GBP. Organic ranking for the commercial queries is a multi-year fight; the
