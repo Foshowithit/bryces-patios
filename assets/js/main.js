@@ -270,7 +270,7 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function asText(d) {
     return [
-      'New estimate request \u2014 Bryce\u2019s Patios',
+      'New estimate request for Bryce Patios',
       '',
       'Project:  ' + d.types.join(', '),
       'Size:     ' + (d.size || 'Not specified'),
@@ -307,6 +307,8 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       }
     }
 
+    // Prepare the fallback UI first, so it is ready whether or not the
+    // text message hand-off completes.
     $('#summary-out').textContent = text;
     $('#send-sms').href = smsTo(text);
     $('#send-mail').href = mailto(text);
@@ -317,10 +319,15 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     fill.style.width = '100%';
     progress.forEach(li => { li.classList.add('is-done'); li.classList.remove('is-active'); });
     success.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' });
+
+    // One tap, one lead: open the text to Bryce right away with every field
+    // filled in. The panel above stays ready as the fallback, so a visitor on
+    // a desktop browser with no SMS handler still sees Text Bryce, Copy, Email.
+    setTimeout(() => { window.location.href = smsTo(text); }, 60);
   });
 
   function mailto(text) {
-    const subject = encodeURIComponent('Estimate request — ' + $('#name').value.trim() + ', ' + $('#town').value.trim());
+    const subject = encodeURIComponent('Estimate request for Bryce Patios, ' + $('#name').value.trim() + ', ' + $('#town').value.trim());
     return 'mailto:' + CONTACT_EMAIL + '?subject=' + subject + '&body=' + encodeURIComponent(text);
   }
 
