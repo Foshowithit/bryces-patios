@@ -388,15 +388,14 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!launch || !modal || !stage) return;
 
   // The reel itself. Rendered on the Dell from eight real photos of Bryce's
-  // work, with the narration already muxed in. One file, so there is nothing
-  // to keep in sync and nothing that can drift off the voice.
+  // work. Silent by design: a photo reel reads on its own, so there is no
+  // voice track to keep in sync.
   const VIDEO_SRC = 'assets/video/showreel-1080p.mp4';
   const POSTER    = 'assets/img/project-firepit.jpg';
   const TOTAL     = 32.284;   // measured duration of the master, seconds
 
-  // Captions keyed to the same narration cues the edit was cut to. Each cue
-  // names the slide it belongs to, so the words on screen match the picture
-  // in the film even if the file is re-cut later.
+  // Captions keyed to the picture. Each cue names the slide it belongs to,
+  // so the words on screen match the film even if the file is re-cut later.
   const CUES = [
     { at: 0.20,  text: 'Every one of these starts with a hole in the ground.' },
     { at: 3.53,  text: 'We set the base, and we lay it to the grade.' },
@@ -422,14 +421,14 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   video.poster = POSTER;
   video.controls = true;
   video.preload = 'none';
-  video.muted = false;
+  video.muted = true;
   video.playsInline = true;
   video.setAttribute('playsinline', '');
-  video.setAttribute('aria-label', 'Bryce\'s Patios showreel: eight real jobs, start to finish');
+  video.setAttribute('aria-label', 'Bryce\'s Patios showreel, silent: eight real jobs, start to finish');
   stage.appendChild(video);
 
-  // Keep the caption in step with the voice. Reading the frame clock rather
-  // than a separate timer means picture, words, and narration cannot drift.
+  // Keep the caption in step with the picture. Reading the frame clock rather
+  // than a separate timer means the words and the film cannot drift.
   function cueFor(t) {
     let want = CUES[0].text;
     for (let i = 0; i < CUES.length; i++) {
@@ -467,17 +466,10 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     caption.textContent = CUES[0].text;
     markProgress(0);
     try { video.currentTime = 0; } catch (_) {}
-    // open() runs on a click, so sound is allowed. If a browser blocks it
-    // anyway the film still plays, just silent, and the mute button says so.
+    // The film is silent, so autoplay is never blocked. If a browser still
+    // refuses, do nothing: the controls are there to start it by hand.
     const play = video.play();
-    if (play && play.catch) play.catch(() => {
-      video.muted = true;
-      muteBtn.setAttribute('aria-pressed', 'true');
-      muteBtn.setAttribute('aria-label', 'Unmute narration');
-      muteBtn.classList.add('is-muted');
-      const retry = video.play();
-      if (retry && retry.catch) retry.catch(() => {});
-    });
+    if (play && play.catch) play.catch(() => {});
   }
 
   function open() {
@@ -499,29 +491,6 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     caption.textContent = 'A Bryce\'s patio, start to finish.';
     lastFocus?.focus();
   }
-
-  // Mute toggle. It mirrors the video's own muted state; the native controls
-  // also work, and both stay honest about which one was used.
-  const muteBtn = document.createElement('button');
-  muteBtn.type = 'button';
-  muteBtn.className = 'film__mute';
-  muteBtn.setAttribute('aria-pressed', 'false');
-  muteBtn.setAttribute('aria-label', 'Mute narration');
-  muteBtn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
-    '<path d="M4 9v6h4l5 4V5L8 9H4z"/>' +
-    '<path class="film__mute-x" d="M16.5 8.5l5 5M21.5 8.5l-5 5"/></svg>';
-  muteBtn.addEventListener('click', () => {
-    video.muted = !video.muted;
-    muteBtn.setAttribute('aria-pressed', String(video.muted));
-    muteBtn.setAttribute('aria-label', video.muted ? 'Unmute narration' : 'Mute narration');
-    muteBtn.classList.toggle('is-muted', video.muted);
-  });
-  video.addEventListener('volumechange', () => {
-    muteBtn.setAttribute('aria-pressed', String(video.muted));
-    muteBtn.setAttribute('aria-label', video.muted ? 'Unmute narration' : 'Mute narration');
-    muteBtn.classList.toggle('is-muted', video.muted);
-  });
-  modal.appendChild(muteBtn);
 
   // Pull just the metadata once the page is idle, so the first open starts
   // fast without downloading the whole file on a page view that ignores it.
