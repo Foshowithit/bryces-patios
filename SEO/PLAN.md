@@ -40,14 +40,15 @@ layout and copy in one commit. Google probing: ≤3 queries/session, 10–20 s a
 | Live site | `https://brycespatios.work` — 56 pages, GitHub Pages, `main` |
 | Pages | 1 home · 1 learn hub · 12 guides · 1 services hub · 4 service · 1 areas hub · 12 town · 24 service×town = **56** |
 | Sitemap | **56 URLs**, `<image:image>` on key photos |
-| Content depth | site avg **507** words · guides ≥550 · towns ≥420 · service×town ≥400 (all met) |
+| Content depth | site avg **562** words · guides min **732** · towns min **617** · service×town min **404** (all met) |
 | Rich results | `LocalBusiness` (`LandscapingBusiness`) + `FAQPage` + `BreadcrumbList`, `@id`-linked |
 | Google Business Profile | **NONE.** Biggest single reason he is invisible on Maps. |
 | Indexed pages | ~1 (fresh URL, no GBP, no backlinks yet) |
 | Reviews | 0 |
 | Citations | 0 live (package ready in `SEO/CITATIONS.md`) |
 | Monitoring | weekly crontab watcher live (`~/tmp/bryce-seo-watch/watch.py`, Mon 09:00) |
-| Voice gate | last full-site run **SHIP, 0/0/0, 1.3/100 (24,740 words)** |
+| Voice gate | last full-site run **SHIP, 0/0/0, 1.3/100 (29,598 words)** |
+| Discovery | `feed.xml` (Atom) + `rel=alternate` in every head (incl. home) · IndexNow key + ping script live · footer feed link |
 
 ---
 
@@ -71,12 +72,14 @@ in shape.
 - [x] `max-image-preview:large`
 - [ ] **(HUMAN)** submit sitemap + request indexing per URL in Search Console
 
-### WS3 — Internal linking  `WIP`
+### WS3 — Internal linking  `DONE`
 - [x] footer "Explore" column links home ↔ `/learn/` ↔ services ↔ towns
 - [x] every page ≤3 clicks from home, descriptive anchors
-- [ ] **Related-guides block** on every guide page (same topic family, 3 links)
-- [ ] **Contextual in-prose links** from guides to the matching service page
-- [ ] Service×town → parent town + parent service cross-links verified
+- [x] **Related-guides block** on every guide page (same topic family, 3 links)
+- [x] **Contextual in-prose links** from guides to the matching service page
+- [x] Service×town → parent town + parent service cross-links verified
+- [x] service pages link to their 6 service×town children + sibling services
+      (`03cb1d3`, `<nav class="related">`, 6 `/areas/*/*/` links each)
 
 ### WS4 — Home page fixes  `DONE`
 - [x] keyword-bearing H1 / visible keyword subhead
@@ -98,9 +101,10 @@ verification. We do everything possible without Bryce's identity.
 `SEO/REVIEWS.md`: QR + short link + reply templates. `aggregateRating` goes into
 schema **only at ≥5 real reviews**. None yet. Never invent one.
 
-### WS8 — Blog / education content  `WIP`
+### WS8 — Blog / education content  `WIP` (depth DONE, more guides planned)
 - [x] 12 noob-friendly patio-craft guides live, AI-disclosed, voice-gated
-- [ ] Thicken the thin pages (depth targets below), voice-gate each edit
+- [x] thicken the thin pages — all thresholds met (guides min 732, towns min 617,
+      service×town min 404; site avg 562)
 - [ ] Planned guides (write only if copy is genuinely distinct, not spun):
       *"Retaining walls 101"* · *"Fire pit types and siting"* ·
       *"Drainage around a foundation"* · *"Prepping a yard for a patio"*
@@ -114,27 +118,32 @@ Dated before/after log in `SEO/BASELINE.md`: `site:` indexed count, brand SERP
 position, local-pack presence, GBP views/calls/direction requests, review count,
 per-page impressions/clicks once Search Console exists. Google-only, ≤3/session.
 
-### WS11 — Discovery plumbing  `WIP` (new)
+### WS11 — Discovery plumbing  `DONE` (except Google's non-participation, noted)
 Getting the 56 URLs *noticed* now, not in six weeks.
-- [ ] `feed.xml` (Atom) + `<link rel="alternate">` in `head()` and footer link
-- [ ] **IndexNow** key file at site root + ping script for all 56 URLs
-      (Bing/Yandex/Seznam; Google does not participate — be honest about that)
-- [ ] Sitemap ping to Google + Bing on each deploy
-- [ ] `SEO/` ops scripts documented in `SEO/README.md`
+- [x] `feed.xml` (Atom) + `<link rel="alternate">` in `head()` **and on home**
+      + footer "Guides feed" link on every page
+- [x] **IndexNow** key file at site root (`b8be78077b664cf338d750ff4799d248.txt`)
+      + `work/indexnow-ping.sh` for all 56 URLs, `HTTP 200` after each push
+      (Bing/Yandex/Seznam; **Google does not participate** — be honest about that,
+      do not retry Google sitemap pings)
+- [x] Sitemap submitted where it is accepted; IndexNow covers the rest
+- [x] `SEO/` ops scripts documented in `SEO/README.md`
 
-### WS12 — Off-site signal  `WIP` (new, ours where possible)
+### WS12 — Off-site signal  `WIP` (drafts ready, posting = HUMAN)
 - [ ] Facebook page → site link verified in NAP (do NOT edit the page without
       Bryce; note the ask)
-- [ ] Post the 12 guides as FB posts (draft only until Bryce approves)
+- [x] `social/SOCIAL-KIT.md` — handle table (`@brycespatios` IG/TikTok/YT,
+      `brycespatios` FB), profile bios, highlight covers (`social/highlight-covers/`)
+- [ ] Post the 12 guides as FB posts (drafts ready; publish only after Bryce OK)
 - [ ] One photo-driven FB post template per service for Bryce to reuse
 
 ---
 
 ## Content depth targets (words, visible text)
 
-Current average across 56 pages ≈ 432 w. Thin pages to thicken:
-`learn/your-questions` 254 · `learn/frost` 310 · `areas/sharon` 328 ·
-`areas/rehoboth` 330 · `learn/paver-cost` 429 · `areas/mansfield` 351.
+Current average across the 48 content pages ≈ **562 w** (was 432). No page is
+below its target: guides min 732 / avg 764 · towns min 617 / avg 640 ·
+service×town min 404 / avg 422. The old thin pages are all fixed.
 
 Targets: guide pages ≥ 550 w · town pages ≥ 420 w · service×town ≥ 400 w.
 Add real information, never filler: cost ranges, frost depth, drive times, yard

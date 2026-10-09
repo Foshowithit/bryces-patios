@@ -139,3 +139,45 @@ Full-site depth rebuild, copy-only.
 
 Depth history: 314 → 325 → 378 → 398 → 423 → 435 → 462 → 479 → **507**.
 Fixed one filler phrase ("in terms of") that the gate flagged in `learn/yard-grades`.
+
+### After-log — ck65 … ck73 (2026-10-08, content + discovery + internal links)
+
+Five commits landed since ck64. Everything below is re-measured, not estimated.
+
+| Commit | What | Verified result |
+|---|---|---|
+| `6b1d92a` | fix titles (double-escaped `&`), cap at 65 chars, top up Foxborough fire-pit copy | 0 titles >65, 0 duplicates |
+| `fe04028` | `.work__note--disclosure` style modifier (single rule, no double rule) | layout only |
+| `abb86ea` | on-page AI-imagery disclosure in the work gallery + footer note | visible, voice-gated |
+| `86c017f` | visible FAQ + `FAQPage` schema on **all 56 pages**; added a visible `<section id="faq">` (4 `<details class="qa">`) to home matching its JSON-LD verbatim | home `id="faq"`=1, `class="qa"`=4 |
+| `03cb1d3` | service pages link to their 6 service×town children + sibling services (`<nav class="related">`) | 6 `/areas/*/*/` links on each of 4 service pages |
+
+**Depth after ck73 (visible text, `<main>` only):**
+
+| Bucket | n | min | avg | threshold | fails |
+|---|---|---|---|---|---|
+| Guides (`learn/*/`) | 12 | **732** | 764 | ≥550 | **0** |
+| Town pages (`areas/*/`) | 12 | **617** | 640 | ≥420 | **0** |
+| Service×town (`areas/*/*/`) | 24 | **404** | 422 | ≥400 | **0** |
+| Content pages total | 48 | — | **562** | — | — |
+
+Depth history: 314 → 325 → 378 → 398 → 423 → 435 → 462 → 479 → 507 → **562**.
+
+**Titles/metas:** 56 pages · 0 titles >65 chars · 0 duplicate titles · 0 metas
+outside 110–165.
+
+**Voice gate:** `SHIP — fatal=0 tier1=0 p1=0, score 1.3/100 (**29,598 words**)`
+(was 24,740 at ck64).
+
+**Discovery plumbing now live:**
+- `<link rel="alternate" type="application/atom+xml">` in generated `head()` and
+  now also on **home** (`index.html` L37 — home is hand-maintained, so it had to
+  be added by hand; generated pages inject it automatically).
+- Footer "Guides feed" link on every page · `feed.xml` = 13 entries.
+- IndexNow key file `b8be78077b664cf338d750ff4799d248.txt` at root · ping script
+  `work/indexnow-ping.sh` → `HTTP 200` after every push.
+  (Bing/Yandex/Seznam only — **Google does not participate**; do not retry Google.)
+- `sitemap.xml` = 56 URLs, real `lastmod` from file mtime.
+
+**Watcher (weekly Mon 09:00):** 56 OK / 0 BAD, 12 guide cards on `/learn/`,
+nothing broken.
