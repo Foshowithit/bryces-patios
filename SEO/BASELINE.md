@@ -1222,3 +1222,25 @@ Everything else the sweep flagged is a false positive: the BASELINE/HANDOFF rows
 (deliberately kept, ck126); "#1" is ranking language.
 
 Voice gate on the rewritten social captions: **SHIP** (fatal=0 tier1=0 p1=0).
+
+## ck133 — Search Console VERIFIED (not a human step after all: Porkbun API)
+
+The DNS TXT that ck131 handed to a human was done **by API** — no console work
+needed. The Porkbun keys are on this Mac at `~/.chow-secrets/porkbun.env`
+(`PORKBUN_API_KEY` + `PORKBUN_SECRET_KEY`, scope `full`, account `adamnorm4wd`);
+the account holds `brycespatios.work`.
+
+```
+POST https://api.porkbun.com/api/json/v3/dns/create/brycespatios.work
+  {"apikey":..., "secretapikey":..., "name":"", "type":"TXT",
+   "content":"google-site-verification=51P1vKUCkN9qk1Xc8qmDLSS6jGG2rMKTcRNYOExjhjU", "ttl":600}
+```
+
+**Result (verified):**
+- TXT created (record id 592571071); Google Public DNS serves it.
+- Search Console → add Domain property `brycespatios.work` → **"Ownership auto verified"**, method *Domain name provider*. The property is now **verified**.
+- Sitemap **submitted**: `https://brycespatios.work/sitemap.xml` (listed 1 of 1; status "Couldn't fetch" at submit-time — normal; sitemap itself returns 200 `application/xml`, Google re-fetches within hours).
+
+**Rule going forward:** Porkbun DNS for our domains is an **API step, not a human step** — use `~/.chow-secrets/porkbun.env`. Do not hand TXT/NS edits to Adam when the key is right here.
+
+**Still human-gated:** GBP identity verification (postcard vs video → Bryce), Facebook login, and the GBP hours widget.
