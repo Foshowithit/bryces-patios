@@ -744,7 +744,7 @@ dict(
 dict(
     key="fire-pit-basics", tag="13. Fire pits", title="Fire pits that last",
     h1="Fire pits: what makes one last",
-    meta="How a fire pit is built in Massachusetts, what separates a pit that lasts from one that cracks, and the choices to make before you dig: wood or gas, ring or block, and where it can sit.",
+    meta="How a fire pit is built in Massachusetts, what makes one last and what makes one crack, and the two choices to settle before you dig: wood or gas, and where it sits.",
     lede="A fire pit looks simple: a ring, some stone, a fire inside. What decides whether it still looks right after five winters happens in the ground under it.",
     paras=[
         "A fire pit is a small retaining wall shaped like a circle, and it fails the same way a wall fails. Water gets under the base, freezes, and lifts a course. A pit set on bare ground, or on a base that was not dug and compacted, will show the first lifted ring after one hard frost. The ring above ground is the visible part. The footing under it is the work.",
