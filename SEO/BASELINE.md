@@ -1244,3 +1244,20 @@ POST https://api.porkbun.com/api/json/v3/dns/create/brycespatios.work
 **Rule going forward:** Porkbun DNS for our domains is an **API step, not a human step** — use `~/.chow-secrets/porkbun.env`. Do not hand TXT/NS edits to Adam when the key is right here.
 
 **Still human-gated:** GBP identity verification (postcard vs video → Bryce), Facebook login, and the GBP hours widget.
+
+## ck133b — Search Console confirmed; sitemap fetch status checked
+
+- Verified the property from the outside: the Search Console Sitemaps report for
+  `sc-domain:brycespatios.work` renders (it only renders under a verified property)
+  and lists the submitted sitemap, 1 of 1.
+- Sitemap health checked directly: `https://brycespatios.work/sitemap.xml` returns
+  **200 `application/xml`, 30,688 B, valid XML**, and also 200 for a **Googlebot UA**.
+  The Search Console status "Couldn't fetch" is the normal initial state right after
+  submission (Google reads it on a delay); there is no fetch problem to fix.
+- `www.brycespatios.work/sitemap.xml` → 301 (CNAME to github.io), fine.
+
+**GBP hours** remain unset on purpose: the editor is a shadow-DOM widget inside the
+search-embedded panel; it resists every automation technique tried (real-mouse row
+clicks, typeahead keyboard picks, direct scrollTop). It is optional and post-launch
+editable — add it from the dashboard or in the human sittings. Do NOT burn more
+automation cycles on it.
