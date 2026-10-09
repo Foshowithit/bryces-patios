@@ -36,14 +36,17 @@ Service area: Mansfield MA + 21 surrounding towns (list below)
 > where a "hide address / customers come to me" toggle exists. Consistency of the
 > **address string** matters; public visibility of it does not.
 
-**22-town service area (MA 12 / RI 10)** — use this full list on every directory that
-accepts free text. Google's own profile field caps at 20, so `SEO/GBP.md` §4 lists the
-top-20 subset; everywhere else use all 22:
+**12-town service area (Massachusetts only)** — use this exact list on every directory that
+accepts free text. It matches the site and Google (`SEO/GBP.md` §4):
 
 Massachusetts — Mansfield, Attleboro, North Attleboro, Norton, Foxborough, Seekonk,
 Rehoboth, Plainville, Franklin, Taunton, Easton, Sharon.
-Rhode Island — Pawtucket, Cumberland, Lincoln, Central Falls, Providence,
-East Providence, Woonsocket, Barrington, Smithfield, North Smithfield.
+
+> **No Rhode Island anywhere.** RI ch. 5-65 requires a registered RI contractor number in
+> any advertising that names RI work, and hardscaping is covered work. Until Bryce is
+> registered in RI and we have that number, do **not** list RI towns, write "MA & RI", or
+> claim Rhode Island coverage on any listing. If he registers later, add RI here, on the
+> site, and on Google together.
 
 ---
 
@@ -59,7 +62,7 @@ Stone patios, walkways, walls & fire pits built to stay flat.
 ```
 Owner-operated hardscaping out of Mansfield, MA. Bryce quotes the job and Bryce builds
 it: full-depth excavation, compacted base, restrained edges. Patios, walkways,
-retaining walls and fire pits across southeastern MA and Rhode Island.
+retaining walls and fire pits across southeastern Massachusetts.
 ```
 (246 chars)
 

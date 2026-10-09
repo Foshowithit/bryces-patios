@@ -76,18 +76,18 @@ Two secondaries is the right number. More than that dilutes the signal.
 
 ### Business description
 
-Google allows **750 characters**. This is exactly 741 — paste it as one block:
+Google allows **750 characters**. Paste it as one block:
 
 ```
 Bryce's Patios builds stone patios, walkways, retaining walls, and fire pits across
-southeastern Massachusetts and Rhode Island. Owner-operated, one crew, and Bryce is on site
+southeastern Massachusetts. Owner-operated, one crew, and Bryce is on site
 for every job. We excavate properly, compact a real aggregate base, and cut drainage so the
-patio still sits flat after a decade of freeze-thaw. Bluestone, flagstone, and concrete paver
+patio holds its shape through our freeze-thaw winters. Bluestone, flagstone, and concrete paver
 work with tight, level joints and clean edges. Free estimates, no hard limits on travel, and
 we answer every request the same day. Based in Mansfield, MA.
 ```
 
-> Character check: 741/750. If Google trims it, cut "and clean edges" first. Do not add a
+> Character check: ~501/750. If Google trims it, cut "and clean edges" first. Do not add a
 > licence, insurance, warranty, or review claim here — none of those are verified yet.
 
 **Do not put in the description:** hours ("by appointment" is not allowed in that field),
@@ -114,16 +114,18 @@ want. Enter the real address so Google can verify the business exists, then turn
 
 ---
 
-## 4. Service area — add these 20 towns
+## 4. Service area — add these 12 towns (Massachusetts only)
 
-> **Why 20 here but 22 elsewhere:** Google caps the profile's service-area list at 20
-> entries, so this is the highest-job-density 20. The site and the directories describe
-> the full **22-town** service area (`SEO/CITATIONS.md` §0). If Google's box ever accepts
-> more, add the two left out here — **Smithfield, RI** and **North Smithfield, RI**.
+> **Massachusetts only (12 towns).** The site and the directories describe the same
+> **12-town** MA service area (`SEO/CITATIONS.md` §0). Rhode Island was deliberately
+> dropped site-wide: RI ch. 5-65 requires a registered RI contractor number in any
+> advertising that names RI work, and hardscaping is covered work, so advertising RI
+> without that registration is a legal risk. Do not add RI towns — not here, not on the
+> site, not on any directory — until Bryce registers in RI and we have his number.
 
-Google caps service areas at **20** entries, and it advises the total area should stay within
-roughly **two hours of driving time** from the base town. These 20 are chosen to fit inside
-that radius while covering the strongest job-dense towns.
+These 12 are Bryce's core Massachusetts footprint. Google caps the field higher (20 as of
+the last check), but there is no reason to pad it with towns he has never worked; the
+listed towns are a ranking footprint, not a promise.
 
 ```
 Mansfield, MA
@@ -138,14 +140,6 @@ Franklin, MA
 Taunton, MA
 Easton, MA
 Sharon, MA
-Pawtucket, RI
-Cumberland, RI
-Lincoln, RI
-Central Falls, RI
-Providence, RI
-East Providence, RI
-Woonsocket, RI
-Barrington, RI
 ```
 
 **Note on "no hard limits":** the site says Bryce will travel a few hours out. Google's own
@@ -156,8 +150,8 @@ simply take it — the customer found the business through the town that *is* li
 service area is a ranking footprint, not a rule about which jobs he's allowed to accept.
 
 > **UNVERIFIED:** the exact current cap on service-area entries (20 as of the last check).
-> If Google's input accepts more, the next five in priority order are Barrington-adjacent
-> `Warren, RI`, `Bristol, RI`, `Smithfield, RI`, `North Smithfield, RI`, `Bridgewater, MA`.
+> If Google's input accepts more, the next candidates are in-state only, e.g.
+> `Bridgewater, MA`, `Canton, MA`, `Norwood, MA`. Never add RI towns — see the note above.
 
 ---
 
@@ -298,7 +292,7 @@ customers actually call and ask costs nothing and quietly wins jobs.
 | Do you give free estimates? | Yes. Estimates are free and there's no obligation. Text a photo of the yard to (508) 212-6433 and Bryce will get back to you the same day. |
 | How much does a stone patio cost? | It depends on size, material, and how much digging the yard needs. A rough ballpark is $25–$60 per square foot installed. Text a couple of photos and the approximate size and Bryce will give you a real number. |
 | How long does a patio take to build? | Most residential patios take three to seven working days once we start, weather depending. Base prep and drainage are the slow part, and they're the part that matters. |
-| Do you travel to my town? | We cover southeastern Massachusetts and Rhode Island, including Mansfield, Attleboro, Norton, Foxborough, Taunton, Easton, Sharon, Seekonk, Rehoboth, Plainville, Franklin, and the Rhode Island towns from Pawtucket down to Barrington. If you're nearby, just ask. |
+| Do you travel to my town? | We cover southeastern Massachusetts, including Mansfield, Attleboro, Norton, Foxborough, Taunton, Easton, Sharon, Seekonk, Rehoboth, Plainville, and Franklin. If you're nearby, just ask. |
 | Do you do the digging, or do I need to? | We handle everything: removal of the old surface, excavation, the compacted aggregate base, drainage, and the finished stone. |
 | What stone do you work with? | Bluestone, flagstone, granite, and concrete pavers. We'll walk you through the difference in person — bluestone and flagstone look best, pavers cost less and hold up well to freeze-thaw. |
 | Will my patio heave or sink in the winter? | Not if it's built right. Frost movement in Massachusetts is the main thing that ruins patios, and it's caused by a shallow or uncompacted base and trapped water. We dig deep, compact in lifts, and cut drainage. |

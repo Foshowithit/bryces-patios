@@ -38,7 +38,7 @@ first three take about 15 minutes and are the whole ballgame.
 
 1. **Google Business Profile.** `business.google.com/add` -> sign in as
    `adamnorm4wd@gmail.com` -> name `Bryce's Patios`, category `Paving Contractor`,
-   address hidden, the 20 towns from `SEO/GBP.md` S4, description from S2, then the
+   address hidden, the 12 MA towns from `SEO/GBP.md` S4, description from S2, then the
    verification video (S9 in `SEO/GBP.md` has the shot list). **This is the #1 lever
    by a wide margin. Nothing else matters as much.**
 2. **Search Console.** `search.google.com/search-console/welcome` -> Add property ->
@@ -67,7 +67,7 @@ so the work continues without Bryce at the keyboard.
 - [ ] `[HUMAN]` Primary category: `Paving Contractor` (from the dropdown). Secondaries:
       `Masonry Contractor`, `Landscaper`
 - [ ] `[HUMAN]` Address: `885 West St, Mansfield, MA 02048` — then set **"show address" = NO**
-- [ ] `[HUMAN]` Service area: paste the **20 towns** from `SEO/GBP.md` §4 (Google caps this field at
+- [ ] `[HUMAN]` Service area: paste the **12 MA towns** from `SEO/GBP.md` §4 (Google caps this field at
       20; the site + directories describe the full 22-town area, see `SEO/CITATIONS.md` §0)
 - [ ] `[HUMAN]` Phone: `(508) 212-6433` · Website: `https://brycespatios.work`
 - [ ] `[HUMAN]` Hours: Mon–Fri `8:00 AM – 6:00 PM`, Sat/Sun closed (say "by appointment" in the
