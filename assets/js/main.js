@@ -184,6 +184,9 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function goTo(step) {
     current = step;
+    // Clear any inline display left by the submit path. Inline styles beat the
+    // .is-active class, so without this a re-shown form would stay invisible.
+    panels.forEach(p => { p.style.display = ''; });
     panels.forEach(p => p.classList.toggle('is-active', Number(p.dataset.panel) === step));
     fill.style.width = (step / 3) * 100 + '%';
 
@@ -384,7 +387,7 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   update();
 })();
 
-/* ── 7. Showreel (real jobs, narrated, sentence-synced) ─────────────── */
+/* ── 7. Showreel (real jobs, silent photo reel) ────────────────────── */
 (function film() {
   const launch = $('#film-launch');
   const modal  = $('#film');
@@ -397,7 +400,7 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   // The reel itself. Rendered on the Dell from eight real photos of Bryce's
   // work. Silent by design: a photo reel reads on its own, so there is no
   // voice track to keep in sync.
-  const VIDEO_SRC = 'assets/video/showreel-1080p-silent.mp4';
+  const VIDEO_SRC = 'assets/video/showreel-1080p-silent-f4a9c1d2.mp4';
   const POSTER    = 'assets/img/project-firepit.jpg';
   const TOTAL     = 32.284;   // measured duration of the master, seconds
 

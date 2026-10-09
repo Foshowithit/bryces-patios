@@ -14,7 +14,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-V = "e72f6a14"          # cache-buster, must match index.html
+V = "f4a9c1d2"          # cache-buster, must match index.html
 BASE = "https://brycespatios.work"
 PHONE_TEL = "+15082126433"
 PHONE_TXT = "(508) 212-6433"
