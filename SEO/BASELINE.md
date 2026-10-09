@@ -1158,3 +1158,32 @@ collision recurring at the source, the Dell lane scripts themselves were patched
 So a future `render.sh` run writes narration to a `.NARRATED` name only, and
 `deriv.sh` emits silent 9:16 / 1:1 cuts. The plain name can no longer be produced by
 the lane at all.
+
+---
+
+## ck130 — GBP profile built out in-browser (verification pending a human)
+
+**Date:** 2026-10-09 · **Operator:** Adam (as Manager, `adamnorm4wd@gmail.com`).
+
+Built live via the ego browser at `business.google.com`. Location id `12850389382683769768`. The profile is **complete and saved** but **NOT PUBLICLY VISIBLE** — it is waiting on identity verification, which is the only remaining blocker.
+
+**What is saved on the profile (verified from the dashboard):**
+
+- Name: **Bryce's Patios** (exact — no keyword stuffing).
+- Category: **Paving contractor**.
+- Service-area business; address hidden.
+- Service areas: **12 MA towns** (Mansfield, Attleboro, North Attleboro, Norton, Foxborough, Seekonk, Rehoboth, Plainville, Franklin, Taunton, Easton, Sharon). No RI — matches the site's RI-compliance cleanup.
+- **10 services:** Brick paver installation, Concrete work, Driveway installation, Driveway repairs, Excavation & grading, Hardscaping, Patio paving, Paver installation, Paving job site preparation, Paving-related drainage. (Google caps the service list at 10.)
+- **Description:** the voice-gated 501-char block (gate: SHIP, fatal=0 tier1=0 p1=0).
+- Phone `(508) 212-6433`; website `https://brycespatios.work/`.
+- **7 real photos** from the site's `assets/img/` (hero-finished, patio-herringbone, project-walkway, project-firepit, project-dining, craft-edge, steps-detail).
+- Hours: **not set yet** (the step was skipped — the Google hours picker is a shadow-DOM widget that resists automation; add from the dashboard or in the human sitting).
+
+**Blocked on a human (do not attempt by automation):**
+
+1. **Verification.** `business.google.com/verify/l/12850389382683769768` offers **postcard by mail** (5–14 days) to 885 West St. This needs Bryce's OK (his home address) and a human to enter the address — Google's Places autocomplete fights scripted input and mis-resolves `489 West St / 02048` to North Providence, RI. A **video verification** alternative (his truck + a job site) is preferable if the dashboard offers it.
+2. Add **hours** (M–F 8:00 AM–6:00 PM) from the dashboard.
+
+**Docs fixed in the same change (commit `ddcd449`):** `SEO/GBP.md`, `SEO/CITATIONS.md`, `SEO/OFFSITE-CHECKLIST.md` no longer advertise the 10 RI towns or the "decade of freeze-thaw" claim — they now match the RI-free site.
+
+**Next off-site (unchanged order):** Search Console (add `brycespatios.work`, DNS TXT via Porkbun, submit `sitemap.xml`), Facebook page website+phone, then Yelp/BBB/Nextdoor/Houzz/Angi citations.
