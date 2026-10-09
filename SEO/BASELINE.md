@@ -1292,3 +1292,24 @@ it got past GPT.
 Never write a place, a material color, or a worksite detail into an alt unless
 it is actually in the frame. And no photo swap is "verified" until a human who
 knows the job has looked at it.
+
+## ck135 — first real Search Console finding fixed: video sitemap errors
+
+Search Console is now doing its job — Google read the sitemap, discovered
+**81 pages + 3 videos**, and reported **2 errors**:
+
+> `<video:content_loc>` or `<video:player_loc>` is the same as `<loc>` value.
+
+**Cause:** the two `patio-base-explainer` entries (on `/learn/patio-base/` and
+`/services/patios/`) had `<video:player_loc>` identical to the page `<loc>`.
+The spec says a video entry provides `player_loc` OR `content_loc`, not both —
+and ours had a correct `content_loc` pointing at the mp4.
+
+**Fix (commit `a0d7cdf`, live verified):** dropped `player_loc` entirely from
+the video sitemap entries in `work/gen/emit.py`. Live sitemap now shows
+3 video entries, 3 `content_loc` (mp4 files), 0 `player_loc`, none equal to
+their page `loc`. Google clears the error banner on its next read.
+
+**Why this matters:** this is the first actual indexing feedback the site has
+ever received, and it was actionable. The Search Console + Porkbun API
+verification is already paying for itself.
