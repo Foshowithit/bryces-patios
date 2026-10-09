@@ -640,12 +640,22 @@ legend{padding:0}
   color:var(--ink-inv-2); margin-bottom:1.25rem;
   padding-bottom:.85rem; border-bottom:1px solid var(--line-inv);
 }
-.area__towns{display:flex; flex-direction:column}
+.area__towns{
+  display:grid; grid-template-columns:repeat(2,minmax(0,1fr));
+  column-gap:1.25rem; row-gap:.1rem;
+}
+.area__towns--plain{grid-template-columns:repeat(2,minmax(0,1fr))}
 .area__towns li{
   font-family:var(--serif); font-optical-sizing:auto;
   font-size:1.0625rem; line-height:1.5; color:var(--ink-inv);
   padding-block:.3rem;
 }
+.area__towns a{
+  color:var(--ink-inv); text-decoration:none;
+  border-bottom:1px solid transparent; transition:border-color .25s var(--ease-io), color .25s var(--ease-io);
+}
+.area__towns a:hover{border-color:var(--moss-soft); color:#fff}
+.area__soon{color:var(--ink-inv-2)}
 
 /* ── 07 Estimate ──────────────────────────────────────────────────────── */
 .form-card{
