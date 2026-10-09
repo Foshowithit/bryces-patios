@@ -31,9 +31,12 @@ TODAY = "2026-10-08"
 TOWNS_MA = ["Mansfield", "Attleboro", "North Attleboro", "Norton", "Foxborough",
             "Seekonk", "Rehoboth", "Plainville", "Franklin", "Taunton",
             "Easton", "Sharon"]
-TOWNS_RI = ["Pawtucket", "Cumberland", "Lincoln", "Central Falls", "Providence",
-            "East Providence", "Woonsocket", "Barrington", "Smithfield",
-            "North Smithfield"]
+# Rhode Island is intentionally NOT advertised. R.I. Gen. Laws ch. 5-65 requires a
+# registered contractor's number to appear in that contractor's advertising, and
+# hardscape installation (patios, walkways, retaining walls) is covered work. Until
+# Bryce holds an RI registration, the site must not solicit RI contracting. RI
+# addresses are handled case by case by phone only, with no RI service claim.
+TOWNS_RI = []
 
 # The towns that get a full service x town page (keep in sync with _town_note()).
 TOP_TOWNS = ["Mansfield", "Foxborough", "Attleboro", "North Attleboro",
@@ -74,8 +77,8 @@ TOWN_INTRO = {
                   "Norton are flatter, but the builder left the drainage to whoever came next. "
                   "Both kinds need the same thing before stone goes down: the shape of the yard "
                   "decided first, then the patio set to that. We have dug in this ground long "
-                  "enough to know where the ledge sits and how the spring water moves, and it is "
-                  "why most of our calls come from neighbors who watched a patio go in. "
+                  "enough to know where the ledge sits and how the water moves, which is why a lot "
+                  "of the work comes from neighbors who watched a patio go in. "
                   "If you have been looking for a patio installer in Mansfield, MA, we are "
                   "twenty minutes from most of the town."),
     "Attleboro": ("Attleboro sits on ledge and old mill-era lots, so the work starts with "
@@ -89,9 +92,9 @@ TOWN_INTRO = {
     "Norton": ("Norton lots are bigger and flatter than most of the neighbors, which sounds "
                "easy until the water has nowhere to leave. Here the patio and the drainage get "
                "planned together, so the yard drains around the patio instead of through it."),
-    "Foxborough": ("Foxborough has a lot of flat ground and a lot of spring water, so a patio "
-                   "here lives or dies on the base. We dig deeper, compact in lifts, and plan the "
-                   "slope that sends water out before any stone goes down."),
+    "Foxborough": ("Foxborough yards run the range from flat to wet corners, and on any lot here the "
+                   "base is what a patio lives or dies on. We look at the ground first, dig to depth, "
+                   "compact in lifts, and plan the slope that sends water out before any stone goes down."),
     "Seekonk": ("Seekonk yards run close to the RI line and the wet ground that comes with it, "
                 "so drainage is the first conversation. Walkways and patios here get a base and "
                 "a slope built for spring, not for the week of the install."),
@@ -107,7 +110,7 @@ TOWN_INTRO = {
                    "ones often have a grade that was never really finished. We fix the shape of "
                    "the yard first, then set the patio to that."),
     "Franklin": ("Franklin sits up where the frost bites harder and springs run wet, so depth "
-                 "and compaction decide whether the patio is flat in ten years. This is the town "
+                 "and compaction decide how the patio holds up over the years. This is the town "
                  "where the base matters most, and where we build it deepest."),
     "Taunton": ("Taunton runs from tight city lots to roomy yards out toward the lake, and the "
                 "grade swing between them is real. Whatever the lot, the patio gets built to shed "
@@ -133,7 +136,7 @@ TOWN_DETAIL = {
         "read the slope against the house, and the patio is set to shed away from the foundation rather than "
         "toward it. In the older shaded yards near the center, that often means a shallow swale dressed to "
         "look like planting instead of a trench.",
-        "Mansfield sits in the 30-inch frost zone, so the base under a patio here is dug out past the depth "
+        "Mansfield winters freeze and thaw in cycles, so the base under a patio here is dug out past the depth "
         "that freezes and thawed, then rebuilt in compacted lifts. That is the part nobody sees. It is also "
         "the part that decides whether the surface is still flat five winters from now. If a quote for a "
         "patio in town comes in well under the others, the first thing to ask is how deep they plan to dig.",
@@ -153,11 +156,11 @@ TOWN_DETAIL = {
         "out properly, rather than a short path patched onto the corner of a deck. The tighter downtown "
         "yards do better with a compact patio set close to the house and a path kept narrow, so the small "
         "space still reads as finished instead of crowded.",
-        "Base depth and compaction still follow the same 30-inch frost zone the rest of the area sits in, "
+        "Base depth and compaction follow the same freeze-and-thaw cycle the rest of the area sees, "
         "and mixed grades mean the transitions, steps and any low wall get planned before the stone gets "
         "picked. Material choice in Attleboro tends toward paver and bluestone for durability on uneven "
         "ground; flagstone shows up where the look matters more than the budget.",
-        "Attleboro work also runs along the Rhode Island line at South Attleboro, which means a couple of jobs a year start as a call from just over the border. The same rules apply on either side of the line: dig to depth, compact in lifts, and send the water where it needs to go. What changes is only how far the material has to come, and that is a small part of any price.",
+        "Attleboro work reaches down to South Attleboro near the state line, where the ground stays true to the rest of the area: dig to depth, compact in lifts, and send the water where it needs to go.",
     ],
     "North Attleboro": [
         "North Attleboro yards trend sloped, which is why so many jobs here turn into steps, a landing and "
@@ -188,12 +191,12 @@ TOWN_DETAIL = {
         "edge restraint gets checked carefully, since a wide field of pavers has more push against the "
         "borders than a small one. Timelines on a big lot usually run a little longer than a compact "
         "Mansfield yard, mostly because of hauling and site room.",
-        "Norton also has stretches of new construction where the builder graded the lot and left it, so the lawn and the yard settle unevenly for a year or two. On those lots we like to see how the ground has moved before we set the final height, so the patio does not inherit a dip that shows up the first spring. Windham and the lake side tend to be the flatter ones; the lots off the old roads are the ones that surprise you.",
+        "Norton also has stretches of new construction where the builder graded the lot and left it, so the lawn and the yard settle unevenly for a year or two. On those lots we like to see how the ground has moved before we set the final height, so the patio does not inherit a dip that shows up the first spring. The lots off the old roads are the ones that surprise you, so we look at the ground before we set a final height.",
     ],
     "Foxborough": [
-        "Foxborough has a lot of flat ground and a lot of spring water, and a patio here lives or dies on "
-        "the base. Flat lots hold water because nothing is pushing it away, so we dig deeper, compact in "
-        "lifts and set the slope that sends water out before any stone goes down. If the ground under a "
+        "Foxborough yards run the range from flat to wet, and a patio here lives or dies on the base. Flat "
+        "ground holds water because nothing is pushing it away, so we read the grade, dig to depth, compact "
+        "in lifts and set the slope that sends water out before any stone goes down. If the ground under a "
         "patio stays wet, it does not matter how well the surface was laid; the base softens and the field "
         "moves.",
         "The pattern and the material are the visible half of the job, and Foxborough clients tend to want "
@@ -201,10 +204,10 @@ TOWN_DETAIL = {
         "Those look best when the setting bed is screeded dead flat, because a clean pattern shows every "
         "high and low paver. The invisible half, drainage and depth, is what keeps the pattern clean years "
         "later.",
-        "Frost here behaves like the rest of the 30-inch zone, so a shallow patio that looked fine in July "
+        "Frost here works the same way it does across the area, so a shallow patio that looked fine in July "
         "will show its first lifted paver after one hard freeze and thaw. It is a gradual failure; the "
         "patio never fails all at once, it just stops being level one winter at a time.",
-        "Foxborough is also where a lot of the work sits near the stadium and the newer office parks, which means traffic can change the start time of a job on a game day. We plan pours and deliveries around that so a morning start is not stuck behind a line of cars on Route 1. It does not change the work, only the clock.",
+        "Foxborough is a short run down 495 from the Mansfield yard, so scheduling is straightforward. As with any job we time material deliveries to the site access, so a morning start is not waiting on a truck that cannot get in.",
     ],
     "Seekonk": [
         "Seekonk runs right up against the RI line and the wet ground that comes with it, so drainage is "
@@ -251,7 +254,7 @@ TOWN_DETAIL = {
         "or step that ties the door to the yard cleanly. The neighbors' grades are part of the picture too, "
         "since on tight lots water does not always respect the property line.",
         "Plainville is a short run from Mansfield, so jobs here are quick to get on the schedule. Base "
-        "depth follows the same 30-inch frost zone as the towns around it, and the price for a given size "
+        "depth follows the same freeze-and-thaw cycle as the towns around it, and the price for a given size "
         "and material lands in the usual range for this part of Bristol County. The variable is how much "
         "grade correction the yard needs first.",
         "Plainville yards are close enough together that a patio here is often built to be looked at from a neighbor's window as much as your own, so the edges and the border get the same care as the field. We set the low point and the fall with the property line in mind, because on lots this tight the water and the view both cross the line whether anyone plans for it or not.",
@@ -296,13 +299,13 @@ TOWN_DETAIL = {
         "Where a yard drops, the wall and the patio get designed together so the transitions look "
         "deliberate.",
         "On sloped ground the base is carrying more than on a flat lot, and the edge restraint is doing more "
-        "work, so both get checked carefully. Sharon sits in the same 30-inch frost zone as the rest of the "
+        "work, so both get checked carefully. Sharon sees the same freeze-and-thaw cycles as the rest of the "
         "area. Pricing lands in the usual range for a given size and material; steep lots take longer "
         "because of the steps, the wall and the grade work that comes with them.",
     ],
     "Franklin": [
         "Franklin sits up a little higher than the towns below it, where the frost bites harder and springs "
-        "run wet, so depth and compaction decide whether the patio is flat in ten years. This is the town "
+        "run wet, so depth and compaction decide how the patio holds up over the years. This is the town "
         "where the base matters most and where we build it deepest. Wet spring ground plus a freeze is the "
         "combination that punishes shortcuts.",
         "A lot of Franklin yards back onto woods or open field, which means leaves, water and shade all "
@@ -333,7 +336,7 @@ SERVICES = [
                "dug out to depth, a crushed stone base compacted in lifts, a screeded "
                "bedding layer, and pavers restrained at the edge so the field can't "
                "creep. The visible part is the last inch. Everything that decides "
-               "whether it's still flat in ten years is underneath."),
+               "whether it holds its shape over the years is underneath."),
         img="project-dining", img_alt="A finished curved paver patio with a low seat wall and plantings along the edge.",
         video=dict(
             src="patio-base-explainer-1080p-silent.mp4",
@@ -493,12 +496,12 @@ GUIDES = [
         key="patio-base", tag="01. The base", title="Nine-tenths of it is underground",
         h1="What's under a patio (and why it matters)",
         meta="The paver is the last inch of a patio. Here's the base underneath it, in plain language, and why it decides whether the patio stays flat.",
-        lede="The pavers you see are the last inch. Everything that decides whether the patio is still flat in ten years is underneath them and invisible when the job is done.",
+        lede="The pavers you see are the last inch. Everything that decides whether the patio holds its shape is underneath them and invisible when the job is done.",
         paras=[
             "Under the pavers sit the bedding layer, the crushed stone base and the depth of the dig. Each layer has a job. The dig removes soil that would move under frost and water. The base, built up in lifts and compacted between each pass, spreads the load and stays put. The bedding layer is screeded flat so the pavers sit even.",
             "The failure mode is easy to picture. Pavers laid on dirt, or on a base dumped in one pass and never compacted, look exactly the same on day one as a job done right. It shows up the first hard winter, when a paver moves and never settles back.",
         
-            "Depth is not a number you can eyeball once the job is done, which is exactly why it is worth pinning down before work starts. In this part of Massachusetts we are planning the dig and the base around a 30-inch frost zone, which is deeper than a lot of people expect. A patio is shallow work in a lot of the country. Here it is not.",
+            "Depth is not a number you can eyeball once the job is done, which is exactly why it is worth pinning down before work starts. In this part of Massachusetts the ground freezes and thaws through the winter, so the dig and the base are planned for that cycle, deeper than a lot of people expect. A patio is shallow work in a lot of the country. Here it is not.",
             "You can also think of the base as a sponge and a bridge at once. The crushed stone drains water sideways and down, and compacted in lifts it carries the load of everything on top without shifting. Skip the lifts, and the same stone becomes a loose pile that the pavers float on. The material is not the trick. The compaction is.",
             "The thickness of the base is not a guess; it comes from what the patio will carry and from the soil underneath it. A patio that only takes foot traffic and light furniture needs less than one that will hold a parked car, and a yard on soft fill needs more than one on hard native ground. That is why the same square footage can be a different job from one property to the next, and why a quote without anyone looking at the soil is only a guess.",
             "One more thing worth knowing: good base work is quiet work. There is no part of it that looks impressive in progress, and that is exactly the point. If a crew is racing to get pavers down on the first day, ask what is under them. The depth and the compaction are the whole job. The pavers are the receipt.",
@@ -522,7 +525,7 @@ GUIDES = [
         lede="A patio should shed water like a roof does: away from the house, off the surface and out. That comes from the slope built into it, not from sand added later.",
         paras=[
             "Water that sits on a patio is almost always a grading problem rather than a stone problem. The surface is set to slope, the joints and base are planned to drain together, and the whole thing sends water somewhere it can leave. When any of that is off, water sits, the base below softens and pavers sink unevenly.",
-            "It's the single most common reason patios fail around here, and it's also the cheapest thing to get right at the start and the most expensive to fix later. Puddling at a door is usually the same problem showing up years in.",
+            "Water is one of the most common reasons a patio settles around here, and it is also the cheapest thing to get right at the start and the most expensive to fix later. Pooling at a door is usually the same problem showing up years in.",
         
             "There are really four things that keep water moving: the slope of the surface, the pitch built into the base, the joints between the stones, and where everything eventually empties. Get all four pointed the same way and water behaves. Get one pointed backward and you get a puddle that never fully dries.",
             "A lot of drainage work is invisible once it is done, which makes it easy to sell cheaply and hard to check. A swale dressed as planting or a run of drain stone under the lawn does the same job as a fancy system when it is laid out with the fall in mind, and it costs a fraction of what people fear.",
@@ -541,7 +544,7 @@ GUIDES = [
         meta="Ground here freezes and thaws all winter. Here's why patio depth isn't optional in Massachusetts, in plain language.",
         lede="Ground here freezes and thaws many times over a winter. Each cycle lifts the soil, and anything sitting too close to the surface comes up with it.",
         paras=[
-            "Mansfield and the towns around it sit in a 30-inch frost zone. The ground can freeze about two and a half feet down. That number is why patios here fail and patios in the Carolinas don't. Depth isn't a premium option; it's what keeps the surface below the layer that moves.",
+            "Mansfield and the towns around it see a hard freeze and thaw cycle every winter, and the ground can freeze well below the surface. That cycle is what moves shallow work, and it is why depth matters here the way it does not in milder parts of the country. Depth is not a premium option; it keeps the surface from being pushed around.",
             "Here's what the freeze does. Water sits in the soil, freezes, and pulls more water up into the ice. Ice takes up more room than water, so the soil swells, then drops back when it thaws. Anything sitting in that band gets carried with it. A patio dug out below the frost and rebuilt with compacted stone sits in ground that stays put.",
             "Failure is gradual, then sudden. The first winter one paver sits a hair high. The second winter a joint opens and water gets under the field. On day one it looked perfect; that's the point.",
             "Depth also has to be paired with drainage. A deep base holding water is worse than a shallow base that drains. Frost and drainage are one conversation here, and the slope gets planned before the first scoop of dirt comes out.",
@@ -550,7 +553,7 @@ GUIDES = [
         "The practical takeaway is that the base is the insurance policy. You cannot see it when the job is done, and you cannot easily fix it later. A patio dug deep, built up in compacted lifts on a stable subgrade, and edged so the field cannot spread will move as one piece through the freeze and thaw. One that skipped that work will not, and the first hard winter is when you find out.",
     ],
         checklist=[
-            "30-inch frost zone: base and dig planned from that number",
+            "Freeze and thaw: base and dig planned for the local cycle",
             "Base compacted in lifts, not dumped in one pass",
             "Slope planned so water leaves the base, not sits in it",
             "Edges restrained so the field cannot spread as it freezes",
@@ -640,7 +643,7 @@ GUIDES = [
 dict(
     key="paver-cost", tag="07. Cost", title="What a stone patio actually costs",
     h1="What a stone patio costs in Massachusetts",
-    meta="A plain-language look at what a stone patio costs in Massachusetts and Rhode Island, and where cheap quotes hide the difference.",
+    meta="A plain-language look at what a stone patio costs in Massachusetts, and where cheap quotes hide the difference.",
     lede="Nobody likes a vague number, so here is how a patio price is actually built: size first, then what is under it, then how hard it is to get to.",
     paras=[
         "The honest answer on cost is that it depends on four things: how big the patio is, how deep the base has to go, how much the ground has to change to drain, and how hard it is for a machine to reach the work. A flat, open backyard with good access is a different job than a tight side yard you have to wheelbarrow through.",
@@ -675,7 +678,7 @@ dict(
     
             "Concrete is one pour and done, which is fast and looks clean on day one. Its weakness is the same as its strength: it is one rigid slab. In a climate that freezes and thaws, that slab cracks along its control joints and sometimes beyond them, and a crack never closes back up. Repairs to a cracked slab are visible by nature.",
             "Pavers are flexible. The joints between them take small movement without cracking, and if a section ever needs to come up for a repair or a utility line, the same stones go back down and read as if nothing happened. That flexibility is the main reason the two surfaces age so differently here.",
-        "The practical version for a Massachusetts yard in the 30-inch frost zone: every hard surface freezes and thaws many times each winter. The question is not whether it moves but what happens when it does. A slab resists the movement and then cracks; a paver field absorbs a little at every joint and goes back where it was.",
+        "The practical version for a Massachusetts yard: every hard surface freezes and thaws many times each winter. The question is not whether it moves but what happens when it does. A slab resists the movement and then cracks; a paver field absorbs a little at every joint and goes back where it was.",
         "The money half: concrete is lowest up front, stamped concrete climbs from there, and pavers sit above both. The second cost is where it evens out. A cracked slab means break it out and patch it, and the patch never matches. Re-setting pavers is a fraction of that, and the same stones go back down. Over ten or fifteen winters, cheaper stops being cheaper.",
         "There is a place for each. Concrete is fine for a utility slab, a garage apron, or a shed floor. Where the surface is the yard and it has to stay level through frost, a base and a surface that can move is worth the difference on day one.",
         "One more practical point on timing: concrete needs to cure and cannot be walked on for days, while pavers are ready for furniture as soon as the last one is set. If you want to use the space this season and not next, that difference matters as much as the cost. Pavers also let you lift a single unit later to reach a utility line, which a slab never does.",
@@ -698,7 +701,7 @@ dict(
         "Preparing a patio for winter is mostly about keeping water off it before the first hard freeze. Clear the leaves and dirt that trap moisture, make sure the surface still drains, and do not pile snow against the house or leave the plow to drag steel across the stone. Small habits decide whether spring reveals the same surface you built.",
         "What you should not do is panic about frost. A patio built to depth over a compacted base is designed for the cycles that come every year. The jobs that suffer are the ones built shallow, and nothing you do in December will fix a base that was wrong in June.",
         "Two habits do most of the work. Keep the surface clear of leaves and debris so water can find the low point, and keep the joints full of sand so the pavers stay locked. A washed-out joint is easiest to top up in the fall and hardest to fix once frost has lifted the paver.",
-        "Tell the plow service the surface is pavers, and keep the blade an inch up with skid shoes on. One season of steel dragging across the surface does more damage than ten winters would. A little care in the two months of plowing protects twenty years of patio.",
+        "Tell the plow service the surface is pavers, and keep the blade an inch up with skid shoes on. One season of steel dragging across the surface does more damage than several winters of weather would. A little care in the two months of plowing protects the patio you paid for.",
         "The best time to fix a winter problem is the fall before it happens. Walk the patio after a hard rain and see where water lingers; that low spot is where frost will do its first work. A bag of sand in October to top up the joints and a few minutes clearing the drains does more for the surface than anything you can do in January, when the ground is locked up and there is nothing useful left to do.",
     ],
     checklist=[
@@ -738,14 +741,14 @@ dict(
 dict(
     key="driveway-aprons", tag="11. Walkways", title="Walkways, steps and aprons",
     h1="Walkways, steps and driveway aprons",
-    meta="How walkways, steps and driveway aprons are built in Massachusetts and Rhode Island, and why the base and slope matter as much as the stone you see.",
+    meta="How walkways, steps and driveway aprons are built in Massachusetts, and why the base and slope matter as much as the stone you see.",
     lede="A walkway is a small patio you use every day. Because you use it every day, the details that fail are the ones you will notice first.",
     paras=[
         "Walkways and steps get the same base and drainage as a patio, only tighter and steeper, which makes them less forgiving. A step that is a hair out of level or a walk that slopes the wrong way is felt, not just seen. That is why a good walkway build starts with the height difference from the door to the grade, not with the look of the stone.",
         "A driveway apron, where the paved surface meets the road or the garage, is the one spot that catches everything: plow snow, running water, and the weight of whatever rolls over it. It needs a solid edge and a slope that sends water away from both the house and the street. Done right, it is invisible and lasts. Done wrong, it is the first thing to move.",
         "An apron is the strip where a walk or driveway meets the road, and it takes more punishment than any other part of the run. Cars turn across it, the plow drags over it in winter and water from the street runs toward it. That is why it is worth digging and base-building even more carefully than the rest of the path.",
         "Steps are the other place detail pays off. Each tread wants a slight fall so water leaves the landing instead of standing on it, and the risers want to be consistent so the run feels steady underfoot. Small things, and they are the difference between a walk that feels finished and one that feels almost.",
-        "The transition is the detail that is easiest to get wrong. A hard lip or step where the apron meets the road or the garage is where water and the plow find it. A short ramp built on its own compacted base and cut to shed water is the difference between a decade of service and a crack in the first winter.",
+        "The transition is the detail that is easiest to get wrong. A hard lip or step where the apron meets the road or the garage is where water and the plow find it. A short ramp built on its own compacted base and cut to shed water is the difference between a surface that holds up and one that cracks in the first winter.",
         "Heavy loads change the base. A walkway carries feet, but an apron carries a car or a truck, so the base is dug deeper and compacted harder. If a plow or a delivery truck crosses it, say so up front. That changes the build, not just the price.",
         "Salt is the second thing to think about, because it is hard on both concrete and pavers and worse on a surface that already takes plow abuse. Sand or a paver-safe de-icer does less damage than rock salt over a season. On an apron that sees the road plow, that one choice is the difference between a surface that still looks new after five winters and one that is chipping at the edges.",
     ],
@@ -850,8 +853,9 @@ def business_ld() -> dict:
              "description": "By appointment"},
     ],
         "sameAs": [FB],
-        "areaServed": [{"@type": "City", "name": f"{t}, MA"} for t in TOWNS_MA]
-                      + [{"@type": "City", "name": f"{t}, RI"} for t in TOWNS_RI],
+        # MA only. RI cities are deliberately absent until Bryce holds an RI
+        # registration, which is what RI advertising law requires (ch. 5-65).
+        "areaServed": [{"@type": "City", "name": f"{t}, MA"} for t in TOWNS_MA],
     }
 
 def head(*, title, desc, canonical, ld_blocks, extra_head="") -> str:
@@ -939,7 +943,7 @@ NAV = f"""<a class="skip-link" href="#main">Skip to content</a>
   <div class="drawer__foot">
     <a class="btn btn--solid btn--block" href="/#estimate">Bryce</a>
     <a class="drawer__tel" href="tel:{PHONE_TEL}">{PHONE_TXT}</a>
-    <p class="drawer__meta">Mansfield, Massachusetts<br>Serving southeastern MA &amp; Rhode Island</p>
+    <p class="drawer__meta">Mansfield, Massachusetts<br>Serving southeastern MA</p>
   </div>
 </div>"""
 
@@ -1008,7 +1012,7 @@ def footer(service_links: list[tuple[str, str]], town_links: list[tuple[str, str
 
     <div class="footer__base">
       <p>&copy; <span id="year">2026</span> Bryce's Patios. All rights reserved.</p>
-      <p class="footer__fine">Based in Mansfield, MA. Serving southeastern Massachusetts and Rhode Island. {ADDR}. <a href="/feed.xml">Guides feed</a>.</p>
+      <p class="footer__fine">Based in Mansfield, MA. Serving southeastern Massachusetts. {ADDR}. <a href="/feed.xml">Guides feed</a>.</p>
       <p class="footer__fine">Every photo on this site is a real Bryce\u2019s Patios job around Mansfield, MA.</p>
     </div>
   </div>
@@ -1107,8 +1111,8 @@ FAQS_GUIDE = [
      "Every yard is a little different, so treat this as the way the work should go rather than a fixed recipe. The grade, the soil and where the water wants to run all move the details. That is exactly what Bryce looks at before quoting."),
     ("Can I get a plain answer on my own yard?",
      "Yes. Call Bryce or text a couple of photos with the rough size and the grade. He will tell you what the job actually needs and whether a visit is worth it, with no sales script."),
-    ("Does this apply anywhere in Massachusetts and Rhode Island?",
-     "The base depth and frost rules here are built for this part of Massachusetts, and the same standard carries into Rhode Island work. Towns next to Mansfield are the usual run, but there are no hard limits on how far out the job goes."),
+    ("Does this apply anywhere in southeastern Massachusetts?",
+     "The base and frost rules here are built for this part of Massachusetts. Towns next to Mansfield are the usual run, but there are no hard limits on how far out the job goes."),
 ]
 
 FAQS_HUB = {
@@ -1130,7 +1134,7 @@ FAQS_HUB = {
     ],
     "areas": [
         ("Is my town actually inside the service area?",
-         "Mansfield is home base and the twelve Massachusetts towns listed are the ones Bryce is in most weeks. Rhode Island is a short drive over the line and is on the list too, just call first to sort out what your town requires."),
+         "Mansfield is home base and the twelve Massachusetts towns listed are the ones Bryce is in most weeks. For anything past the state line, call first so we can say plainly what can be done."),
         ("Does the work change from town to town?",
          "The crew and the standard do not change, the ground does. Flat yards get drainage designed into the patio; sloped or ledge lots turn into steps, landings and walls; wet spring yards get base depth and drainage worked out before anything is dug."),
         ("What if my town is not on the list?",

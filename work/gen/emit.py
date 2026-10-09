@@ -299,7 +299,7 @@ def build_learn_hub(root: Path) -> None:
              'thin one.</p>'
              '<p class="prose">The base guide is the one to read first, because nine-tenths of a patio is '
              'underground. The drainage guide explains why patios sink and walls lean. The frost guide covers '
-             'the 30-inch depth this part of Massachusetts is built to. From there the cost guide breaks down '
+             'the depth this part of Massachusetts is built to. From there the cost guide breaks down '
              'what actually moves a price, and the quote guide tells you what a good estimate should include.</p>'
              '<p class="prose">You do not need to read all of these before calling. If you would rather just '
              'talk it through, call Bryce and describe the yard. He will tell you what he needs to see and '
@@ -311,7 +311,7 @@ def build_learn_hub(root: Path) -> None:
     body += _cta(trail, "Questions about your yard?", "Ask Bryce directly. No pressure, no sales script.")
     html_str = site.render_shell(
         title="Patio Guides and Answers | Bryce's Patios",
-        desc="Plain-language guides to patio bases, drainage, frost and stone choice, written for homeowners in Massachusetts and Rhode Island.",
+        desc="Plain-language guides to patio bases, drainage, frost and stone choice, written for homeowners in Massachusetts.",
         url=f"{site.BASE}/learn/", trail=trail, body=body,
         ld_extra=[_faq_ld(site.FAQS_HUB["learn"], f"{site.BASE}/learn/")],
         svc_links=_svc_links(), town_links=_town_links())
@@ -369,7 +369,7 @@ def build_services_hub(root: Path) -> None:
       <header class="section__head section__head--center">
         <p class="eyebrow">Services</p>
         <h1 class="h2">Stone work for the yard, done to last.</h1>
-        <p class="section__sub">Patios, walkways, retaining walls and fire pits. Owner-operated out of Mansfield, serving southeastern Massachusetts and Rhode Island.</p>
+        <p class="section__sub">Patios, walkways, retaining walls and fire pits. Owner-operated out of Mansfield, serving southeastern Massachusetts.</p>
       </header>
       {site.page_actions(center=True)}
       <div class="learn__grid">{"".join(cards)}</div>
@@ -379,8 +379,8 @@ def build_services_hub(root: Path) -> None:
              '<p class="prose">Every job on this page is built the same way underneath. The ground is dug to '
              'depth, the base goes in as crushed stone compacted in lifts, the surface is set to shed water '
              'away from the house, and the edge is restrained so the field cannot spread. That last inch you '
-             'see is the cheap part. The work under it is what keeps the surface flat after five winters of '
-             'freeze and thaw.</p>'
+             'see is the cheap part. The work under it is what keeps the surface from shifting through '
+             'the freeze and thaw.</p>'
              '<p class="prose">A patio is the floor of the yard and takes the most square footage, so the '
              'layout and the drainage get the most thought. A walkway takes more traffic per square foot and '
              'usually sits where water already wants to run, so it gets the same base in a narrower trench. A '
@@ -406,7 +406,7 @@ def build_services_hub(root: Path) -> None:
     body += _cta(trail, "Not sure which you need?", "Tell Bryce what the yard is doing and he'll say straight.")
     html_str = site.render_shell(
         title="Services | Patios, Walkways, Walls, Fire Pits",
-        desc="Stone patios, walkways, retaining walls and fire pits installed across southeastern Massachusetts and Rhode Island. Owner-operated, free estimates.",
+        desc="Stone patios, walkways, retaining walls and fire pits installed across southeastern Massachusetts. Owner-operated, free estimates.",
         url=f"{site.BASE}/services/", trail=trail, body=body,
         ld_extra=[_faq_ld(site.FAQS_HUB["services"], f"{site.BASE}/services/")],
         svc_links=_svc_links(), town_links=_town_links())
@@ -497,12 +497,12 @@ def build_service_town(root: Path, t: str, s: dict) -> None:
 
 def _town_note(t: str) -> str:
     notes = {
-        "Mansfield": "grade that falls toward the house, and a base dug to the 30-inch frost line so nothing lifts in March. The lots run from flat to a foot of fall in twenty, so the slope is read before any stone is set.",
+        "Mansfield": "grade that falls toward the house, and a base dug to depth so nothing lifts in March. The lots run from flat to a foot of fall in twenty, so the slope is read before any stone is set.",
         "Foxborough": "flat lots and heavy spring water, so the slope that sends water away is planned before any stone goes down. Without that, spring thaw sits on the patio instead of running off it.",
         "Attleboro": "older yards with mixed grades, so we work out where the water leaves before we set the first paver. Many of these lots were built up over time, and the high and low spots move around.",
         "North Attleboro": "sloped yards that want steps and a seat wall, built so the transitions read as deliberate instead of like an afterthought. The fall also decides where a fire pit can sit on its own level.",
         "Norton": "larger lots and drainage that has to cross the yard, so the path and patio drain together instead of fighting each other. Long runs need a low point designed in, not discovered after a storm.",
-        "Franklin": "deeper frost and wet springs, so depth and compaction decide whether it is flat in ten years. Wet ground also means the base has to be built dry, which changes the schedule.",
+        "Franklin": "deeper frost and wet springs, so depth and compaction decide how it holds up over the years. Wet ground also means the base has to be built dry, which changes the schedule.",
         "Seekonk": "smaller yards close to the Rhode Island line, so the layout gets planned tight and the water still has to leave the property cleanly.",
         "Rehoboth": "open, sandy lots that drain fast on their own, which lets a patio sit a little differently but still needs the base dug to depth and compacted in lifts.",
         "Plainville": "winding, tree-heavy yards where root zones and shade change how the base is prepped and how long a stone surface stays wet.",
@@ -582,12 +582,12 @@ def _svc_town_detail(svc_key: str, t: str) -> str:
 LOCAL_NOTE = {
     "patios": {
         "Mansfield": "Mansfield lets you keep a patio locked to the grade and still catch the evening sun, which is why most of these plans start by watching where the shade line lands at five o'clock.",
-        "Foxborough": "Foxborough's sandy soil drains faster than the rest of the area, so the base stone and the edge restraint are picked for the way water moves under the field before the surface is chosen.",
+        "Foxborough": "Foxborough soil varies from lot to lot, so the base stone and the edge restraint are picked for the way water moves under the field before the surface is chosen.",
         "Attleboro": "Attleboro has pockets of clay that hold water, so the sub-base is checked before the stone goes in and the low point is moved off the patio edge when it needs to be.",
         "North Attleboro": "North Attleboro yards often show their age in the grading, so we reset the line where the lawn meets the patio instead of following an old edge that no longer runs true.",
         "Norton": "Norton's bigger lots usually get a patio that ties into a path or a second sitting area, so the drainage plan covers the whole run and not just the patio footprint.",
         "Franklin": "Franklin's wet springs make the start date matter, so we set the patio when the subgrade can be compacted dry rather than after the first heavy rain.",
-        "Seekonk": "Seekonk jobs near the Rhode Island line share the same details as the MA side, so the plans, the paver spec and the drainage fall are all unchanged by the border.",
+        "Seekonk": "Seekonk jobs run on the same details as the rest of the area, so the plans, the paver spec and the drainage fall do not change from town to town.",
         "Rehoboth": "Rehoboth's open lots let a patio sit low and wide, but the edge still needs the same hard restraint, or the fast-draining ground works it loose over a few winters.",
         "Plainville": "Plainville's shaded lots hold moisture longer, so we build the base dry and set the fall a touch stronger, which keeps the surface from staying slick after a storm.",
         "Taunton": "Taunton's mixed soils run from sand to clay in the same yard, so the base detail is matched lot by lot instead of from one spec sheet.",
@@ -648,9 +648,9 @@ _SVC_WATCH = {
     "patios": (
         "For a patio in {t} the things that decide the result are boring ones: how deep the base is dug, "
         "whether it is compacted in lifts, where the surface sheds to, and how the edge is held. Get those "
-        "right and the pavers you picked at the yard will look the same in ten winters. Get them wrong and "
-        "no amount of pretty stone will keep the field flat. Six inches of compacted gravel under three inches "
-        "of bedding is the short version, and it is the part of the job nobody sees once the stone is down.",
+        "right and the pavers you picked at the yard will still look right years on. Get them wrong and "
+        "no amount of pretty stone will keep the field flat. That underground work is the part of the job "
+        "nobody sees once the stone is down.",
         "Every patio quote that comes in low usually skipped one of the four: depth, compaction, slope or edge. "
         "In {t} the grade and the frost line make all four matter, so we walk the yard, set the fall away from "
         "the house, and build the base before a single paver is set. That is also why a patio here gets quoted "
@@ -670,8 +670,8 @@ _SVC_WATCH = {
     "retaining-walls": (
         "A retaining wall in {t} is mostly the part you never see: a footing dug past the frost line, gravel "
         "backfill that drains, and a path for that water to escape at the bottom. The face is the easy part. "
-        "A wall that holds water behind it will lean within a few seasons. Gravel and a drain pipe behind the "
-        "face cost little at the time and are the whole reason the wall still stands straight ten years on.",
+        "A wall that holds water behind it will lean over time. Gravel and a drain pipe behind the "
+        "face cost little at the time and are the whole reason the wall still stands straight years later.",
         "In {t} that means sizing the wall to the grade it is actually holding, not just the height that looks "
         "right from the deck, and letting drainage decide how far the base extends behind the face. The height "
         "you see from the deck and the load the wall actually carries are two different numbers, and the footing "
@@ -700,23 +700,21 @@ def _svc_watch(svc_key: str, t: str) -> str:
 def build_areas_hub(root: Path) -> None:
     trail = [("Home", "/"), ("Service Area", "/areas/")]
     ma = "".join(f'<li><a href="/areas/{site.slug(t)}/">Stone patios in {site.esc(t)}, MA</a></li>' for t in site.TOWNS_MA)
-    ri = "".join(f'<li><span>{site.esc(t)}, RI (call for availability)</span></li>' for t in site.TOWNS_RI)
     body = f'''<section class="section"><div class="wrap">
       {site.crumb_html(trail)}
       <header class="section__head section__head--center">
         <p class="eyebrow">Service area</p>
         <h1 class="h2">Where Bryce builds.</h1>
-        <p class="section__sub">Based at 885 West St in Mansfield, MA and working across southeastern Massachusetts and Rhode Island. Pick your town for local detail, or just call.</p>
+        <p class="section__sub">Based at 885 West St in Mansfield, MA and working across southeastern Massachusetts. Pick your town for local detail, or just call.</p>
       </header>
       {site.page_actions(center=True)}
       <div class="area__grid">
         <div class="area__intro">
           <h2 class="h2">Towns we work in</h2>
-          <p>Twelve Massachusetts towns we are in most often, all within a short drive of the Mansfield yard. Rhode Island is on the list too, just call first.</p>
+          <p>Twelve Massachusetts towns we are in most often, all within a short drive of the Mansfield yard.</p>
         </div>
         <div class="area__lists">
           <div class="area__col"><h3 class="area__state">Massachusetts</h3><ul class="area__towns">{ma}</ul></div>
-          <div class="area__col"><h3 class="area__state">Rhode Island</h3><ul class="area__towns">{ri}</ul></div>
         </div>
       </div>
     </div></section>'''
@@ -732,11 +730,9 @@ def build_areas_hub(root: Path) -> None:
              'the work turns into steps, landings and a wall, and the base has to hold back fill on the high '
              'side. Easton and Franklin yards sit wetter in spring and closer to woods, so drainage and base '
              'depth get worked out before anything is dug.</p>'
-             '<p class="prose">Rhode Island is a short drive over the line and Bryce takes those jobs too. We '
-             'do not carry a Rhode Island registration, so for work there it is best to call first and sort '
-             'out what your town requires before the job is booked. Everything in Massachusetts is built to '
-             'the same 30-inch frost depth, because a base that skips it will heave no matter how good the '
-             'stone looks.</p>'
+             '<p class="prose">Everything here is built the same way: a base dug to depth and compacted in '
+             'lifts, because a shallow base will heave no matter how good the stone looks. If your project '
+             'sits outside this area, call and we will tell you straight whether it makes sense.</p>'
              '<p class="prose">If your town is not on the list, that does not mean no. There are no hard '
              'limits on how far out the work goes. Call with the address and Bryce will tell you straight '
              'whether it makes sense for both sides.</p>'
@@ -744,14 +740,14 @@ def build_areas_hub(root: Path) -> None:
     body += ('<section class="section"><div class="wrap wrap--narrow"><figure class="learn__figure">'
              + _img("big-yard", "A curved stone patio tying a large yard together.",
                     "(max-width:1024px) 100vw, 900px")
-             + '<figcaption><strong>Southeastern Massachusetts &amp; Rhode Island.</strong> Most of the work sits within a short drive of the Mansfield yard.</figcaption></figure></div></section>')
+             + '<figcaption><strong>Southeastern Massachusetts.</strong> Most of the work sits within a short drive of the Mansfield yard.</figcaption></figure></div></section>')
     body += ('<section class="section"><div class="wrap wrap--narrow">'
              + _sec_head("Common questions", "Service area questions, answered")
              + _faq_block(site.FAQS_HUB["areas"]) + '</div></section>')
     body += _cta(trail, "Somewhere else in the area?", "Bryce has no hard limits. Call and ask.")
     html_str = site.render_shell(
         title="Service Area | Southeastern MA | Bryce's Patios",
-        desc="Bryce's Patios builds stone patios, walkways, walls and fire pits across southeastern Massachusetts and Rhode Island. See the towns we cover.",
+        desc="Bryce's Patios builds stone patios, walkways, walls and fire pits across southeastern Massachusetts. See the towns we cover.",
         url=f"{site.BASE}/areas/", trail=trail, body=body,
         ld_extra=[_faq_ld(site.FAQS_HUB["areas"], f"{site.BASE}/areas/")],
         svc_links=_svc_links(), town_links=_town_links())
@@ -770,7 +766,7 @@ def build_sitemap(root: Path) -> None:
     img_for = {
         f"{site.BASE}/": ("patio-firepit-build", "Paver patio and circular fire pit under construction in Mansfield, MA"),
         f"{site.BASE}/services/": ("patio-firepit-build", "Paver patios, walls and fire pits built by Bryce's Patios"),
-        f"{site.BASE}/areas/": ("big-yard", "Stone patio work across southeastern Massachusetts and Rhode Island"),
+        f"{site.BASE}/areas/": ("big-yard", "Stone patio work across southeastern Massachusetts"),
         f"{site.BASE}/learn/": ("craft-base", "Patio base and craft guides from Bryce's Patios"),
     }
     for t in site.TOWNS_MA:
