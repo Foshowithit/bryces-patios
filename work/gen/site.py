@@ -438,7 +438,7 @@ SERVICES = [
     ],
     ),
     dict(
-        key="fire-pits", name="Fire Pits & Outdoor Living", short="fire pits",
+        key="fire-pits", name="Fire Pits", short="fire pits",
         h1="Fire pit installation in {town}, MA",
         meta=("Stone fire pits, seat walls and patio living spaces built in {town}, MA. "
               "Owner-operated. Free estimates."),

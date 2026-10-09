@@ -226,7 +226,7 @@ def build_learn_hub(root: Path) -> None:
              '</div></section>')
     body += _cta(trail, "Questions about your yard?", "Ask Bryce directly. No pressure, no sales script.")
     html_str = site.render_shell(
-        title="Patio Guides &amp; Answers | Bryce's Patios",
+        title="Patio Guides and Answers | Bryce's Patios",
         desc="Plain-language guides to patio bases, drainage, frost and stone choice, written for homeowners in Massachusetts and Rhode Island.",
         url=f"{site.BASE}/learn/", trail=trail, body=body, ld_extra=[],
         svc_links=_svc_links(), town_links=_town_links())
@@ -254,7 +254,7 @@ def build_service(root: Path, s: dict) -> None:
                 + _faq_block(faqs) + '</div></section>')
     body.append(_cta(trail, f"Planning {s['short']}?", "Tell Bryce about the yard and get a free estimate."))
     html_str = site.render_shell(
-        title=f'{s["name"]} Contractor in Mansfield, MA | Bryce\'s Patios',
+        title=f'{s["name"]} in Mansfield, MA | Bryce\'s Patios',
         desc=s["meta"].format(town=town), url=f'{site.BASE}/services/{s["key"]}/', trail=trail,
         body="".join(body), ld_extra=[_faq_ld(faqs, f'{site.BASE}/services/{s["key"]}/')],
         svc_links=_svc_links(), town_links=_town_links())
@@ -308,7 +308,7 @@ def build_services_hub(root: Path) -> None:
     body += '<figcaption><strong>Patios, walls, walkways and fire pits.</strong> One crew, one standard of base work, on every job.</figcaption></figure></div></section>'
     body += _cta(trail, "Not sure which you need?", "Tell Bryce what the yard is doing and he'll say straight.")
     html_str = site.render_shell(
-        title="Services | Patios, Walkways, Walls &amp; Fire Pits | Bryce's Patios",
+        title="Services | Patios, Walkways, Walls, Fire Pits | Bryce's Patios",
         desc="Stone patios, walkways, retaining walls and fire pits installed across southeastern Massachusetts and Rhode Island. Owner-operated, free estimates.",
         url=f"{site.BASE}/services/", trail=trail, body=body, ld_extra=[],
         svc_links=_svc_links(), town_links=_town_links())
@@ -345,7 +345,7 @@ def build_town(root: Path, t: str) -> None:
                 + f'<ul class="guide__list">{"".join(svc_rows)}</ul></div></section>')
     body.append(_cta(trail, f"Getting a quote in {t}", "Free estimates, no hard limits on where we go."))
     html_str = site.render_shell(
-        title=f'Stone Patios &amp; Hardscaping in {t}, MA | Bryce\'s Patios',
+        title=f'Stone Patios in {t}, MA | Bryce\'s Patios',
         desc=f'Owner-operated stone patio, walkway, retaining wall and fire pit installation in {t}, MA. Free estimates from Bryce\'s Patios.',
         url=f"{site.BASE}/areas/{tslug}/", trail=trail, body="".join(body), ld_extra=[],
         svc_links=_svc_links(), town_links=_town_links())
@@ -435,7 +435,7 @@ SVC_TOWN_DETAIL = {
     },
     "fire-pits": {
         "Mansfield": "A Mansfield fire pit usually sits on its own level pad off the patio, far enough from the house for a real fire and near enough to share the seating. Most Mansfield yards have the room for that pad off the patio edge, so the pit ends up where the seating already wants to be rather than out in the open lawn.",
-        "Foxborough": "On wet Foxborough lots the pit goes on ground that drains, which sometimes decides the corner before the design does. On the wetter Foxborough lots we also set the pit on a raised compacted base so spring water drains under it rather than sitting in the ring.",
+        "Foxborough": "On wet Foxborough lots the pit goes on ground that drains, which sometimes decides the corner before the design does. On the wetter Foxborough lots we also set the pit on a raised compacted base so spring water drains under it rather than sitting in the ring. If the grade will not let us raise it, we dig a dry well beside the ring and run the base stone out to it so the pit never sits in a puddle.",
         "Attleboro": "Older Attleboro yards often fit the pit into an existing corner so it needs the least new grade and the least new stone. Attleboro's older yards often already have a level corner worn into the lawn, which is usually the cheapest place to set a pit because it needs the least new grade.",
         "North Attleboro": "Sloped North Attleboro yards get the pit on a built terrace, so it sits flat and the seating rings it evenly. On a sloped North Attleboro yard the pit sits on its own built terrace, which means the base under it is graded and compacted the same way as the patio above.",
         "Norton": "With room to work, Norton pits often get a wider ring of seating and a gravel apron so the area stays off the lawn. On a big Norton lot the pit usually gets a wider gravel apron and more seating, since there is room and the area then stays off the lawn through the wet months.",
@@ -539,7 +539,7 @@ def build_areas_hub(root: Path) -> None:
              + '<figcaption><strong>Southeastern Massachusetts &amp; Rhode Island.</strong> Most of the work sits within a short drive of the Mansfield yard.</figcaption></figure></div></section>')
     body += _cta(trail, "Somewhere else in the area?", "Bryce has no hard limits. Call and ask.")
     html_str = site.render_shell(
-        title="Service Area | Southeastern MA &amp; Rhode Island | Bryce's Patios",
+        title="Service Area | Southeastern MA | Bryce's Patios",
         desc="Bryce's Patios builds stone patios, walkways, walls and fire pits across southeastern Massachusetts and Rhode Island. See the towns we cover.",
         url=f"{site.BASE}/areas/", trail=trail, body=body, ld_extra=[],
         svc_links=_svc_links(), town_links=_town_links())
