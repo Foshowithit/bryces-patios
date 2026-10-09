@@ -33,6 +33,29 @@ layout and copy in one commit. Google probing: ≤3 queries/session, 10–20 s a
 
 ---
 
+## Priority order (re-planned 2026-10-08) — off-site visibility is the work now
+
+The site itself is built and at target. **The remaining gap is not on the site.
+It is that the site is not yet *discovered*.** A perfect page with no profile, no
+citations and no index presence gets zero calls. So the primary workstream is
+off-site visibility + indexation; the site work is now maintenance.
+
+| # | Workstream | Who | Status | Why it matters |
+|---|---|---|---|---|
+| **P1** | **Google Business Profile live + verified** | **HUMAN** | **NONE** | The single biggest lever. A local service business with no GBP is invisible in Maps and the local pack, which is where most "patio installer near me" intent converts. Copy is ready in `SEO/GBP.md`. |
+| **P2** | **Google Search Console claimed + sitemap submitted** | **HUMAN** | **unclaimed** | Only fast path to Google indexation, and the only source of real impressions/clicks/query data. Everything downstream depends on this. |
+| **P3** | **Bing Webmaster Tools + IndexNow confirm** | ours + HUMAN | IndexNow 200s, **0 indexed** | Bing ignores ping-only for a brand-new domain. Webmaster Tools gives a crawl/index dashboard and the honest signal we are missing. |
+| **P4** | **Citations / NAP submissions live** | HUMAN (we prep) | **0 live** | Directory + MapQuest/Yelp/BBB presence creates the entity signals that let a no-backlink site rank. Kit ready in `SEO/CITATIONS.md`. |
+| **P5** | **Review engine live (needs GBP first)** | HUMAN | none | Reviews are the ranking + trust signal for local. Flow + templates ready in `SEO/REVIEWS.md`. `aggregateRating` only at ≥5 real reviews. |
+| **P6** | **Off-site social signal** (FB posts, profiles) | HUMAN | kit ready | `social/SOCIAL-KIT.md` + 8 covers ready; posting needs Bryce's OK. |
+| **P7** | **On-site maintenance** (depth, schema, icons, linking) | ours | **DONE / at target** | Already at target: 81 pages, voice gate SHIP, valid rich results. Only touch this to fix a real defect. |
+
+**Rule from here:** every session should move a HUMAN item forward (make it a
+one-click, copy-paste list) or fix a verified on-site defect. Do not re-polish
+on-site copy that already passes the gate.
+
+---
+
 ## Where we are (verified 2026-10-08)
 
 | Thing | State |

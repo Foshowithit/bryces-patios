@@ -236,3 +236,66 @@ pages)` (was 29,598 words at ck73 — the extra pages are real content, not fill
 target. We are now blocked on things that need Bryce's identity or hands: create
 the GBP, claim Search Console, then citations and reviews. Nothing on the site
 side is the bottleneck.
+
+---
+
+## ck94 → ck96 (2026-10-08) — icons, schema cleanup, off-site plan
+
+**What changed:**
+
+- **Home service-link gap fixed** (ck94, `05e3229`): the home page's `#work`
+  project cards and the `.work__services` row now link to the 4 money pages
+  (was: 0 real service links from home → now 4). Cache-buster bumped to
+  `b7d3f918`.
+- **`favicon.ico` was 404 on every page** (found ck96, verified live-404 before
+  fix). The head declared only an inline data-URI SVG, so browsers that request
+  `/favicon.ico` by convention got nothing. Fixed in `53efffa`: shipped a real
+  `favicon.ico` (16/32/48/64), `favicon-32.png`, `apple-touch-icon.png` (180),
+  `icon-192.png`, `icon-512.png`, generated from the site's own 4-paver mark,
+  plus a real `site.webmanifest` (name/short_name/icons/theme) and a proper
+  light/dark `theme-color` media pair on all 81 pages. The `apple-touch-icon`
+  also stopped misusing the 1200×630 `og-cover.jpg` (931 KB, wrong aspect).
+- **`chore(img)` `f190b2a`**: dropped an accidentally-committed
+  `assets/img/icon-source.png` from shipped assets.
+- **JSON-LD cleanup** (ck96, `0eb5ab2`): home `LandscapingBusiness` `image[]`
+  had `project-dining.jpg` listed twice (6 → 5 declarations, 5 unique); `logo`
+  moved from the 1200×630 `og-cover.jpg` to the square `icon-512.png` 512×512.
+  JSON re-validated with `json.loads` after the edit.
+
+**Verified after each rebuild:** `emit.py` → **81 pages / 81 sitemap urls /
+14 feed entries**; `grep -rl 'assets/img/favicon.ico' --include=index.html .` →
+**81**; mansfield + home heads show manifest link + light/dark theme-color pair.
+Live checks after push: home 200 · `/favicon.ico` 200 · `/favicon-32.png` 200 ·
+`/apple-touch-icon.png` 200 · `/site.webmanifest` 200 · sitemap 81 `<loc>`.
+
+**Voice gate:** re-ran on the full visible-copy extract — **SHIP, fatal=0
+tier1=0 p1=0, 1.6/100**. Depth unchanged and at target: guides min 732 / avg
+779 (n=13) · towns min 617 / avg 642 (n=12) · service×town min 415 / avg 444
+(n=48).
+
+**Search visibility (re-confirmed 2026-10-08):**
+
+- **Bing: still 0 pages indexed.** `site:brycespatios.work` returns the
+  date-range filter widget and zero result URLs — the signature of "Bing has
+  nothing for this site." Three rounds of IndexNow `HTTP 200` (81 urls each) did
+  not change this. Honest conclusion: **the lever is Search Console + Bing
+  Webmaster Tools + citations, not more pings.**
+- **Google: unmeasurable from this host** (JS shell / "unusual traffic" wall).
+  Do not read a curl result as a ranking signal.
+- **Google Maps: still no listing.** GBP remains the #1 gap.
+
+**Bookkeeping (so these are not re-chased):** the ck94 `site.webmanifest` 404 was
+a probe of a *conventional* path — nothing referenced it. It is now a real file.
+`manifest.json` and `browserconfig.xml` 404s remain **unreferenced — ignore.**
+
+**Plan of record updated:** `SEO/PLAN.md` now opens with a **priority table** that
+names **off-site visibility + indexation as the primary remaining workstream**
+(P1 GBP → P2 GSC → P3 Bing WMT → P4 citations → P5 reviews → P6 social) and
+demotes on-site maintenance to "at target." New one-page human checklist:
+`SEO/OFFSITE-CHECKLIST.md`.
+
+**Honest read after ck96:** the site side is done — pages, depth, schema, icons,
+linking, voice and crawl plumbing are all at target and verified. **Visibility is
+blocked on human actions that need Bryce's identity:** create the GBP, claim
+Search Console, set up Bing Webmaster Tools, then citations and reviews. Nothing
+we can do on the site will move a 0-index, no-profile business into Maps.
