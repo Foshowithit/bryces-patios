@@ -72,7 +72,9 @@ TOWN_INTRO = {
                   "Both kinds need the same thing before stone goes down: the shape of the yard "
                   "decided first, then the patio set to that. We have dug in this ground long "
                   "enough to know where the ledge sits and how the spring water moves, and it is "
-                  "why most of our calls come from neighbors who watched a patio go in."),
+                  "why most of our calls come from neighbors who watched a patio go in. "
+                  "If you have been looking for a patio installer in Mansfield, MA, we are "
+                  "twenty minutes from most of the town."),
     "Attleboro": ("Attleboro sits on ledge and old mill-era lots, so the work starts with "
                   "finding where the rock is and where the water wants to go. Downtown-side "
                   "yards are tight; the ones out toward South Attleboro open up and take a "
@@ -621,9 +623,9 @@ GUIDES = [
         img="about-site", img_alt="A finished stone patio beside a house in southeastern Massachusetts.",
     ),
 dict(
-    key="paver-cost", tag="07. Cost", title="What a paver patio actually costs",
-    h1="What a paver patio costs in Massachusetts",
-    meta="A plain-language look at what drives the price of a paver patio in Massachusetts and Rhode Island, and where cheap quotes hide the difference.",
+    key="paver-cost", tag="07. Cost", title="What a stone patio actually costs",
+    h1="What a stone patio costs in Massachusetts",
+    meta="A plain-language look at what a stone patio costs in Massachusetts and Rhode Island, and where cheap quotes hide the difference.",
     lede="Nobody likes a vague number, so here is how a patio price is actually built: size first, then what is under it, then how hard it is to get to.",
     paras=[
         "The honest answer on cost is that it depends on four things: how big the patio is, how deep the base has to go, how much the ground has to change to drain, and how hard it is for a machine to reach the work. A flat, open backyard with good access is a different job than a tight side yard you have to wheelbarrow through.",
