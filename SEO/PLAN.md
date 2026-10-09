@@ -37,17 +37,17 @@ layout and copy in one commit. Google probing: ≤3 queries/session, 10–20 s a
 
 | Thing | State |
 |---|---|
-| Live site | `https://brycespatios.work` — 56 pages, GitHub Pages, `main` |
-| Pages | 1 home · 1 learn hub · 12 guides · 1 services hub · 4 service · 1 areas hub · 12 town · 24 service×town = **56** |
-| Sitemap | **56 URLs**, `<image:image>` on key photos |
-| Content depth | site avg **562** words · guides min **732** · towns min **617** · service×town min **404** (all met) |
+| Live site | `https://brycespatios.work` — 81 pages, GitHub Pages, `main` |
+| Pages | 1 home · 1 learn hub · 13 guides · 1 services hub · 4 service · 1 areas hub · 12 town · 48 service×town = **81** |
+| Sitemap | **81 URLs**, `<image:image>` on key photos |
+| Content depth | site avg **536** words (n=73) · guides min **732** avg 779 (n=13) · towns min **617** avg 642 (n=12) · service×town min **415** avg 444 (n=48) (all met) |
 | Rich results | `LocalBusiness` (`LandscapingBusiness`) + `FAQPage` + `BreadcrumbList`, `@id`-linked |
 | Google Business Profile | **NONE.** Biggest single reason he is invisible on Maps. |
 | Indexed pages | ~1 (fresh URL, no GBP, no backlinks yet) |
 | Reviews | 0 |
 | Citations | 0 live (package ready in `SEO/CITATIONS.md`) |
 | Monitoring | weekly crontab watcher live (`~/tmp/bryce-seo-watch/watch.py`, Mon 09:00) |
-| Voice gate | last full-site run **SHIP, 0/0/0, 1.3/100 (29,598 words)** |
+| Voice gate | last full-site run **SHIP, 0/0/0, 1.6/100 (45,938 words, 81 pages)** |
 | Discovery | `feed.xml` (Atom) + `rel=alternate` in every head (incl. home) · IndexNow key + ping script live · footer feed link |
 
 ---
@@ -60,13 +60,13 @@ Legend: `TODO` · `WIP` · `DONE` · `HUMAN` (blocked on Bryce/user action)
 Static HTML on GitHub Pages, no build step. Generator in `work/gen/` holds the
 verified business data so every page's head, breadcrumb and JSON-LD are identical
 in shape.
-- [x] `/learn/` hub + 12 guide pages, split from the home `#learn` articles
-- [x] 4 service pages · 12 MA town pages · 24 service×town pages (unique copy)
+- [x] `/learn/` hub + 13 guide pages, split from the home `#learn` articles
+- [x] 4 service pages · 12 MA town pages · **48** service×town pages (all 12 towns x 4 services, unique copy)
 - [x] Every page: unique title/meta · keyword-strong H1 · self-canonical ·
       OG/Twitter · voice-gated copy · shared `style.css` + `main.js`
 
 ### WS2 — Sitemap + crawl hygiene  `DONE for us` (GSC submit = HUMAN)
-- [x] `sitemap.xml` (56 URLs) + real `lastmod` from file mtime
+- [x] `sitemap.xml` (81 URLs) + real `lastmod` from file mtime
 - [x] `<image:image>` extensions for key photos
 - [x] `robots.txt` intact · `apple-touch-icon` + `site.webmanifest`
 - [x] `max-image-preview:large`
@@ -101,17 +101,21 @@ verification. We do everything possible without Bryce's identity.
 `SEO/REVIEWS.md`: QR + short link + reply templates. `aggregateRating` goes into
 schema **only at ≥5 real reviews**. None yet. Never invent one.
 
-### WS8 — Blog / education content  `WIP` (depth DONE, more guides planned)
-- [x] 12 noob-friendly patio-craft guides live, AI-disclosed, voice-gated
+### WS8 — Blog / education content  `DONE`
+- [x] 13 noob-friendly patio-craft guides live, AI-disclosed, voice-gated
 - [x] thicken the thin pages — all thresholds met (guides min 732, towns min 617,
-      service×town min 404; site avg 562)
-- [ ] Planned guides (write only if copy is genuinely distinct, not spun):
-      *"Retaining walls 101"* · *"Fire pit types and siting"* ·
-      *"Drainage around a foundation"* · *"Prepping a yard for a patio"*
+      service×town min 415; site avg 536)
+- [x] service<->guide linking both ways: every guide links to its matching money
+      page, every service page links down to its guides (`GUIDE_SERVICE`)
+- [x] fire-pit guide added (`/learn/fire-pit-basics/`) — closed the last service
+      with zero guide coverage
+- [ ] Optional next guides (write only if genuinely distinct, not spun):
+      *"Retaining walls 101"* · *"Drainage around a foundation"* ·
+      *"Prepping a yard for a patio"*
 
 ### WS9 — Monitoring  `DONE`
 Quiet weekly watcher live via crontab (Mon 09:00). Notifies only on meaningful
-change / completion / failure / required user action. Last run: 56 OK / 0 BAD.
+change / completion / failure / required user action. Last run: 81 OK / 0 BAD.
 
 ### WS10 — Measurement  `WIP`
 Dated before/after log in `SEO/BASELINE.md`: `site:` indexed count, brand SERP
@@ -119,11 +123,11 @@ position, local-pack presence, GBP views/calls/direction requests, review count,
 per-page impressions/clicks once Search Console exists. Google-only, ≤3/session.
 
 ### WS11 — Discovery plumbing  `DONE` (except Google's non-participation, noted)
-Getting the 56 URLs *noticed* now, not in six weeks.
+Getting the 81 URLs *noticed* now, not in six weeks.
 - [x] `feed.xml` (Atom) + `<link rel="alternate">` in `head()` **and on home**
       + footer "Guides feed" link on every page
 - [x] **IndexNow** key file at site root (`b8be78077b664cf338d750ff4799d248.txt`)
-      + `work/indexnow-ping.sh` for all 56 URLs, `HTTP 200` after each push
+      + `work/indexnow-ping.sh` for all 81 URLs, `HTTP 200` after each push
       (Bing/Yandex/Seznam; **Google does not participate** — be honest about that,
       do not retry Google sitemap pings)
 - [x] Sitemap submitted where it is accepted; IndexNow covers the rest
@@ -134,16 +138,16 @@ Getting the 56 URLs *noticed* now, not in six weeks.
       Bryce; note the ask)
 - [x] `social/SOCIAL-KIT.md` — handle table (`@brycespatios` IG/TikTok/YT,
       `brycespatios` FB), profile bios, highlight covers (`social/highlight-covers/`)
-- [ ] Post the 12 guides as FB posts (drafts ready; publish only after Bryce OK)
+- [ ] Post the 13 guides as FB posts (drafts ready; publish only after Bryce OK)
 - [ ] One photo-driven FB post template per service for Bryce to reuse
 
 ---
 
 ## Content depth targets (words, visible text)
 
-Current average across the 48 content pages ≈ **562 w** (was 432). No page is
-below its target: guides min 732 / avg 764 · towns min 617 / avg 640 ·
-service×town min 404 / avg 422. The old thin pages are all fixed.
+Current average across the 73 content pages ≈ **536 w**. No page is
+below its target: guides min 732 / avg 779 (n=13) · towns min 617 / avg 642 (n=12) ·
+service×town min 415 / avg 444 (n=48). The old thin pages are all fixed.
 
 Targets: guide pages ≥ 550 w · town pages ≥ 420 w · service×town ≥ 400 w.
 Add real information, never filler: cost ranges, frost depth, drive times, yard
@@ -181,3 +185,83 @@ All pages live and crawlable · brand query and `bryce patios mansfield` return 
 site · GBP live · first reviews · before/after logged in `SEO/BASELINE.md` ·
 IndexNow + feed live · everything pushed to
 `github.com/Foshowithit/bryces-patios`.
+
+---
+
+## Keyword → page map (added 2026-10-08, ck89)
+
+Written so no future session re-guesses which query each page is built to win.
+"phrase present" = the exact split words appear in visible copy on that page.
+
+| Query | Intent | Landing page | Phrase present |
+|---|---|---|---|
+| `bryce patios mansfield` | brand | `/` (home) | yes |
+| `patio installer mansfield ma` | commercial local | `/` + `/areas/mansfield/` | yes |
+| `patio installer near me mansfield` | commercial local | `/areas/mansfield/` | yes (town pages) |
+| `patio installation massachusetts` | commercial | `/services/patios/` | yes |
+| `stone patio cost massachusetts` | research → money | `/learn/paver-cost/` | yes |
+| `stone patio massachusetts` | commercial | `/services/patios/` | yes |
+| `paver patio vs concrete` | research | `/learn/patio-vs-concrete/` | yes |
+| `how long does a patio last frost` | research | `/learn/frost/` | yes |
+| `walkway installer mansfield` | commercial local | `/services/walkways/` (+ 12 town pages) | yes |
+| `retaining wall installer mansfield ma` | commercial local | `/services/retaining-walls/` | yes |
+| `fire pit installer mansfield ma` | commercial local | `/services/fire-pits/` | yes |
+| `hardscaping mansfield ma` | commercial local | home + `/areas/mansfield/` | partial (word on page) |
+
+Rule: new pages only get added if they own a query that is not already owned.
+Never two pages chasing the same phrase (cannibalisation).
+
+## Town × service matrix — 48 / 48
+
+All 12 MA towns (`Mansfield · Attleboro · North Attleboro · Norton · Foxborough ·
+Seekonk · Rehoboth · Plainville · Franklin · Taunton · Easton · Sharon`) have a
+page for each of the 4 services (`patios · walkways · retaining-walls ·
+fire-pits`) = **48 service×town pages**, each with unique town-specific copy
+(`LOCAL_NOTE` + `SVC_TOWN_DETAIL`), a parent-town link and a parent-service link.
+Before ck88 only the 6 `TOP_TOWNS` existed (24 pages) — that was a `TOP_TOWNS`
+slice bug, now fixed.
+
+## Guide list — 13 (`/learn/` hub + 13 pages)
+
+`choosing-contractor · drainage · driveway-aprons · fire-pit-basics · frost ·
+materials · patio-base · patio-vs-concrete · paver-cost · the-quote ·
+winter-ready · yard-grades · your-questions`
+
+Every guide links up to its matching money page and every service page links down
+to its guides (`GUIDE_SERVICE` reverse map). Gap fixed in ck88: `fire-pit-basics`
+→ `/services/fire-pits/` (previously fire-pits had zero guide coverage).
+
+## Off-site platform order (do in this order)
+
+1. **Google Business Profile** — #1 leverage, still NONE. Copy ready in `SEO/GBP.md`.
+2. **Google Search Console** — the only fast path to get Google to index 81 URLs.
+3. **Facebook page** — `@brycespatios`; verify site link in NAP. Never edit without Bryce's OK.
+4. **Yelp** · 5. **BBB** · 6. **Nextdoor** · 7. **Houzz** · 8. **Angi** — per `SEO/CITATIONS.md`.
+   SAB rule: hide the street address on Google/Nextdoor; put it on Yelp/Angi/Houz/BBB/FB.
+   Business name must be exactly `Bryce's Patios` everywhere.
+
+## ck89 change note
+
+Three copy-only patches landed to close a measured keyword gap:
+- home hero lede now carries "owner-operated patio installer out of Mansfield, MA"
+- `/areas/mansfield/` carries "patio installer in Mansfield, MA"
+- `/learn/paver-cost/` retitled to target "stone patio costs in Massachusetts"
+
+Before the patch, `patio installer mansfield ma` and `stone patio cost
+massachusetts` split-words did **not** all appear on the obvious page. After, all
+rows in the map above show "yes". Rebuilt (81 pages), re-gated (**SHIP 1.6/100,
+45,938 words**), committed `e978d12`, deployed, IndexNow re-pinged (HTTP 200, 81
+urls).
+
+## Honest status of visibility (2026-10-08)
+
+- **Site quality is fine.** 81/81 pages live 200; depth, schema, linking, voice
+  all meet target.
+- **Indexation is the blocker, not quality.** Bing has not indexed the domain
+  despite repeated IndexNow 200s. Google is unmeasurable from this IP (WAF) —
+  Search Console is the only real read, and it is unclaimed.
+- **Off-site authority is the other blocker.** Zero citations, zero reviews, no
+  GBP. Organic ranking for the commercial queries is a multi-year fight; the
+  local pack is decided by GBP + reviews, which is why GBP is item #1.
+- **Do not promise a timeline.** The honest lever we control is: GBP live,
+  Search Console claimed, 30+ citations, then real reviews.

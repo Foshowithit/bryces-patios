@@ -181,3 +181,58 @@ outside 110–165.
 
 **Watcher (weekly Mon 09:00):** 56 OK / 0 BAD, 12 guide cards on `/learn/`,
 nothing broken.
+
+---
+
+## After-log — ck74 … ck89 (2026-10-08, content depth + keyword + deploy)
+
+Re-measured, not estimated. HEAD at time of writing: **`e978d12`** (Actions
+`completed success`, 2026-10-09T02:19Z), deploy live ~1 min after push.
+
+| Metric | Value |
+|---|---|
+| Pages live | **81 / 81 → HTTP 200** (full sweep) |
+| Pages emitted by generator | 80 + 1 hand-maintained home = 81 |
+| Sitemap | **81 URLs** |
+| Feed | **14 entries** (`/learn/` hub + 13 guides) |
+| Guides | **13** |
+| Service×town pages | **48 / 48** (was 24) |
+
+**Depth after ck89 (visible text, `<main>` only):**
+
+| Bucket | n | min | avg | threshold | fails |
+|---|---|---|---|---|---|
+| Guides (`learn/*/`) | 13 | **732** | 779 | ≥550 | **0** |
+| Town pages (`areas/*/`) | 12 | **617** | 642 | ≥420 | **0** |
+| Service×town (`areas/*/*/`) | 48 | **415** | 444 | ≥400 | **0** |
+| Content pages total | 73 | — | **536** | — | — |
+
+Depth history: … → 507 → 562 → **536** (avg dips because 24 extra service×town
+pages, which are deliberately shorter, joined the set; no page is under target).
+
+**Voice gate:** `SHIP — fatal=0 tier1=0 p1=0, score 1.6/100 (**45,938 words**, 81
+pages)` (was 29,598 words at ck73 — the extra pages are real content, not filler).
+
+**What changed ck74 → ck89:**
+- **TOP_TOWNS slice bug fixed** (`5911c3f`): service×town matrix was built only
+  for `TOP_TOWNS[:6]` → 24 pages. Now all 12 MA towns → **48 pages**.
+- **Fire-pit guide added** (`e849bb2`): `/learn/fire-pit-basics/`, 960 words.
+  Closed the one service with zero guide coverage.
+- **Service ↔ guide linking both ways** (`e849bb2`): `GUIDE_SERVICE` reverse map —
+  each guide links up to its money page, each service page links down to its guides.
+- **Keyword gap closed** (`e978d12`): home + Mansfield now carry
+  "patio installer … Mansfield, MA" phrasing; `/learn/paver-cost/` retitled for
+  "stone patio costs in Massachusetts". Verified present in live HTML.
+
+**SERP baseline (re-checked this session):**
+- **Google — unmeasurable from this IP.** `curl` returns a JS-redirect shell /
+  "unusual traffic" wall. Do not treat a curl result as a ranking signal.
+- **Bing — still not indexed.** `site:brycespatios.work` returns ~1 irrelevant
+  result despite repeated IndexNow `HTTP 200` (81 urls). Recorded so we stop
+  re-pinging in hope: the lever is Search Console + citations, not more pings.
+- **Google Maps:** still **no listing** for Bryce. GBP remains the #1 gap.
+
+**The honest read:** page quality, depth, schema, linking and voice are all at
+target. We are now blocked on things that need Bryce's identity or hands: create
+the GBP, claim Search Console, then citations and reviews. Nothing on the site
+side is the bottleneck.

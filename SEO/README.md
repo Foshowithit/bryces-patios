@@ -14,7 +14,7 @@ they get overwritten.
 ```bash
 cd "/Users/adam26/WorkBuddy AI/2026-09-23-22-57-30/bryces-patios"
 python3 work/gen/emit.py
-# → wrote 55 pages, sitemap has 56 urls, feed has 13 entries
+# → wrote 81 pages, sitemap has 81 urls, feed has 14 entries
 ```
 
 - `work/gen/site.py` — **data module** (no `__main__`). Business constants, `GUIDES`,
@@ -23,9 +23,9 @@ python3 work/gen/emit.py
 - `work/gen/emit.py` — **the build**. `main()` writes every page + `sitemap.xml` + `feed.xml`.
 - `index.html` — **hand-maintained home page**, NOT emitted. After any `V` (cache-buster)
   change you must update it by hand: `assets/css/style.css?v=<V>` and `assets/js/main.js?v=<V>`.
-- 55 emitted pages vs 56 sitemap URLs: home is hand-maintained and counted in the sitemap.
+- 80 emitted pages + 1 hand-maintained home = 81 sitemap URLs (home is counted in the sitemap).
 
-Expected output after a clean run: `wrote 55 pages, sitemap has 56 urls, feed has 13 entries`
+Expected output after a clean run: `wrote 81 pages, sitemap has 81 urls, feed has 14 entries`
 (13 feed entries = the `/learn/` hub + 12 guides).
 
 ---
@@ -52,7 +52,7 @@ file mtime. Every page carries
 in `<head>` (added inside `head()` in `site.py`) and a "Guides feed" link in the footer.
 
 ### `sitemap.xml`
-Built by `build_sitemap()` in `emit.py`: 56 URLs, real `lastmod` per file, plus the Google
+Built by `build_sitemap()` in `emit.py`: 81 URLs, real `lastmod` per file, plus the Google
 image-sitemap extension (`image:image`) for hero images.
 
 ### IndexNow (Bing / Yandex / Seznam / Naver)
@@ -73,7 +73,7 @@ bash work/indexnow-ping.sh
 
 `~/tmp/bryce-seo-watch/watch.py` runs weekly via crontab (`0 9 * * 1`). It fetches the live
 site, checks every sitemap URL and the learn hub card count, and reports
-`urls=56 ok=56 bad=0 hub_cards=12`.
+`urls=81 ok=81 bad=0 hub_cards=13`.
 
 > `automation_update` is not callable in this environment — **crontab is the route** for
 > scheduling. Do not try to create the watcher as an app automation.
