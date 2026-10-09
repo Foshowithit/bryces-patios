@@ -1261,3 +1261,34 @@ search-embedded panel; it resists every automation technique tried (real-mouse r
 clicks, typeahead keyboard picks, direct scrollTop). It is optional and post-launch
 editable — add it from the dashboard or in the human sittings. Do NOT burn more
 automation cycles on it.
+
+## ck134 — photo alt cleanup: no invented details, one alt per image
+
+**What Adam flagged:** photos on the site didn't match what they claimed to be.
+He was right. The same image carried different, contradictory alt texts across
+pages, and several alts described details that are not in the photos:
+"outdoor kitchen going in behind", "crew on site", "block seat wall", "gray
+paver", "curved step and stone edging", and per-photo "in Mansfield, MA"
+location claims.
+
+**Root cause:** commit `41dd5e9` claimed the photo swap was "verified against
+the source shots by normalized cross-correlation (cv2), not by eye". An
+algorithm can check that file A replaced file B — it cannot check that the
+*words* describe what's *in the picture*. Nobody actually looked. That's how
+it got past GPT.
+
+**Fix (commit `ce1349b`, live verified):**
+- Fixed at the generator source (`work/gen/site.py`, `work/gen/emit.py`) so
+  regeneration keeps them consistent — plus `index.html`, which is hand-maintained.
+- Every one of the 12 site photos now has exactly **one** honest alt, describing
+  only what is plainly visible.
+- Verified live after deploy: 0 fabricated details in any `<img>` tag across
+  `/`, `/services/`, `/learn/`, `/areas/` and subpages. The two remaining text
+  matches on `/` are legitimate body copy ("One crew on site, start to finish"
+  and "soldier course border" as a construction technique), not photo claims.
+- Voice gate on the new alt copy: **SHIP** (fatal=0 tier1=0 p1=0).
+
+**Rule going forward:** alt text describes only what is visible in the image.
+Never write a place, a material color, or a worksite detail into an alt unless
+it is actually in the frame. And no photo swap is "verified" until a human who
+knows the job has looked at it.
