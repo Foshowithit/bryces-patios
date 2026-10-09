@@ -769,7 +769,7 @@ def build_sitemap(root: Path) -> None:
                 'walkways, steps, walls and fire pits around Mansfield, MA.</video:description>'
                 f'<video:content_loc>{site.BASE}/assets/video/showreel-1080p-silent-{site.V}.mp4</video:content_loc>'
                 f'<video:player_loc>{site.BASE}/#film</video:player_loc>'
-                '<video:duration>32</video:duration>'
+                '<video:duration>29</video:duration>'
                 '<video:publication_date>2026-10-08T09:00:00-04:00</video:publication_date>'
                 '<video:family_friendly>yes</video:family_friendly>'
                 '<video:live>no</video:live>'

@@ -400,23 +400,22 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   // The reel itself. Rendered on the Dell from eight real photos of Bryce's
   // work. Silent by design: a photo reel reads on its own, so there is no
   // voice track to keep in sync.
-  const VIDEO_SRC = 'assets/video/showreel-1080p-silent-f4a9c1d2.mp4';
-  const POSTER    = 'assets/img/project-firepit.jpg';
-  const TOTAL     = 32.284;   // measured duration of the master, seconds
+  const VIDEO_SRC = 'assets/video/showreel-1080p-silent-dba670bb.mp4';
+  const POSTER    = 'assets/img/hero-finished.jpg';
+  const TOTAL     = 29.0;     // measured duration of the master, seconds
 
   // Captions keyed to the picture. Each cue names the slide it belongs to,
   // so the words on screen match the film even if the file is re-cut later.
   const CUES = [
-    { at: 0.20,  text: 'Every one of these starts with a hole in the ground.' },
-    { at: 3.53,  text: 'We set the base, and we lay it to the grade.' },
-    { at: 8.97,  text: 'Gray pavers, a border, and a pattern that fits the space.' },
-    { at: 12.75, text: 'Walkway, edging, and the beds cleaned up after.' },
-    { at: 15.82, text: 'A curve that ties the yard together.' },
-    { at: 18.22, text: 'Two levels, one continuous build.' },
-    { at: 20.39, text: 'New pavers, a fresh border, and a curve in the walk.' },
-    { at: 23.77, text: 'Levels, steps, and somewhere to sit.' },
-    { at: 26.15, text: 'Every one of these belongs to a neighbor.' },
-    { at: 29.12, text: 'Call Bryce.' }
+    { at: 0.20,  text: 'A finished paver patio, with a seat wall and a border.' },
+    { at: 4.00,  text: 'The build starts under the pavers. Base, then bedding.' },
+    { at: 7.60,  text: 'Pavers go down to the grade, cut to the edge.' },
+    { at: 11.20, text: 'Curves and borders that tie the yard together.' },
+    { at: 14.80, text: 'Herringbone laid tight over the setting bed.' },
+    { at: 18.20, text: 'Walkways and steps built to the grade.' },
+    { at: 21.80, text: 'Wide patios, one continuous level to walk on.' },
+    { at: 25.40, text: 'Every one of these belongs to a neighbor.' },
+    { at: 27.60, text: 'Bryce. (508) 212-6433.' }
   ];
 
   // Start on the poster so the modal never flashes an empty stage while the
@@ -434,7 +433,7 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   video.muted = true;
   video.playsInline = true;
   video.setAttribute('playsinline', '');
-  video.setAttribute('aria-label', 'Bryce\'s Patios showreel, silent: eight real jobs, start to finish');
+  video.setAttribute('aria-label', 'Bryce\'s Patios showreel, silent: eight real jobs, start to finish. No narration.');
   stage.appendChild(video);
 
   // Keep the caption in step with the picture. Reading the frame clock rather
