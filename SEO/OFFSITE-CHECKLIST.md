@@ -114,8 +114,8 @@ Bing still indexes **0** pages of this site. Pings are not enough for a new doma
 
 The site's footer and schema already link `@brycespatios`. Make it real.
 
-- [ ] `[HUMAN]` Page: `Bryces Landscape and Patio Service` (already exists)
-- [ ] `[HUMAN]` Set the website field to `https://brycespatios.work`
+- [ ] `[HUMAN]` Page: `Bryces Landscape and Patio Service` (already exists — **checked live 2026-10-09: 31 followers, phone `(508) 212-6433` correct, address 885 West St correct, but there is NO website link on the page**)
+- [ ] `[HUMAN]` **Add the website field `https://brycespatios.work`** — this is the one gap on the page, and the page already ranks #1 for "bryce patios mansfield". Do this one first; it is a two-minute edit.
 - [ ] `[HUMAN]` Set phone `(508) 212-6433`, Mansfield service area, same photos
 - [ ] `[HUMAN]` **Do not edit anything else on the page without Bryce's OK.**
 
