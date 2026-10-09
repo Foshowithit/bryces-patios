@@ -448,7 +448,7 @@ SERVICES = [
                "dropped onto a patio that wasn't planned for it. Building it into the "
                "layout from the start is what makes it feel like part of the yard "
                "instead of an afterthought."),
-        img="project-firepit", img_alt="A circular stone fire pit set into a stone patio with seating around it.",
+        img="patio-firepit-build", img_alt="A gray paver patio and circular fire pit under construction in Mansfield, MA.",
         prose=[
             "The size most people actually enjoy is smaller than they expect. A pit three to four feet across "
             "inside is a comfortable circle for four to six people, and it throws heat you can feel from the "
@@ -770,7 +770,7 @@ dict(
     ],
     note=("<strong>Easiest thing to get right:</strong> put the pit on flat ground you already "
           "know drains well, and it will outlast one set in the yard's low spot."),
-    img="project-firepit", img_alt="A stone fire pit ring set into a paver patio with seating around it.",
+    img="patio-firepit-build", img_alt="A gray paver patio and circular fire pit under construction in Mansfield, MA.",
 ),
 dict(
     key="yard-grades", tag="12. Drainage", title="Where does your yard drain?",

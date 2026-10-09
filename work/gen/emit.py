@@ -39,7 +39,7 @@ IMG_DIMS = {
     "about-site": (1200, 900), "big-yard": (1600, 1067), "craft-base": (1600, 1067),
     "craft-edge": (1600, 1067), "hero": (1600, 1067), "og-cover": (1200, 630),
     "patio-herringbone": (1600, 1067), "project-dining": (1600, 1067),
-    "project-firepit": (1600, 1067), "project-walkway": (1600, 1067),
+    "patio-firepit-build": (1600, 900), "project-walkway": (1600, 1067),
     "stairs-landing": (1200, 1200), "steps-detail": (1200, 800), "stone-arch": (1200, 1200),
     "transform-after": (1400, 933), "transform-before": (1400, 933),
     "walkway": (1600, 1067), "yard": (1600, 1066),
@@ -356,7 +356,7 @@ def build_services_hub(root: Path) -> None:
              'whether a visit is worth it.</p>'
              '</div></section>')
     body += '<section class="section"><div class="wrap wrap--narrow"><figure class="learn__figure">'
-    body += _img("project-firepit", "A circular stone fire pit set into a stone patio with seating around it.",
+    body += _img("patio-firepit-build", "A gray paver patio and circular fire pit under construction in Mansfield, MA.",
                  "(max-width:1024px) 100vw, 900px")
     body += '<figcaption><strong>Patios, walls, walkways and fire pits.</strong> One crew, one standard of base work, on every job.</figcaption></figure></div></section>'
     body += ('<section class="section"><div class="wrap wrap--narrow">'
@@ -727,8 +727,8 @@ def build_sitemap(root: Path) -> None:
 
     # page -> hero image filename (for the Google image sitemap extension)
     img_for = {
-        f"{site.BASE}/": ("project-firepit", "Stone patio with a fire pit built by Bryce's Patios in Mansfield, MA"),
-        f"{site.BASE}/services/": ("project-firepit", "Stone patios, walls, walkways and fire pits by Bryce's Patios"),
+        f"{site.BASE}/": ("patio-firepit-build", "Paver patio and circular fire pit under construction in Mansfield, MA"),
+        f"{site.BASE}/services/": ("patio-firepit-build", "Paver patios, walls and fire pits built by Bryce's Patios"),
         f"{site.BASE}/areas/": ("big-yard", "Stone patio work across southeastern Massachusetts and Rhode Island"),
         f"{site.BASE}/learn/": ("craft-base", "Patio base and craft guides from Bryce's Patios"),
     }
@@ -763,7 +763,7 @@ def build_sitemap(root: Path) -> None:
             # Video sitemap extension for the homepage showreel.
             row += (
                 '<video:video>'
-                f'<video:thumbnail_loc>{site.BASE}/assets/img/project-firepit.jpg</video:thumbnail_loc>'
+                f'<video:thumbnail_loc>{site.BASE}/assets/img/patio-firepit-build.jpg</video:thumbnail_loc>'
                 f'<video:title>Bryce&#39;s Patios showreel</video:title>'
                 '<video:description>Eight real jobs, start to finish: base prep, paver patios, '
                 'walkways, steps, walls and fire pits around Mansfield, MA.</video:description>'
