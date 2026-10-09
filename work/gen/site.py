@@ -14,7 +14,10 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-V = "dba670bb"          # cache-buster, must match index.html
+V = "845cd735"          # cache-buster, must match index.html
+# Video filename hash. Must match the file in assets/video/ and never
+# track the CSS cache-buster (that coupling 404d the sitemap video URL once).
+REEL_HASH = "dba670bb"
 BASE = "https://brycespatios.work"
 PHONE_TEL = "+15082126433"
 PHONE_TXT = "(508) 212-6433"
@@ -499,6 +502,12 @@ GUIDES = [
               "thick is the base? A real job has a number for both. A vague answer is "
               "an answer."),
         img="craft-base", img_alt="A patio partly laid, showing the compacted stone base and bedding layer under the pavers.",
+        video=dict(
+            src="patio-base-explainer-1080p-silent.mp4",
+            poster="craft-base",
+            caption="Twenty-three seconds, no sound: the dig, the base in lifts, the setting bed, the edge, and the finished surface.",
+            label="How a patio base is built: a silent, captioned walk through the dig, the compacted base, the setting bed and the finished pavers.",
+        ),
     ),
     dict(
         key="drainage", tag="02. Drainage", title="Water always finds the low spot",

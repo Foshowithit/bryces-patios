@@ -975,6 +975,9 @@ body.is-locked{overflow:hidden}
   padding:clamp(1.25rem, 3vw, 2rem);
 }
 .learn__figure img{width:100%; height:auto; display:block; border-radius:var(--r-sm)}
+.learn__figure video{width:100%; height:auto; display:block; border-radius:var(--r-sm); background:var(--obsidian-2)}
+/* A video figure runs full width in one column; it needs the room. */
+.learn__figure--video{grid-template-columns:1fr}
 .learn__figure figcaption{font-size:.9375rem; line-height:1.7; color:var(--ink-2); text-wrap:pretty}
 .learn__figure figcaption strong{
   display:block; color:var(--ink); font-weight:600; margin-bottom:.4rem; font-size:1rem;

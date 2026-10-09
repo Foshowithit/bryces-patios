@@ -56,6 +56,18 @@ def _img(name: str, alt: str, sizes: str, *, cls: str = "", loading="lazy") -> s
         f'alt="{esc(alt)}">'
     )
 
+def _video_block(src: str, poster: str, caption: str, label: str) -> str:
+    """A silent, captioned first-party video on a page. No audio, so it autoplays
+    muted everywhere and stays readable with the sound off."""
+    esc = site.esc
+    return (
+        f'<figure class="learn__figure learn__figure--video">'
+        f'<video class="learn__video" src="/assets/video/{src}" poster="/assets/img/{poster}.jpg" '
+        f'controls muted playsinline preload="none" width="1600" height="900" '
+        f'aria-label="{esc(label)}"></video>'
+        f'<figcaption>{esc(caption)}</figcaption></figure>'
+    )
+
 def _sec_head(eyebrow: str, h2: str, sub: str = "", *, center=False) -> str:
     esc = site.esc
     cls = "section__head section__head--center" if center else "section__head"
@@ -83,6 +95,22 @@ def _faq_ld(faqs, url: str) -> dict:
              "acceptedAnswer": {"@type": "Answer", "text": a}}
             for q, a in faqs
         ],
+    }
+
+def _video_ld(g: dict, url: str) -> dict:
+    v = g["video"]
+    return {
+        "@type": "VideoObject",
+        "@id": url + "#video",
+        "name": f'{g["title"]}: Bryce\'s Patios',
+        "description": v["label"],
+        "thumbnailUrl": [f'{site.BASE}/assets/img/{v["poster"]}.jpg'],
+        "contentUrl": f'{site.BASE}/assets/video/{v["src"]}',
+        "embedUrl": url,
+        "duration": "PT23S",
+        "inLanguage": "en-US",
+        "isFamilyFriendly": True,
+        "publisher": {"@id": f'{site.BASE}/#business'},
     }
 
 def _cta(url_trail, headline: str, sub: str) -> str:
@@ -217,6 +245,9 @@ def build_guide_one(root: Path, g: dict) -> None:
         body.append(f'<p class="prose prose--note">{g["note"]}</p>')
     body.append('<figure class="learn__figure">' + _img(g["img"], g["img_alt"], "(max-width:1024px) 100vw, 900px")
                 + f'<figcaption><strong>{site.esc(g["title"])}.</strong></figcaption></figure>')
+    if g.get("video"):
+        v = g["video"]
+        body.append(_video_block(v["src"], v["poster"], v["caption"], v["label"]))
     body.append(_related_block(g))
     body.append('</div></section>')
     body.append('<section class="section"><div class="wrap wrap--narrow">'
@@ -230,7 +261,10 @@ def build_guide_one(root: Path, g: dict) -> None:
     html_str = site.render_shell(
         title=f'{g["title"]} | Bryce\'s Patios',
         desc=g["meta"], url=f'{site.BASE}/learn/{g["key"]}/', trail=trail,
-        body="".join(body), ld_extra=[_faq_ld(site.FAQS_GUIDE, f'{site.BASE}/learn/{g["key"]}/')],
+        body="".join(body), ld_extra=(
+            [_faq_ld(site.FAQS_GUIDE, f'{site.BASE}/learn/{g["key"]}/')]
+            + ([_video_ld(g, f'{site.BASE}/learn/{g["key"]}/')] if g.get("video") else [])
+        ),
         svc_links=_svc_links(), town_links=_town_links(),
     )
     write_page(root, f"learn/{g['key']}/index.html", html_str)
@@ -767,7 +801,7 @@ def build_sitemap(root: Path) -> None:
                 f'<video:title>Bryce&#39;s Patios showreel</video:title>'
                 '<video:description>Eight real jobs, start to finish: base prep, paver patios, '
                 'walkways, steps, walls and fire pits around Mansfield, MA.</video:description>'
-                f'<video:content_loc>{site.BASE}/assets/video/showreel-1080p-silent-{site.V}.mp4</video:content_loc>'
+                f'<video:content_loc>{site.BASE}/assets/video/showreel-1080p-silent-{site.REEL_HASH}.mp4</video:content_loc>'
                 f'<video:player_loc>{site.BASE}/#film</video:player_loc>'
                 '<video:duration>29</video:duration>'
                 '<video:publication_date>2026-10-08T09:00:00-04:00</video:publication_date>'
