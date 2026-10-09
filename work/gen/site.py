@@ -620,7 +620,7 @@ GUIDES = [
             ("\"Do you do repairs?\"", "Sunken pavers, spreading edges, a wall that's leaning. Small repairs are welcome, and we'll say if a rebuild makes more sense than a patch."),
     ],
         cta=True,
-        img="about-site", img_alt="A finished stone patio beside a house in southeastern Massachusetts.",
+        img="about-site", img_alt="A wide paver patio with a curved step and stone edging beside a house, with a green lawn and mature trees.",
     ),
 dict(
     key="paver-cost", tag="07. Cost", title="What a stone patio actually costs",

@@ -36,7 +36,7 @@ _TOP = site.TOWNS_MA
 # ── shared bits ────────────────────────────────────────────────────────────
 # real intrinsic dimensions of each full-size JPG (px) — must match assets/img/<name>.jpg
 IMG_DIMS = {
-    "about-site": (1200, 900), "big-yard": (1600, 1067), "craft-base": (1600, 1067),
+    "about-site": (1600, 900), "big-yard": (1600, 1067), "craft-base": (1600, 1067),
     "craft-edge": (1600, 1067), "hero": (1600, 1067), "og-cover": (1200, 630),
     "patio-herringbone": (1600, 1067), "project-dining": (1600, 1067),
     "patio-firepit-build": (1600, 900), "project-walkway": (1600, 1067),
