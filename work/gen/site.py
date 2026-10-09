@@ -904,7 +904,7 @@ NAV = f"""<a class="skip-link" href="#main">Skip to content</a>
         <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.2 1.5h2.3l1.1 2.8-1.5 1.1a9 9 0 0 0 4.5 4.5l1.1-1.5 2.8 1.1v2.3c0 .6-.5 1.1-1.1 1.1A11.9 11.9 0 0 1 2.1 2.6c0-.6.5-1.1 1.1-1.1Z"/></svg>
         <span>(508)&nbsp;212-6433</span>
       </a>
-      <a class="btn btn--sm btn--solid" href="/#estimate">Get an estimate</a>
+      <a class="btn btn--sm btn--solid" href="/#estimate">Bryce</a>
       <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
         <span></span><span></span>
       </button>
@@ -922,7 +922,7 @@ NAV = f"""<a class="skip-link" href="#main">Skip to content</a>
     <a href="/#area"><span class="drawer__num">07</span>Service Area</a>
   </nav>
   <div class="drawer__foot">
-    <a class="btn btn--solid btn--block" href="/#estimate">Get a free estimate</a>
+    <a class="btn btn--solid btn--block" href="/#estimate">Bryce</a>
     <a class="drawer__tel" href="tel:{PHONE_TEL}">{PHONE_TXT}</a>
     <p class="drawer__meta">Mansfield, Massachusetts<br>Serving southeastern MA &amp; Rhode Island</p>
   </div>
@@ -931,9 +931,9 @@ NAV = f"""<a class="skip-link" href="#main">Skip to content</a>
 STICKY = f"""<div class="sticky-cta" id="sticky-cta" hidden>
   <a class="sticky-cta__call" href="tel:{PHONE_TEL}" aria-label="Call Bryce's Patios">
     <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.2 1.5h2.3l1.1 2.8-1.5 1.1a9 9 0 0 0 4.5 4.5l1.1-1.5 2.8 1.1v2.3c0 .6-.5 1.1-1.1 1.1A11.9 11.9 0 0 1 2.1 2.6c0-.6.5-1.1 1.1-1.1Z"/></svg>
-    Call
+    Call Bryce
   </a>
-  <a class="sticky-cta__est" href="/#estimate">Get a free estimate</a>
+  <a class="sticky-cta__est" href="/#estimate">Bryce</a>
 </div>"""
 
 
@@ -941,8 +941,8 @@ def page_actions(*, center: bool = False) -> str:
     """Above-the-fold call + estimate row for inner pages (no hero)."""
     cls = "page-actions page-actions--center" if center else "page-actions"
     return (f'<div class="{cls}">'
-            f'<a class="btn btn--solid btn--lg" href="/#estimate">Get a free estimate</a>'
-            f'<a class="btn btn--ghost btn--lg" href="tel:{PHONE_TEL}">Call {PHONE_TXT}</a>'
+            f'<a class="btn btn--solid btn--lg" href="/#estimate">Bryce</a>'
+            f'<a class="btn btn--ghost btn--lg" href="tel:{PHONE_TEL}">Call Bryce</a>'
             f'</div>')
 
 

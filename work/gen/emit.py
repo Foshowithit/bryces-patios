@@ -95,8 +95,8 @@ def _cta(url_trail, headline: str, sub: str) -> str:
         <p class="section__sub">{esc(sub)}</p>
       </div>
       <div class="cta-band__actions">
-        <a class="btn btn--solid" href="/#estimate">Get a free estimate</a>
-        <a class="btn btn--quiet" href="tel:{PHONE_TEL}">Call {PHONE_TXT}</a>
+        <a class="btn btn--solid" href="/#estimate">Bryce</a>
+        <a class="btn btn--quiet" href="tel:{PHONE_TEL}">Call Bryce</a>
       </div>
     </div>
   </div>
