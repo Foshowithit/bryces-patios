@@ -714,3 +714,61 @@ video URL returns **404**; the new one returns **200**, `video/mp4`.
 change; the miss was letting the strip commit and the bump commit come from
 different windows so the *URL* never moved. Any change to `main.js` or the reel
 now requires a new `V` **and** a new reel filename in the same commit.
+
+---
+
+## ck117 — 2026-10-09 — form step-2 to step-3 "blocker" was a harness bug; latent panel-display bug found and fixed
+
+**Reported symptom.** The estimate form appeared to stall: step 2 accepted
+input, but the "next" click did nothing and step 3 never showed. It read as a
+site bug and was carried as one across a full session.
+
+**Root cause of the report: the test harness, not the site.** The probe did
+`document.querySelector('button[data-next]')`. That returns the **first**
+match in document order, which is **step 1's** button — hidden at the time.
+Clicking a hidden button does nothing, so the probe concluded "step 2 to 3 is
+broken." Scoping the selector to the visible panel
+(`.step-panel.is-active button[data-next]`) advanced step 2 to 3 cleanly
+(`activeAfter: "3"`). The site was fine. The instrument lied.
+
+**A real latent bug found on the way.** `main.js` submit path
+(`main.js:317`) sets an **inline** `display = 'none'` on every `.step-panel`.
+`goTo()` only toggled the `.is-active` **class**. Inline styles beat classes, so
+if a panel was ever re-shown after a submit (back button, retry, validation
+bounce), it would stay blank with `.is-active` set and nothing on screen. Not
+triggered by the normal happy path, which is why it survived. `goTo()` now
+clears inline display before toggling the class.
+
+**Full end-to-end flow, measured in a real browser** (step 1 chip click sets
+`input.checked`; step 1→2; step 2 town + timing chip sets the radio; step 2→3
+with the correct selector; submit reveals `#form-success`; `#send-sms` href is
+`sms:+15082126433?body=...` containing every field; no em-dash and no curly
+apostrophe in the body; `#send-mail` href builds a matching `mailto:`; the
+60 ms SMS auto-open does fire). All assertions closed.
+
+**Cache work.** `V` moved to a **fixed token `f4a9c1d2`** across all 82 pages
+(164 refs) and `work/gen/site.py:17`, and the reel was renamed
+`showreel-1080p-silent.mp4` → `showreel-1080p-silent-f4a9c1d2.mp4`, with
+`main.js` `VIDEO_SRC`, the home JSON-LD `contentUrl`, and `404.html` updated to
+match. Both changes ship in the **same commit** as the `main.js` edit, per the
+ck116 rule.
+
+**Trap recorded: do not derive `V` from a hash of `main.js`.** The first attempt
+used `md5(main.js)` as `V`. But renaming the reel edits `main.js`, which changes
+the md5, which changes `V`, which edits every page — a circle with no fixed
+point. `V` is now an **independent, fixed token** and is not required to match
+any file hash. `main.js` md5 is `42f161a68309790ac4dd83ff60f5c2eb`; `V` is
+`f4a9c1d2`; they intentionally differ.
+
+**Live verification (2026-10-09, `c3d23cb` pushed):** new reel
+`/assets/video/showreel-1080p-silent-f4a9c1d2.mp4` returns **200**
+(14,238,968 B); old `showreel-1080p-silent.mp4` returns **404**;
+`main.js?v=f4a9c1d2` returns **200** and the served copy contains the `goTo`
+fix; the home page serves `main.js?v=f4a9c1d2`. `node --check` passes;
+0 stale `V`/reel refs in the tree.
+
+**Rule restated (ck116, still binding):** any change to `main.js` or the reel
+requires a new `V` **and** a new reel filename in the **same** commit. And a
+green `curl` proves nothing about behaviour — the step-2-to-3 false alarm cost a
+session. Exercise the interaction in a real browser, and scope DOM selectors to
+the visible panel.
