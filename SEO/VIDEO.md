@@ -7,7 +7,27 @@ domain. YouTube is a search engine of its own that ranks new channels fast, and
 Google surfaces YouTube for "how to" patio queries. Upload these and you give
 Bryce a second front door.
 
-**Files (already rendered, 1920×1080 / 1080×1920 / 1080×1080, silent, no music):**
+## 2026-10-09 — the reel is now eight REAL job photos (v2, 29 s)
+
+The first shipped reel was built from the old AI renders. It is replaced. The reel
+in the repo today is cut from **eight real photos now on the site** (finished
+patios, an in-progress paver build over the base, a walkway, steps). No renders.
+Silent, no narration, no music, 29.0 s, one h264 stream, zero audio streams.
+
+Repo files (`assets/video/`, cache-buster `dba670bb`):
+
+| Cut | File | Size | Size |
+|---|---|---|---|
+| 16:9 | `showreel-1080p-silent-dba670bb.mp4` | 1920×1080 | 15,075,228 B |
+| 9:16 | `showreel-reel-9x16-dba670bb.mp4` | 1080×1920 | 12,653,408 B |
+| 1:1 | `showreel-square-1x1-dba670bb.mp4` | 1080×1080 | 8,333,172 B |
+
+Rendered on the Dell (`~/bryce-reel/work/render-real-silent.sh`). The old
+narrated masters stay quarantined in `~/bryce-reel/out/rejected/`.
+
+---
+
+**Files (1920×1080 / 1080×1920 / 1080×1080, silent, no music):**
 
 Use these. They are the **silent** cuts. Upload them as-is.
 
@@ -31,9 +51,8 @@ copyright strike kills a new channel.
 
 **Rules for every upload:** business name exactly `Bryce's Patios`; link
 `https://brycespatios.work`; phone `(508) 212-6433`; never claim a licence,
-insurance, warranty, or review count. Say "AI-assisted render of a real design"
-if a comment asks how the video was made — do not claim it is footage of a real
-completed job (it is not; the site already discloses this).
+insurance, warranty, or review count. The reel is cut from real photos of Bryce's
+jobs, so say that plainly if a comment asks.
 
 ---
 
@@ -70,8 +89,8 @@ A walkthrough of a stone patio design built around Mansfield, MA.
 Bryce's Patios builds patios, walkways, and hardscape for homeowners across
 Mansfield and the surrounding towns. Owner-operated, free estimates.
 
-The design in this video is an AI-assisted render used to show layout, materials,
-and finish options. It is not footage of a specific completed job.
+The reel is cut from photos of real Bryce's Patios jobs around Mansfield, MA:
+finished patios, an in-progress paver build, a walkway and steps.
 
 Website: https://brycespatios.work
 Phone or text: (508) 212-6433
