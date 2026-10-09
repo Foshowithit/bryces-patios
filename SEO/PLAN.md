@@ -72,7 +72,7 @@ Bryce/Adam's login; **BLOCKED** needs an external gate (e.g. Google API access).
 | A3 | `llms.txt` (AI-answer guidance file) | OURS | **DONE** (ck98) | live at `/llms.txt`, linked from `robots.txt` (`LLMs-Txt:`) and from a `<link rel=alternate>` in all 81 heads |
 | A4 | Root `/favicon.ico` safety net | OURS | **DONE** (ck98) | real root `/favicon.ico` shipped (byte-identical to `assets/img/favicon.ico`); bare path now 200 |
 | A5 | Structured data valid on every page | OURS | **DONE** | LocalBusiness+FAQ+Breadcrumb, `@id`-linked |
-| A6 | Real-photo coverage per service×town | OURS/Bryce | **PARTIAL — needs Bryce** | 40 images ship, alt=100%, image sitemap 81/81; only 6 are "real job" labeled. More real shots = more trust + image-search surface. We cannot create these; this is a photo request to Bryce. |
+| A6 | Real-photo coverage per service×town | OURS/Bryce | **STRONGER (ck120)** | Every one of the 17 shipped photos is now a **real** Bryce job photo (was 6 real + AI). Zero AI renders ship. alt=100%, image sitemap 81/81. Open ask to Bryce: clean originals (source shots carry a "© Google" corner mark that the crops avoid) and a matched before/after pair. See `work/PHOTO-AUDIT.md`. |
 
 ### B. Search engine properties (indexation + measurement)
 | # | Surface | Who | Status | Note |
@@ -127,7 +127,7 @@ self-serve path unconfirmed, must be confirmed in a real browser before promisin
 | F8 | **D&B / `dnb.com`** | HUMAN | reachable (301→200) | Free basic business profile. Feeds a lot of B2B/entity data. |
 | F9 | **Bark.com** | HUMAN | reachable (301) | Free pro signup exists; leads are paid. Sign up for the free profile only, same rule as Angi: **do not buy shared leads** for a one-man shop. |
 | F10 | **Pinterest** | HUMAN | reachable | Design-led; patio/walkway/fire-pit imagery travels well here and links back. Needs owned photos ideally — AI imagery only with the same disclosure rule. |
-| F11 | **YouTube** (the mini showreel) | HUMAN | covers ready | The 16:9 / 9:16 / 1:1 cuts are rendered and sitting in `~/Movies/bryce-patios-reel/`. Upload = HUMAN. This is the one off-site surface where we already have finished, real assets. |
+| F11 | **YouTube** (the mini showreel) | HUMAN | **assets real + ready (ck120)** | The 16:9 / 9:16 / 1:1 cuts are re-rendered from **eight real job photos** and committed under `assets/video/` (`…-dba670bb.mp4`). Silent, 29 s, no audio stream. Upload = HUMAN. This is the one off-site surface where we already have finished, real assets. |
 | F12 | **MA HIC (Home Improvement Contractor) registry** | HUMAN | **VERIFY — never assert** | Massachusetts publishes a public HIC registration lookup. **Only useful if Bryce actually holds an HIC registration.** We must not claim a licence he does not have. If he is registered, a matching registry entry is a top-tier trust citation; if he is not, this row is struck and nothing is written anywhere. |
 | F13 | **Apple Business Connect** | HUMAN | **DONE** as B5 | Listed here only so nobody adds it twice. |
 | F14 | **Map-data partners** (Waze · TomTom · Here WeGo `wego.here.com`) | — | **BLOCKED (no direct self-serve)** | There is no free contractor signup for these. Place data reaches them downstream via Apple/Bing/Yelp/Foursquare-style providers. So the *real* action is F2 + B4 + B5, not signing up for Waze directly. Marking them here stops a future session from burning hours hunting a signup that does not exist. |
