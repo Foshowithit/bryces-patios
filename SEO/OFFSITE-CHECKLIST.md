@@ -31,6 +31,32 @@ names get listings suspended.
 
 ---
 
+## START HERE - the five things that matter, in order
+
+Everything else in this file is detail. If you only do five things, do these. The
+first three take about 15 minutes and are the whole ballgame.
+
+1. **Google Business Profile.** `business.google.com/add` -> sign in as
+   `adamnorm4wd@gmail.com` -> name `Bryce's Patios`, category `Paving Contractor`,
+   address hidden, the 20 towns from `SEO/GBP.md` S4, description from S2, then the
+   verification video (S9 in `SEO/GBP.md` has the shot list). **This is the #1 lever
+   by a wide margin. Nothing else matters as much.**
+2. **Search Console.** `search.google.com/search-console/welcome` -> Add property ->
+   **Domain** -> `brycespatios.work` -> verify with the DNS TXT record (Porkbun) ->
+   Sitemaps -> submit `https://brycespatios.work/sitemap.xml`. This is the only way
+   to ever see what people search.
+3. **Facebook page.** Set the website to `https://brycespatios.work` and the phone
+   to `(508) 212-6433`. It already exists and already ranks for the brand.
+4. **Then the anchor citations** (S5): Yelp, BBB, Nextdoor, Houzz, Angi. Same NAP
+   block every time, from `SEO/CITATIONS.md` S0.
+5. **Then reviews.** At 5+ real reviews the profile starts to win the local pack.
+   Never buy them.
+
+Add Adam as Manager on the GBP the moment it is live (Settings -> People and access)
+so the work continues without Bryce at the keyboard.
+
+---
+
 ## 1. Google Business Profile  ← THE #1 ITEM
 
 - [ ] `[HUMAN]` Google Maps → search `Bryce's Patios Mansfield`. **If anything comes up, claim
