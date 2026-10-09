@@ -176,14 +176,19 @@ def build_guide_one(root: Path, g: dict) -> None:
     body.append('<figure class="learn__figure">' + _img(g["img"], g["img_alt"], "(max-width:1024px) 100vw, 900px")
                 + f'<figcaption><strong>{site.esc(g["title"])}.</strong></figcaption></figure>')
     body.append(_related_block(g))
-    if g.get("cta"):
-        body.append('<p><a class="btn btn--solid" href="/#estimate">Ask Bryce a question</a></p>')
     body.append('</div></section>')
+    body.append('<section class="section"><div class="wrap wrap--narrow">'
+                + _sec_head("Common questions", f"{g['title']} questions, answered")
+                + _faq_block(site.FAQS_GUIDE) + '</div></section>')
+    if g.get("cta"):
+        body.append('<section class="section"><div class="wrap wrap--narrow">'
+                    '<p><a class="btn btn--solid" href="/#estimate">Ask Bryce a question</a></p>'
+                    '</div></section>')
     body.append(_cta(trail, "Ready when you are.", "Free estimates in Mansfield and the towns around it."))
     html_str = site.render_shell(
         title=f'{g["title"]} | Bryce\'s Patios',
         desc=g["meta"], url=f'{site.BASE}/learn/{g["key"]}/', trail=trail,
-        body="".join(body), ld_extra=[],
+        body="".join(body), ld_extra=[_faq_ld(site.FAQS_GUIDE, f'{site.BASE}/learn/{g["key"]}/')],
         svc_links=_svc_links(), town_links=_town_links(),
     )
     write_page(root, f"learn/{g['key']}/index.html", html_str)
@@ -224,11 +229,15 @@ def build_learn_hub(root: Path) -> None:
              'talk it through, call Bryce and describe the yard. He will tell you what he needs to see and '
              'give you a straight answer without a pitch.</p>'
              '</div></section>')
+    body += ('<section class="section"><div class="wrap wrap--narrow">'
+             + _sec_head("Common questions", "Patio questions, answered")
+             + _faq_block(site.FAQS_HUB["learn"]) + '</div></section>')
     body += _cta(trail, "Questions about your yard?", "Ask Bryce directly. No pressure, no sales script.")
     html_str = site.render_shell(
         title="Patio Guides and Answers | Bryce's Patios",
         desc="Plain-language guides to patio bases, drainage, frost and stone choice, written for homeowners in Massachusetts and Rhode Island.",
-        url=f"{site.BASE}/learn/", trail=trail, body=body, ld_extra=[],
+        url=f"{site.BASE}/learn/", trail=trail, body=body,
+        ld_extra=[_faq_ld(site.FAQS_HUB["learn"], f"{site.BASE}/learn/")],
         svc_links=_svc_links(), town_links=_town_links())
     write_page(root, "learn/index.html", html_str)
 
@@ -254,7 +263,7 @@ def build_service(root: Path, s: dict) -> None:
                 + _faq_block(faqs) + '</div></section>')
     body.append(_cta(trail, f"Planning {s['short']}?", "Tell Bryce about the yard and get a free estimate."))
     html_str = site.render_shell(
-        title=f'{s["name"]} in Mansfield, MA | Bryce\'s Patios',
+        title=f'{s["name"]} Built Right | Bryce\'s Patios',
         desc=s["meta"].format(town=town), url=f'{site.BASE}/services/{s["key"]}/', trail=trail,
         body="".join(body), ld_extra=[_faq_ld(faqs, f'{site.BASE}/services/{s["key"]}/')],
         svc_links=_svc_links(), town_links=_town_links())
@@ -306,11 +315,15 @@ def build_services_hub(root: Path) -> None:
     body += _img("project-firepit", "A circular stone fire pit set into a stone patio with seating around it.",
                  "(max-width:1024px) 100vw, 900px")
     body += '<figcaption><strong>Patios, walls, walkways and fire pits.</strong> One crew, one standard of base work, on every job.</figcaption></figure></div></section>'
+    body += ('<section class="section"><div class="wrap wrap--narrow">'
+             + _sec_head("Common questions", "Service questions, answered")
+             + _faq_block(site.FAQS_HUB["services"]) + '</div></section>')
     body += _cta(trail, "Not sure which you need?", "Tell Bryce what the yard is doing and he'll say straight.")
     html_str = site.render_shell(
-        title="Services | Patios, Walkways, Walls, Fire Pits | Bryce's Patios",
+        title="Services | Patios, Walkways, Walls, Fire Pits",
         desc="Stone patios, walkways, retaining walls and fire pits installed across southeastern Massachusetts and Rhode Island. Owner-operated, free estimates.",
-        url=f"{site.BASE}/services/", trail=trail, body=body, ld_extra=[],
+        url=f"{site.BASE}/services/", trail=trail, body=body,
+        ld_extra=[_faq_ld(site.FAQS_HUB["services"], f"{site.BASE}/services/")],
         svc_links=_svc_links(), town_links=_town_links())
     write_page(root, "services/index.html", html_str)
 
@@ -343,11 +356,16 @@ def build_town(root: Path, t: str) -> None:
     body.append(f'<section class="section"><div class="wrap wrap--narrow">'
                 + _sec_head("What we build", f"Patio work in {t}")
                 + f'<ul class="guide__list">{"".join(svc_rows)}</ul></div></section>')
+    town_faqs = [(q.format(town=t), a.format(town=t)) for q, a in site.FAQS_TOWN]
+    body.append('<section class="section"><div class="wrap wrap--narrow">'
+                + _sec_head("Common questions", f"Patio questions in {t}, answered")
+                + _faq_block(town_faqs) + '</div></section>')
     body.append(_cta(trail, f"Getting a quote in {t}", "Free estimates, no hard limits on where we go."))
     html_str = site.render_shell(
         title=f'Stone Patios in {t}, MA | Bryce\'s Patios',
         desc=f'Owner-operated stone patio, walkway, retaining wall and fire pit installation in {t}, MA. Free estimates from Bryce\'s Patios.',
-        url=f"{site.BASE}/areas/{tslug}/", trail=trail, body="".join(body), ld_extra=[],
+        url=f"{site.BASE}/areas/{tslug}/", trail=trail, body="".join(body),
+        ld_extra=[_faq_ld(town_faqs, f"{site.BASE}/areas/{tslug}/")],
         svc_links=_svc_links(), town_links=_town_links())
     write_page(root, f"areas/{tslug}/index.html", html_str)
 
@@ -383,7 +401,7 @@ def build_service_town(root: Path, t: str, s: dict) -> None:
                 + _faq_block(faqs) + '</div></section>')
     body.append(_cta(trail, f"{s['name']} in {t}", "Free estimate, straight answer."))
     html_str = site.render_shell(
-        title=f'{s["name"]} in {t}, MA | Bryce\'s Patios',
+        title=f'{s["name"]} in {t}, MA | Local Patio Builder',
         desc=f'{s["name"]} installed in {t}, MA on a full-depth compacted base. Owner-operated, free estimates from Bryce\'s Patios.',
         url=f"{site.BASE}/areas/{tslug}/{s['key']}/", trail=trail, body="".join(body),
         ld_extra=[_faq_ld(faqs, f"{site.BASE}/areas/{tslug}/{s['key']}/")],
@@ -537,11 +555,15 @@ def build_areas_hub(root: Path) -> None:
              + _img("big-yard", "A curved stone patio tying a large yard together.",
                     "(max-width:1024px) 100vw, 900px")
              + '<figcaption><strong>Southeastern Massachusetts &amp; Rhode Island.</strong> Most of the work sits within a short drive of the Mansfield yard.</figcaption></figure></div></section>')
+    body += ('<section class="section"><div class="wrap wrap--narrow">'
+             + _sec_head("Common questions", "Service area questions, answered")
+             + _faq_block(site.FAQS_HUB["areas"]) + '</div></section>')
     body += _cta(trail, "Somewhere else in the area?", "Bryce has no hard limits. Call and ask.")
     html_str = site.render_shell(
         title="Service Area | Southeastern MA | Bryce's Patios",
         desc="Bryce's Patios builds stone patios, walkways, walls and fire pits across southeastern Massachusetts and Rhode Island. See the towns we cover.",
-        url=f"{site.BASE}/areas/", trail=trail, body=body, ld_extra=[],
+        url=f"{site.BASE}/areas/", trail=trail, body=body,
+        ld_extra=[_faq_ld(site.FAQS_HUB["areas"], f"{site.BASE}/areas/")],
         svc_links=_svc_links(), town_links=_town_links())
     write_page(root, "areas/index.html", html_str)
 

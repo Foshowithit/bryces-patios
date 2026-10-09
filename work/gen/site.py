@@ -441,7 +441,7 @@ SERVICES = [
         key="fire-pits", name="Fire Pits", short="fire pits",
         h1="Fire pit installation in {town}, MA",
         meta=("Stone fire pits, seat walls and patio living spaces built in {town}, MA. "
-              "Owner-operated. Free estimates."),
+              "Designed into the patio from the start, on a base that does not heave."),
         blurb=("A fire pit is the thing you end up using most, and the thing most often "
                "dropped onto a patio that wasn't planned for it. Building it into the "
                "layout from the start is what makes it feel like part of the yard "
@@ -571,7 +571,7 @@ GUIDES = [
     dict(
         key="the-quote", tag="05. The quote", title="What a real estimate includes",
         h1="What a patio estimate should include",
-        meta="What a real patio estimate itemizes, and the questions to ask any contractor bidding on your yard.",
+        meta="What a real patio estimate should itemize, and the exact questions to ask any contractor bidding on your yard in Mansfield.",
         lede="A lump-sum price tells you nothing. The useful ones are itemized enough that you know what you're buying.",
         paras=[
             "A useful estimate names the things that decide the job: how much is excavated and hauled away, the base depth in inches, which stone and pattern, edge restraint, a stated drainage plan for your grade, and any steps, seat walls and lighting broken out separately.",
@@ -671,7 +671,7 @@ dict(
     img="transform-after", img_alt="A finished paver patio beside a home.",
 ),
 dict(
-    key="winter-ready", tag="09. Seasons", title="Getting a patio through a New England winter",
+    key="winter-ready", tag="09. Seasons", title="Patios through a New England winter",
     h1="How to get a patio through a winter",
     meta="Simple, practical steps to keep a paver patio, walkway or retaining wall in good shape through a Massachusetts winter and spring thaw.",
     lede="A patio built right survives winter on its own. The things you do at the edges of the season are what keep it looking new.",
@@ -1034,6 +1034,54 @@ RELATED = {
     "choosing-contractor": ["the-quote", "your-questions", "materials"],
     "driveway-aprons": ["materials", "drainage", "patio-base"],
     "yard-grades": ["drainage", "frost", "driveway-aprons"],
+}
+
+# ── FAQ sets for the pages that never had them (WS8 depth) ─────────────────
+# Google requires the visible <details class="qa"> block to match the FAQPage
+# schema exactly, so both come from the same list. {town} is formatted per town.
+FAQS_TOWN = [
+    ("How much does a patio cost in {town}?",
+     "It depends on square footage, the stone you pick and how much site work the grade needs. Paver is the friendliest budget, bluestone and flagstone climb from there. You get an itemized number after Bryce sees the yard, and the estimate is free."),
+    ("Do I need a permit for patio work in {town}?",
+     "Most patios and walkways under a certain size don't need one, but the line moves from town to town and some lots sit in a wetland buffer. Tell us the address when you call and we'll say which side your property falls on before anything is dug."),
+    ("How far out does Bryce work from {town}?",
+     "There are no hard limits. {town} is well inside the regular run from the Mansfield yard, so it's a normal job. Anything further out just needs a call first so the drive makes sense for both sides."),
+]
+
+FAQS_GUIDE = [
+    ("Is this true for every yard, or does it change with the grade?",
+     "Every yard is a little different, so treat this as the way the work should go rather than a fixed recipe. The grade, the soil and where the water wants to run all move the details. That is exactly what Bryce looks at before quoting."),
+    ("Can I get a plain answer on my own yard?",
+     "Yes. Call Bryce or text a couple of photos with the rough size and the grade. He will tell you what the job actually needs and whether a visit is worth it, with no sales script."),
+    ("Does this apply anywhere in Massachusetts and Rhode Island?",
+     "The base depth and frost rules here are built for this part of Massachusetts, and the same standard carries into Rhode Island work. Towns next to Mansfield are the usual run, but there are no hard limits on how far out the job goes."),
+]
+
+FAQS_HUB = {
+    "learn": [
+        ("I have never hired a patio contractor. Where do I start?",
+         "Read the base guide first, because most of a patio is underground and the base is what separates a quote that holds up from one that does not. From there the drainage and frost guides explain why patios sink and walls lean, and the cost guide breaks down what moves a price."),
+        ("Do I need to understand all of this before I call?",
+         "No. The guides are here so you can tell a real quote from a thin one. If you would rather just talk it through, call Bryce and describe the yard. He will tell you what he needs to see and give you a straight answer."),
+        ("Are these guides just sales material?",
+         "No. They explain the work in plain words, including the parts that cost more. The point is that you can ask better questions of any contractor you talk to, not just Bryce."),
+    ],
+    "services": [
+        ("How do I know which service my yard needs?",
+         "Describe what the yard is doing, not what you think you want. If water sits, that points to drainage and base depth. If the ground drops away from the house, that points to steps, landings and a wall. Bryce will name the right job after seeing it."),
+        ("Can you do more than one of these on one job?",
+         "Usually yes, and it is cheaper to design them together. A patio, a walkway, a wall and a fire pit share the same base, the same drainage and the same hauling, so doing them as one plan avoids digging the yard twice."),
+        ("Do you give prices over the phone?",
+         "Prices here are per job, not per square foot, because two patios the same size can be different work. Send a couple of photos with the size and the grade and you will get a straight answer on whether a visit is worth it."),
+    ],
+    "areas": [
+        ("Is my town actually inside the service area?",
+         "Mansfield is home base and the twelve Massachusetts towns listed are the ones Bryce is in most weeks. Rhode Island is a short drive over the line and is on the list too, just call first to sort out what your town requires."),
+        ("Does the work change from town to town?",
+         "The crew and the standard do not change, the ground does. Flat yards get drainage designed into the patio; sloped or ledge lots turn into steps, landings and walls; wet spring yards get base depth and drainage worked out before anything is dug."),
+        ("What if my town is not on the list?",
+         "That does not mean no. There are no hard limits on how far out the work goes. Call with the address and Bryce will tell you straight whether it makes sense for both sides."),
+    ],
 }
 
 # guide key -> the service page it naturally sits next to
