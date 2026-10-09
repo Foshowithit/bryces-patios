@@ -1,5 +1,24 @@
 # Bryce's Patios - Search Baseline
 
+## 2026-10-09 (ck128) - service-page titles localized
+
+Commit `52d745f`. The outside audit also flagged the service-page titles as vague
+and weakly localized: "Stone Patios Built Right | Bryce's Patios" carried no
+location and leaned on the filler "Built Right". Replaced:
+
+- `/services/patios/` -> Stone Patio Installation in Mansfield, MA | Free Estimates
+- `/services/walkways/` -> Walkway & Path Installation in Mansfield, MA | Free Estimates
+- `/services/retaining-walls/` -> Retaining Wall Installation in Mansfield, MA | Free Estimates
+- `/services/fire-pits/` -> Fire Pit Installation in Mansfield, MA | Free Estimates
+- `/services/` -> Patio, Walkway & Wall Services in Mansfield, MA
+
+Each title now carries a service keyword, the town, and the free-estimate offer,
+inside a readable length. Titles come from a per-service `title` field. No
+duplicate titles anywhere on the site. All pages pass the voice gate, 326 JSON-LD
+blocks valid, live-verified.
+
+---
+
 ## 2026-10-09 (ck127) - town x service pages differentiated (doorway-page risk)
 
 Commit `ab38e6d`. The other P0 from the outside audit: 48 town-service pages whose
