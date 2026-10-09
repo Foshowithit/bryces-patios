@@ -121,7 +121,7 @@ self-serve path unconfirmed, must be confirmed in a real browser before promisin
 | F2 | **Foursquare** (`foursquare.com`) | HUMAN | reachable (200) | Free business listing. Foursquare place data feeds many navigation and map apps, so it is a high-leverage citation for a service-area trade. |
 | F3 | **Reddit** (r/massachusetts, r/landscaping, r/HomeImprovement) | HUMAN | reachable | Highest-trust local answers, but **no link-dropping** — that is an instant ban. Only genuine, photo-backed answers from Bryce's real account. Treat as reputation, not a citation. |
 | F4 | **Facebook Marketplace + local groups** (Mansfield / Bristol County buy-sell + homeowner groups) | HUMAN | reachable | Where actual local jobs get posted. Post finished-yard photos with a plain price-range line. Never spam a group. |
-| F5 | **Patch.com Mansfield** | HUMAN | **VERIFY** | `mansfield.patch.com` returns 200 but `patch.com/massachusetts/mansfield` 404s, so confirm the current Mansfield hub in a browser. Patch carries town news + a business directory — a strong geo-relevant citation. |
+| F5 | **Patch.com Mansfield, MA** | HUMAN | **RESOLVED — real hub found** | VERIFIED in-browser 2026-10-09 via ego-browser: the town hub is **`https://patch.com/massachusetts/mansfield-ma`** (“Mansfield News, Breaking News in Mansfield, MA”). `mansfield.patch.com` redirects to Mansfield-**Storrs, CT** (wrong state) and `patch.com/massachusetts/mansfield` 404s. Patch has **no free contractor business directory** — use it as a community/news surface only (post a real build photo, no link-drop). Reclassified from citation to community channel. |
 | F6 | **Tri-Town Chamber of Commerce** | HUMAN | reachable (200) | `tri-townchamber.org` is up. Paid membership, **but the member directory entry is a strong, geo-relevant citation** and it is the local institution. |
 | F7 | **BuildZoom** | HUMAN | reachable (200) | Appeared in our own SERP baseline. Free contractor profile; claim it so the aggregator stops representing him worse than his own site does. |
 | F8 | **D&B / `dnb.com`** | HUMAN | reachable (301→200) | Free basic business profile. Feeds a lot of B2B/entity data. |
@@ -428,7 +428,7 @@ F table did not exist. This checkpoint adds it.
 | `buildzoom.com` | 200 | reachable |
 | `tri-townchamber.org` | 200 | reachable |
 | `business.apple.com` | 200 | reachable |
-| `mansfield.patch.com` | 200 | reachable (but `patch.com/massachusetts/mansfield` = 404) |
+| `patch.com/massachusetts/mansfield-ma` | 200 | **the real Mansfield, MA hub** (verified in-browser 2026-10-09). `mansfield.patch.com` redirects to Mansfield-Storrs, CT; `patch.com/massachusetts/mansfield` = 404. |
 | `dnb.com` | 301 → 200 | reachable |
 | `bark.com` | 301 | reachable |
 | `yelp.com` | 403 | WAF — not a real read, do not conclude it is down |
