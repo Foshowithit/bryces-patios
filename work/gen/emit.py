@@ -125,6 +125,28 @@ def _svc_by_key(key: str) -> dict | None:
             return sv
     return None
 
+def _svc_town_links(s: dict) -> str:
+    """Six service x town links for a service page (TOP_TOWNS)."""
+    esc = site.esc
+    items = "".join(
+        f'<li><a href="/areas/{site.slug(t)}/{s["key"]}/">{esc(s["name"])} in {esc(t)}</a></li>'
+        for t in _TOP)
+    return ('<nav class="related" aria-label="Where we build this">'
+            '<h2 class="related__h">Where we build this</h2>'
+            '<ul class="related__list">' + items + '</ul>'
+            '<p class="related__svc">Not seeing your town? '
+            '<a href="/areas/">See every area we cover</a>.</p></nav>')
+
+def _sibling_svc_links(s: dict) -> str:
+    """Links to the other three services from a service page."""
+    esc = site.esc
+    items = "".join(
+        f'<li><a href="/services/{o["key"]}/">{esc(o["name"])}</a></li>'
+        for o in _SVC_LIST if o["key"] != s["key"])
+    return ('<nav class="related" aria-label="Other services">'
+            '<h2 class="related__h">Other work we do</h2>'
+            '<ul class="related__list">' + items + '</ul></nav>')
+
 def _related_block(g: dict) -> str:
     """Three same-family guide links + one contextual service link."""
     esc = site.esc
@@ -261,6 +283,8 @@ def build_service(root: Path, s: dict) -> None:
     body.append(f'<section class="section"><div class="wrap wrap--narrow">'
                 + _sec_head("Common questions", f"{s['name']} questions, answered")
                 + _faq_block(faqs) + '</div></section>')
+    body.append(f'<section class="section"><div class="wrap wrap--narrow">'
+                + _svc_town_links(s) + _sibling_svc_links(s) + '</div></section>')
     body.append(_cta(trail, f"Planning {s['short']}?", "Tell Bryce about the yard and get a free estimate."))
     html_str = site.render_shell(
         title=f'{s["name"]} Built Right | Bryce\'s Patios',
