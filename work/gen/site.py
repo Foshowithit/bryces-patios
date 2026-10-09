@@ -956,6 +956,7 @@ def footer(service_links: list[tuple[str, str]], town_links: list[tuple[str, str
     <div class="footer__base">
       <p>&copy; <span id="year">2026</span> Bryce's Patios. All rights reserved.</p>
       <p class="footer__fine">Based in Mansfield, MA. Serving southeastern Massachusetts and Rhode Island. {ADDR}. <a href="/feed.xml">Guides feed</a>.</p>
+      <p class="footer__fine">Photographs on this site are AI-generated renderings, not photos of finished Bryce\u2019s Patios jobs. They show the kind of work Bryce builds, until real job photos replace them.</p>
     </div>
   </div>
 </footer>
