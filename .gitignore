@@ -9,5 +9,9 @@ _masters/
 # Editor cruft
 *.swp
 
-# local working/scratch files (not part of the site)
-work/
+# local working/scratch files — but the site generator SHIPS (it is the build)
+work/*
+!work/gen/
+!work/indexnow-ping.sh
+!work/.indexnow-key
+work/gen/__pycache__/

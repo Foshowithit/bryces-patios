@@ -389,9 +389,9 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // Only real photos of Bryce's work. No AI scenes passed off as the build.
   const SLIDES = [
-    { src: 'assets/img/hero.jpg',
-      text: 'A finished backyard, tied together.',
-      alt: 'A finished backyard with a curved gray paver patio, a low stone seat wall, blue Adirondack chairs on a striped rug, and a round above-ground pool ringed by a white-railed deck, backed by mature trees.' },
+    { src: 'assets/img/project-firepit.jpg',
+      text: 'The patio, and the fire pit at its center.',
+      alt: 'A wide gray stone patio with a circular stone fire pit set into the middle, ringed with weathered Adirondack seating on an open lawn at dusk.' },
     { src: 'assets/img/steps-detail.jpg',
       text: 'Laid up to the grade.',
       alt: 'A gray paver area laid in a running-bond pattern with a lighter stone border, edged against bare soil and gravel, with a wooden step at the top of the paved surface.' },
@@ -450,7 +450,7 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     img.height = 1066;
     img.loading = 'eager';   // reel opens on click; a stalled first frame is worse than 8 small loads
     img.decoding = 'async';
-    img.style.objectPosition = ['50% 42%', '50% 50%', '50% 55%', '50% 50%', '50% 45%', '50% 50%', '50% 45%', '50% 50%'][i] || '50% 50%';
+    img.style.objectPosition = ['50% 62%', '50% 50%', '50% 55%', '50% 50%', '50% 45%', '50% 50%', '50% 45%', '50% 50%'][i] || '50% 50%';
     slide.appendChild(img);
     stage.appendChild(slide);
   });
