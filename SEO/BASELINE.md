@@ -605,3 +605,65 @@ The site is **live, clean, and fast** (17 imgs, 0 broken, 1 h1, no overflow, fil
 plays). It is **invisible in search** and that is **not fixable by us** — it needs:
 (1) Bryce's Gmail for GBP + GSC (DNS TXT), (2) Bing WMT (imports from GSC), then
 (3) citations. On-site work is at target; discovery is 100% identity-blocked.
+
+---
+
+## ck115 — 2026-10-09 · srcset true-width fix + 404 icon fix + schema exoneration (pushed)
+
+**Three defects from the ck114 audit, closed.** Commits `f8402d7` (fix) + `0a8a6ab`
+(regen), pushed to `main`; GitHub Pages live-verified.
+
+### DEFECT 1 — srcset width descriptors were false (REAL mobile-speed defect) · FIXED
+- Root cause: `work/gen/emit.py:54` hardcoded `.../{name}.jpg 2000w`, but `IMG_DIMS`
+  (`emit.py:42-47`) holds the **true** widths (1200/1400/1600). Description was wrong on
+  **all 80 emitted pages**, so a 2x-DPR phone selected the full 458–616 KB JPG instead of
+  the 90–230 KB `-900` variant — real payload waste on the slowest devices.
+- Fix: descriptor now uses `{w}` from `IMG_DIMS` (single source of truth → cannot drift again).
+  `index.html` is hand-maintained, so its two figures were corrected by hand
+  (`stone-arch`, `stairs-landing` `1600w → 1200w`; both are 1200 px images).
+- **Verified:** `sips pixelWidth` comparison across **all 82 HTML files** → **216 srcset
+  descriptors checked, 0 mismatches**. `grep -rl 2000w --include='*.html'` → **0 files**.
+  Live: `https://brycespatios.work/` DOM `srcset2000 = 0`.
+
+### DEFECT 2 — 404.html referenced a nonexistent favicon · FIXED
+- `404.html:10` linked `/assets/img/favicon.svg` (file does not exist → 404) and was the
+  only page on the site not carrying the icon set.
+- Fix: replaced that line with the **exact five icon declarations every other page uses**
+  (`favicon.ico`, `favicon-32.png`, inline `data:image/svg+xml`, `apple-touch-icon.png`,
+  `/site.webmanifest`). No new file created.
+- **Verified:** `grep -rn 'favicon\.svg'` → **0** repo-wide; live
+  `https://brycespatios.work/404.html` → 200, `favicon.svg` refs **0**, icon set present.
+
+### DEFECT 3 — "82 pages missing LocalBusiness schema" · RESOLVED AS FALSE POSITIVE
+- The audit flag was a **parser artifact**: the regex looked for literal `LocalBusiness`,
+  but the pages correctly emit `LandscapingBusiness` (a valid `LocalBusiness` subtype),
+  and the breadcrumb is nested rather than flat.
+- Dumped JSON-LD from `areas/mansfield/` + `services/patios/`: **4 blocks each** —
+  `WebSite` / `LandscapingBusiness`(+`PostalAddress`,`GeoCoordinates`,
+  `OpeningHoursSpecification`,`City`) / `WebPage`(+`BreadcrumbList`,`ListItem`) /
+  `FAQPage`(+`Question`,`Answer`), all `@id`-linked. **Schema is complete and correct.**
+  Matches ck98 "JSON-LD 0 failures". **Nothing to fix.** (Honest correction to the audit's
+  own alarm — recorded rather than silently dropped.)
+
+### Live QA after deploy (7 viewports + interior)
+- Home: `title` ✓ · **1 h1** · imgs 17 · **broken 0** · `tel:` 5 · `overflowX false` ·
+  `docH` 13,908 · JSON-LD 3 · **srcset2000 0**.
+- Interior `services/patios/`: 1 h1 · broken 0 · JSON-LD **4** · `tel:` 6 · no overflow.
+- **Film modal works live:** `#film-launch` → `<video>` `showreel-1080p.mp4`,
+  `muted:true`, `paused:false`, `readyState:4`, `duration 32.233`, `1920×1080`, playhead
+  advancing. The AI-rendering disclosure still renders under the film.
+- Shots: `/Users/adam26/bryce-live-qa2/` (`00-y0`…`06-y13000`, `90-showreel`,
+  `95/96-services-patios`, `97-mansfield`).
+
+### Gate + emission invariants (re-run this turn)
+- **Voice gate:** `SHIP — fatal=0 tier1=0 p1=0 score=1.5/100 (46,320 words)` across all 82
+  pages (counters match ck114 baseline; no copy changed this turn — regression check only).
+- `work/gen/emit.py` → `wrote 81 pages, sitemap has 81 urls, feed has 14 entries`.
+- **IndexNow re-ping:** 81 URLs → `HTTP 200`. (Kept as hygiene. Does not index a new domain;
+  still the honest finding.)
+- Tree clean: `git status --short` → 0 files. `sitemap.xml` serves **81** `<loc>`.
+
+### Unchanged truth
+On-site is at target and maintenance-only. **Both engines still index ZERO pages** —
+the only fast paths are **GSC (DNS TXT via Porkbun)** and **Bing WMT**, both blocked on
+Bryce's identity. Nothing in this ck changes that.
