@@ -1,5 +1,53 @@
 # Bryce's Patios - Search Baseline
 
+## 2026-10-09 (ck126) - outside audit closed: RI compliance, fabricated claims, absolutes
+
+Commit `526a037`. An outside review (ChatGPT, given the live URL and the real
+generator source) surfaced a compliance problem and a set of unverifiable claims.
+All were verified against the repo and closed.
+
+**1. Rhode Island advertising (compliance).** The areas page said the business has
+no RI registration while the site advertised RI towns everywhere. RI ch. 5-65
+requires a registered contractor's number to appear in that contractor's
+advertising, and hardscape installation is covered work. Removed every RI service
+claim: `areaServed` (homepage + generator), `hasOfferCatalog` areaServed, footer,
+drawer meta, homepage service-area block, the areas hub RI column and its prose,
+`llms.txt`, `404.html`, and the guide/service meta descriptions. `TOWNS_RI` is now
+empty with a comment recording the reason. The earlier "we do not carry a Rhode
+Island registration" sentence is gone too, since it was advertising work it
+admitted it could not do. Seekonk's "near the Rhode Island line" stays: geography,
+not an offer.
+
+**2. Fabricated town claims.** Norton's "Windham and the lake side" was removed
+(Windham is in Connecticut; Norton has no notable lake side). Foxborough's
+game-day/Route 1 paragraph was removed, and the contradictory pair ("a lot of flat
+ground and a lot of spring water" vs "sandy soil drains faster than the rest of the
+area") was replaced with property-level wording instead of town-wide claims.
+
+**3. Absolute promises.** "Patios that still sit flat in ten years", "Most patios
+take about four days", "sits in a 30-inch frost zone", "sits below the layer that
+heaves", and an invented "six inches of compacted gravel under three inches of
+bedding" spec are all gone from the homepage and the generator. Replaced with the
+audited wording: dug to depth, compacted in lifts, held through the local
+freeze-and-thaw cycle.
+
+**4. Voice gate.** All 82 pages pass `fatal=0 tier1=0 p1=0`. The tier1 hits were a
+false positive on the real Facebook URL slug (`Bryces-Landscape-and-Patio-Service`)
+and the schema.org `LandscapingBusiness` type name; the protect list is recorded in
+`work/gate/protect.json` rather than editing a real business URL.
+
+Verified live after push (2026-10-09): homepage/areas/norton/foxborough-patios/llms
+all 200; `Rhode Island` count is 0 in homepage, areas hub, 404, sitemap, and
+llms.txt; the homepage now reads "A strong patio starts below the surface" and
+"How a patio gets built"; Norton no longer contains "Windham". All 326 JSON-LD
+blocks across the site validate.
+
+**Owner decision still open.** Whether Bryce should register in RI (and then the
+RI service area can be restored) is his call. Until then the site does not solicit
+RI work.
+
+---
+
 ## 2026-10-09 (ck125) - the explainer is fully wired for discovery
 
 Commit `c83e0da`. The sitemap carried a video entry only for the homepage showreel.
