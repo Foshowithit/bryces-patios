@@ -44,9 +44,9 @@ in shape.
 - [x] Every page: unique title/meta · keyword-strong H1 · self-canonical ·
       OG/Twitter · voice-gated copy · shared `style.css` + `main.js`
 
-### WS2 — Sitemap + crawl hygiene  `WIP` (sitemap shipped; GSC submit = human)
+### WS2 — Sitemap + crawl hygiene  `DONE for us` (GSC submit = human)
 - [x] `sitemap.xml` with every URL + real `lastmod` from file mtime
-- [ ] `<image:image>` extensions for key photos
+- [x] `<image:image>` extensions for key photos
 - [x] `robots.txt` stays intact
 - [x] `apple-touch-icon` + `site.webmanifest`
 - [x] keep `max-image-preview:large`
@@ -57,7 +57,7 @@ in shape.
 - [x] on-page guides index
 - [x] every page ≤ 3 clicks from home, descriptive anchors
 
-### WS4 — Home page fixes  `TODO`
+### WS4 — Home page fixes  `DONE`
 - [x] keyword-bearing H1 (or visible keyword subhead)
 - [x] audit the 39 em-dashes down (visible-copy ones are the risk, not comments)
 - [x] zero visible exclamation marks
