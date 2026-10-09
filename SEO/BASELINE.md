@@ -1,5 +1,31 @@
 # Bryce's Patios - Search Baseline
 
+## 2026-10-09 (ck124) - a second video, embedded on the page it answers for
+
+Commits `dcf3809` + `21be579`. Built a **23 s explainer**, "How a patio base is
+built", from the real in-progress photos (paver field over the aggregate base,
+herringbone over the setting bed, edge detail, finished patio). On-screen captions
+carry it, silent. 16:9 and 9:16 in `assets/video/`.
+
+Then embedded it on **`/learn/patio-base/`** - the guide it literally answers - so
+the page has first-party video, not just a still. Added the `learn__video` style
+(full-width, rounded) and a `VideoObject` block to that page's schema.
+
+Live-verified: video file 200 (10,112,905 B), the `<video>` tag is in the page,
+and playback in a browser reads `readyState:4, duration:23, paused:false,
+muted:true, 1920x1080`.
+
+**Bug fixed in the same run:** the sitemap and JSON-LD built the reel URL as
+`showreel-...-{V}.mp4`, borrowing the CSS cache-buster as a content hash. Bumping
+the CSS version (this push) would have 404'd the video URL. A dedicated
+`REEL_HASH` now owns the filename; `V` is CSS/JS only. Verified after: sitemap
+video URL and the actual file both read `dba670bb`.
+
+Voice gate SHIP on the guide and the captions. 0 JSON-LD failures, 0 pages with
+a wrong h1 count.
+
+---
+
 ## 2026-10-09 (ck123) - image weight cut 13 percent, live
 
 Commit `cff76d7`. The masters had been exported at q90 with metadata: 273-324 KB
