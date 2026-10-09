@@ -6,6 +6,16 @@ Mansfield homeowners actually find a patio contractor. Every item below is
 **free**. Most rows need Bryce's (or Adam's-as-Manager) identity to execute; the
 `[OURS]` rows are ours to build, check, and monitor.
 
+**Adam's Google session is signed in on this box** (`adamnorm4wd@gmail.com`),
+so the Google rows (GBP, Search Console) are **not** blocked on Bryce's login if
+Adam acts as Manager. Bryce still has to own the profile long term (it owns the
+reviews + Maps history), and the verification video needs the truck and a job site,
+so a sitting with Bryce is still the right way. Verified in-browser 2026-10-09:
+`business.google.com/add` and `search.google.com/search-console/welcome` both open
+Google sign-in with Adam's account. Apple Business Connect is `business.apple.com`
+(`businessconnect.apple.com` redirects there). Bing Places is `bingplaces.com`
+(redirects to `bing.com/forbusiness/`).
+
 **Ownership markers (added 2026-10-09).** Every row below is tagged:
 
 - **`[HUMAN]`** — needs Bryce's (or Adam's-as-Manager) identity or a login; **we

@@ -427,7 +427,7 @@ F table did not exist. This checkpoint adds it.
 | `foursquare.com` | 200 | reachable |
 | `buildzoom.com` | 200 | reachable |
 | `tri-townchamber.org` | 200 | reachable |
-| `business.apple.com` | 200 | reachable |
+| `business.apple.com` | 200 | reachable; **verified in-browser 2026-10-09** (note `businessconnect.apple.com` redirects here — use `business.apple.com`). Bing Places: `bingplaces.com` redirects to `bing.com/forbusiness/` (the live Bing Places add page). |
 | `patch.com/massachusetts/mansfield-ma` | 200 | **the real Mansfield, MA hub** (verified in-browser 2026-10-09). `mansfield.patch.com` redirects to Mansfield-Storrs, CT; `patch.com/massachusetts/mansfield` = 404. |
 | `dnb.com` | 301 → 200 | reachable |
 | `bark.com` | 301 | reachable |
