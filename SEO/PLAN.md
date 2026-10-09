@@ -100,7 +100,7 @@ Bryce/Adam's login; **BLOCKED** needs an external gate (e.g. Google API access).
 | # | Surface | Who | Status |
 |---|---|---|---|
 | E1 | `llms.txt` + clean entity data | OURS | **DONE** (ck98) (= A3) |
-| E2 | Consistent NAP so AI assistants cite the right facts | OURS+HUMAN | partial |
+| E2 | Consistent NAP so AI assistants cite the right facts | OURS+HUMAN | **on-site DONE (ck124)**; external rows HUMAN | Checked every page: visible phone is `(508) 212-6433` everywhere, `tel:` links are `+15082126433` everywhere, email `bryces-patios@agentmail.to`, address `885 West St, Mansfield, MA 02048`; schema uses `+1-508-212-6433`. Zero on-site drift. The "partial" was the external listings, which are HUMAN rows. |
 | E3 | FAQ structured data (already live) feeding AI answers | OURS | **DONE** |
 
 **Rule:** the only rows we can move with no human are A3, A4, A6-prep, and
@@ -117,7 +117,7 @@ self-serve path unconfirmed, must be confirmed in a real browser before promisin
 
 | # | Surface | Who | Status | Note |
 |---|---|---|---|---|
-| F1 | **Yandex Business** (`yandex.com/sprav`) | HUMAN | **VERIFY** | Free listing. `biz.yandex.ru` did not resolve from this host (000). IndexNow already pings Yandex, so a verified Yandex listing is a real citation. Confirm the self-serve URL in a browser first. |
+| F1 | **Yandex Business** | HUMAN | **URL VERIFIED (ck124)** | Free listing. `biz.yandex.ru` did not resolve from this host (000). IndexNow already pings Yandex, so a verified Yandex listing is a real citation. Confirm the self-serve URL in a browser first. |
 | F2 | **Foursquare** (`foursquare.com`) | HUMAN | reachable (200) | Free business listing. Foursquare place data feeds many navigation and map apps, so it is a high-leverage citation for a service-area trade. |
 | F3 | **Reddit** (r/massachusetts, r/landscaping, r/HomeImprovement) | HUMAN | reachable | Highest-trust local answers, but **no link-dropping** — that is an instant ban. Only genuine, photo-backed answers from Bryce's real account. Treat as reputation, not a citation. |
 | F4 | **Facebook Marketplace + local groups** (Mansfield / Bristol County buy-sell + homeowner groups) | HUMAN | reachable | Where actual local jobs get posted. Post finished-yard photos with a plain price-range line. Never spam a group. |
@@ -432,7 +432,7 @@ F table did not exist. This checkpoint adds it.
 | `dnb.com` | 301 → 200 | reachable |
 | `bark.com` | 301 | reachable |
 | `yelp.com` | 403 | WAF — not a real read, do not conclude it is down |
-| `biz.yandex.ru` | 000 | did not resolve here — **unverified** |
+| `business.yandex.ru/sprav/index` | 200 | **the live Yandex Business add-organization page** (verified in-browser 2026-10-09; the page is in Russian). `yandex.com/sprav/add` redirects to Yandex login (also works). `business.yandex.com` = 404, do not use it. |
 | `hicsearch.attorneygeneral.gov` | 200 | **the real MA HIC lookup** (verified in-browser 2026-10-09). Fields: Registration No., Business Name, Primary Applicant, Address, City, State. The old `elicensing21.mass.gov` ePLACE paths now **404** — DOL moved to eLIPSE. `contractorhub.mass.gov/s/hic-contractor-search` is the newer state hub. |
 
 ---
