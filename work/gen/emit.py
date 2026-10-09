@@ -767,7 +767,7 @@ def build_sitemap(root: Path) -> None:
                 f'<video:title>Bryce&#39;s Patios showreel</video:title>'
                 '<video:description>Eight real jobs, start to finish: base prep, paver patios, '
                 'walkways, steps, walls and fire pits around Mansfield, MA.</video:description>'
-                f'<video:content_loc>{site.BASE}/assets/video/showreel-1080p.mp4</video:content_loc>'
+                f'<video:content_loc>{site.BASE}/assets/video/showreel-1080p-silent.mp4</video:content_loc>'
                 f'<video:player_loc>{site.BASE}/#film</video:player_loc>'
                 '<video:duration>32</video:duration>'
                 '<video:publication_date>2026-10-08T09:00:00-04:00</video:publication_date>'

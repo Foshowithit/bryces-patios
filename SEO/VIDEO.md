@@ -8,7 +8,7 @@ Google surfaces YouTube for "how to" patio queries. Upload these and you give
 Bryce a second front door.
 
 **Files (already rendered, 1920×1080 / 1080×1920 / 1080×1080, silent, no music):**
-- `~/Movies/bryce-patios-reel/showreel-1080p.mp4` — 16:9, **14,238,968 B**, 32.233 s
+- `~/Movies/bryce-patios-reel/showreel-1080p-silent.mp4` — 16:9, **14,238,968 B**, 32.233 s
 - `~/Movies/bryce-patios-reel/showreel-reel-9x16.mp4` — 9:16, **12,034,636 B**
 - `~/Movies/bryce-patios-reel/showreel-square-1x1.mp4` — 1:1, **7,746,369 B**
 
@@ -39,7 +39,11 @@ Free estimates. Call or text (508) 212-6433. brycespatios.work
 **Channel art:** the site logo (`/assets/img/logo.png` on the repo) as avatar,
 any finished-patio photo as the banner.
 
-### Upload A — the 16:9 showreel (`showreel-1080p.mp4`)
+### Upload A — the 16:9 showreel (`showreel-1080p-silent.mp4`)
+
+> Renamed from `showreel-1080p.mp4` on 2026-10-09 so no browser or CDN cache
+> can serve the rejected narrated cut. The shipped file has **no audio stream**.
+> Upload the local file (silent); add YouTube's own music if wanted, never the TTS voice.
 **Title (pick one, keep under 70 chars):**
 ```
 Stone Patio Design in Mansfield, MA | Bryce's Patios

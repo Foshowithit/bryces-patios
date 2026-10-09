@@ -390,7 +390,7 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   // The reel itself. Rendered on the Dell from eight real photos of Bryce's
   // work. Silent by design: a photo reel reads on its own, so there is no
   // voice track to keep in sync.
-  const VIDEO_SRC = 'assets/video/showreel-1080p.mp4';
+  const VIDEO_SRC = 'assets/video/showreel-1080p-silent.mp4';
   const POSTER    = 'assets/img/project-firepit.jpg';
   const TOTAL     = 32.284;   // measured duration of the master, seconds
 
