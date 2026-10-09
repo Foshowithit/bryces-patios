@@ -635,6 +635,18 @@ a.project__link:focus-visible{outline:2px solid var(--moss); outline-offset:4px;
   transform:rotate(-45deg);
 }
 
+/* process photo strip */
+.process__strip{
+  display:grid; grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:1rem; margin-top:clamp(2.25rem,5vw,3.5rem);
+}
+.process__strip figure{margin:0; display:flex; flex-direction:column; gap:.7rem}
+.process__strip img{
+  width:100%; aspect-ratio:3/2; object-fit:cover; display:block;
+  border-radius:var(--r-md);
+}
+.process__strip figcaption{font-size:.8125rem; line-height:1.5; color:var(--ink-2)}
+
 /* ── 06 Service area ──────────────────────────────────────────────────── */
 .area__grid{
   display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);
@@ -676,6 +688,24 @@ a.project__link:focus-visible{outline:2px solid var(--moss); outline-offset:4px;
 }
 .area__towns a:hover{border-color:var(--moss-soft); color:#fff}
 .area__soon{color:var(--ink-inv-2)}
+
+/* area photo band — real project photos under the service-area copy */
+.area__band{
+  display:grid; grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:.75rem; margin-top:clamp(2.25rem,5vw,3.5rem);
+}
+.area__band figure{margin:0; position:relative; overflow:hidden; border-radius:var(--r-md)}
+.area__band img{
+  width:100%; aspect-ratio:4/3; object-fit:cover; display:block;
+  transition:transform .6s var(--ease);
+}
+.area__band figure:hover img{transform:scale(1.05)}
+.area__band figcaption{
+  position:absolute; left:0; right:0; bottom:0; padding:.85rem .95rem;
+  font-size:.75rem; line-height:1.4; color:#fff;
+  background:linear-gradient(to top,rgba(8,14,11,.82),rgba(8,14,11,0));
+}
+.area__band figcaption strong{display:block; font-weight:600}
 
 /* ── 07 Estimate ──────────────────────────────────────────────────────── */
 .form-card{
@@ -1136,6 +1166,8 @@ a.guide--link:hover .guide__cta-text{gap:.7rem; color:var(--moss)}
 .page-actions .btn--ghost:hover{background:rgba(20,23,26,.05); border-color:var(--ink)}
 
 @media (max-width:560px){
+  .process__strip{grid-template-columns:1fr}
+  .area__band{grid-template-columns:1fr}
   .page-actions{gap:.7rem}
   .page-actions .btn{flex:1 1 100%; justify-content:center}
 }
@@ -1148,6 +1180,8 @@ a.guide--link:hover .guide__cta-text{gap:.7rem; color:var(--moss)}
   .nav__actions{gap:.85rem}
 }
 @media (max-width:1024px){
+  .process__strip{grid-template-columns:1fr 1fr}
+  .area__band{grid-template-columns:repeat(2,minmax(0,1fr))}
   .promise__grid{grid-template-columns:1fr; gap:2.5rem}
   .pillars{grid-template-columns:1fr; gap:2rem}
   .projects{grid-template-columns:1fr; gap:3rem}

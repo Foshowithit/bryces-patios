@@ -759,11 +759,27 @@ def build_sitemap(root: Path) -> None:
             name, title = img_for[u]
             row += (f'<image:image><image:loc>{site.BASE}/assets/img/{name}.jpg</image:loc>'
                     f'<image:title>{site.esc(title)}</image:title></image:image>')
+        if u == f"{site.BASE}/":
+            # Video sitemap extension for the homepage showreel.
+            row += (
+                '<video:video>'
+                f'<video:thumbnail_loc>{site.BASE}/assets/img/project-firepit.jpg</video:thumbnail_loc>'
+                f'<video:title>Bryce&#39;s Patios showreel</video:title>'
+                '<video:description>Eight real jobs, start to finish: base prep, paver patios, '
+                'walkways, steps, walls and fire pits around Mansfield, MA.</video:description>'
+                f'<video:content_loc>{site.BASE}/assets/video/showreel-1080p.mp4</video:content_loc>'
+                f'<video:player_loc>{site.BASE}/#film</video:player_loc>'
+                '<video:duration>32</video:duration>'
+                '<video:publication_date>2026-10-08T09:00:00-04:00</video:publication_date>'
+                '<video:family_friendly>yes</video:family_friendly>'
+                '<video:live>no</video:live>'
+                '</video:video>')
         row += '</url>'
         rows.append(row)
     xml = ('<?xml version="1.0" encoding="UTF-8"?>\n'
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n'
-           '        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n'
+           '        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"\n'
+           '        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">\n'
            + "\n".join(rows) + "\n</urlset>\n")
     (root / "sitemap.xml").write_text(xml, encoding="utf-8")
     return len(urls)
