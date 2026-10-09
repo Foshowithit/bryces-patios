@@ -127,6 +127,7 @@ them in one sitting.
 | Extractibility | `llms.txt` live + linked from `robots.txt` (`LLMs-Txt:`) and a `<link rel=alternate>` in all 81 heads |
 | Icon/crawl plumbing | root `/favicon.ico` real (200), `assets/img/favicon.ico`, `icon-192/512`, `apple-touch-icon`, `site.webmanifest` all 200 |
 | Image search | 100/100 `<img>` carry alt text; image sitemap 81/81 |
+| Titles/meta | **0 over-length** (no title >60, no meta >160) and **0 duplicate titles** across all 81 pages (fixed 12 town-hub dup groups + 1 long meta, ck99) |
 | Voice gate | last full-site run **SHIP, 0/0/0, 1.6/100 (45,950 words, 81 pages)** (ck98) |
 | Discovery | `feed.xml` (Atom) + `rel=alternate` in every head (incl. home) · IndexNow key + ping script live · footer feed link |
 

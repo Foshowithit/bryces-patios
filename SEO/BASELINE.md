@@ -340,3 +340,39 @@ remaining surface is (a) human identity actions — GBP, GSC, Bing WMT, Bing
 Places, Apple Business Connect, 30+ citations, reviews — and (b) more **real
 photos** from Bryce (40 ship, only 6 real-labeled), plus a real video for the
 showreel (Dell render lane only).
+
+---
+
+## ck99/ck100 — SERP truncation + duplicate-title fixes (pushed f010697)
+
+Found and fixed in the generator (`work/gen/`), then regenerated all 81 pages.
+
+1. **`learn/fire-pit-basics` meta description was 165 chars** (SERP truncates
+   ~155-160). Trimmed to **157**.
+2. **Duplicate-title bug — 12 groups / 24 pages.** Every town hub
+   (`areas/<town>/`) carried the exact same `<title>` as its child
+   (`areas/<town>/patios/`): `Stone Patios in {town}, MA | Bryce's Patios`.
+   Town hub retitled to `Stone Patios in {town}, MA | Patio Builder`. **DUPGROUPS 0.**
+3. **Service x town titles ran 61-65 chars** (worst case North Attleboro
+   walkways = 65). Suffix `| Local Patio Builder` -> `| Free Estimates`; worst
+   case now 56 chars, all under 60.
+
+**Post-fix audit (all 81 pages):** `PAGES 81 · JSONLD_FAIL 0 · LONG [] · DUPGROUPS 0`
+— no title >60, no meta >160, no duplicate title anywhere.
+
+**Live proof after push (build `f010697` — completed success):**
+- `/areas/north-attleboro/walkways/` `<title>` -> `... | Free Estimates` (was `| Local Patio Builder`)
+- `/areas/north-attleboro/` `<title>` -> `... | Patio Builder` (now distinct from its patios child)
+- `/learn/fire-pit-basics/` meta length -> **157**
+
+**Re-verified unchanged after push**
+- `/` **200** · sitemap **81 `<loc>`** · `/llms.txt` 200 · `/favicon.ico` 200 ·
+  `/robots.txt` 200 · `/site.webmanifest` 200 · `/assets/img/favicon.ico` 200 ·
+  `/assets/img/icon-512.png` 200.
+- Images re-audited: **102 `<img>`, 0 missing alt, 100 lazy, 102 with width+height**
+  (CLS-safe).
+- Content depth unchanged: guides min 732/avg 779 (13) · towns min 617/avg 642 (12)
+  · service×town min 415/avg 444 (48).
+- Voice gate full-site re-run: **SHIP — fatal=0 tier1=0 p1=0, score 1.6/100
+  (45,950 words, 81 files)**.
+- IndexNow re-ping after the content change: **HTTP 200, 81 urls**.
