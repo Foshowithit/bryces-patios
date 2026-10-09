@@ -1,5 +1,21 @@
 # Bryce's Patios - Search Baseline
 
+## 2026-10-09 (ck125) - the explainer is fully wired for discovery
+
+Commit `c83e0da`. The sitemap carried a video entry only for the homepage showreel.
+It now carries one per page that has a video:
+
+- `/` -> showreel (29 s)
+- `/learn/patio-base/` -> "How a patio base is built" (23 s)
+- `/services/patios/` -> same explainer
+
+So the explainer is wired four ways: the `<video>` element on two pages, its own
+`VideoObject` schema on each, a Google video-sitemap entry, and a mention in
+`llms.txt` for AI answer surfaces. Live-verified: both video titles present in the
+live sitemap, `/llms.txt` references the video files, all pages 200.
+
+---
+
 ## 2026-10-09 (ck124) - a second video, embedded on the page it answers for
 
 Commits `dcf3809` + `21be579`. Built a **23 s explainer**, "How a patio base is
