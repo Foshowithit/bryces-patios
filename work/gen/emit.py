@@ -800,18 +800,39 @@ def build_sitemap(root: Path) -> None:
             name, title = img_for[u]
             row += (f'<image:image><image:loc>{site.BASE}/assets/img/{name}.jpg</image:loc>'
                     f'<image:title>{site.esc(title)}</image:title></image:image>')
+        # Video sitemap extension. One entry per page that carries a video.
+        vid = None
         if u == f"{site.BASE}/":
-            # Video sitemap extension for the homepage showreel.
+            vid = dict(
+                thumb=f'{site.BASE}/assets/img/hero-finished.jpg',
+                title='Bryce&#39;s Patios showreel',
+                desc=('Eight real jobs, start to finish: base prep, paver patios, '
+                      'walkways, steps, walls and fire pits around Mansfield, MA.'),
+                content=f'{site.BASE}/assets/video/showreel-1080p-silent-{site.REEL_HASH}.mp4',
+                player=f'{site.BASE}/#film',
+                dur='29',
+            )
+        elif u in (f'{site.BASE}/learn/patio-base/', f'{site.BASE}/services/patios/'):
+            vid = dict(
+                thumb=f'{site.BASE}/assets/img/craft-base.jpg',
+                title='How a patio base is built',
+                desc=('Silent, captioned walk through a patio build: the dig, the compacted '
+                      'aggregate base in lifts, the screeded setting bed, the cut edge and the '
+                      'finished pavers, by Bryce\'s Patios in Mansfield, MA.'),
+                content=f'{site.BASE}/assets/video/patio-base-explainer-1080p-silent.mp4',
+                player=u,
+                dur='23',
+            )
+        if vid:
             row += (
                 '<video:video>'
-                f'<video:thumbnail_loc>{site.BASE}/assets/img/patio-firepit-build.jpg</video:thumbnail_loc>'
-                f'<video:title>Bryce&#39;s Patios showreel</video:title>'
-                '<video:description>Eight real jobs, start to finish: base prep, paver patios, '
-                'walkways, steps, walls and fire pits around Mansfield, MA.</video:description>'
-                f'<video:content_loc>{site.BASE}/assets/video/showreel-1080p-silent-{site.REEL_HASH}.mp4</video:content_loc>'
-                f'<video:player_loc>{site.BASE}/#film</video:player_loc>'
-                '<video:duration>29</video:duration>'
-                '<video:publication_date>2026-10-08T09:00:00-04:00</video:publication_date>'
+                f'<video:thumbnail_loc>{vid["thumb"]}</video:thumbnail_loc>'
+                f'<video:title>{vid["title"]}</video:title>'
+                f'<video:description>{vid["desc"]}</video:description>'
+                f'<video:content_loc>{vid["content"]}</video:content_loc>'
+                f'<video:player_loc>{vid["player"]}</video:player_loc>'
+                f'<video:duration>{vid["dur"]}</video:duration>'
+                '<video:publication_date>2026-10-09T09:00:00-04:00</video:publication_date>'
                 '<video:family_friendly>yes</video:family_friendly>'
                 '<video:live>no</video:live>'
                 '</video:video>')
