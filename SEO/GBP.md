@@ -54,12 +54,18 @@ Bryce's Patios
 Paving Contractor
 ```
 
-> **UNVERIFIED:** Google's category list changes and the exact capitalisation
-> ("Paving Contractor" vs "Paving contractor") must be picked from the dropdown Google shows
-> you — it is a picker, not free text. Choose the one matching `Paving Contractor`. If it is
-> not offered for this region, the fallback order is **Landscaper**, then **Masonry
-> Contractor**. Never pick something vague like "Contractor" — the category is a top-3
-> ranking factor.
+> **VERIFIED 2026-10-09 (live GBP creation form, signed-in Google account).** Typed into
+> `business.google.com/create` → category picker and read back the rendered option list.
+> **`Paving contractor` is offered** (Google renders it lowercase-c). Also confirmed offered:
+> `Masonry contractor`, `Landscaper`, `Concrete contractor`, `Stone supplier`,
+> `Paving materials supplier`, `Landscape designer`, and the generic `Contractor`.
+> So the primary/secondary plan below is correct as written — **no fallback is needed.**
+>
+> **Method note (learned the hard way, same day):** a first probe concluded `Landscaper` did
+> not exist. That was wrong — it read the autocomplete before it populated (fixed sleep vs
+> asynchronous render). Two of the eight terms probed disagreed between consecutive runs
+> (~25% flake). **Always pick from the live dropdown rather than typing and assuming, and if a
+> term shows nothing, wait and retype before concluding it doesn't exist.**
 
 **Why Paving Contractor:** it is the category that owns "patio installer," "paver patio,"
 "walkway," and hardscape queries across Maps and near-me search. Bryce's actual work — stone
@@ -149,9 +155,13 @@ So: **keep those 20 in the profile**, and if a job comes in from Fall River or W
 simply take it — the customer found the business through the town that *is* listed. The
 service area is a ranking footprint, not a rule about which jobs he's allowed to accept.
 
-> **UNVERIFIED:** the exact current cap on service-area entries (20 as of the last check).
-> If Google's input accepts more, the next candidates are in-state only, e.g.
-> `Bridgewater, MA`, `Canton, MA`, `Norwood, MA`. Never add RI towns — see the note above.
+> **VERIFIED 2026-10-09 (Google Business Profile Help).** The cap is **20 service areas**, and
+> Google's guidance is that the whole territory should stay within roughly **a 2-hour drive** of
+> the verified base. Radius entry is not supported — areas must be picked from Google's
+> suggestions. Over-wide areas are a documented suspension trigger for service-area businesses
+> (consistent with §0). If further towns are ever wanted, next candidates are in-state only,
+> e.g. `Bridgewater, MA`, `Canton, MA`, `Norwood, MA`. **Never add RI towns** — see the note
+> above (RI ch. 5-65 registration gate).
 
 ---
 
