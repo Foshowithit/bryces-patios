@@ -1322,3 +1322,12 @@ successfully — Google will periodically check…"** The status row still shows
 the cached "2 errors" from the read before the fix; Google's re-read clears it
 on its own schedule (typically hours). Nothing left to do on this item — the
 fix is live and the resubmission is accepted.
+
+
+### Watch run — 2026-10-12 09:00 EDT
+
+- Sitemap: **81** URLs · live **OK 81 / BAD 0**
+- /learn/ hub: **13** guide cards (expected 12)
+- Facebook public page: unreadable
+- SERP: skipped (use --serp, Google rate-limits this IP)
+- **CHANGED:** sitemap URL count 56 -> 81 · /learn/ guide cards 12 -> 13
