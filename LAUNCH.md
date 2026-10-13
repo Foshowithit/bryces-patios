@@ -142,8 +142,14 @@ for f in *.jpg; do sips -Z 900 -s format jpeg -s formatOptions 82 "$f" --out "${
 ## 6. The estimate form
 
 The form is **text-first**. When a visitor finishes it, the site builds a plain-text summary
-and opens a pre-filled text message to **+1 (508) 212-6433**. One tap and the lead is in
-Bryce's Messages app — no backend, no monthly cost, no lead leaking into a form service.
+and, on a phone or tablet, opens a pre-filled text message to **+1 (508) 212-6433**. One tap
+and the lead is in Bryce's Messages app — no backend, no monthly cost, no lead leaking into a
+form service.
+
+A desktop browser has no messages app, and sending it to `sms:` there just replaces the page
+with an error screen, so the handoff is **only attempted on a handheld** (coarse pointer or a
+mobile user agent). On desktop the success panel stays put and leads with the actions that
+work: **Copy my details** and **Rather talk? Call Bryce**.
 
 The success panel also offers:
 
