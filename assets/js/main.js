@@ -305,6 +305,16 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     // my details and Call, so nothing is lost.
     if (isHandheld()) {
       setTimeout(() => { window.location.href = smsTo(text); }, 60);
+    } else {
+      // No messages app here, so the sms: button cannot do anything useful:
+      // lead with Copy and Call instead of a control that dead-ends.
+      const lead = $('#success-lead');
+      if (lead) lead.textContent = 'Nothing has been sent yet. Your details are ready below '
+        + '— copy them and send them over, or just call Bryce.';
+      const smsBtn = $('#send-sms');
+      if (smsBtn) smsBtn.hidden = true;
+      const copy = $('#copy-summary');
+      if (copy) { copy.classList.remove('btn--quiet'); copy.classList.add('btn--solid', 'btn--lg'); }
     }
   });
 
