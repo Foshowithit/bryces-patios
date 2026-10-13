@@ -298,14 +298,25 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     progress.forEach(li => { li.classList.add('is-done'); li.classList.remove('is-active'); });
     success.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' });
 
-    // One tap, one lead: open the text to Bryce right away with every field
-    // filled in. The panel above stays ready as the fallback, so a visitor on
-    // a desktop browser with no SMS handler still sees Text Bryce and Call.
-    setTimeout(() => { window.location.href = smsTo(text); }, 60);
+    // One tap, one lead: on a phone, open the text to Bryce right away with
+    // every field filled in. On a desktop there is no messages app, so
+    // navigating to sms: just throws the page away and lands the visitor on a
+    // browser error screen; there we leave the panel up with Text Bryce, Copy
+    // my details and Call, so nothing is lost.
+    if (isHandheld()) {
+      setTimeout(() => { window.location.href = smsTo(text); }, 60);
+    }
   });
 
   function smsTo(text) {
     return 'sms:+15082126433?body=' + encodeURIComponent(text);
+  }
+
+  // A phone or tablet has somewhere to hand the text to. A desktop browser
+  // does not, and assigning sms: there replaces the page with an error screen.
+  function isHandheld() {
+    return window.matchMedia('(pointer: coarse)').matches
+      || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
   }
 
   $('#copy-summary')?.addEventListener('click', async function () {
