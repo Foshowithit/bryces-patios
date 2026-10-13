@@ -2,13 +2,10 @@
    BRYCE'S PATIOS — interactions
    Vanilla JS. No dependencies, no build step.
 
-   ▸ TO POINT THE FORM AT A REAL ENDPOINT: set FORM_ENDPOINT below to your
-     Formspree / Netlify Forms / Basin URL. Until then the form falls back
-     to a pre-filled text message, which needs no backend at all.
+   ▸ THE ESTIMATE FORM IS TEXT-FIRST: on submit it opens a pre-filled text
+     message to Bryce with every answer already written in, so the visitor
+     just hits send. No backend, no email, nothing to install.
    ═══════════════════════════════════════════════════════════════════════ */
-
-const FORM_ENDPOINT = '';           // e.g. 'https://formspree.io/f/xxxxxxx'
-const CONTACT_EMAIL = 'bryces-patios@agentmail.to';
 
 const $  = (s, c = document) => c.querySelector(s);
 const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
@@ -221,16 +218,12 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (step === 3) {
       const name  = $('#name').value.trim();
       const phone = $('#phone').value.trim();
-      const email = $('#email').value.trim();
-      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
 
       showError('err-name', !name);
       showError('err-phone', !phone);
-      showError('err-email', !emailOk);
       $('#name').setAttribute('aria-invalid', String(!name));
       $('#phone').setAttribute('aria-invalid', String(!phone));
-      $('#email').setAttribute('aria-invalid', String(!emailOk));
-      if (!name || !phone || !emailOk) ok = false;
+      if (!name || !phone) ok = false;
     }
 
     return ok;
@@ -253,7 +246,6 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (t.id === 'town') { showError('err-town', false); t.removeAttribute('aria-invalid'); }
     if (t.id === 'name') { showError('err-name', false); t.removeAttribute('aria-invalid'); }
     if (t.id === 'phone') { showError('err-phone', false); t.removeAttribute('aria-invalid'); }
-    if (t.id === 'email') { showError('err-email', false); t.removeAttribute('aria-invalid'); }
     if (t.name === 'type') showError('err-type', false);
     if (t.name === 'timing') showError('err-timing', false);
   });
@@ -266,7 +258,6 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       timing: ($('input[name="timing"]:checked', form) || {}).value || '',
       name:   $('#name').value.trim(),
       phone:  $('#phone').value.trim(),
-      email:  $('#email').value.trim(),
       notes:  $('#notes').value.trim()
     };
   }
@@ -282,39 +273,23 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       '',
       'Name:     ' + d.name,
       'Phone:    ' + d.phone,
-      'Email:    ' + d.email,
       '',
       'Notes:',
       d.notes || '(none)'
     ].join('\n');
   }
 
-  form.addEventListener('submit', async e => {
+  form.addEventListener('submit', e => {
     e.preventDefault();
     if (!validate(3)) return;
 
     const data = collect();
     const text = asText(data);
 
-    if (FORM_ENDPOINT) {
-      try {
-        const res = await fetch(FORM_ENDPOINT, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify(data)
-        });
-        if (!res.ok) throw new Error('Bad response');
-      } catch (err) {
-        // Fall through to the SMS path rather than losing the lead
-        window.location.href = smsTo(text);
-      }
-    }
-
-    // Prepare the fallback UI first, so it is ready whether or not the
-    // text message hand-off completes.
+    // The panel is prepared first so it is ready whether or not the phone
+    // hands off to the messages app.
     $('#summary-out').textContent = text;
     $('#send-sms').href = smsTo(text);
-    $('#send-mail').href = mailto(text);
 
     panels.forEach(p => p.classList.remove('is-active'));
     form.querySelectorAll('.step-panel').forEach(p => { p.style.display = 'none'; });
@@ -325,14 +300,9 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     // One tap, one lead: open the text to Bryce right away with every field
     // filled in. The panel above stays ready as the fallback, so a visitor on
-    // a desktop browser with no SMS handler still sees Text Bryce, Copy, Email.
+    // a desktop browser with no SMS handler still sees Text Bryce and Call.
     setTimeout(() => { window.location.href = smsTo(text); }, 60);
   });
-
-  function mailto(text) {
-    const subject = encodeURIComponent('Estimate request for Bryce Patios, ' + $('#name').value.trim() + ', ' + $('#town').value.trim());
-    return 'mailto:' + CONTACT_EMAIL + '?subject=' + subject + '&body=' + encodeURIComponent(text);
-  }
 
   function smsTo(text) {
     return 'sms:+15082126433?body=' + encodeURIComponent(text);
@@ -350,7 +320,10 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const sel = window.getSelection();
       sel.removeAllRanges();
       sel.addRange(range);
-      btn.textContent = 'Selected — press ⌘C';
+      // Only reached when the Clipboard API is unavailable (insecure origin or
+      // an old browser). Name the key the visitor actually has.
+      const mac = /Mac|iPhone|iPad|iPod/.test(navigator.platform || '');
+      btn.textContent = mac ? 'Selected — press ⌘C' : 'Selected — press Ctrl+C';
     }
     setTimeout(() => { btn.textContent = 'Copy my details'; }, 2600);
   });

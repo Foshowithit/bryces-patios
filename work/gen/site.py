@@ -14,14 +14,13 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-V = "845cd735"          # cache-buster, must match index.html
+V = "7cc30727"          # cache-buster, must match index.html
 # Video filename hash. Must match the file in assets/video/ and never
 # track the CSS cache-buster (that coupling 404d the sitemap video URL once).
 REEL_HASH = "dba670bb"
 BASE = "https://brycespatios.work"
 PHONE_TEL = "+15082126433"
 PHONE_TXT = "(508) 212-6433"
-EMAIL = "bryces-patios@agentmail.to"
 ADDR = "885 West St, Mansfield, MA 02048"
 COORDS = "42.022753;-71.256955"
 FB = "https://www.facebook.com/people/Bryces-Landscape-and-Patio-Service/61593835211578/"
@@ -834,7 +833,6 @@ def business_ld() -> dict:
         "name": "Bryce's Patios",
         "url": f"{BASE}/",
         "telephone": "+1-508-212-6433",
-        "email": EMAIL,
         "priceRange": "$$",
         "currenciesAccepted": "USD",
         "image": f"{BASE}/assets/img/og-cover.jpg",
@@ -997,7 +995,7 @@ def footer(service_links: list[tuple[str, str]], town_links: list[tuple[str, str
         <h3>Contact</h3>
         <ul>
           <li><a href="tel:{PHONE_TEL}">{PHONE_TXT}</a></li>
-          <li><a href="mailto:{EMAIL}">{EMAIL}</a></li>
+          <li><a href="sms:{PHONE_TEL}">Text Bryce</a></li>
           <li><address class="footer__addr">{ADDR}</address></li>
           <li><a href="/#estimate">Request an estimate</a></li>
         </ul>

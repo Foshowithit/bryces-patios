@@ -14,7 +14,7 @@ listings actively suppresses local ranking; consistency across them is a ranking
 ```
 Name:        Bryce's Patios
 Phone:       (508) 212-6433
-Email:       bryces-patios@agentmail.to
+Text:        (508) 212-6433
 Website:     https://brycespatios.work
 Address:     885 West St
              Mansfield, MA 02048

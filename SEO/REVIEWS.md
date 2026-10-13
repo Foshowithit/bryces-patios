@@ -78,30 +78,7 @@ Totally fine if not — thanks again for the work. — Bryce
 
 ---
 
-## 5. Email template (only when SMS isn't possible)
-
-**Subject:** `Thanks from Bryce's Patios — one small favour`
-```
-Hi [NAME],
-
-Thanks again for trusting us with the [PROJECT, e.g. patio / walkway] — hope it's
-getting plenty of use.
-
-If you have thirty seconds, leaving a Google review would genuinely help: small
-businesses live and die on them, and it's how the next person finds us.
-
-[REVIEW_LINK]
-
-No pressure either way.
-
-Bryce
-Bryce's Patios
-(508) 212-6433
-```
-
----
-
-## 6. Reply policy — reply to every review, in this voice
+## 5. Reply policy — reply to every review, in this voice
 
 Replies are public and are read by the *next* customer. Match the register:
 short, plain, no exclamation marks, no marketing language.
@@ -128,7 +105,7 @@ you have a minute. — Bryce
 
 ---
 
-## 7. What goes on the website, and when
+## 6. What goes on the website, and when
 
 **Do not add anything review-related to the site until ≥5 real reviews exist.** Right now
 the site is honest and clean with none claimed.
@@ -155,7 +132,7 @@ Once **≥5 real Google reviews** are live:
 
 ---
 
-## 8. Target cadence and who owns it
+## 7. Target cadence and who owns it
 
 - **Owner: Bryce** (he's the one on site). Adam can prep everything; only Bryce has the moment.
 - **Goal:** every finished job → one ask → one review attempt. Even a 40% conversion

@@ -67,8 +67,9 @@ reason to — for now the site has everything, including the estimate form.
 
 ### Contact buttons
 
-Turn on the **Call** and **Email** buttons on Instagram and Facebook. A homeowner with a
-question should be able to tap once.
+Turn on the **Call** button on Instagram and Facebook, and make the text number easy to tap.
+A homeowner with a question should be able to reach Bryce in one tap. There is no email
+channel: Bryce works by call and text only.
 
 ---
 

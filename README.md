@@ -20,7 +20,7 @@ as Bryce can shoot them.
 Everything on the page is real:
 
 - **Phone:** (508) 212-6433
-- **Email:** bryces-patios@agentmail.to
+- **Text:** (508) 212-6433
 - **Address:** 885 West St, Mansfield, MA
 - **Service area:** Southeastern Massachusetts and Rhode Island, roughly a few hours of
   travel when a job justifies it
@@ -56,7 +56,7 @@ service area → estimate form → footer.
 - Sticky nav with scroll progress and a mobile slide-out menu
 - **Draggable before/after slider** — mouse, touch, and arrow keys
 - **3-step estimate form** with per-step validation; on finish it opens a pre-filled
-  text message to Bryce, with copy and email fallbacks
+  text message to Bryce, with a copy fallback and a call link
 - **"Watch the build"** — an animated sequence built from the stills. Swap in real
   footage later.
 - Sticky call/estimate bar on phones

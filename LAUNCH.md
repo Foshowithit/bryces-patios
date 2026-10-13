@@ -36,8 +36,7 @@ These are live values. Change them in one pass if they ever change:
 
 | What | Current value | Where |
 |---|---|---|
-| **Phone** | `(508) 212-6433` / `+15082126433` | nav, mobile menu, form success, footer, sticky bar, structured data |
-| **Email** | `bryces-patios@agentmail.to` | footer, `assets/js/main.js`, structured data |
+| **Phone / Text** | `(508) 212-6433` / `+15082126433` | nav, mobile menu, form success, footer, sticky bar, structured data |
 | **Address** | 885 West St, Mansfield, MA | structured data |
 | **Service area** | Southeastern Massachusetts (12 MA towns) | service area section, structured data |
 | **Social handles** | `@brycespatios` | footer icons (unclaimed as of 2026-10-08) |
@@ -142,30 +141,17 @@ for f in *.jpg; do sips -Z 900 -s format jpeg -s formatOptions 82 "$f" --out "${
 
 ## 6. The estimate form
 
-The form is **SMS-first**. When a visitor finishes it, the site builds a plain-text summary
+The form is **text-first**. When a visitor finishes it, the site builds a plain-text summary
 and opens a pre-filled text message to **+1 (508) 212-6433**. One tap and the lead is in
 Bryce's Messages app — no backend, no monthly cost, no lead leaking into a form service.
 
 The success panel also offers:
 
 - **Copy my details** — copies the same summary to the clipboard
-- **Email instead** — opens a pre-filled email to `bryces-patios@agentmail.to`
 - **Rather talk? Call Bryce** — direct `tel:` link
 
-If the browser blocks the `sms:` link, the visitor gets the copy button and the phone/email
-fallbacks instead of a dead end.
-
-### Optional: a real endpoint later
-
-If Bryce ever wants leads to also land in an inbox automatically, set `FORM_ENDPOINT` at the
-top of `assets/js/main.js`:
-
-```js
-const FORM_ENDPOINT = 'https://formspree.io/f/yourIDhere';
-```
-
-When set, the form POSTs the lead first and falls back to the SMS path if the endpoint
-fails. Leave it empty to stay on the pure SMS path.
+If the browser blocks the `sms:` link, the visitor gets the copy button and the phone
+fallback instead of a dead end. There is no email path: Bryce does not use email.
 
 ---
 

@@ -100,7 +100,7 @@ Bryce/Adam's login; **BLOCKED** needs an external gate (e.g. Google API access).
 | # | Surface | Who | Status |
 |---|---|---|---|
 | E1 | `llms.txt` + clean entity data | OURS | **DONE** (ck98) (= A3) |
-| E2 | Consistent NAP so AI assistants cite the right facts | OURS+HUMAN | **on-site DONE (ck124)**; external rows HUMAN | Checked every page: visible phone is `(508) 212-6433` everywhere, `tel:` links are `+15082126433` everywhere, email `bryces-patios@agentmail.to`, address `885 West St, Mansfield, MA 02048`; schema uses `+1-508-212-6433`. Zero on-site drift. The "partial" was the external listings, which are HUMAN rows. |
+| E2 | Consistent NAP so AI assistants cite the right facts | OURS+HUMAN | **on-site DONE (ck124)**; external rows HUMAN | Checked every page: visible phone is `(508) 212-6433` everywhere, `tel:` links are `+15082126433` everywhere, address `885 West St, Mansfield, MA 02048`; schema uses `+1-508-212-6433`. Zero on-site drift. **2026-10-13: email dropped from NAP entirely** — Bryce works by call and text only, so the agentmail address no longer appears in any page, doc, or schema. The "partial" was the external listings, which are HUMAN rows. |
 | E3 | FAQ structured data (already live) feeding AI answers | OURS | **DONE** |
 
 **Rule:** the only rows we can move with no human are A3, A4, A6-prep, and

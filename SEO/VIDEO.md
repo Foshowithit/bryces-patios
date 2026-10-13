@@ -86,8 +86,7 @@ jobs, so say that plainly if a comment asks.
 Stone patios, walkways, and hardscape built around Mansfield, MA. Owner-operated.
 Free estimates. Call or text (508) 212-6433. brycespatios.work
 ```
-**Channel links:** Website `https://brycespatios.work` · Email
-`bryces-patios@agentmail.to`
+**Channel links:** Website `https://brycespatios.work`
 **Channel art:** the site logo (`/assets/img/logo.png` on the repo) as avatar,
 any finished-patio photo as the banner.
 
@@ -115,7 +114,6 @@ finished patios, an in-progress paver build, a walkway and steps.
 
 Website: https://brycespatios.work
 Phone or text: (508) 212-6433
-Email: bryces-patios@agentmail.to
 Area: Mansfield, Attleboro, North Attleboro, Norton, Foxborough, Seekonk,
 Rehoboth, Plainville, Franklin, Taunton, Easton, Sharon, and nearby MA + RI towns.
 
