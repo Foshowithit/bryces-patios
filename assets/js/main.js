@@ -218,12 +218,15 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (step === 3) {
       const name  = $('#name').value.trim();
       const phone = $('#phone').value.trim();
+      // A phone number is the whole point of the handoff, so "abc" or "1" is not
+      // good enough — require at least 10 digits, ignoring spaces and punctuation.
+      const phoneOk = (phone.replace(/\D/g, '').length >= 10);
 
       showError('err-name', !name);
-      showError('err-phone', !phone);
+      showError('err-phone', !phoneOk);
       $('#name').setAttribute('aria-invalid', String(!name));
-      $('#phone').setAttribute('aria-invalid', String(!phone));
-      if (!name || !phone) ok = false;
+      $('#phone').setAttribute('aria-invalid', String(!phoneOk));
+      if (!name || !phoneOk) ok = false;
     }
 
     return ok;
