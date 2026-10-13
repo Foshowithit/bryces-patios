@@ -308,6 +308,8 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     } else {
       // No messages app here, so the sms: button cannot do anything useful:
       // lead with Copy and Call instead of a control that dead-ends.
+      const title = $('#success-title');
+      if (title) title.textContent = 'Your estimate request is ready.';
       const lead = $('#success-lead');
       if (lead) lead.textContent = 'Nothing has been sent yet. Your details are ready below '
         + '— copy them and send them over, or just call Bryce.';

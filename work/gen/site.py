@@ -14,7 +14,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-V = "34a9cfad"          # cache-buster, must match index.html
+V = "e6221708"          # cache-buster, must match index.html
 # Video filename hash. Must match the file in assets/video/ and never
 # track the CSS cache-buster (that coupling 404d the sitemap video URL once).
 REEL_HASH = "dba670bb"
