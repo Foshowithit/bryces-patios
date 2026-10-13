@@ -135,10 +135,13 @@ TOWN_DETAIL = {
         "read the slope against the house, and the patio is set to shed away from the foundation rather than "
         "toward it. In the older shaded yards near the center, that often means a shallow swale dressed to "
         "look like planting instead of a trench.",
-        "Mansfield winters freeze and thaw in cycles, so the base under a patio here is dug out past the depth "
-        "that freezes and thawed, then rebuilt in compacted lifts. That is the part nobody sees. It is also "
-        "the part that decides whether the surface is still flat five winters from now. If a quote for a "
-        "patio in town comes in well under the others, the first thing to ask is how deep they plan to dig.",
+        "Mansfield winters freeze and thaw in cycles, so the base under a patio here is dug deep enough that "
+        "the ground below it stays put through the thaw, then rebuilt in compacted lifts. How deep is set by "
+        "the soil, the drainage and what the patio has to carry, not by one number for the whole town. That "
+        "is the part nobody sees. It is also "
+        "the part that decides whether the surface is still flat five winters from now. When you compare "
+        "quotes, put the dig depth, the base, the drainage and the edge restraint side by side, and ask "
+        "what each one includes before you look at the number.",
         "Mansfield is home base, so we are usually on site the same week a call comes in, and a patio of "
         "400 to 500 square feet is normally a handful of working days once we start: dig and haul one day, "
         "base and compaction the next, then setting and cuts. Timelines move with access, how tight the "
@@ -186,18 +189,14 @@ TOWN_DETAIL = {
         "this big, so the scale starts bigger and the walkway has to be worth walking. We would rather lay "
         "out one patio that fits the space than squeeze in something tidy that looks unfinished from the "
         "kitchen window.",
-        "Base depth follows the same frost line as the rest of Bristol County, and with more open ground the "
+        "Base depth is set by the soil and the drainage on the lot rather than copied from the town over, and "
+        "with more open ground the "
         "edge restraint gets checked carefully, since a wide field of pavers has more push against the "
         "borders than a small one. Timelines on a big lot usually run a little longer than a compact "
         "Mansfield yard, mostly because of hauling and site room.",
         "Norton also has stretches of new construction where the builder graded the lot and left it, so the lawn and the yard settle unevenly for a year or two. On those lots we like to see how the ground has moved before we set the final height, so the patio does not inherit a dip that shows up the first spring. The lots off the old roads are the ones that surprise you, so we look at the ground before we set a final height.",
     ],
     "Foxborough": [
-        "Foxborough yards run the range from flat to wet, and a patio here lives or dies on the base. Flat "
-        "ground holds water because nothing is pushing it away, so we read the grade, dig to depth, compact "
-        "in lifts and set the slope that sends water out before any stone goes down. If the ground under a "
-        "patio stays wet, it does not matter how well the surface was laid; the base softens and the field "
-        "moves.",
         "The pattern and the material are the visible half of the job, and Foxborough clients tend to want "
         "a clean line: a straight paver field with a border, or a herringbone laid off the back steps. "
         "Those look best when the setting bed is screeded dead flat, because a clean pattern shows every "
@@ -267,8 +266,9 @@ TOWN_DETAIL = {
         "older city lots the grade was often set by eye and the ground has settled unevenly since, so part "
         "of the work is reading what the yard actually does now rather than trusting how it was built. That "
         "gets settled in person, not from a photo.",
-        "Taunton is a moderate run from Mansfield and sits in the same frost zone, so base depth and "
-        "compaction follow the same rules as everywhere else in the area. Pricing lands in the usual range "
+        "Taunton is a moderate run from Mansfield, so the base is built to the same standard here as it is on "
+        "home ground: dug to a depth the ground under it will not move through the freeze and thaw, compacted "
+        "in lifts, and sloped to shed. Pricing lands in the usual range "
         "for a given size and material; the swing on a job here is usually how much the grade has to be "
         "corrected before the first scoop of dirt can come out.",
         "Taunton has more than its share of homes where an old deck came down and left a bare patch of dirt against the house. That patch is usually the easiest spot to put a patio, but the grade there has often been changed by years of runoff off the roof, so we read where the water actually goes now before setting a height. A walkway out to the drive usually ties that spot back to the rest of the yard.",
@@ -335,7 +335,7 @@ SERVICES = [
         blurb=("A patio is a floor that lives outside, so it gets built like one: "
                "dug out to depth, a crushed stone base compacted in lifts, a screeded "
                "bedding layer, and pavers restrained at the edge so the field can't "
-               "creep. The visible part is the last inch. Everything that decides "
+               "creep. The pavers you see are only the top of a layered system. Everything that decides "
                "whether it holds its shape over the years is underneath."),
         img="project-dining", img_alt="A finished curved paver patio with a low seat wall.",
         video=dict(
@@ -368,7 +368,7 @@ SERVICES = [
             ("How long does a patio take to install?",
              "Most residential patios run a few days to a couple of weeks depending on square footage, access to the yard and how much digging and hauling the grade needs. You get a start window with the estimate."),
             ("Do I need a permit for a patio in Massachusetts?",
-             "Most patios under a certain size don't need a permit, but the line is different in each town and some lots sit in a wetland buffer. We check which side your property falls on before anything is dug."),
+             "Patio permits are set town by town, and the answer turns on square footage, how close the work sits to a property line, and whether any part of the lot is in a wetland buffer. We look up your town's rule for your lot before anything is dug, and we'll tell you plainly if it needs a filing."),
             ("What does a patio cost in {town}?",
              "It depends on square footage, the stone you pick and how much site work the grade needs. Paver is the friendliest budget, bluestone and flagstone climb from there. We give you an itemized number after seeing the yard."),
     ],
@@ -498,8 +498,8 @@ GUIDES = [
     dict(
         key="patio-base", tag="01. The base", title="Nine-tenths of it is underground",
         h1="What's under a patio (and why it matters)",
-        meta="The paver is the last inch of a patio. Here's the base underneath it, in plain language, and why it decides whether the patio stays flat.",
-        lede="The pavers you see are the last inch. Everything that decides whether the patio holds its shape is underneath them and invisible when the job is done.",
+        meta="The paver is the top layer of a pavement system. Here's the base underneath it, in plain language, and why it decides whether the patio stays flat.",
+        lede="The pavers you see are only the top layer. Everything that decides whether the patio holds its shape is underneath them and invisible when the job is done.",
         paras=[
             "Under the pavers sit the bedding layer, the crushed stone base and the depth of the dig. Each layer has a job. The dig removes soil that would move under frost and water. The base, built up in lifts and compacted between each pass, spreads the load and stays put. The bedding layer is screeded flat so the pavers sit even.",
             "The failure mode is easy to picture. Pavers laid on dirt, or on a base dumped in one pass and never compacted, look exactly the same on day one as a job done right. It shows up the first hard winter, when a paver moves and never settles back.",
@@ -528,7 +528,6 @@ GUIDES = [
         lede="A patio should shed water like a roof does: away from the house, off the surface and out. That comes from the slope built into it, not from sand added later.",
         paras=[
             "Water that sits on a patio is almost always a grading problem rather than a stone problem. The surface is set to slope, the joints and base are planned to drain together, and the whole thing sends water somewhere it can leave. When any of that is off, water sits, the base below softens and pavers sink unevenly.",
-            "Water is one of the most common reasons a patio settles around here, and it is also the cheapest thing to get right at the start and the most expensive to fix later. Pooling at a door is usually the same problem showing up years in.",
         
             "There are really four things that keep water moving: the slope of the surface, the pitch built into the base, the joints between the stones, and where everything eventually empties. Get all four pointed the same way and water behaves. Get one pointed backward and you get a puddle that never fully dries.",
             "A lot of drainage work is invisible once it is done, which makes it easy to sell cheaply and hard to check. A swale dressed as planting or a run of drain stone under the lawn does the same job as a fancy system when it is laid out with the fall in mind, and it costs a fraction of what people fear.",
@@ -548,10 +547,10 @@ GUIDES = [
         lede="Ground here freezes and thaws many times over a winter. Each cycle lifts the soil, and anything sitting too close to the surface comes up with it.",
         paras=[
             "Mansfield and the towns around it see a hard freeze and thaw cycle every winter, and the ground can freeze well below the surface. That cycle is what moves shallow work, and it is why depth matters here the way it does not in milder parts of the country. Depth is not a premium option; it keeps the surface from being pushed around.",
-            "Here's what the freeze does. Water sits in the soil, freezes, and pulls more water up into the ice. Ice takes up more room than water, so the soil swells, then drops back when it thaws. Anything sitting in that band gets carried with it. A patio dug out below the frost and rebuilt with compacted stone sits in ground that stays put.",
+            "Here's what the freeze does. Water sits in the soil, freezes, and pulls more water up into the ice. Ice takes up more room than water, so the soil swells, then drops back when it thaws. Anything sitting in that band gets carried with it. How deep the dig goes is set by the soil and what the patio will carry, and the base is then rebuilt in compacted lifts so the pavement sits on ground that stays put.",
             "Failure is gradual, then sudden. The first winter one paver sits a hair high. The second winter a joint opens and water gets under the field. On day one it looked perfect; that's the point.",
             "Depth also has to be paired with drainage. A deep base holding water is worse than a shallow base that drains. Frost and drainage are one conversation here, and the slope gets planned before the first scoop of dirt comes out.",
-            "The practical effect for a homeowner is that the dig is deeper than it would be in a warmer state, and the base is built thicker to match. That is also why a patio poured or laid over an existing grade, with no real dig, is a bet against the first hard winter. It can look perfect in July and be a mess by March, and the repair is never as cheap as the first job done right.",
+            "That is also why a patio laid over an existing grade, with no real dig, is a bet against the first hard winter. It can look perfect in July and be a mess by March, and the repair is never as cheap as the first job done right.",
             "Frost heave is not one uniform push, either. It moves where soil and moisture and shade differ across the yard, which is why you see a corner lift or one paver proud of its neighbors rather than the whole patio rising together. Uniform movement you can live with. Uneven movement is what cracks joints and pops edges, and it comes straight from an uneven base.",
         "The practical takeaway is that the base is the insurance policy. You cannot see it when the job is done, and you cannot easily fix it later. A patio dug deep, built up in compacted lifts on a stable subgrade, and edged so the field cannot spread will move as one piece through the freeze and thaw. One that skipped that work will not, and the first hard winter is when you find out.",
     ],
@@ -561,9 +560,9 @@ GUIDES = [
             "Slope planned so water leaves the base, not sits in it",
             "Edges restrained so the field cannot spread as it freezes",
     ],
-        note=("<strong>Watch for:</strong> a quote far cheaper than the rest. Sometimes "
-              "that is a lower labor rate. More often it is less digging, which you "
-              "will never see."),
+        note=("<strong>Best question to ask:</strong> how was the base compacted? "
+              "A depth in inches is a good sign; compacted in lifts rather than "
+              "dumped in one pass is what keeps it there."),
         img="steps-detail", img_alt="Pavers running up to a low stone wall.",
     ),
     dict(
@@ -644,14 +643,14 @@ GUIDES = [
         img="about-site", img_alt="A paver patio and stone seat wall beside a house.",
     ),
 dict(
-    key="paver-cost", tag="07. Cost", title="What a stone patio actually costs",
-    h1="What a stone patio costs in Massachusetts",
-    meta="A plain-language look at what a stone patio costs in Massachusetts, and where cheap quotes hide the difference.",
-    lede="Nobody likes a vague number, so here is how a patio price is actually built: size first, then what is under it, then how hard it is to get to.",
+    key="paver-cost", tag="07. Cost", title="What drives the cost of a stone patio",
+    h1="What drives the cost of a stone patio in Massachusetts",
+    meta="What actually moves the price of a stone patio in Massachusetts, why a price per square foot is a guess, and what a real estimate should name.",
+    lede="Nobody likes a vague number, so here is how a patio price is actually built: size first, then what is under it, then how hard it is to get to. Bryce does not publish a price list, because the same size patio can swing by thousands on the ground under it.",
     paras=[
         "The honest answer on cost is that it depends on four things: how big the patio is, how deep the base has to go, how much the ground has to change to drain, and how hard it is for a machine to reach the work. A flat, open backyard with good access is a different job than a tight side yard you have to wheelbarrow through.",
         "That is why a price per square foot texted before anyone looks at the yard is a guess. Two patios the same size can differ by thousands once digging, drainage and access are counted. When you get a bid, ask what it includes. Dig depth, base thickness, edge restraint, drainage and cleanup should all be named. If a quote is just a number with no breakdown, that is the thing to question.",
-        "Here is a rough shape for the area, using paver on a full-depth base. A small patio, say 10 by 12 feet, is the low end. A 16 by 20 foot patio is the middle. Anything with steps, a seat wall or a fire pit is priced as the patio plus the added structure. These are ranges, not quotes, and the only real number comes from walking the yard.",
+        "Here is a rough shape for the area, using paver on a full-depth base. A small patio, say 10 by 12 feet, is the low end. A 16 by 20 foot patio is the middle. Anything with steps, a seat wall or a fire pit is priced as the patio plus the added structure. Bryce does not publish a price per square foot, because the same size patio can swing by thousands on the ground under it. The only real number comes from walking the yard, and the estimate is free.",
         "Walls and steps are where budgets move fastest. Every course of a retaining wall adds both stone and labor, and any spot that needs a step instead of a slope adds cutting and a solid footing. A fire pit is a modest add-on by itself, but it needs the same base and clearances as a small patio, so it is never free.",
         "Time is the other half of the number. A simple patio with easy access is usually days, not weeks, from dig to cleanup. Add drainage, steps or a large wall and the calendar stretches. Weather pushes it further, since digging frozen or soaked ground is slower and we do not set stone in a downpour. A build in May and a build in November are not the same job.",
         "It helps to know what actually moves the number up and down. Square footage is the headline, but the grade underneath is the wildcard: a flat, dry yard with easy truck access is the cheap version, and a sloped, wet lot where everything has to be wheeled in by hand is the expensive one. The same patio can swing widely between those two yards.",
@@ -763,6 +762,27 @@ dict(
     img="project-walkway", img_alt="A curved paver walkway and steps beside a house.",
 ),
 dict(
+    key="yard-grades", tag="12. Yard water", title="Where does your yard drain?",
+    h1="How to read the water in your own yard",
+    meta="A simple way for homeowners to watch water move across their yard after rain, and why that matters before any patio, walkway or wall project.",
+    lede="Before anyone talks stone, walk your yard after a real rain. Where the water goes tells you more than any plan.",
+    paras=[
+        "Put on boots after the next heavy rain and walk the property. Look for the low spots, the puddle that takes a day to leave, the streak where water crosses the lawn, and the corner against the house that stays wet. You are not diagnosing anything, you are just watching. Water always takes the easiest path downhill, and that path is the same path a new patio has to work with, not against.",
+        "Write down where it goes and take a few pictures. When Bryce estimates the job, those pictures answer half the questions before he arrives. If a yard has nowhere to send water, the plan has to make somewhere. If it already drains well, the build just has to respect it. Knowing which one you have puts you ahead of most homeowners before the first bid.",
+        "On a lot where water has nowhere obvious to go, a shallow swale or a dry run of drain stone can carry it to a better low point without a big system. Dressed with planting so it reads as part of the yard, it handles the worst storms quietly and keeps the patio surface dry, which is the whole point.",
+        "The common mistake is picking the patio shape first and fitting the water in later. Read the grade, decide where the water ends up, then draw the patio. A layout that fights the fall needs soil moved in or out, and that turns a simple job silently expensive.",
+        "Think about the whole yard, not just the patio. Water that leaves the patio has to go somewhere, and if the grade sends it back toward the house or pools against the foundation, the patio solved nothing. The good layouts send water away from the building and out to a low corner or the street, so the patio and the yard work together instead of against each other.",
+    ],
+    checklist=[
+        "Walk the yard right after a heavy rain",
+        "Mark the low spots and the slow puddles",
+        "Note where water crosses the lawn",
+        "Check the corner against the house",
+        "Take photos to show at the estimate",
+    ],
+    img="craft-base", img_alt="A paver patio partly laid, showing the base and bedding layer beneath.",
+),
+dict(
     key="fire-pit-basics", tag="13. Fire pits", title="Fire pits that last",
     h1="Fire pits: what makes one last",
     meta="How a fire pit is built in Massachusetts, what makes one last and what makes one crack, and the two choices to settle before you dig: wood or gas, and where.",
@@ -792,29 +812,6 @@ dict(
     note=("<strong>Easiest thing to get right:</strong> put the pit on flat ground you already "
           "know drains well, and it will outlast one set in the yard's low spot."),
     img="patio-firepit-build", img_alt="A paver patio and circular fire pit under construction.",
-),
-dict(
-    key="yard-grades", tag="12. Drainage", title="Where does your yard drain?",
-    h1="How to read the water in your own yard",
-    meta="A simple way for homeowners to watch water move across their yard after rain, and why that matters before any patio, walkway or wall project.",
-    lede="Before anyone talks stone, walk your yard after a real rain. Where the water goes tells you more than any plan.",
-    paras=[
-        "Put on boots after the next heavy rain and walk the property. Look for the low spots, the puddle that takes a day to leave, the streak where water crosses the lawn, and the corner against the house that stays wet. You are not diagnosing anything, you are just watching. Water always takes the easiest path downhill, and that path is the same path a new patio has to work with, not against.",
-        "Write down where it goes and take a few pictures. When Bryce estimates the job, those pictures answer half the questions before he arrives. If a yard has nowhere to send water, the plan has to make somewhere. If it already drains well, the build just has to respect it. Knowing which one you have puts you ahead of most homeowners before the first bid.",
-        "Before any design, walk the yard after a real rain and watch where the water goes. The low spots, the way the ground falls toward or away from the house, and the direction it leaves the lot are all free information you can use before anyone quotes a project. That read often decides where a patio can sit and how high it should be.",
-        "On a lot where water has nowhere obvious to go, a shallow swale or a dry run of drain stone can carry it to a better low point without a big system. Dressed with planting so it reads as part of the yard, it handles the worst storms quietly and keeps the patio surface dry, which is the whole point.",
-        "The common mistake is picking the patio shape first and fitting the water in later. Read the grade, decide where the water ends up, then draw the patio. A layout that fights the fall needs soil moved in or out, and that turns a simple job silently expensive.",
-        "If there is nowhere for the water to go, there is almost always a non-engineered answer: a shallow swale dressed as a planting bed, a dry run of drain stone to a low corner, or a small catch basin at the one low point. None of it is exotic, and all of it is cheaper than a soggy patio.",
-        "Think about the whole yard, not just the patio. Water that leaves the patio has to go somewhere, and if the grade sends it back toward the house or pools against the foundation, the patio solved nothing. The good layouts send water away from the building and out to a low corner or the street, so the patio and the yard work together instead of against each other.",
-    ],
-    checklist=[
-        "Walk the yard right after a heavy rain",
-        "Mark the low spots and the slow puddles",
-        "Note where water crosses the lawn",
-        "Check the corner against the house",
-        "Take photos to show at the estimate",
-    ],
-    img="craft-base", img_alt="A paver patio partly laid, showing the base and bedding layer beneath.",
 ),
 ]
 
@@ -1103,7 +1100,7 @@ FAQS_TOWN = [
     ("How much does a patio cost in {town}?",
      "It depends on square footage, the stone you pick and how much site work the grade needs. Paver is the friendliest budget, bluestone and flagstone climb from there. You get an itemized number after Bryce sees the yard, and the estimate is free."),
     ("Do I need a permit for patio work in {town}?",
-     "Most patios and walkways under a certain size don't need one, but the line moves from town to town and some lots sit in a wetland buffer. Tell us the address when you call and we'll say which side your property falls on before anything is dug."),
+     "It depends on the town and the lot, and on whether the work sits in a wetland buffer or changes the grade. There is no single size that settles it. Give us the address when you call and we will tell you what that town usually wants before anything is dug."),
     ("How far out does Bryce work from {town}?",
      "There are no hard limits. {town} is well inside the regular run from the Mansfield yard, so it's a normal job. Anything further out just needs a call first so the drive makes sense for both sides."),
 ]
@@ -1136,7 +1133,7 @@ FAQS_HUB = {
     ],
     "areas": [
         ("Is my town actually inside the service area?",
-         "Mansfield is home base and the twelve Massachusetts towns listed are the ones Bryce is in most weeks. For anything past the state line, call first so we can say plainly what can be done."),
+         "Mansfield is home base and the twelve Massachusetts towns listed are the ones Bryce is in most weeks. If your town is not on the list, call with the address and you will get a straight answer."),
         ("Does the work change from town to town?",
          "The crew and the standard do not change, the ground does. Flat yards get drainage designed into the patio; sloped or ledge lots turn into steps, landings and walls; wet spring yards get base depth and drainage worked out before anything is dug."),
         ("What if my town is not on the list?",

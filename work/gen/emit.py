@@ -378,8 +378,8 @@ def build_services_hub(root: Path) -> None:
              '<h2 class="h2">Four kinds of work, one standard underneath</h2>'
              '<p class="prose">Every job on this page is built the same way underneath. The ground is dug to '
              'depth, the base goes in as crushed stone compacted in lifts, the surface is set to shed water '
-             'away from the house, and the edge is restrained so the field cannot spread. That last inch you '
-             'see is the cheap part. The work under it is what keeps the surface from shifting through '
+             'away from the house, and the edge is restrained so the field cannot spread. The pavers you see '
+             'are only the top layer. The work under them is what keeps the surface from shifting through '
              'the freeze and thaw.</p>'
              '<p class="prose">A patio is the floor of the yard and takes the most square footage, so the '
              'layout and the drainage get the most thought. A walkway takes more traffic per square foot and '
@@ -570,7 +570,7 @@ SVC_TOWN_DETAIL = {
         "Attleboro": "Older Attleboro yards mean we sometimes re-grade before we lay anything, so the patio sits at a height that still meets the door threshold.",
         "North Attleboro": "The slope here usually earns a set of steps and a seat wall keeping the main field level, so the patio reads as one room instead of three.",
         "Norton": "With bigger lots, the patio is often set back nearer the tree line, and the path out to it drains with the same low point.",
-        "Franklin": "Franklin patios get a base beyond the frost line and a start date that respects how late the ground stays wet in spring.",
+        "Franklin": "Franklin patios get a base dug to the depth the ground and drainage call for, and a start date that respects how late the ground stays wet in spring.",
         "Seekonk": "Seekonk yards are often tight and near the Rhode Island line, so the patio is laid out to the shape that fits and the runoff is still sent clear of the neighbor line. Small lots here also mean the base is compacted in narrower lifts and the edge is held hard, because there is less room for the field to move without it showing.",
         "Rehoboth": "Rehoboth's open, sandy lots drain fast, which lets the patio sit a little lower and wider, but the base is still dug to depth and compacted in lifts so it does not settle. That sand also means the patio edge needs a real border, since a loose edge in fast-draining ground spreads out over a few winters.",
         "Plainville": "In Plainville's tree-heavy yards the shade keeps the surface wet longer, so the base is built dry and the slope is set a touch stronger to shed that water. Roots and shade also decide where the equipment can go, so these patios are often dug and compacted in tighter passes than a wide-open lot would need.",
@@ -701,7 +701,8 @@ _SVC_WATCH = {
         "right and the pavers you picked at the yard will still look right years on. Get them wrong and "
         "no amount of pretty stone will keep the field flat. That underground work is the part of the job "
         "nobody sees once the stone is down.",
-        "Every patio quote that comes in low usually skipped one of the four: depth, compaction, slope or edge. "
+        "When a patio quote is much lower than the others, ask what it does not include. Depth, compaction, "
+        "slope and edge restraint are the four things to compare line by line. "
         "In {t} the grade and the frost line make all four matter, so we walk the yard, set the fall away from "
         "the house, and build the base before a single paver is set. That is also why a patio here gets quoted "
         "by the square foot with the excavation, the gravel and the compaction in it, not as a flat number for "
