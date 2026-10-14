@@ -610,11 +610,10 @@ def _svc_town_detail(svc_key: str, t: str) -> str:
 # lightly varied by town so the copy stays specific instead of template-filler.
 _SVC_WATCH = {
     "patios": (
-        "For a patio in {t} the things that decide the result are boring ones: how deep the base is dug, "
-        "whether it is compacted in lifts, where the surface sheds to, and how the edge is held. Get those "
-        "right and the pavers you picked at the yard will still look right years on. Get them wrong and "
-        "no amount of pretty stone will keep the field flat. That underground work is the part of the job "
-        "nobody sees once the stone is down.",
+        "The pavers get picked near the end, once the shape, the fall and the edge are settled. In {t} the "
+        "layout usually starts from two fixed points - where the house sends its water and where the sun sits "
+        "late in the day - and the field is drawn to serve both. Choosing stone first is how a patio ends up "
+        "with a handsome surface over a shape that never quite works.",
         "When a patio quote is much lower than the others, ask what it does not include. Depth, compaction, "
         "slope and edge restraint are the four things to compare line by line. "
         "In {t} the grade and the frost line make all four matter, so we walk the yard, set the fall away from "
@@ -623,34 +622,34 @@ _SVC_WATCH = {
         "stone laid on whatever is already there.",
     ),
     "walkways": (
-        "A walkway in {t} fails at the joints before it fails anywhere else, and the joints fail when the base "
-        "under them was not dug and compacted the same way the patio was. Laid that way, the path stays even "
-        "through the freeze and thaw cycles and does not dip where two runs meet. A walk gets the same depth as "
-        "a patio, because a path that heaves in March is just as obvious as a patio that does.",
-        "The other thing that makes a walk look right is the fall. In {t} we set a positive slope on the run "
-        "and a low point at the drive or the lawn so water leaves instead of sitting on the surface after a storm. "
-        "A walk that runs flat to the door looks fine on the day and turns into a sheet of ice every January, "
-        "which is the whole reason the pitch gets set before the first stone goes in.",
+        "Where a walk meets a step, a landing or the driveway is where most of the thought goes. In {t} the "
+        "joins are set so the run lands flush and the fall keeps moving through the transition instead of "
+        "stalling at it. A walk can be dead level across the field and still trip you at the one spot where "
+        "two surfaces meet.",
+        "Width gets decided by what the walk has to carry, not by the stone on it. In {t} a path that only takes "
+        "foot traffic can run narrower than one that has to pass a wheelbarrow or a mower, and the edging is set "
+        "to hold that width for good. A run that has to be widened a year later never quite matches the first "
+        "stretch, so we settle the width before the trench is opened.",
     ),
     "retaining-walls": (
-        "A retaining wall in {t} is mostly the part you never see: a footing dug past the frost line, gravel "
-        "backfill that drains, and a path for that water to escape at the bottom. The face is the easy part. "
-        "A wall that holds water behind it will lean over time. Gravel and a drain pipe behind the "
-        "face cost little at the time and are the whole reason the wall still stands straight years later.",
+        "Ties matter as much as the wall. In {t} a wall that ends in mid-air, or meets a set of steps with no "
+        "return, is the one that opens a gap as the seasons move it. Burying both ends into the grade costs "
+        "almost nothing at the time and is the difference between a wall that reads as finished and one that "
+        "always looks like it is missing a piece.",
         "In {t} that means sizing the wall to the grade it is actually holding, not just the height that looks "
         "right from the deck, and letting drainage decide how far the base extends behind the face. The height "
         "you see from the deck and the load the wall actually carries are two different numbers, and the footing "
         "is set from the second one.",
     ),
     "fire-pits": (
-        "A fire pit in {t} wants its own level pad and a clear ring around it, so the seating sits flat and "
-        "the heat has somewhere to go. Building it into the patio layout from the start is cheaper and looks "
-        "better than dropping one onto finished stone later. The clear ring is measured from the house and any "
-        "roof overhang first, not from where the chairs happen to land, and the pad is graded so rain runs away "
-        "from the bowl instead of pooling in it.",
-        "The pad under a fire pit in {t} gets the same treatment as the patio: dug, compacted and set on a base "
-        "that does not heave, so the stone ring stays level rather than tipping after the first hard winter. "
-        "A ring that is set on bare ground looks right in July and shows a gap at the joints by the next April.",
+        "Where the pit sits decides how much you use it. In {t} we keep it off the main walking line, far "
+        "enough from the house wall for the smoke to clear, and close enough to the seating that the fire "
+        "still does its job. A pit that crowds the door or the grill is the one that ends up with a cover "
+        "on it.",
+        "The ring itself is set level before anything is stacked on it, and checked course by course, because a "
+        "pit only reads as wrong once the cap is on and the error is already buried. In {t} we screed the bed "
+        "for the first course and keep the inside open so ash and rainwater have somewhere to go. A ring laid "
+        "to a string line rather than a level shows up the moment the cap goes on.",
     ),
 }
 

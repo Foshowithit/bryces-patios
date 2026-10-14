@@ -387,10 +387,10 @@ SERVICES = [
                "Get those right and the face is the easy part."),
         img="transform-after", img_alt="A finished paver patio beside a house.",
         prose=[
-            "A retaining wall is a simple machine: it takes the push of wet soil and sends it down into the "
-            "ground instead of letting it tip the face. That is why the base course is buried and compacted "
-            "before anything else, and why the drainage behind the wall matters as much as the stone you see. "
-            "A wall built without them looks fine for a season and then starts to lean.",
+            "Most of what a wall does happens where you cannot see it. Wet soil is heavy, and it leans "
+            "hardest after a long soak, when the ground behind the wall is at its fullest. The block you "
+            "choose sets the look; the buried course and the water path behind it decide whether the wall "
+            "is still plumb a decade out.",
             "Height drives everything else. A short garden wall can be stacked on a good base and set back "
             "as it rises. As the wall gets taller, or holds up a driveway or a surcharge, the loads climb "
             "quickly and the design questions grow with them. We will tell you plainly when a wall belongs "
@@ -1182,7 +1182,7 @@ FAQS_GUIDE = {
 FAQS_HUB = {
     "learn": [
         ("I have never hired a patio contractor. Where do I start?",
-         "Read the base guide first, because most of a patio is underground and the base is what separates a quote that holds up from one that does not. From there the drainage and frost guides explain why patios sink and walls lean, and the cost guide breaks down what moves a price."),
+         "Start with the base guide. Almost everything that decides whether a patio lasts happens under the surface, and once you can read a base spec you can compare two quotes on the parts that matter. The other guides go deeper on one piece each as you need them."),
         ("Do I need to understand all of this before I call?",
          "No. Read them in whatever order suits you - the point is to make you a sharper reader of quotes, not to turn you into a contractor. If a conversation is easier, call Bryce, describe the yard, and he will say what he needs to see."),
         ("Are these guides just sales material?",
