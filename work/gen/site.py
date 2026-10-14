@@ -66,64 +66,26 @@ TOWN_IMG_ALT = {
     "craft-edge": "Pavers laid to a tight edge against a stone wall and planting bed.",
 }
 
-# Per-town read of the local yards. Two short paragraphs, town-specific.
-TOWN_INTRO = {
-    "Mansfield": ("Mansfield is home, so it is the town we see most, and it is not one kind "
-                  "of yard. Stop and go along Route 106 and 140 gives way to quieter streets off "
-                  "the Great Woods and Mansfield Crossing side, and the lots change with them. "
-                  "The older ones near the center are tight and shaded, with grades that were "
-                  "finished by eye decades ago. The newer subdivisions out toward Foxborough and "
-                  "Norton are flatter, but the builder left the drainage to whoever came next. "
-                  "Both kinds need the same thing before stone goes down: the shape of the yard "
-                  "decided first, then the patio set to that. We have dug in this ground long "
-                  "enough to know where the ledge sits and how the water moves, which is why a lot "
-                  "of the work comes from neighbors who watched a patio go in. "
-                  "If you have been looking for a patio installer in Mansfield, MA, we are "
-                  "twenty minutes from most of the town."),
-    "Attleboro": ("Attleboro sits on ledge and old mill-era lots, so the work starts with "
-                  "finding where the rock is and where the water wants to go. Downtown-side "
-                  "yards are tight; the ones out toward South Attleboro open up and take a "
-                  "bigger patio and a walkway."),
-    "North Attleboro": ("North Attleboro yards trend sloped, which is why so many of the jobs "
-                        "here turn into steps, a landing and a seat wall. When the grade drops "
-                        "hard, we build the transitions so they read as part of the design, not "
-                        "as a problem we hid."),
-    "Norton": ("Norton lots are bigger and flatter than most of the neighbors, which sounds "
-               "easy until the water has nowhere to leave. Here the patio and the drainage get "
-               "planned together, so the yard drains around the patio instead of through it."),
-    "Foxborough": ("Foxborough yards run the range from flat to wet corners, and on any lot here the "
-                   "base is what a patio lives or dies on. We look at the ground first, dig to depth, "
-                   "compact in lifts, and plan the slope that sends water out before any stone goes down."),
-    "Seekonk": ("Seekonk yards run close to the RI line and the wet ground that comes with it, "
-                "so drainage is the first conversation. Walkways and patios here get a base and "
-                "a slope built for spring, not for the week of the install."),
-    "Rehoboth": ("Rehoboth is big-lot country, with long driveways and back yards that open up "
-                 "under a wide sky. That scale changes the job. A patio sized for a suburban "
-                 "backyard would get lost here, so the design starts bigger and the walkway has "
-                 "to actually be worth the walk. The ground runs sandy in stretches and holds "
-                 "water in others, so the base and the slope get read on site before anything is "
-                 "priced. Out this way people also want the patio to sit quietly in the land "
-                 "rather than shout, and that is usually less about the stone and more about "
-                 "where the edges and the grade fall."),
-    "Plainville": ("Plainville yards are a mix of newer builds and older homes, and the newer "
-                   "ones often have a grade that was never really finished. We fix the shape of "
-                   "the yard first, then set the patio to that."),
-    "Franklin": ("Franklin sits up where the frost bites harder and springs run wet, so depth "
-                 "and compaction decide how the patio holds up over the years. This is the town "
-                 "where the base matters most, and where we build it deepest."),
-    "Taunton": ("Taunton runs from tight city lots to roomy yards out toward the lake, and the "
-                "grade swing between them is real. Whatever the lot, the patio gets built to shed "
-                "water away from the house, not toward it."),
-    "Easton": ("Easton yards often back onto woods and wetland, so the water table is high in "
-               "spring. Retaining walls and patios here are built with the drainage worked out "
-               "first, and the wall tied in so it does not creep."),
-    "Sharon": ("Sharon is hillier than the towns around it, and the yards come with it. Lots "
-               "off the Moose Hill and Lake Massapoag sides drop hard enough that flat ground is "
-               "the exception, so a patio here usually means steps, a landing and some wall, "
-               "staying within what the lot allows and graded so it sits level and still sheds "
-               "water away from the house. The stone walls that edge so many Sharon yards are "
-               "part of the look too, and we tie new work into their lines rather than cutting "
-               "against them."),
+# One-line, town-specific summary rendered above the detail paragraphs. Deliberately
+# NOT a paraphrase of TOWN_DETAIL[0]: the earlier version restated the first detail
+# paragraph nearly verbatim on ten of the twelve towns (audit, 2026-10-13), so the
+# page read as the same explanation twice in a row. Each entry must carry a beat
+# the detail paragraphs do not, or be left empty.
+TOWN_SUMMARY = {
+    "Mansfield": ("Home base, and the town we see most: the older, tighter lots near the "
+                  "center against the flatter newer subdivisions out toward Foxborough and "
+                  "Norton."),
+    "Attleboro": "",
+    "North Attleboro": "",
+    "Norton": "",
+    "Foxborough": "",
+    "Seekonk": "",
+    "Rehoboth": "",
+    "Plainville": "",
+    "Franklin": "",
+    "Taunton": "",
+    "Easton": "",
+    "Sharon": "",
 }
 # Per-town second read: what the jobs here actually involve, and what drives cost.
 # Real, checkable local facts only. Three short paragraphs, town-specific, no spin.
@@ -197,11 +159,11 @@ TOWN_DETAIL = {
         "Norton also has stretches of new construction where the builder graded the lot and left it, so the lawn and the yard settle unevenly for a year or two. On those lots we like to see how the ground has moved before we set the final height, so the patio does not inherit a dip that shows up the first spring. The lots off the old roads are the ones that surprise you, so we look at the ground before we set a final height.",
     ],
     "Foxborough": [
-        "The pattern and the material are the visible half of the job, and Foxborough clients tend to want "
-        "a clean line: a straight paver field with a border, or a herringbone laid off the back steps. "
-        "Those look best when the setting bed is screeded dead flat, because a clean pattern shows every "
-        "high and low paver. The invisible half, drainage and depth, is what keeps the pattern clean years "
-        "later.",
+        "Foxborough clients usually come to it with a look in mind, and the visible half of the job is the "
+        "pattern and the material: a clean line, a straight paver field with a border, or a herringbone "
+        "laid off the back steps. Those look best when the setting bed is screeded dead flat, because a "
+        "clean pattern shows every high and low paver. The invisible half, drainage and depth, is what "
+        "keeps the pattern clean years later.",
         "Frost here works the same way it does across the area, so a shallow patio that looked fine in July "
         "will show its first lifted paver after one hard freeze and thaw. It is a gradual failure; the "
         "patio never fails all at once, it just stops being level one winter at a time.",
@@ -406,7 +368,7 @@ SERVICES = [
     ],
         faq=[
             ("How wide should a walkway be?",
-             "Three feet is the comfortable minimum for one person, and closer to four feet feels generous and lets two people pass. If it snows and you want it cleared easily, wider is easier."),
+             "Plan on three feet for a single line of travel, and four if two people will pass each other often. If the path has to be shoveled, the wider one is easier to keep clear."),
             ("Can you match a walkway to an existing patio?",
              "Yes. If the stone is still available we match it, and where it isn't we lay out a path that reads as deliberate rather than mismatched. Stone and pattern are chosen together with you."),
             ("Do walkways need a base like a patio?",
@@ -485,7 +447,7 @@ SERVICES = [
     ],
         faq=[
             ("What size fire pit should I build?",
-             "Most backyard pits land between three and four feet across inside; that's a comfortable circle for four to six people. Bigger looks impressive and then never gets a fire warm enough to enjoy."),
+             "Somewhere between three and four feet inside is the sweet spot - big enough to warm the people sitting at it, small enough that nobody has to pull their chair back. Past that you get a fire that looks better than it heats."),
             ("Can you add a fire pit to an existing patio?",
              "Often, yes. If the layout and the base will take it we can build one in. Sometimes the honest answer is that the patio was never graded for it, and we'll say so."),
             ("Wood or gas?",
@@ -650,7 +612,7 @@ dict(
     paras=[
         "The honest answer on cost is that it depends on four things: how big the patio is, how deep the base has to go, how much the ground has to change to drain, and how hard it is for a machine to reach the work. A flat, open backyard with good access is a different job than a tight side yard you have to wheelbarrow through.",
         "That is why a price per square foot texted before anyone looks at the yard is a guess. Two patios the same size can differ by thousands once digging, drainage and access are counted. When you get a bid, ask what it includes. Dig depth, base thickness, edge restraint, drainage and cleanup should all be named. If a quote is just a number with no breakdown, that is the thing to question.",
-        "Here is a rough shape for the area, using paver on a full-depth base. A small patio, say 10 by 12 feet, is the low end. A 16 by 20 foot patio is the middle. Anything with steps, a seat wall or a fire pit is priced as the patio plus the added structure. Bryce does not publish a price per square foot, because the same size patio can swing by thousands on the ground under it. The only real number comes from walking the yard, and the estimate is free.",
+        "Here is a rough shape for the area, using paver on a full-depth base. A small patio, say 10 by 12 feet, is the low end. A 16 by 20 foot patio is the middle. Anything with steps, a seat wall or a fire pit is priced as the patio plus the added structure. That is why there is no published rate: the shape below is only a rough map, and the only real number comes from walking the yard. The estimate is free.",
         "Walls and steps are where budgets move fastest. Every course of a retaining wall adds both stone and labor, and any spot that needs a step instead of a slope adds cutting and a solid footing. A fire pit is a modest add-on by itself, but it needs the same base and clearances as a small patio, so it is never free.",
         "Time is the other half of the number. A simple patio with easy access is usually days, not weeks, from dig to cleanup. Add drainage, steps or a large wall and the calendar stretches. Weather pushes it further, since digging frozen or soaked ground is slower and we do not set stone in a downpour. A build in May and a build in November are not the same job.",
         "It helps to know what actually moves the number up and down. Square footage is the headline, but the grade underneath is the wildcard: a flat, dry yard with easy truck access is the cheap version, and a sloped, wet lot where everything has to be wheeled in by hand is the expensive one. The same patio can swing widely between those two yards.",
@@ -1119,7 +1081,7 @@ FAQS_HUB = {
         ("I have never hired a patio contractor. Where do I start?",
          "Read the base guide first, because most of a patio is underground and the base is what separates a quote that holds up from one that does not. From there the drainage and frost guides explain why patios sink and walls lean, and the cost guide breaks down what moves a price."),
         ("Do I need to understand all of this before I call?",
-         "No. The guides are here so you can tell a real quote from a thin one. If you would rather just talk it through, call Bryce and describe the yard. He will tell you what he needs to see and give you a straight answer."),
+         "No. Read them in whatever order suits you - the point is to make you a sharper reader of quotes, not to turn you into a contractor. If a conversation is easier, call Bryce, describe the yard, and he will say what he needs to see."),
         ("Are these guides just sales material?",
          "No. They explain the work in plain words, including the parts that cost more. The point is that you can ask better questions of any contractor you talk to, not just Bryce."),
     ],
@@ -1129,15 +1091,13 @@ FAQS_HUB = {
         ("Can you do more than one of these on one job?",
          "Usually yes, and it is cheaper to design them together. A patio, a walkway, a wall and a fire pit share the same base, the same drainage and the same hauling, so doing them as one plan avoids digging the yard twice."),
         ("Do you give prices over the phone?",
-         "Prices here are per job, not per square foot, because two patios the same size can be different work. Send a couple of photos with the size and the grade and you will get a straight answer on whether a visit is worth it."),
+         "No, and it would not be honest to try. The number depends on the site - grade, access, and how much has to be dug out. Photos and the rough size are enough for Bryce to say whether a visit is worth it."),
     ],
     "areas": [
         ("Is my town actually inside the service area?",
-         "Mansfield is home base and the twelve Massachusetts towns listed are the ones Bryce is in most weeks. If your town is not on the list, call with the address and you will get a straight answer."),
+         "The twelve towns on the list are where the truck is most weeks, so those are the easy yes. Being outside them is not a no - there is no hard line drawn around the map. Call with the address and you will get a straight answer either way."),
         ("Does the work change from town to town?",
          "The crew and the standard do not change, the ground does. Flat yards get drainage designed into the patio; sloped or ledge lots turn into steps, landings and walls; wet spring yards get base depth and drainage worked out before anything is dug."),
-        ("What if my town is not on the list?",
-         "That does not mean no. There are no hard limits on how far out the work goes. Call with the address and Bryce will tell you straight whether it makes sense for both sides."),
     ],
 }
 

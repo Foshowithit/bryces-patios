@@ -301,9 +301,6 @@ def build_learn_hub(root: Path) -> None:
              'underground. The drainage guide explains why patios sink and walls lean. The frost guide covers '
              'the depth this part of Massachusetts is built to. From there the cost guide breaks down '
              'what actually moves a price, and the quote guide tells you what a good estimate should include.</p>'
-             '<p class="prose">You do not need to read all of these before calling. If you would rather just '
-             'talk it through, call Bryce and describe the yard. He will tell you what he needs to see and '
-             'give you a straight answer without a pitch.</p>'
              '</div></section>')
     body += ('<section class="section"><div class="wrap wrap--narrow">'
              + _sec_head("Common questions", "Patio questions, answered")
@@ -424,9 +421,9 @@ def build_town(root: Path, t: str) -> None:
                 f'<h1 class="h2">Stone patios &amp; hardscaping in {site.esc(t)}, MA</h1></header>')
     body.append(site.page_actions())
     body.append(f'<p class="lede">Bryce builds patios, walkways, retaining walls and fire pits in {site.esc(t)} and the towns next to it. One crew, one person quoting the job, and it is the same person who builds it.</p>')
-    intro = site.TOWN_INTRO.get(t)
-    if intro:
-        body.append(f'<p class="prose">{site.esc(intro)}</p>')
+    summary = getattr(site, "TOWN_SUMMARY", {}).get(t)
+    if summary:
+        body.append(f'<p class="prose">{site.esc(summary)}</p>')
     detail = getattr(site, "TOWN_DETAIL", {}).get(t)
     if detail:
         for para in detail:
@@ -784,9 +781,6 @@ def build_areas_hub(root: Path) -> None:
              '<p class="prose">Everything here is built the same way: a base dug to depth and compacted in '
              'lifts, because a shallow base will heave no matter how good the stone looks. If your project '
              'sits outside this area, call and we will tell you straight whether it makes sense.</p>'
-             '<p class="prose">If your town is not on the list, that does not mean no. There are no hard '
-             'limits on how far out the work goes. Call with the address and Bryce will tell you straight '
-             'whether it makes sense for both sides.</p>'
              '</div></section>')
     body += ('<section class="section"><div class="wrap wrap--narrow"><figure class="learn__figure">'
              + _img("big-yard", "A wide curved paver patio across a large back yard.",
