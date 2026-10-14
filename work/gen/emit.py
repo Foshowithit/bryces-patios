@@ -250,9 +250,10 @@ def build_guide_one(root: Path, g: dict) -> None:
         body.append(_video_block(v["src"], v["poster"], v["caption"], v["label"]))
     body.append(_related_block(g))
     body.append('</div></section>')
+    faqs = site.FAQS_GUIDE[g["key"]]
     body.append('<section class="section"><div class="wrap wrap--narrow">'
                 + _sec_head("Common questions", f"{g['title']} questions, answered")
-                + _faq_block(site.FAQS_GUIDE) + '</div></section>')
+                + _faq_block(faqs) + '</div></section>')
     if g.get("cta"):
         body.append('<section class="section"><div class="wrap wrap--narrow">'
                     '<p><a class="btn btn--solid" href="/#estimate">Ask Bryce a question</a></p>'
@@ -262,7 +263,7 @@ def build_guide_one(root: Path, g: dict) -> None:
         title=f'{g["title"]} | Bryce\'s Patios',
         desc=g["meta"], url=f'{site.BASE}/learn/{g["key"]}/', trail=trail,
         body="".join(body), ld_extra=(
-            [_faq_ld(site.FAQS_GUIDE, f'{site.BASE}/learn/{g["key"]}/')]
+            [_faq_ld(faqs, f'{site.BASE}/learn/{g["key"]}/')]
             + ([_video_ld(g, f'{site.BASE}/learn/{g["key"]}/')] if g.get("video") else [])
         ),
         svc_links=_svc_links(), town_links=_town_links(),

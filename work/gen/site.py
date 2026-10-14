@@ -1067,14 +1067,117 @@ FAQS_TOWN = [
      "There are no hard limits. {town} is well inside the regular run from the Mansfield yard, so it's a normal job. Anything further out just needs a call first so the drive makes sense for both sides."),
 ]
 
-FAQS_GUIDE = [
-    ("Is this true for every yard, or does it change with the grade?",
-     "Every yard is a little different, so treat this as the way the work should go rather than a fixed recipe. The grade, the soil and where the water wants to run all move the details. That is exactly what Bryce looks at before quoting."),
-    ("Can I get a plain answer on my own yard?",
-     "Yes. Call Bryce or text a couple of photos with the rough size and the grade. He will tell you what the job actually needs and whether a visit is worth it, with no sales script."),
-    ("Does this apply anywhere in southeastern Massachusetts?",
-     "The base and frost rules here are built for this part of Massachusetts. Towns next to Mansfield are the usual run, but there are no hard limits on how far out the job goes."),
-]
+# One FAQ block per guide, keyed by guide key. A single shared block used to sit
+# on all thirteen guides, which read as the same three questions repeated down
+# every page and put the "base and frost rules" answer on guides that had
+# nothing to do with either. Each block below is written for its own guide and
+# checked against the page body by work/gate/check-copy-dup.py.
+FAQS_GUIDE = {
+    "patio-base": [
+        ("What actually sits under the pavers?",
+         "Three layers you never see again once the job is done: the stones, the sand or fine stone they are bedded into, and below that the compacted crushed rock that spreads the load. Then the depth of the dig beneath all of it."),
+        ("How can I tell a deep job from a shallow one after the fact?",
+         "Honestly, you can't from the surface. A shallow build and a solid one are indistinguishable the day the crew leaves and only separate once the ground has frozen and thawed a few times. That is why the numbers are worth pinning down first."),
+        ("What should I ask someone who bids the job?",
+         "Two figures, and be specific: the depth they intend to excavate and the finished thickness of the aggregate under the stones. A contractor with a plan answers without pausing."),
+    ],
+    "drainage": [
+        ("Why does water sit on a patio?",
+         "Nine times out of ten it is the grading rather than the pavers. The surface has to tilt, the sub-base needs its own pitch, the gaps between stones pass water down, and the outlet has to be somewhere lower. Get one of those backwards and the puddle never leaves."),
+        ("Does fixing drainage mean an expensive system?",
+         "Usually not. A shallow planted channel or a buried bed of clean stone under the turf does the work of a costly engineered drain when the fall is set correctly, at a fraction of the price people brace for."),
+        ("How do I know if my yard has a drainage problem?",
+         "Go outside during a hard rain and again the next day. A patch that is still spongy long after the storm is the ground telling you where the water ends up, before anyone puts a shovel in."),
+    ],
+    "frost": [
+        ("Why does a patio move in winter here?",
+         "Moisture in the ground freezes, draws more water toward the ice, and expands. When the thaw comes the soil settles back. Anything built in that zone gets lifted and dropped along with it, season after season."),
+        ("How deep does the base have to go?",
+         "There is no one figure that fits every yard, because the answer turns on your soil and what the surface will hold. What matters is that the depth is chosen for this region's repeated freeze and thaw, not borrowed from a warmer one."),
+        ("What question separates a good base from a bad one?",
+         "Ask about the compaction, not the depth alone. Stone worked in thin layers is what locks a base in place; stone dumped and rolled once leaves voids under the pavers."),
+    ],
+    "materials": [
+        ("Which stone is cheapest?",
+         "Interlocking pavers, as a rule. They arrive at one size and thickness, lay quickly, and need less fitting. Natural bluestone and flagstone cost more per foot because the shapes vary and someone has to fit each one and decide the layout as they go."),
+        ("Does the finish matter beyond looks?",
+         "It does. A paler surface runs cooler under bare feet in July, and a stone with some movement in it conceals the everyday scatter of leaves and grit that shows immediately on a plain uniform field."),
+        ("Is one material the right answer for the whole job?",
+         "Seldom. Most builds use a tough, economical surface across the main area and then spend the budget on one feature, such as a step or a seat wall, in the stone that sets the character."),
+    ],
+    "the-quote": [
+        ("What belongs in a real estimate?",
+         "The excavation and where the spoil goes, the base depth written in inches, the stone and its pattern, the edge restraint, a drainage approach for your slope, and any steps or walls itemised separately rather than folded into one figure."),
+        ("Why is a lump sum a problem?",
+         "A single number conceals the choices that decide how the job performs. Without the dig depth, the base thickness and the drainage on paper, you cannot compare it to another bid or tell later what you actually bought."),
+        ("How do I read the person quoting?",
+         "Listen to the questions they ask. Someone who wants to know how your yard falls and how you will use the space is thinking about the build. Someone who only asks what look you want is selling a surface."),
+    ],
+    "your-questions": [
+        ("Is a question too small to ask?",
+         "No such thing. Better to raise it now than assume: whether the figure is fixed, whether the stone can be swapped later, and what happens if the ground turns out wetter than it looked."),
+        ("What does the middle of the job look like?",
+         "Messy. Until the base is built and the first courses start going down it looks like a construction site, then it turns quickly. The disruption is real and temporary; the last stretch is where it comes together."),
+        ("How long does a normal patio take?",
+         "For a typical job, days rather than weeks. Weather is the wildcard, and the work carries on through the year, so you get a start window before it begins."),
+    ],
+    "paver-cost": [
+        ("Why isn't there a price per square foot?",
+         "Because footage alone tells you almost nothing about what is underneath. Two patios the same size can land thousands apart once the digging, the drainage and the access are counted."),
+        ("What are the four things that set the price?",
+         "The area and shape, the depth the sub-base must reach, the amount of regrading needed so water leaves, and how easily a machine can get to the work."),
+        ("Should I trust a quote texted before a visit?",
+         "Treat it as a placeholder, not a price. The real figure depends on what is found on site, and none of that can be read off a measurement alone."),
+    ],
+    "patio-vs-concrete": [
+        ("Why does concrete crack here?",
+         "Because it is cast as one continuous sheet, and this climate shifts the ground beneath it every winter. A slab that large will crack along its control joints and sometimes between them, and once open those cracks stay open."),
+        ("Can pavers be repaired?",
+         "That is the whole point. Each unit is separate, so a single settled or broken stone can be pried up and reset without touching the rest. You cannot do that with a poured slab."),
+        ("Is stamped concrete different?",
+         "Only in appearance. The pattern is pressed into the same single slab, so it moves and cracks exactly as plain concrete does."),
+    ],
+    "winter-ready": [
+        ("What is the worst thing for a patio in winter?",
+         "Dragging a steel shovel or a metal-edged plow blade across it. The edge scores the surface and snags the gaps between stones. A plastic or rubber-edged snow tool clears just as well."),
+        ("Should I use rock salt?",
+         "Sand or a pet-safe de-icer is the safer choice. Salt is aggressive on the surface, and the goal is to keep meltwater moving, not to win the fight against every last patch of ice."),
+        ("What should I do before the first freeze?",
+         "Sweep off the leaves and grit that hold damp against the stone, make sure the surface still sheds water, and don't let drifts pile up on the low side where the melt needs to run off."),
+    ],
+    "choosing-contractor": [
+        ("I don't know stone. How do I judge a crew?",
+         "Judge the process rather than the product. Whether they take measurements, ask about water, and commit the base spec to paper tells you most of what the finished work will be worth."),
+        ("What single question does the most work?",
+         "Ask where the water will go. A proper answer names the fall, which way the ground runs and the point the runoff reaches. A vague one is a sign nobody has studied the yard."),
+        ("Does it matter who quotes the job?",
+         "On a one-man operation the person who walks your yard is the one holding the shovel later, so nothing gets lost in translation. With larger firms the salesman measures and a different crew shows up."),
+    ],
+    "driveway-aprons": [
+        ("Why do steps and walks fail faster?",
+         "They carry the same loads as a patio in tighter quarters, so the margin for error shrinks. A tread a hair off level or a run pitched the wrong way is something you feel underfoot, not merely see."),
+        ("What is a driveway apron?",
+         "The band where a walk or drive meets the street or the garage door. It takes the plow snow, the runoff and the turning wheels, so it deserves the deepest base and the most careful slope on the whole job."),
+        ("Do walkways need the same base as a patio?",
+         "Yes. A walk or a set of steps gets the same depth of base and the same drainage logic, just in a narrower trench with less room to fudge. Same rules, tighter tolerances."),
+    ],
+    "yard-grades": [
+        ("How do I find my yard's drainage before anyone quotes?",
+         "Watch it in the rain. Mark the hollows, the puddle that hangs around, the track water cuts across the grass, and the low corner against the house that never dries. You are gathering evidence, not diagnosing."),
+        ("What should I do with what I find?",
+         "Note it down and photograph it. That tells the contractor more than a description will, and it shows you whether the yard already has a fall to work with or needs one built."),
+        ("What if my yard has nowhere to send water?",
+         "Then the job has to create somewhere for it to go. A shallow planted channel or a hidden bed of clean stone can lead it to a lower spot, dressed so it disappears into the planting."),
+    ],
+    "fire-pit-basics": [
+        ("Why do fire pits fail?",
+         "A fire pit is a short circular retaining wall, and it gives way the way any wall does. Moisture collects beneath the footing, freezes, and pushes a course up. Set one on bare soil and the first hard winter will show you."),
+        ("Wood or gas?",
+         "There is no winner. Wood costs little to burn and gives you the crackle, but it brings ash, smoke when the air is still, and clean-out. Gas starts at a switch and burns without smoke, at a higher install cost and with a line and burner to place."),
+        ("Which ring should I choose?",
+         "A manufactured kit goes together quickly and repeats exactly, a mortared block ring with a seat wall reads as built-in, and dry-stacked natural stone drains through its own gaps. Any of them lasts if the footing underneath is right."),
+    ],
+}
 
 FAQS_HUB = {
     "learn": [
