@@ -284,7 +284,13 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   form.addEventListener('submit', e => {
     e.preventDefault();
-    if (!validate(3)) return;
+    // Enter inside a text field fires a native form submit from whatever step is
+    // on screen. Validating step 3 from there would flash errors inside a panel
+    // the visitor cannot see and leave them stuck with no feedback, so validate
+    // the step they are actually on: block on that step's errors, advance when it
+    // is complete, and only finish the request from the last step.
+    if (!validate(current)) return;
+    if (current < 3) { goTo(current + 1); return; }
 
     const data = collect();
     const text = asText(data);
