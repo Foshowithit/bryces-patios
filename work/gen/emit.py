@@ -542,23 +542,6 @@ def build_service_town(root: Path, t: str, s: dict) -> None:
         svc_links=_svc_links(), town_links=_town_links())
     write_page(root, f"areas/{tslug}/{s['key']}/index.html", html_str)
 
-def _town_note(t: str) -> str:
-    notes = {
-        "Mansfield": "grade that falls toward the house, and a base dug to depth so nothing lifts in March. The lots run from flat to a foot of fall in twenty, so the slope is read before any stone is set.",
-        "Foxborough": "flat lots and heavy spring water, so the slope that sends water away is planned before any stone goes down. Without that, spring thaw sits on the patio instead of running off it.",
-        "Attleboro": "older yards with mixed grades, so we work out where the water leaves before we set the first paver. Many of these lots were built up over time, and the high and low spots move around.",
-        "North Attleboro": "sloped yards that want steps and a seat wall, built so the transitions read as deliberate instead of like an afterthought. The fall also decides where a fire pit can sit on its own level.",
-        "Norton": "larger lots and drainage that has to cross the yard, so the path and patio drain together instead of fighting each other. Long runs need a low point designed in, not discovered after a storm.",
-        "Franklin": "deeper frost and wet springs, so depth and compaction decide how it holds up over the years. Wet ground also means the base has to be built dry, which changes the schedule.",
-        "Seekonk": "smaller yards close to the Rhode Island line, so the layout gets planned tight and the water still has to leave the property cleanly.",
-        "Rehoboth": "open, sandy lots that drain fast on their own, which lets a patio sit a little differently but still needs the base dug to depth and compacted in lifts.",
-        "Plainville": "winding, tree-heavy yards where root zones and shade change how the base is prepped and how long a stone surface stays wet.",
-        "Taunton": "larger yards on mixed soil, so the layout usually follows the existing grade and the drainage is set before the shape is drawn.",
-        "Easton": "mature, established neighborhoods with lots of mature plantings, so access and root protection guide where equipment can go.",
-        "Sharon": "hilly, wooded lots where the fall is steep enough that steps and a retaining edge come first and the patio shape second.",
-    }
-    return notes.get(t, "the same discipline as everywhere: dig to depth, compact in lifts, and plan the water.")
-
 # Per-service, per-town second paragraph for the service x town pages.
 SVC_TOWN_DETAIL = {
     "patios": {
@@ -604,18 +587,18 @@ SVC_TOWN_DETAIL = {
         "Sharon": "Sharon's steep wooded lots usually need the wall to carry real fall, so it gets compacted backfill, drain stone and a weep path out to the low corner. On a steep site the wall is also sized to the drop it is actually holding, not just the height that looks right from the patio above.",
     },
     "fire-pits": {
-        "Mansfield": "A Mansfield fire pit usually sits on its own level pad off the patio, far enough from the house for a real fire and near enough to share the seating. Most Mansfield yards have the room for that pad off the patio edge, so the pit ends up where the seating already wants to be rather than out in the open lawn.",
-        "Foxborough": "On wet Foxborough lots the pit goes on ground that drains, which sometimes decides the corner before the design does. On the wetter Foxborough lots we also set the pit on a raised compacted base so spring water drains under it rather than sitting in the ring. If the grade will not let us raise it, we dig a dry well beside the ring and run the base stone out to it so the pit never sits in a puddle.",
-        "Attleboro": "Older Attleboro yards often fit the pit into an existing corner so it needs the least new grade and the least new stone. Attleboro's older yards often already have a level corner worn into the lawn, which is usually the cheapest place to set a pit because it needs the least new grade.",
-        "North Attleboro": "Sloped North Attleboro yards get the pit on a built terrace, so it sits flat and the seating rings it evenly. On a sloped North Attleboro yard the pit sits on its own built terrace, which means the base under it is graded and compacted the same way as the patio above.",
-        "Norton": "With room to work, Norton pits often get a wider ring of seating and a gravel apron so the area stays off the lawn. On a big Norton lot the pit usually gets a wider gravel apron and more seating, since there is room and the area then stays off the lawn through the wet months.",
-        "Franklin": "Franklin pits use a stone ring set on a compacted base, so frost does not tip the course out of level over winter. Franklin's deeper frost also decides how the pit ring is footed, since a shallow ring will lift and tip one course at a time over a few hard winters.",
-        "Seekonk": "In a tight Seekonk yard the pit goes where it needs the least new grade, usually a level corner off the patio, with the seating kept inside the property line. The clear ring around it is measured from the house and any overhang first, so the fire has real room even on a small lot.",
-        "Rehoboth": "Rehoboth's fast-draining sand lets the pit sit on a simple compacted base, though the apron still keeps the seating off the lawn in the wet months. The ring is still footed past the frost line, so fast drainage alone does not leave it free to lift after a hard winter.",
-        "Plainville": "Shade in Plainville means the pit is set where it drains and the stone ring is footed so it does not lift when the ground holds water in spring. The pad under it is dug and compacted the same way as the patio, so the ring and the seating around it stay on one level plane.",
-        "Taunton": "On larger Taunton lots the pit usually gets more room, a wider gravel apron and seating that rings it evenly on one flat pad. With that space we set the pit back farther from the house and the tree line, so there is a real clear ring for the fire and room for chairs.",
-        "Easton": "In Easton's older yards the pit is fitted into an existing level corner, so it needs the least new stone and leaves the plantings alone. Using the grade that is already there also keeps the root zones intact, so the trees that shade the yard stay where they are.",
-        "Sharon": "On Sharon's slopes the pit sits on a built terrace, graded and compacted the same way as the patio, so the ring stays level and the seating rings it evenly. The terrace edge is held with a low wall or a stone border, so the level pad does not wash out on the first heavy rain.",
+        "Mansfield": "A Mansfield fire pit usually sits on its own level pad off the patio, far enough from the house for a real fire and near enough to share the seating.",
+        "Foxborough": "On wet Foxborough lots the pit goes on ground that drains, which sometimes decides the corner before the design does. Where the grade will not let us raise it, we dig a dry well beside the ring and run the base stone out to it so the pit never sits in a puddle.",
+        "Attleboro": "Older Attleboro yards often fit the pit into an existing corner, which takes the least new grade and the least new stone.",
+        "North Attleboro": "Sloped North Attleboro yards get the pit on a built terrace, so it sits flat and the seating rings it evenly.",
+        "Norton": "With room to work, Norton pits often get a wider ring of seating and a gravel apron so the area stays off the lawn.",
+        "Franklin": "Franklin pits use a stone ring set on a compacted base, so frost does not tip the course out of level over winter.",
+        "Seekonk": "In a tight Seekonk yard the pit goes where it needs the least new grade, usually a level corner off the patio, with the seating kept inside the property line.",
+        "Rehoboth": "Rehoboth's fast-draining sand lets the pit sit on a simple compacted base, though the apron still keeps the seating off the lawn in the wet months.",
+        "Plainville": "Shade in Plainville means the pit is set where it drains and the stone ring is footed so it does not lift when the ground holds water in spring.",
+        "Taunton": "On larger Taunton lots the pit usually gets more room, a wider gravel apron and seating that rings it evenly on one flat pad.",
+        "Easton": "In Easton's older yards the pit is fitted into an existing level corner, so it needs the least new stone and leaves the plantings alone.",
+        "Sharon": "On Sharon's slopes the pit sits on a built terrace, graded and compacted the same way as the patio, so the ring stays level and the seating rings it evenly.",
     },
 }
 

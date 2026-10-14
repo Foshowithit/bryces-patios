@@ -37,7 +37,7 @@ TOWNS_MA = ["Mansfield", "Attleboro", "North Attleboro", "Norton", "Foxborough",
 # addresses are handled case by case by phone only, with no RI service claim.
 TOWNS_RI = []
 
-# The towns that get a full service x town page (keep in sync with _town_note()).
+# The towns that get a full service x town page.
 TOP_TOWNS = ["Mansfield", "Foxborough", "Attleboro", "North Attleboro",
              "Norton", "Franklin"]
 
@@ -904,7 +904,7 @@ NAV = f"""<a class="skip-link" href="#main">Skip to content</a>
   <div class="drawer__foot">
     <a class="btn btn--solid btn--block" href="/#estimate">Bryce</a>
     <a class="drawer__tel" href="tel:{PHONE_TEL}">{PHONE_TXT}</a>
-    <p class="drawer__meta">Mansfield, Massachusetts<br>Serving southeastern MA</p>
+    <p class="drawer__meta">Mansfield, Massachusetts<br>Serving southeastern Massachusetts</p>
   </div>
 </div>"""
 
