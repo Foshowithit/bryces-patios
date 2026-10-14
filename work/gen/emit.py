@@ -517,9 +517,6 @@ def build_service_town(root: Path, t: str, s: dict) -> None:
     detail = _svc_town_detail(s["key"], t)
     if detail:
         body.append(f'<p class="prose">{site.esc(detail)}</p>')
-    local = _local_note(s["key"], t)
-    if local:
-        body.append(f'<p class="prose">{site.esc(local)}</p>')
     watch = _svc_watch(s["key"], t)
     if watch:
         body.append(f'<p class="prose">{site.esc(watch)}</p>')
@@ -542,135 +539,71 @@ def build_service_town(root: Path, t: str, s: dict) -> None:
         svc_links=_svc_links(), town_links=_town_links())
     write_page(root, f"areas/{tslug}/{s['key']}/index.html", html_str)
 
-# Per-service, per-town second paragraph for the service x town pages.
+# Per-service, per-town paragraph for the service x town pages. One paragraph
+# per page: the town-specific beat and the service detail are merged here so no
+# page says the same thing twice.
 SVC_TOWN_DETAIL = {
     "patios": {
-        "Mansfield": "Most Mansfield patios get laid out off the back door and run toward the low corner of the lot, which keeps the walkout clear and gives the water a direction.",
-        "Foxborough": "On the flat lots here the patio usually wants a slight crown away from the house, and on the wet ones the first week is often drainage before any stone.",
-        "Attleboro": "Older Attleboro yards mean we sometimes re-grade before we lay anything, so the patio sits at a height that still meets the door threshold.",
-        "North Attleboro": "The slope here usually earns a set of steps and a seat wall keeping the main field level, so the patio reads as one room instead of three.",
-        "Norton": "With bigger lots, the patio is often set back nearer the tree line, and the path out to it drains with the same low point.",
-        "Franklin": "Franklin patios get a base dug to the depth the ground and drainage call for, and a start date that respects how late the ground stays wet in spring.",
+        "Mansfield": "Most Mansfield patios get laid out off the back door and run toward the low corner of the lot, which keeps the walkout clear and gives the water a direction. The plans usually start by watching where the shade line lands at five o'clock, so the patio stays locked to the grade and still catches the evening sun.",
+        "Foxborough": "On the flat lots here the patio usually wants a slight crown away from the house, and on the wet ones the first week is often drainage before any stone. Soil varies from lot to lot, so the base stone and the edge restraint get picked for the way water moves under the field before the surface is chosen.",
+        "Attleboro": "Older Attleboro yards mean we sometimes re-grade before we lay anything, so the patio sits at a height that still meets the door threshold. Pockets of clay hold water here, so the sub-base is checked before the stone goes in and the low point is moved off the patio edge when it needs to be.",
+        "North Attleboro": "The slope here usually earns a set of steps and a seat wall keeping the main field level, so the patio reads as one room instead of three. These yards often show their age in the grading, so we reset the line where the lawn meets the patio instead of following an old edge that no longer runs true.",
+        "Norton": "With bigger lots, the patio is often set back nearer the tree line and ties into a path or a second sitting area, so the drainage plan covers the whole run rather than just the patio footprint.",
+        "Franklin": "Franklin patios get a base dug to the depth the ground and drainage call for, and a start date that waits for the subgrade to be compactable rather than following the first heavy rain.",
         "Seekonk": "Seekonk yards are often tight and near the Rhode Island line, so the patio is laid out to the shape that fits and the runoff is still sent clear of the neighbor line. Small lots here also mean the base is compacted in narrower lifts and the edge is held hard, because there is less room for the field to move without it showing.",
-        "Rehoboth": "Rehoboth's open, sandy lots drain fast, which lets the patio sit a little lower and wider, but the base is still dug to depth and compacted in lifts so it does not settle. That sand also means the patio edge needs a real border, since a loose edge in fast-draining ground spreads out over a few winters.",
+        "Rehoboth": "Rehoboth's open, sandy lots drain fast, which lets the patio sit a little lower and wider, but the base is still dug to depth and compacted in lifts. That sand also means the edge needs a real border, since a loose edge in fast-draining ground spreads out over a few winters.",
         "Plainville": "In Plainville's tree-heavy yards the shade keeps the surface wet longer, so the base is built dry and the slope is set a touch stronger to shed that water. Roots and shade also decide where the equipment can go, so these patios are often dug and compacted in tighter passes than a wide-open lot would need.",
-        "Taunton": "Taunton lots run large on mixed soil, so the patio usually follows the existing grade and the drainage is worked out before the shape is drawn. Mixed soil can settle unevenly from one end of the field to the other, so the base is built up in even lifts and checked with a level as it goes, not just at the end.",
+        "Taunton": "Taunton lots run large on mixed soil, so the patio usually follows the existing grade and the drainage is worked out before the shape is drawn. Mixed soil can settle unevenly from one end of the field to the other, so the base is built up in even lifts and checked with a level as it goes.",
         "Easton": "In Easton's older, planted yards the patio is set to protect the root zones and to fit where the equipment can get in without tearing up the lawn. Established yards also hold the grade they were built with, so the patio is set to meet the existing door and walk heights rather than forcing a new level.",
         "Sharon": "Sharon's steep, wooded lots usually earn steps and a retaining edge first, with the patio field laid out on the level that is left. On that kind of fall the retaining edge gets a footing dug past the frost line and a drain path out to the low corner, so the level it holds stays level.",
     },
     "walkways": {
-        "Mansfield": "A Mansfield walkway usually runs front door to drive or front door to patio, and it gets the same base as the patio underneath so it does not dip at the joints.",
-        "Foxborough": "Walkways on flat Foxborough lots need positive fall or they puddle, so the grade is set on the walk even when the yard looks level. On flat Foxborough lots the fall on a walk has to be built in on purpose, so the runs are set to shed even when the yard reads level to the eye.",
-        "Attleboro": "In older Attleboro yards the path often steps down with the grade rather than cutting through it, which protects tree roots and looks settled.",
-        "North Attleboro": "Sloped North Attleboro entries get stone steps set into the run instead of a ramp, so the walk stays comfortable and drains at each tread.",
-        "Norton": "Longer Norton runs get a gentle switch and a low point at the drive so the whole path sheds instead of holding water mid-run.",
-        "Franklin": "Franklin walkways are set on a deeper base where the frost moves hard, and landings are placed to catch drift before the door. Franklin walks also get a wider base trench than the frost alone would demand, because the wet spring ground needs to drain as well as hold.",
+        "Mansfield": "A Mansfield walkway usually runs front door to drive or front door to patio, and the width and the rise are set by the door threshold and the pitch of the drive apron. It gets the same base as the patio underneath, so it does not dip at the joints.",
+        "Foxborough": "Walkways on flat Foxborough lots need positive fall or they puddle, so the grade is set on the walk even when the yard looks level.",
+        "Attleboro": "In older Attleboro yards the path often steps down with the grade rather than cutting through it, which protects tree roots and looks settled. Those older lots also mean the walk ties into an existing slab or step, so the new pitch is matched to what is already at the door.",
+        "North Attleboro": "Sloped North Attleboro entries get stone steps set into the run instead of a ramp, so the walk stays comfortable and drains at each tread. The base under those steps is dug past the frost line, so the joints do not open.",
+        "Norton": "Longer Norton runs get a gentle switch and a low point at the drive so the whole path sheds instead of holding water mid-run. On a run that long the base is compacted in lifts the full length, with the low point set partway rather than only at the ends.",
+        "Franklin": "Franklin walkways are set on a deeper base where the frost moves hard, and landings are placed to catch drift before the door. The whole run is dug to the same depth the patio gets, because a shallow trench is what the freeze and thaw cycles punish first.",
         "Seekonk": "In tight Seekonk yards the walk is often a narrow run that still gets a full-depth base, so it stays even where it squeezes past a foundation bed. Narrow runs get their fall set carefully, because a walk with no room to spare has no room to puddle either.",
         "Rehoboth": "Sandy Rehoboth ground drains on its own, so the walk there is graded to stay slightly proud and shed, with a low point worked in at the drive. The base under it is still dug and compacted like the patio, so the joints stay tight even where the ground is forgiving.",
         "Plainville": "Shade and roots in Plainville mean the walk is dug by hand around what has to stay, and the base is compacted in short lifts so the joints hold. Shaded ground also stays wet longer, so the run is set to a slightly stronger fall than a sunny yard would need.",
-        "Taunton": "Longer Taunton lots get a walk that steps with the grade instead of cutting through it, and a low point set where it meets the drive. On a long run the base is checked in sections, so a dip that would show halfway down is caught while the stone is still open.",
+        "Taunton": "Longer Taunton lots get a walk that steps with the grade instead of cutting through it, and a low point set where it meets the drive. The risers are set to one height and the base is checked in sections, so a dip that would show halfway down is caught while the stone is still open.",
         "Easton": "Established Easton plantings decide the route, so the walk curves around beds and trees and still falls away from the house the whole way. Curves also mean the fall has to keep working on the bend, so each turn is graded to shed rather than flatten out.",
         "Sharon": "On Sharon's hills the walk becomes stone steps set into the run, with each landing graded so it sheds instead of holding water. Each tread is set on its own compacted base, so a step on a hill does not work loose a few winters in.",
     },
     "retaining-walls": {
-        "Mansfield": "Mansfield walls are usually holding back a grade that falls toward the house, so the wall doubles as the edge of the patio above it. In Mansfield a wall often doubles as the seat wall at the edge of the patio, so the base course and the cap are set together with the patio, not after it.",
-        "Foxborough": "Where a Foxborough lot is flat but wet, the wall is often a low seat wall tying the patio together rather than a tall structural one. Where the lot is flat and wet instead of sloped, a Foxborough wall is more often a low border that ties the patio together than a structural face holding real grade.",
-        "Attleboro": "Older Attleboro grades shift, so a wall is set on its own footing and drainage behind it is designed before the face goes up.",
-        "North Attleboro": "North Attleboro walls carry the slope, so they get a compacted gravel backfill, drain stone and a weep path out toward the low corner. North Attleboro walls carry real slope, so the drain stone behind the face and the weep path out to the low corner get designed before the first block is set.",
-        "Norton": "Bigger Norton yards sometimes need a terrace wall to keep the patio level while the lawn steps down toward the tree line. Norton's bigger yards often want a low terrace wall to keep the patio level while the lawn steps down, rather than a single tall face taking the whole drop.",
+        "Mansfield": "Mansfield walls usually hold back a grade that falls toward the house, so the wall doubles as the edge of the patio above it, and the base course and the cap are set together with the patio, not after it. The frost line sets the footing depth, so the wall is buried to a point the winter cannot lift it and the base course stays where it was set.",
+        "Foxborough": "Where a Foxborough lot is flat but wet, the wall is more often a low border that ties the patio together than a structural face holding real grade. Because those lots drain slowly, the gravel backfill and the outlet matter as much as the face.",
+        "Attleboro": "Older Attleboro grades shift, so a wall is set on its own footing and drainage behind it is designed before the face goes up. The height also changes along the run, so the footing and the face are stepped together instead of held at one level.",
+        "North Attleboro": "North Attleboro walls carry the slope, so they get a compacted gravel backfill, drain stone and a weep path out toward the low corner, designed before the first block is set.",
+        "Norton": "Norton's bigger yards often want a low terrace wall to keep the patio level while the lawn steps down toward the tree line, rather than a single tall face taking the whole drop. On a long run like that each section gets its own footing and drain path.",
         "Franklin": "Franklin's deeper frost means wall footings are dug past it, so the face stays plumb after a hard winter. Franklin also has stretches of flat new-build yard where a low seat wall is the better answer than a tall one, because there is no real grade to hold back, only a change of level.",
-        "Seekonk": "Tight Seekonk lots usually want a low wall as a clean edge rather than a tall face, with the footing still dug to depth and drainage run out before the face goes up. On a small lot the drain path has to be planned early, because there is less room to send that water once the wall is standing.",
-        "Rehoboth": "On Rehoboth's sandy ground the wall is mostly holding a change of level, so the footing is set past the frost line and the backfill still drains rather than trapping water. Even in sand the wall is built on one continuous footing, so the face does not step apart where the grade shifts.",
-        "Plainville": "Tree roots and shade in Plainville mean the wall footing is dug around what has to stay, and the drain behind the face is planned before the first course. Shaded ground stays wet, so the backfill is gravel with a clear drain path, not soil that will hold that water against the wall.",
-        "Taunton": "Taunton's mixed soil can settle unevenly, so the wall is built on one continuous compacted footing rather than stepped pads that can move apart. The face is set to a string line and checked as it rises, so a long wall stays straight over its whole run.",
-        "Easton": "Older Easton yards often have an existing grade change a wall can finish cleanly, with root protection deciding how close the footing can come. Where roots rule out a deep footing, the wall is kept low and the grade is split between a wall and a planted slope instead.",
-        "Sharon": "Sharon's steep wooded lots usually need the wall to carry real fall, so it gets compacted backfill, drain stone and a weep path out to the low corner. On a steep site the wall is also sized to the drop it is actually holding, not just the height that looks right from the patio above.",
+        "Seekonk": "Tight Seekonk lots usually want a low wall as a clean edge rather than a tall face, with the footing still dug to depth and drainage run out before the face goes up. On a small lot the drain path has to be planned early and the base kept inside the property line, because there is less room to send that water once the wall is standing.",
+        "Rehoboth": "On Rehoboth's sandy ground the wall is mostly holding a change of level, so the footing is set past the frost line, dug wider because sand offers less grip, and the backfill still drains rather than trapping water. Even in sand the wall is built on one continuous footing, so the face does not step apart where the grade shifts.",
+        "Plainville": "Tree roots and shade in Plainville mean the wall footing is dug around what has to stay, and the drain behind the face is planned before the first course. Shaded ground stays wet, so the backfill is gravel with a weep path set before the face stone, not soil that will hold that water against the wall.",
+        "Taunton": "Taunton's mixed soil can settle unevenly, so the wall is built on one continuous compacted footing rather than stepped pads that can move apart, and the face is set to a string line and checked as it rises. Clay pockets also hold water against the face, so the backfill and the outlet are sized for a slower release than sand would need.",
+        "Easton": "Older Easton yards often have an existing grade change a wall can finish cleanly, with root protection deciding how close the footing can come. Where roots rule out a deep footing, the wall is kept low and the grade is split between a wall and a planted slope instead, and where a wall failed once already the old footing is dug out and the base started fresh.",
+        "Sharon": "Sharon's steep wooded lots usually need the wall to carry real fall, so it gets compacted backfill, drain stone and a weep path out to the low corner, with the height, the footing and the drainage worked out together.",
     },
     "fire-pits": {
-        "Mansfield": "A Mansfield fire pit usually sits on its own level pad off the patio, far enough from the house for a real fire and near enough to share the seating.",
-        "Foxborough": "On wet Foxborough lots the pit goes on ground that drains, which sometimes decides the corner before the design does. Where the grade will not let us raise it, we dig a dry well beside the ring and run the base stone out to it so the pit never sits in a puddle.",
-        "Attleboro": "Older Attleboro yards often fit the pit into an existing corner, which takes the least new grade and the least new stone.",
-        "North Attleboro": "Sloped North Attleboro yards get the pit on a built terrace, so it sits flat and the seating rings it evenly.",
-        "Norton": "With room to work, Norton pits often get a wider ring of seating and a gravel apron so the area stays off the lawn.",
-        "Franklin": "Franklin pits use a stone ring set on a compacted base, so frost does not tip the course out of level over winter.",
-        "Seekonk": "In a tight Seekonk yard the pit goes where it needs the least new grade, usually a level corner off the patio, with the seating kept inside the property line.",
-        "Rehoboth": "Rehoboth's fast-draining sand lets the pit sit on a simple compacted base, though the apron still keeps the seating off the lawn in the wet months.",
-        "Plainville": "Shade in Plainville means the pit is set where it drains and the stone ring is footed so it does not lift when the ground holds water in spring.",
-        "Taunton": "On larger Taunton lots the pit usually gets more room, a wider gravel apron and seating that rings it evenly on one flat pad.",
-        "Easton": "In Easton's older yards the pit is fitted into an existing level corner, so it needs the least new stone and leaves the plantings alone.",
-        "Sharon": "On Sharon's slopes the pit sits on a built terrace, graded and compacted the same way as the patio, so the ring stays level and the seating rings it evenly.",
+        "Mansfield": "A Mansfield fire pit usually sits on its own level pad off the patio, far enough from the house for a real fire and near enough to share the seating, and roomy yards let it sit back so the smoke drifts away from the door.",
+        "Foxborough": "On wet Foxborough lots the pit goes on ground that drains, which sometimes decides the corner before the design does, and the pad is raised on compacted base so the ring never sits in standing water.",
+        "Attleboro": "Older Attleboro yards often fit the pit into an existing level corner, which takes the least new grade and the least new stone.",
+        "North Attleboro": "Sloped North Attleboro yards get the pit on a built terrace, so it sits flat and the seating rings it evenly, with the footing dug past the frost line so the ring stays level across winters.",
+        "Norton": "With room to work, Norton pits often get a wider ring of seating and a gravel apron so the area stays off the lawn and usable through the wet months.",
+        "Franklin": "Franklin pits use a stone ring set on a compacted base, so frost does not tip the course out of level over winter, and the pad is built when the spring ground can be compacted dry instead of right after the thaw.",
+        "Seekonk": "In a tight Seekonk yard the pit goes where it needs the least new grade, usually a level corner off the patio, with the seating kept inside the property line and a clear ring measured from the house first.",
+        "Rehoboth": "Rehoboth's fast-draining sand lets the pit sit on a simple compacted base, and the open lots give it room to sit back so the seating rings wide and the smoke drifts clear of the door.",
+        "Plainville": "Shade in Plainville means the pit is set where it drains and the stone ring is footed so it does not lift when the ground holds water in spring. The apron around the ring is built firm, so the area stays underfoot instead of turning to mud.",
+        "Taunton": "On larger Taunton lots the pit usually gets more room, a wider gravel apron and seating that rings it evenly on one flat pad, set farther from the house and the tree line.",
+        "Easton": "In Easton's older yards the pit is fitted into an existing level corner, so it needs the least new stone and leaves the root zones of the big trees alone.",
+        "Sharon": "On Sharon's slopes the pit sits on a built terrace, graded and compacted the same way as the patio, so the ring stays level and the seating rings it evenly. The terrace edge is held with a low wall or stone border, so the level does not wash out.",
     },
 }
 
 def _svc_town_detail(svc_key: str, t: str) -> str:
     return SVC_TOWN_DETAIL.get(svc_key, {}).get(t, "")
 
-
-# One more concrete local beat per service x town, taking the place of the old
-# generic town paragraph so nothing repeats and every service gets a detail the
-# other three do not carry.
-LOCAL_NOTE = {
-    "patios": {
-        "Mansfield": "Mansfield lets you keep a patio locked to the grade and still catch the evening sun, which is why most of these plans start by watching where the shade line lands at five o'clock.",
-        "Foxborough": "Foxborough soil varies from lot to lot, so the base stone and the edge restraint are picked for the way water moves under the field before the surface is chosen.",
-        "Attleboro": "Attleboro has pockets of clay that hold water, so the sub-base is checked before the stone goes in and the low point is moved off the patio edge when it needs to be.",
-        "North Attleboro": "North Attleboro yards often show their age in the grading, so we reset the line where the lawn meets the patio instead of following an old edge that no longer runs true.",
-        "Norton": "Norton's bigger lots usually get a patio that ties into a path or a second sitting area, so the drainage plan covers the whole run and not just the patio footprint.",
-        "Franklin": "Franklin's wet springs make the start date matter, so we set the patio when the subgrade can be compacted dry rather than after the first heavy rain.",
-        "Seekonk": "Seekonk jobs run on the same details as the rest of the area, so the plans, the paver spec and the drainage fall do not change from town to town.",
-        "Rehoboth": "Rehoboth's open lots let a patio sit low and wide, but the edge still needs the same hard restraint, or the fast-draining ground works it loose over a few winters.",
-        "Plainville": "Plainville's shaded lots hold moisture longer, so we build the base dry and set the fall a touch stronger, which keeps the surface from staying slick after a storm.",
-        "Taunton": "Taunton's mixed soils run from sand to clay in the same yard, so the base detail is matched lot by lot instead of from one spec sheet.",
-        "Easton": "Easton's older properties often carry mature trees near the house, so the patio is laid out around the roots and the grade is worked back from there.",
-        "Sharon": "Sharon's wooded, sloped lots usually need a small wall or a set of steps before the patio, so the layout is drawn top-down from the house.",
-    },
-    "walkways": {
-        "Mansfield": "Mansfield walks usually run from the drive to the front door, so the width and the rise are set by the door threshold and the pitch of the drive apron.",
-        "Foxborough": "Foxborough's flat ground holds puddles after a storm, so the walk gets a positive fall and a low point in the lawn rather than a flat run that traps water.",
-        "Attleboro": "Attleboro's older lots mean the walk often ties into an existing slab or step, so the new pitch is matched to what is already at the door.",
-        "North Attleboro": "On North Attleboro's slopes the walk becomes stairs on the steep run, and the base under those steps is dug past the frost line so the joints do not open.",
-        "Norton": "Longer Norton driveways mean longer walks, so the base is compacted in lifts the full run and a low point is set partway rather than only at the ends.",
-        "Franklin": "Franklin's freeze and thaw cycles punish a shallow base, so the whole run is dug to the same depth the patio gets.",
-        "Seekonk": "Seekonk's tight lots call for a narrower walk with the same base, so the look stays clean even where there is no room to spread out.",
-        "Rehoboth": "Rehoboth's fast-draining sand lets the walk shed water quickly, but the joints still lean on the same compacted base to stay tight.",
-        "Plainville": "Plainville's shade keeps the walk wet longer, so it is set with a stronger fall and a slight crown so nothing stands on the surface.",
-        "Taunton": "Taunton lots often mean a walk that steps down with the grade, so the risers are set to one height and the base is dug to match.",
-        "Easton": "Easton's mature trees drop roots across the path line, so the base is dug carefully and the walk is routed around the major ones.",
-        "Sharon": "Sharon's hills mean the walk usually finishes in steps, so the treads and risers are built on the same compacted base as the flat run.",
-    },
-    "retaining-walls": {
-        "Mansfield": "Mansfield's frost line sets the footing depth, so the wall is buried to a point the winter cannot lift it and the base course stays where it was set.",
-        "Foxborough": "Foxborough's flat-to-water-holding lots mean the wall often holds back soil that drains slowly, so the gravel backfill and the outlet matter as much as the face.",
-        "Attleboro": "Attleboro's mixed grades mean the wall height changes along its run, so the footing and the face are stepped together instead of held at one level.",
-        "North Attleboro": "North Attleboro's slopes make the wall do real work, so it is sized to the grade it holds and the drainage is led to a low point behind the face.",
-        "Norton": "Norton's larger lots often mean long, low walls that terrace a slope, so each run gets its own footing and drain path.",
-        "Franklin": "Franklin's deeper frost makes the footing decision early, and the wall is built to take the heave without the face leaning over time.",
-        "Seekonk": "Seekonk's tight lots put the wall near a property line, so the base stays inside the line and the water is sent to the yard, not the neighbor.",
-        "Rehoboth": "Rehoboth's sandy ground drains well but offers less grip, so the footing is dug wider and the gravel backfill is packed to hold the face true.",
-        "Plainville": "Plainville's shaded, wet ground means the wall drains more slowly, so the weep path is set before the face stone is laid.",
-        "Taunton": "Taunton's clay pockets hold water against a wall, so the backfill and the outlet are sized for a slower release than sand would need.",
-        "Easton": "Easton's older yards often have a wall that failed once already, so we dig out the old footing and start the base fresh.",
-        "Sharon": "Sharon's steep lots get walls that hold a real drop, so the height, the footing and the drainage are all worked out together.",
-    },
-    "fire-pits": {
-        "Mansfield": "Mansfield's roomy yards let the pit sit back from the house on its own pad, so the seating can ring it evenly and the smoke drifts away from the door.",
-        "Foxborough": "Foxborough's spring water means the pit pad is raised on compacted base so the ring never sits in standing water.",
-        "Attleboro": "Attleboro's older lawns often already have a level corner, so the pit uses that grade and needs the least new stone.",
-        "North Attleboro": "North Attleboro's slopes mean the pit sits on a built terrace, footed past the frost line so the ring stays level across winters.",
-        "Norton": "Norton's bigger lots give the pit room for a wider gravel apron and more seating, so the area stays usable through the wet months.",
-        "Franklin": "Franklin's wet springs also push the build later than people expect, so the pit is set when the pad can be compacted dry instead of right after the thaw.",
-        "Seekonk": "Seekonk's tight yards put the pit in a level corner with the clear ring measured from the house first, so the fire always has room.",
-        "Rehoboth": "Rehoboth's open lots usually give the pit room to sit back from the house, so the seating can ring it wide and the smoke drifts clear of the door.",
-        "Plainville": "Plainville's shade keeps the pit area damp into spring, so the apron around the ring is built to stay firm underfoot instead of turning to mud.",
-        "Taunton": "Taunton's larger lots let the pit sit farther from the house and tree line, with a real clear ring and room for chairs.",
-        "Easton": "Easton's older yards tuck the pit into an existing level corner, which keeps the root zones of the big trees intact.",
-        "Sharon": "Sharon's slopes call for a terraced pad, and the terrace edge is held with a low wall or stone border so the level does not wash out.",
-    },
-}
-
-
-def _local_note(svc_key: str, t: str) -> str:
-    return LOCAL_NOTE.get(svc_key, {}).get(t, "")
 
 # Per-service closing paragraph: what we watch for, worded for each service and
 # lightly varied by town so the copy stays specific instead of template-filler.
