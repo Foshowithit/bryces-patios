@@ -217,6 +217,37 @@ def _aspect(spec: str | None, stem: str) -> float:
     return w / h
 
 
+OG = IMG / "og-cover.jpg"
+OG_W, OG_H = 1200, 630          # Open Graph / iMessage / Slack card aspect
+OG_Y_SHARE = 30 / 900           # top of the original hero crop, as a fraction
+
+
+def og_cover() -> None:
+    """Social card off the same graded hero, so a shared link matches the site.
+
+    Taken from the native graded master, not the 2400 retina tier: that tier
+    carries an upscale, an unsharp pass and grain, and downscaling its grain by
+    two reads as speckle in foliage on a card that is never displayed above
+    1200 px. The retina file is only a fallback for a master narrower than the
+    card, since upscaling the card is the one direction that always shows.
+    """
+    src = IMG / "hero-finished.jpg"
+    if not src.exists() or _jpeg_dims(src)[0] < OG_W:
+        src = IMG / "hero-finished-2400.jpg"
+    w, h = _jpeg_dims(src)
+    ch = min(round(w * OG_H / OG_W), h)   # keep full width, trim height
+    y = round(h * OG_Y_SHARE)
+    y = max(0, min(y, h - ch))
+    subprocess.run([
+        "magick", str(src), "-crop", f"{w}x{ch}+0+{y}", "+repage",
+        "-filter", "Lanczos", "-resize", f"{OG_W}x{OG_H}!",
+        "-colorspace", "sRGB", "-strip", "-sampling-factor", "4:2:0",
+        "-quality", "82", "-interlace", "Plane", str(OG),
+    ], check=True)
+    print(f"og-cover {w}x{h} -> {OG_W}x{OG_H} from {src.name}  "
+          f"{OG.stat().st_size//1024}KB")
+
+
 def main(argv: list[str]) -> int:
     check = "--check" in argv
     BACKUP.mkdir(exist_ok=True)
@@ -288,6 +319,7 @@ def main(argv: list[str]) -> int:
         done.append((stem, before, after))
 
     if not check:
+        og_cover()
         tb = sum(b for _, b, _ in done)
         ta = sum(a for _, _, a in done)
         print(f"{len(done)} photographs graded, {len(list(IMG.glob('*.jpg')))} jpgs on disk")
