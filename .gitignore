@@ -15,3 +15,10 @@ work/*
 !work/indexnow-ping.sh
 !work/.indexnow-key
 work/gen/__pycache__/
+
+# Pre-grading negatives — the input grade-photos.py reads, never requested by the
+# site. 9.5 MB of it. Rebuild the shipped files from these, don't ship them.
+assets/img/_orig/
+
+# Bytecode from the build scripts
+tools/__pycache__/

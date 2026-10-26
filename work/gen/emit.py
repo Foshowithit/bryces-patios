@@ -28,30 +28,86 @@ _sys.modules["bryce_site"] = site
 _spec.loader.exec_module(site)
 _GUIDE_LIST = site.GUIDES
 _SVC_LIST = site.SERVICES
+# Services that get a page in every town. The seasonal/site-work additions are
+# single pages: a brush-clearing page for each of twelve towns would be twelve
+# pages of the same paragraph, which is the kind of thing a copy gate exists to
+# catch and a visitor can smell.
+_TOWN_SVC = [s for s in _SVC_LIST if s.get("town_pages", True)]
 _MA = site.TOWNS_MA
 # SERVICE x TOWN coverage: build the full 12-town MA matrix, not just the
 # original 6 top towns. site.TOP_TOWNS is kept for reference/other use.
 _TOP = site.TOWNS_MA
 
 # ── shared bits ────────────────────────────────────────────────────────────
-# real intrinsic dimensions of each full-size JPG (px) — must match assets/img/<name>.jpg
+# Intrinsic dimensions of each full-size JPG, read from the files themselves.
+# A hand-maintained copy of this table drifted from the actual assets (eight
+# entries wrong after a recrop), which emitted width/height attributes that did
+# not match the image and made every page shift as it loaded.
+_ROOT = Path(__file__).resolve().parents[2]
+
+
+def _jpeg_size(path: Path) -> tuple[int, int]:
+    """Width and height from a JPEG's first SOFn marker. No dependencies."""
+    with path.open("rb") as fh:
+        if fh.read(2) != b"\xff\xd8":
+            raise ValueError(f"{path.name} is not a JPEG")
+        while True:
+            byte = fh.read(1)
+            if not byte:
+                raise ValueError(f"{path.name} has no frame header")
+            if byte != b"\xff":
+                continue
+            marker = fh.read(1)
+            while marker == b"\xff":
+                marker = fh.read(1)
+            if not marker:
+                raise ValueError(f"{path.name} has no frame header")
+            code = marker[0]
+            if code in (0xD8, 0x01) or 0xD0 <= code <= 0xD7:
+                continue
+            length_raw = fh.read(2)
+            if len(length_raw) < 2:
+                raise ValueError(f"{path.name} truncated")
+            length = int.from_bytes(length_raw, "big")
+            if code in (0xC0, 0xC1, 0xC2, 0xC3, 0xC5, 0xC6, 0xC7,
+                        0xC9, 0xCA, 0xCB, 0xCD, 0xCE, 0xCF):
+                fh.seek(1, 1)  # sample precision byte, then height, then width
+                h, w = int.from_bytes(fh.read(2), "big"), int.from_bytes(fh.read(2), "big")
+                return w, h
+            fh.seek(length - 2, 1)
+
+
 IMG_DIMS = {
-    "about-site": (1600, 900), "big-yard": (1600, 1067), "craft-base": (1600, 1067),
-    "craft-edge": (1600, 1067), "hero": (1600, 1067), "og-cover": (1200, 630),
-    "patio-herringbone": (1600, 1067), "project-dining": (1600, 1067),
-    "patio-firepit-build": (1600, 900), "project-walkway": (1600, 1067),
-    "stairs-landing": (1200, 1200), "steps-detail": (1200, 800), "stone-arch": (1200, 1200),
-    "transform-after": (1400, 933), "transform-before": (1400, 933),
-    "walkway": (1600, 1067), "yard": (1600, 1066),
+    p.stem: _jpeg_size(p)
+    for p in sorted((_ROOT / "assets" / "img").glob("*.jpg"))
+    if not p.stem.endswith("-900")
 }
+
+# Widths a companion file may carry: <stem>-<w>.jpg beside <stem>.jpg. A frame
+# that was recomposed on export (see tools/grade-photos.py CROP) lands at its
+# native width instead of 1600, so the widest candidate is the file itself and
+# every narrower companion that actually exists is offered to the browser. A
+# srcset entry that names a file we do not ship is a broken image, not a nicety.
+_TIER_WIDTHS = (640, 900, 1200)
+
+
+def _variants(name: str, w: int) -> list[tuple[int, str]]:
+    out = [(w, f"/assets/img/{name}.jpg")]
+    for tw in _TIER_WIDTHS:
+        p = (_ROOT / "assets" / "img" / f"{name}-{tw}.jpg")
+        if p.exists() and tw < w:
+            out.append((tw, f"/assets/img/{name}-{tw}.jpg"))
+    return sorted(out)
+
 
 def _img(name: str, alt: str, sizes: str, *, cls: str = "", loading="lazy") -> str:
     esc = site.esc
     w, h = IMG_DIMS[name]
     c = f' class="{cls}"' if cls else ""
+    srcset = ", ".join(f"{url} {iw}w" for iw, url in _variants(name, w))
     return (
         f'<img{c} src="/assets/img/{name}.jpg" '
-        f'srcset="/assets/img/{name}-900.jpg 900w, /assets/img/{name}.jpg {w}w" '
+        f'srcset="{srcset}" '
         f'sizes="{sizes}" width="{w}" height="{h}" loading="{loading}" decoding="async" '
         f'alt="{esc(alt)}">'
     )
@@ -156,7 +212,9 @@ def _svc_by_key(key: str) -> dict | None:
     return None
 
 def _svc_town_links(s: dict) -> str:
-    """Six service x town links for a service page (TOP_TOWNS)."""
+    """Service x town links for a service page, only where those pages exist."""
+    if not s.get("town_pages", True):
+        return ""
     esc = site.esc
     items = "".join(
         f'<li><a href="/areas/{site.slug(t)}/{s["key"]}/">{esc(s["name"])} in {esc(t)}</a></li>'
@@ -329,8 +387,10 @@ def build_service(root: Path, s: dict) -> None:
     for para in s.get("prose", []):
         body.append(f'<p class="prose">{site.esc(para)}</p>')
     body.append('<ul class="checklist">' + "".join(f'<li>{site.esc(b)}</li>' for b in s["bullets"]) + '</ul>')
-    body.append('<figure class="learn__figure">' + _img(s["img"], s["img_alt"], "(max-width:1024px) 100vw, 900px")
-                + f'<figcaption><strong>{site.esc(s["name"])}.</strong> Built on a full-depth compacted base.</figcaption></figure>')
+    if s.get("img"):
+        cap = s.get("fig_caption") or f'Built on a full-depth compacted base.'
+        body.append('<figure class="learn__figure">' + _img(s["img"], s["img_alt"], "(max-width:1024px) 100vw, 900px")
+                    + f'<figcaption><strong>{site.esc(s["name"])}.</strong> {site.esc(cap)}</figcaption></figure>')
     if s.get("video"):
         v = s["video"]
         body.append(_video_block(v["src"], v["poster"], v["caption"], v["label"]))
@@ -367,13 +427,13 @@ def build_services_hub(root: Path) -> None:
       <header class="section__head section__head--center">
         <p class="eyebrow">Services</p>
         <h1 class="h2">Stone work for the yard, done to last.</h1>
-        <p class="section__sub">Patios, walkways, retaining walls and fire pits. Owner-operated out of Mansfield, serving southeastern Massachusetts.</p>
+        <p class="section__sub">Stone patios, walkways, retaining walls and fire pits, plus the grading, clearing and winter work that goes around them. Owner-operated out of Mansfield, serving southeastern Massachusetts.</p>
       </header>
       {site.page_actions(center=True)}
       <div class="learn__grid">{"".join(cards)}</div>
     </div></section>'''
     body += ('<section class="section"><div class="wrap wrap--narrow">'
-             '<h2 class="h2">Four kinds of work, one standard underneath</h2>'
+             '<h2 class="h2">Seven kinds of work, one standard underneath</h2>'
              '<p class="prose">Every job on this page is built the same way underneath. The ground is dug to '
              'depth, the base goes in as crushed stone compacted in lifts, the surface is set to shed water '
              'away from the house, and the edge is restrained so the field cannot spread. The pavers you see '
@@ -389,22 +449,28 @@ def build_services_hub(root: Path) -> None:
              'moves the price most. Paver is the friendliest budget, bluestone and flagstone climb from '
              'there. We pick the material with you after we have looked at the yard, because the right choice '
              'depends on the slope, the traffic and how you want it to age.</p>'
+             '<p class="prose">The other three kinds of work are the ones that come before and after the '
+             'stone. Grading sets the fall so water leaves the house and the low corner, and it happens on '
+             'almost every job - it is the least visible part of any of them. Land clearing takes the brush '
+             'and saplings out so there is a yard to build in, and gets the roots out before anything goes on '
+             'top of them. Snow plowing is the same driveways and walks in the other half of the year, '
+             'cleared by the person who built them.</p>'
              '<p class="prose">Prices here are per job, not per square foot, because two patios the same size '
              'can be different work. Grade, access and how much digging the base needs all move the number. '
              'Send a couple of photos with the size and the grade and you will get a straight answer on '
              'whether a visit is worth it.</p>'
              '</div></section>')
     body += '<section class="section"><div class="wrap wrap--narrow"><figure class="learn__figure">'
-    body += _img("patio-firepit-build", "A paver patio and circular fire pit under construction.",
+    body += _img("patio-firepit-build", "A paver patio curving around a circular fire pit, cut field tight to a stone seat wall.",
                  "(max-width:1024px) 100vw, 900px")
-    body += '<figcaption><strong>Patios, walls, walkways and fire pits.</strong> One crew, one standard of base work, on every job.</figcaption></figure></div></section>'
+    body += '<figcaption><strong>Stone work, and the ground work under it.</strong> One crew, one standard of base work, on every job.</figcaption></figure></div></section>'
     body += ('<section class="section"><div class="wrap wrap--narrow">'
              + _sec_head("Common questions", "Service questions, answered")
              + _faq_block(site.FAQS_HUB["services"]) + '</div></section>')
     body += _cta(trail, "Not sure which you need?", "Tell Bryce what the yard is doing and he'll say straight.")
     html_str = site.render_shell(
-        title="Patio, Walkway & Wall Services in Mansfield, MA | Bryce's Patios",
-        desc="Stone patios, walkways, retaining walls and fire pits installed across southeastern Massachusetts. Owner-operated, free estimates.",
+        title="Patio, Wall, Walkway, Site Work & Snow Services in Mansfield, MA | Bryce's Patios",
+        desc="Stone patios, walkways, retaining walls and fire pits, plus grading, land clearing and snow plowing across southeastern Massachusetts. Owner-operated, free estimates.",
         url=f"{site.BASE}/services/", trail=trail, body=body,
         ld_extra=[_faq_ld(site.FAQS_HUB["services"], f"{site.BASE}/services/")],
         svc_links=_svc_links(), town_links=_town_links())
@@ -414,7 +480,7 @@ def build_town(root: Path, t: str) -> None:
     tslug = site.slug(t)
     trail = [("Home", "/"), ("Service Area", "/areas/"), (f"{t}, MA", f"/areas/{tslug}/")]
     svc_rows = []
-    for s in site.SERVICES:
+    for s in _TOWN_SVC:
         svc_rows.append(f'<li><a href="/areas/{tslug}/{s["key"]}/">{site.esc(s["name"])} in {site.esc(t)}, MA</a></li>')
     body = [f'<section class="section"><div class="wrap wrap--narrow">']
     body.append(site.crumb_html(trail))
@@ -720,7 +786,7 @@ def build_sitemap(root: Path) -> None:
     urls += [f"{site.BASE}/services/{s['key']}/" for s in site.SERVICES]
     urls += [f"{site.BASE}/areas/{site.slug(t)}/" for t in site.TOWNS_MA]
     for t in site.TOWNS_MA:
-        urls += [f"{site.BASE}/areas/{site.slug(t)}/{s['key']}/" for s in site.SERVICES]
+        urls += [f"{site.BASE}/areas/{site.slug(t)}/{s['key']}/" for s in _TOWN_SVC]
     today = _dt.date.today().isoformat()
 
     # page -> hero image filename (for the Google image sitemap extension)
@@ -737,10 +803,11 @@ def build_sitemap(root: Path) -> None:
     for g in site.GUIDES:
         img_for[f"{site.BASE}/learn/{g['key']}/"] = (g["img"], g["img_alt"])
     for s in site.SERVICES:
-        img_for[f"{site.BASE}/services/{s['key']}/"] = (s["img"], s["img_alt"])
+        if s.get("img"):
+            img_for[f"{site.BASE}/services/{s['key']}/"] = (s["img"], s["img_alt"])
     for t in site.TOWNS_MA:
         tsl = site.slug(t)
-        for s in site.SERVICES:
+        for s in _TOWN_SVC:
             img_for[f"{site.BASE}/areas/{tsl}/{s['key']}/"] = (
                 s["img"], f'{s["name"]} in {t}, MA by Bryce\'s Patios')
 
@@ -859,7 +926,7 @@ def main() -> None:
     for t in _MA:
         build_town(root, t); n += 1
     for t in _TOP:
-        for s in _SVC_LIST:
+        for s in _TOWN_SVC:
             build_service_town(root, t, s); n += 1
     total = build_sitemap(root)
     nfeed = build_feed(root)

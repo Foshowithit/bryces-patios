@@ -317,6 +317,11 @@ legend{padding:0}
      ~14% off every edge and the composition visibly falls apart the longer you
      look at it. Stills of real work do not need a slow zoom. */
 }
+/* The scrim protects the type; the photograph still has to look lit rather than
+   dimmed. A small midtone lift puts the white clapboard and the terrace stone
+   back where the eye expects them, and the measured contrast headroom
+   (10-16:1 against a 3.0/4.5 requirement) is far larger than the lift spends. */
+.hero__media img{filter:brightness(1.09) saturate(1.05) contrast(1.02)}
 @media (prefers-reduced-motion:no-preference){
   .hero__media img{animation:heroDrift 40s var(--ease-io) infinite alternate}
 }
@@ -324,15 +329,36 @@ legend{padding:0}
   from{transform:scale(1.00) translate3d(0,0,0)}
   to{transform:scale(1.02) translate3d(0,0,0)}
 }
+/* The photograph is the product. The old scrim laid a .52-.94 black wash over
+   the whole frame, so the picture was never more than half visible and read as
+   dull no matter how it was graded. This keeps the weight where the text sits
+   (bottom and the left column) and lets the stone, wall and garden show at the
+   top right, which is the part that sells the work. Contrast is verified
+   against the rendered pixels, not assumed. */
 .hero__scrim{
   position:absolute; inset:0;
   background:
+    /* top vignette: the nav and the eyebrow are 11-16px type, and the top of the
+       frame is bright foliage and a white clapboard wall. Measured on the plate,
+       the small type sat on a background of L=0.18-0.45, i.e. below 4.5:1 no
+       matter what colour it was given. This band fades out before the headline
+       so the composition is untouched. */
+    linear-gradient(to bottom,
+      rgba(9,10,12,.42) 0%,
+      rgba(9,10,12,.34) 14%,
+      rgba(9,10,12,.10) 26%,
+      rgba(9,10,12,0) 34%),
     linear-gradient(to top,
-      rgba(9,10,12,.94) 0%,
-      rgba(9,10,12,.82) 26%,
-      rgba(9,10,12,.62) 50%,
-      rgba(9,10,12,.52) 72%,
-      rgba(9,10,12,.78) 100%);
+      rgba(9,10,12,.92) 0%,
+      rgba(9,10,12,.70) 30%,
+      rgba(9,10,12,.34) 58%,
+      rgba(9,10,12,.22) 78%,
+      rgba(9,10,12,.38) 100%),
+    linear-gradient(to right,
+      rgba(9,10,12,.58) 0%,
+      rgba(9,10,12,.30) 46%,
+      rgba(9,10,12,.14) 76%,
+      rgba(9,10,12,0) 94%);
 }
 .hero__content{
   width:100%; max-width:var(--wrap); margin-inline:auto;
@@ -357,9 +383,9 @@ legend{padding:0}
   text-shadow:0 1px 16px rgba(9,10,12,.6);
 }
 .hero .eyebrow--light{
-  color:#C3CFA6;
+  color:#E4EBD2;
   margin-bottom:2rem; /* +0.75rem over base: hero display type needs more air */
-  text-shadow:0 1px 14px rgba(9,10,12,.7);
+  text-shadow:0 1px 3px rgba(9,10,12,.55), 0 2px 18px rgba(9,10,12,.75);
 }
 .hero__cta{display:flex; flex-wrap:wrap; gap:.875rem; margin-bottom:2.75rem}
 /* Invert the primary CTA over the dark hero — a dark button on a dark scrim
@@ -372,7 +398,7 @@ legend{padding:0}
   margin-top:2.75rem;
   display:flex; flex-wrap:wrap; gap:.6rem 1.75rem;
   font-size:.75rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase;
-  color:rgba(247,244,238,.72);
+  color:rgba(247,244,238,.92);
 }
 .hero__meta li{position:relative; padding-left:1.1rem}
 .hero__meta li::before{
@@ -470,63 +496,7 @@ a.project__link:focus-visible{outline:2px solid var(--moss); outline-offset:4px;
 }
 
 /* ── 03 Transformation ────────────────────────────────────────────────── */
-.compare{margin:0}
-.compare__stage{
-  position:relative; overflow:hidden;
-  border-radius:var(--r-lg);
-  aspect-ratio:3/2;
-  background:var(--obsidian-2);
-  box-shadow:var(--shadow-lg);
-  cursor:ew-resize;
-  touch-action:pan-y;
-  user-select:none;
-  --pos:50%;
-}
-.compare__img{
-  position:absolute; inset:0; width:100%; height:100%;
-  object-fit:cover; pointer-events:none;
-}
-.compare__clip{
-  position:absolute; inset:0;
-  clip-path:inset(0 calc(100% - var(--pos)) 0 0);
-  will-change:clip-path;
-}
-.compare__handle{
-  position:absolute; top:0; bottom:0; left:var(--pos);
-  width:2px; margin-left:-1px;
-  background:rgba(255,255,255,.92);
-  box-shadow:0 0 0 1px rgba(20,23,26,.18);
-  cursor:ew-resize;
-  display:flex; align-items:center; justify-content:center;
-}
-.compare__grip{
-  display:grid; place-items:center;
-  width:3rem; height:3rem; border-radius:50%;
-  background:var(--paper);
-  box-shadow:0 2px 12px rgba(20,23,26,.3);
-  transition:transform .25s var(--ease);
-}
-.compare__handle:hover .compare__grip{transform:scale(1.08)}
-.compare__handle:active .compare__grip{transform:scale(.96)}
-.compare__grip svg{width:1.15rem; height:1.15rem; stroke:var(--ink); stroke-width:1.6; fill:none; stroke-linecap:round; stroke-linejoin:round}
-
-.compare__badge{
-  position:absolute; top:1.125rem;
-  font-size:.625rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase;
-  padding:.35rem .7rem; border-radius:100px;
-  background:rgba(15,17,19,.66); color:var(--ink-inv);
-  backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
-  pointer-events:none;
-}
-.compare__badge--before{left:1.125rem}
-.compare__badge--after{right:1.125rem; background:rgba(247,244,238,.9); color:var(--ink)}
-
-.compare__controls{display:flex; gap:.5rem; justify-content:center; margin-top:1.5rem}
-.compare__caption{
-  text-align:center; margin-top:1.25rem;
-  font-family:var(--serif); font-style:italic; font-size:1.0625rem; color:var(--ink-3);
-}
-
+#beyond{background:var(--paper)}
 .timeline{
   display:grid; grid-template-columns:repeat(4,minmax(0,1fr));
   gap:clamp(1.5rem, 3vw, 2.5rem);
@@ -1206,7 +1176,6 @@ a.guide--link:hover .guide__cta-text{gap:.7rem; color:var(--moss)}
   .form-progress__steps li{font-size:0; gap:0}
   .form-progress__steps li span{font-size:.625rem}
   .footer__grid{grid-template-columns:1fr; gap:2.25rem}
-  .compare__stage{aspect-ratio:4/3}
 }
 
 @media (max-width:560px){
@@ -1222,8 +1191,6 @@ a.guide--link:hover .guide__cta-text{gap:.7rem; color:var(--moss)}
   .step-nav{flex-direction:column-reverse; align-items:stretch}
   .step-nav .btn{width:100%}
   .step-nav > span{display:none}
-  .compare__grip{width:2.5rem; height:2.5rem}
-  .compare__badge{font-size:.5625rem; padding:.3rem .55rem}
   .form-success__actions{flex-direction:column}
   .form-success__actions .btn{width:100%}
 }
@@ -1242,7 +1209,7 @@ a.guide--link:hover .guide__cta-text{gap:.7rem; color:var(--moss)}
 
 /* ── Print ────────────────────────────────────────────────────────────── */
 @media print{
-  .nav,.sticky-cta,.film,.drawer,.hero__media,.compare__handle{display:none !important}
+  .nav,.sticky-cta,.film,.drawer,.hero__media{display:none !important}
   body{background:#fff; color:#000}
   .section--dark{background:#fff; color:#000}
   .section--dark .h2,.section--dark h3,.project__desc{color:#000}

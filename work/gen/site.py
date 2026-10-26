@@ -53,17 +53,17 @@ TOWN_IMG = {
 }
 TOWN_IMG_ALT = {
     "project-dining": "A finished curved paver patio with a low seat wall.",
-    "project-walkway": "A curved paver walkway and steps beside a house.",
+    "project-walkway": "A paver walkway cut in a straight line along the house, with a raised edge course and a planted bed.",
     "transform-after": "A finished paver patio beside a house.",
     "big-yard": "A wide curved paver patio across a large back yard.",
     "patio-herringbone": "Herringbone pavers being laid across a patio field.",
     "walkway": "A paver walkway curving between a lawn and a planted bed.",
     "yard": "A finished paver patio and lawn edge at the side of a house.",
-    "steps-detail": "Pavers running up to a low stone wall.",
+    "steps-detail": "A granite ledge cap set over a fieldstone wall, with lawn meeting the stone.",
     "transform-before": "The same patio partway through the build, pavers still going down.",
     "stone-arch": "A large flat stone set as a step in a low garden wall.",
-    "craft-base": "A paver patio partly laid, showing the base and bedding layer beneath.",
-    "craft-edge": "Pavers laid to a tight edge against a stone wall and planting bed.",
+    "craft-base": "Cut bluestone treads set proud of a fieldstone riser and capped level.",
+    "craft-edge": "A granite cap set level over a fieldstone wall, cut along the edge.",
 }
 
 # One-line, town-specific summary rendered above the detail paragraphs. Deliberately
@@ -345,7 +345,7 @@ SERVICES = [
                "usually sits where water wants to run. That means the same discipline "
                "as a patio in a narrower trench: dig to depth, compact the base in "
                "lifts, set the slope so the path drains, and restrain both edges."),
-        img="project-walkway", img_alt="A curved paver walkway and steps beside a house.",
+        img="project-walkway", img_alt="A paver walkway cut in a straight line along the house, with a raised edge course and a planted bed.",
         prose=[
             "A walkway gets laid out around the path people already take, not the one that looks neatest on "
             "paper. Watch where the grass is worn and that is usually the line. From there the width gets set "
@@ -454,6 +454,133 @@ SERVICES = [
              "Wood is the classic and what most people picture. Gas is cleaner to start and stop. We build the bowl either way and can discuss the trade-off when we look at the yard."),
     ],
     ),
+    dict(
+        key="snow-plowing", town_pages=False,
+        title="Snow Plowing & Driveway Clearing in Mansfield, MA | Bryce's Patios",
+        name="Snow Plowing", short="snow",
+        h1="Snow plowing and driveway clearing in {town}, MA",
+        meta=("Driveway and walkway snow clearing in {town}, MA and the towns around it, "
+              "run by the same owner who builds the stone work in the summer."),
+        blurb=("From the first storm to the last, the same person who laid your patio clears "
+               "it. Driveways, walkways, steps and the apron at the road get opened, and the "
+               "stone does not get gouged doing it. Winter work is booked by the season or "
+               "per storm, whichever suits the property."),
+        img=None,
+        prose=[
+            "The machine matters less than the setting. A plow dropped a half inch low takes the top course "
+            "off a paver apron and leaves a ridge of ice at the bottom of the drive that freezes every night "
+            "after. The blade is set to skim, and the edges are cleared by hand instead of by feel.",
+            "Storms in this part of Massachusetts tend to arrive overnight and change over by morning. The "
+            "properties on the route are cleared in the same order every time, so you know roughly where you "
+            "sit in it. If you are first in the morning, you stay first in the morning.",
+            "Walkways, steps and the path to the door get cleared with the drive, because a opened driveway "
+            "with a buried walk is half the job. Salt and sand go down where it matters - the slope, the turn, "
+            "the bottom step - and nowhere it will eat the stone.",
+            "If the driveway is gravel or the apron is held by a paver edge, say so when you call. Those get a "
+            "different pass and a different blade height. Getting that right the first season is cheaper than "
+            "repairing the edge in the spring.",
+        ],
+        bullets=[
+            "Driveways, aprons at the road, walkways and steps",
+            "Blade height set for pavers, asphalt or gravel",
+            "Season contract or per-storm, agreed before the first snow",
+            "Salt and sand placed where they help, kept off the stone",
+        ],
+        faq=[
+            ("How late do I need to book snow plowing?",
+             "Early is better than late. Routes fill from the top down and a property added mid-season is the one that gets squeezed on the worst morning. Get on the list before the first real snow and your order on the route is set."),
+            ("Will the plow damage my paver driveway?",
+             "Not if the blade is set for it. A steel edge set to skim the surface is what clears pavers, and the edges that a plow cannot reach safely get done by hand. Gravel gets more clearance, because a blade set low on gravel pulls the stone off the driveway."),
+            ("Do you clear walkways and steps too, or only the driveway?",
+             "The walk and the steps are part of it. A cleared driveway with a buried path to the door is a job half done, so they are cleared on the same visit. Steps are cleared by hand and sanded rather than run with the blade."),
+        ],
+    ),
+    dict(
+        key="land-clearing", town_pages=False,
+        title="Land Clearing & Brush Removal in Mansfield, MA | Bryce's Patios",
+        name="Land Clearing", short="clearing",
+        h1="Land clearing and brush removal in {town}, MA",
+        meta=("Brush, sapling and overgrowth clearing in {town}, MA and southeastern "
+              "Massachusetts, done with the same equipment that grades the site after it."),
+        blurb=("Most lots around here have a back corner that has not been touched in twenty years. "
+               "Brush, saplings, vines and the pile of everything the last owner left get taken out, "
+               "and what is underneath gets graded so the ground is usable instead of just empty."),
+        img="big-yard", img_alt="A cleared back yard brought to grade, with the patio and pool surround built into it.",
+        fig_caption="Cleared, graded, then built on. The yard reaches its final levels before any stone goes down.",
+        prose=[
+            "Clearing is a question of what you want the ground to do afterwards. Opening a view is one job. "
+            "Getting a yard level enough to put a patio on, or wide enough to park a trailer on, is a different "
+            "one, and it decides how far the work goes and where the spoil ends up.",
+            "What comes out leaves the property unless you want it dealt with here. Brush and saplings can be "
+            "chipped on site, and the chips are worth keeping as mulch if there is somewhere sensible to put "
+            "them. Stumps get cut low, and grubbing the roots out is a separate decision that depends on "
+            "whether anything is going to be built or planted over them.",
+            "The part most people do not see coming is the ground underneath. Clearing opens soil to light and "
+            "water and it takes a season to settle. If something is planned for the space, the time to grade it "
+            "and put the base down is after the roots are out, not in the same week as the brush comes down.",
+            "Boundaries get checked before anything is cut. A lot line is not always where the trees make it "
+            "look, and a boundary survey is cheaper than putting the trees back.",
+        ],
+        bullets=[
+            "Brush, sapling, vine and overgrowth removal",
+            "Trees taken down where the job needs it",
+            "Chipping on site, spoil hauled away",
+            "Ground graded and ready for stone work after it",
+        ],
+        faq=[
+            ("Do I need a permit to clear land in Massachusetts?",
+             "It depends on your town and on where on the lot the clearing sits. Work inside a wetland buffer, a floodplain or on a slope over the town's threshold usually needs a filing, and some towns restrict how much of a lot can be cleared at all. We check your town's rule before anything is cut."),
+            ("Will clearing my lot disturb the ground?",
+             "Yes, and it is worth planning around. Opening a wooded area to light and water changes how the soil behaves for a season, and anything built right after clearing wants the roots gone and the base put down after that settles. If a patio or a shed is the plan, we clear and grade with that in mind in one pass."),
+            ("What happens to the brush and the stumps?",
+             "Brush and saplings are chipped on site and the chips can stay as mulch if you have a place for them, otherwise they leave with the rest. Stumps are cut low; grinding them out is a separate step, and whether it needs doing depends on what will sit on that ground afterwards."),
+        ],
+    ),
+    dict(
+        key="grading-excavation", town_pages=False,
+        title="Grading, Drainage & Site Work in Mansfield, MA | Bryce's Patios",
+        name="Grading & Site Work", short="site work",
+        h1="Grading, drainage and site work in {town}, MA",
+        meta=("Site grading, drainage correction and excavation work in {town}, MA, run by "
+              "the crew that builds the patios and walls on top of it."),
+        blurb=("Water decides where a yard is usable and where it is not. Grading sets the fall so "
+               "runoff leaves the house and the low corner instead of sitting in them, and the same "
+               "machine work that digs the patio base is what fixes it. It is the first thing done on "
+               "almost every job, and the least visible."),
+        img="yard", img_alt="A patio bed cut and graded on site, with the machine still on the job.",
+        fig_caption="The bed cut, the levels set, the machine still on site. Everything above this gets built on it.",
+        prose=[
+            "A wet yard is rarely a drainage system problem. Usually the ground falls the wrong way, or it "
+            "falls nowhere, and the water has no reason to leave. Fixing it means finding the low spot, "
+            "deciding where the water should be going instead, and then moving enough soil to give it a "
+            "continuous path. It is measured work, not guesswork, and it starts with walking the lot after "
+            "a storm.",
+            "The grading on a patio, walk or wall is the same job in miniature. A patio wants a fall of about "
+            "an inch and a quarter over ten feet away from the house. A walk wants the fall to keep running "
+            "through each transition instead of stalling at a landing. A wall wants the ground behind it "
+            "shaped so water goes around the ends rather than through the wall.",
+            "When the yard needs more than grading can give, the answer is usually a dry well, a length of "
+            "solid pipe to daylight, or a shallow swale shaped into the lawn. Which one depends on the grade, "
+            "the soil and where the water can legally go. On a tight lot that can mean infiltration at the low "
+            "corner rather than a pipe to the street.",
+            "We dig the same way whatever the job is underneath it. Depth, no shortcuts at the house, and the "
+            "excavation sized for the base the surface needs, not for what fits on the truck.",
+        ],
+        bullets=[
+            "Regrading to move water away from the house and the low corner",
+            "Dry wells, solid pipe to daylight and shaped swales",
+            "Excavation and base prep for patios, walks and walls",
+            "Machine work sized for tight backyards and narrow access",
+        ],
+        faq=[
+            ("My yard floods at one corner. Can grading fix it?",
+             "Often, yes - if the corner is the low point and there is somewhere lower for the water to go. If the whole lot is flat or the neighbour's ground is higher, grading alone will not do it and the answer is infiltration on site: a dry well, a gravel sump or a swale, depending on the soil. We look at the lot after a storm before promising either."),
+            ("How much fall does a patio or walkway need?",
+             "About an eighth of an inch per foot, running away from the house. That works out to a little over an inch across ten feet. Enough to shed water, not so much that the patio is a ramp. The fall starts at the door and follows the layout, which is why the layout gets drawn after the grade is read."),
+            ("Do you work in backyards with no machine access?",
+             "Sometimes it means a smaller machine and sometimes it means more time. A backyard that only opens through a gate or across a lawn changes the job, not the standard. We look at the access before quoting, because it is one of the things that moves the number."),
+        ],
+    ),
 ]
 
 GUIDES = [
@@ -475,7 +602,7 @@ GUIDES = [
         note=("<strong>Ask anyone bidding:</strong> how deep are you digging, and how "
               "thick is the base? A real job has a number for both. A vague answer is "
               "an answer."),
-        img="craft-base", img_alt="A paver patio partly laid, showing the base and bedding layer beneath.",
+        img="craft-base", img_alt="Cut bluestone treads set proud of a fieldstone riser and capped level.",
         video=dict(
             src="patio-base-explainer-1080p-silent.mp4",
             poster="craft-base",
@@ -525,7 +652,7 @@ GUIDES = [
         note=("<strong>Best question to ask:</strong> how was the base compacted? "
               "A depth in inches is a good sign; compacted in lifts rather than "
               "dumped in one pass is what keeps it there."),
-        img="steps-detail", img_alt="Pavers running up to a low stone wall.",
+        img="steps-detail", img_alt="A granite ledge cap set over a fieldstone wall, with lawn meeting the stone.",
     ),
     dict(
         key="materials", tag="04. Materials", title="Stone is a budget, not a style",
@@ -579,7 +706,7 @@ GUIDES = [
         note=("<strong>The tell:</strong> a bidder who asks about your grade and how "
               "you'll use the space is planning a build. One who only asks how you want "
               "it to look is quoting a surface."),
-        img="craft-edge", img_alt="Pavers laid to a tight edge against a stone wall and planting bed.",
+        img="craft-edge", img_alt="A granite cap set level over a fieldstone wall, cut along the edge.",
     ),
     dict(
         key="your-questions", tag="06. Your questions", title="Ask us anything",
@@ -676,7 +803,7 @@ dict(
     ],
     note=("<strong>Easiest habit:</strong> shovel the same direction the water drains, "
           "so you are never pushing melt back against the house."),
-    img="craft-edge", img_alt="Pavers laid to a tight edge against a stone wall and planting bed.",
+    img="craft-edge", img_alt="A granite cap set level over a fieldstone wall, cut along the edge.",
 ),
 dict(
     key="choosing-contractor", tag="10. Hiring", title="How to spot a good crew from a bad one",
@@ -700,7 +827,7 @@ dict(
         "The crew doing the work is named",
         "You get a written scope, not just a price",
     ],
-    img="craft-base", img_alt="A paver patio partly laid, showing the base and bedding layer beneath.",
+    img="craft-base", img_alt="Cut bluestone treads set proud of a fieldstone riser and capped level.",
 ),
 dict(
     key="driveway-aprons", tag="11. Walkways", title="Walkways, steps and aprons",
@@ -721,7 +848,7 @@ dict(
         ("Walkways", "slope away from the house, base as deep as a patio"),
         ("Aprons", "built for plow and traffic, water sent clear"),
     ],
-    img="project-walkway", img_alt="A curved paver walkway and steps beside a house.",
+    img="project-walkway", img_alt="A paver walkway cut in a straight line along the house, with a raised edge course and a planted bed.",
 ),
 dict(
     key="yard-grades", tag="12. Yard water", title="Where does your yard drain?",
@@ -742,7 +869,7 @@ dict(
         "Check the corner against the house",
         "Take photos to show at the estimate",
     ],
-    img="craft-base", img_alt="A paver patio partly laid, showing the base and bedding layer beneath.",
+    img="craft-base", img_alt="Cut bluestone treads set proud of a fieldstone riser and capped level.",
 ),
 dict(
     key="fire-pit-basics", tag="13. Fire pits", title="Fire pits that last",
@@ -884,7 +1011,7 @@ NAV = f"""<a class="skip-link" href="#main">Skip to content</a>
         <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.2 1.5h2.3l1.1 2.8-1.5 1.1a9 9 0 0 0 4.5 4.5l1.1-1.5 2.8 1.1v2.3c0 .6-.5 1.1-1.1 1.1A11.9 11.9 0 0 1 2.1 2.6c0-.6.5-1.1 1.1-1.1Z"/></svg>
         <span>(508)&nbsp;212-6433</span>
       </a>
-      <a class="btn btn--sm btn--solid" href="/#estimate">Bryce</a>
+      <a class="btn btn--sm btn--solid" href="/#estimate">Free estimate</a>
       <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
         <span></span><span></span>
       </button>
@@ -902,7 +1029,7 @@ NAV = f"""<a class="skip-link" href="#main">Skip to content</a>
     <a href="/#area"><span class="drawer__num">07</span>Service Area</a>
   </nav>
   <div class="drawer__foot">
-    <a class="btn btn--solid btn--block" href="/#estimate">Bryce</a>
+    <a class="btn btn--solid btn--block" href="/#estimate">Free estimate</a>
     <a class="drawer__tel" href="tel:{PHONE_TEL}">{PHONE_TXT}</a>
     <p class="drawer__meta">Mansfield, Massachusetts<br>Serving southeastern Massachusetts</p>
   </div>
@@ -913,7 +1040,7 @@ STICKY = f"""<div class="sticky-cta" id="sticky-cta" hidden>
     <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.2 1.5h2.3l1.1 2.8-1.5 1.1a9 9 0 0 0 4.5 4.5l1.1-1.5 2.8 1.1v2.3c0 .6-.5 1.1-1.1 1.1A11.9 11.9 0 0 1 2.1 2.6c0-.6.5-1.1 1.1-1.1Z"/></svg>
     Call Bryce
   </a>
-  <a class="sticky-cta__est" href="/#estimate">Bryce</a>
+  <a class="sticky-cta__est" href="/#estimate">Free estimate</a>
 </div>"""
 
 
@@ -921,7 +1048,7 @@ def page_actions(*, center: bool = False) -> str:
     """Above-the-fold call + estimate row for inner pages (no hero)."""
     cls = "page-actions page-actions--center" if center else "page-actions"
     return (f'<div class="{cls}">'
-            f'<a class="btn btn--solid btn--lg" href="/#estimate">Bryce</a>'
+            f'<a class="btn btn--solid btn--lg" href="/#estimate">Free estimate</a>'
             f'<a class="btn btn--ghost btn--lg" href="tel:{PHONE_TEL}">Call Bryce</a>'
             f'</div>')
 
