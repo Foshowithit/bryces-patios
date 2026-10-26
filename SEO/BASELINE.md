@@ -1340,3 +1340,12 @@ fix is live and the resubmission is accepted.
 - Facebook public page: unreadable
 - SERP: skipped (use --serp, Google rate-limits this IP)
 - No change, nothing broken.
+
+
+### Watch run — 2026-10-26 09:00 EDT
+
+- Sitemap: **84** URLs · live **OK 84 / BAD 0**
+- /learn/ hub: **13** guide cards (expected 12)
+- Facebook public page: unreadable
+- SERP: skipped (use --serp, Google rate-limits this IP)
+- **CHANGED:** sitemap URL count 81 -> 84
