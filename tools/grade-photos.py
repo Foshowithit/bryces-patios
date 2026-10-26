@@ -67,8 +67,8 @@ TWEAK = {
     "craft-base": dict(sat=88),
     # sunlit granite on a white cap: hold it a few points down or the stone reads
     # as paper at full width, which is the exact defect this recipe exists to fix
-    "craft-edge": dict(bright=95, sat=94),
-    "steps-detail": dict(sat=88),
+    "craft-edge": dict(bright=89, sat=97),
+    "steps-detail": dict(bright=93, sat=96),
     # before/after must be identical treatments or the comparison is a lie
     "transform-before": dict(),
     "transform-after": dict(),
