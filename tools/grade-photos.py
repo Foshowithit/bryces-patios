@@ -79,7 +79,7 @@ WIDE = {
     "project-dining", "steps-detail", "yard", "craft-edge", "craft-base",
     "about-site", "transform-before", "transform-after", "big-yard", "walkway",
 }
-TALL = {"stone-arch", "stairs-landing"}
+TALL = {"stairs-landing"}
 
 # Per-image grade offsets. Only where the negative needs it; everything else
 # uses the base recipe so the set stays coherent.

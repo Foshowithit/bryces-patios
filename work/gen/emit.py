@@ -469,8 +469,8 @@ def build_services_hub(root: Path) -> None:
              + _faq_block(site.FAQS_HUB["services"]) + '</div></section>')
     body += _cta(trail, "Not sure which you need?", "Tell Bryce what the yard is doing and he'll say straight.")
     html_str = site.render_shell(
-        title="Patio, Wall, Walkway, Site Work & Snow Services in Mansfield, MA | Bryce's Patios",
-        desc="Stone patios, walkways, retaining walls and fire pits, plus grading, land clearing and snow plowing across southeastern Massachusetts. Owner-operated, free estimates.",
+        title="Site & Landscape Services in Mansfield, MA | Bryce's Patios",
+        desc="Stone patios, walkways, walls and fire pits, plus grading, land clearing and snow plowing across southeastern Massachusetts. Free estimates.",
         url=f"{site.BASE}/services/", trail=trail, body=body,
         ld_extra=[_faq_ld(site.FAQS_HUB["services"], f"{site.BASE}/services/")],
         svc_links=_svc_links(), town_links=_town_links())
@@ -913,6 +913,27 @@ def build_feed(root: Path) -> int:
     (root / "feed.xml").write_text(xml, encoding="utf-8")
     return len(dated)
 
+def sync_tokens(root: Path) -> int:
+    """Point the hand-maintained pages at the current cache-buster.
+
+    index.html and 404.html are not built from the templates, so their ?v= token
+    is the one thing that has to be carried across by hand. Doing it here means a
+    rebuild leaves no page on a stale sheet, whoever edited what.
+    """
+    import re as _re
+    n = 0
+    for name in ("index.html", "404.html"):
+        p = root / name
+        if not p.exists():
+            continue
+        t = p.read_text(encoding="utf-8")
+        t2, k = _re.subn(r"\?v=[0-9a-f]{8}", f"?v={site.V}", t)
+        if k and t2 != t:
+            p.write_text(t2, encoding="utf-8")
+            n += k
+    return n
+
+
 def main() -> None:
     root = Path(__file__).resolve().parents[2]
     n = 0
@@ -930,7 +951,9 @@ def main() -> None:
             build_service_town(root, t, s); n += 1
     total = build_sitemap(root)
     nfeed = build_feed(root)
-    print(f"wrote {n+1} pages, sitemap has {total} urls, feed has {nfeed} entries")
+    ntok = sync_tokens(root)
+    print(f"wrote {n+1} pages, sitemap has {total} urls, feed has {nfeed} entries, "
+          f"token {site.V} synced on {ntok} hand-maintained refs")
 
 
 if __name__ == "__main__":

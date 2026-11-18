@@ -123,7 +123,7 @@ site. Nothing else to change.
 | `big-yard.jpg` (reused) | before/after "after" frame | **Same spot, same height, same lens** |
 | `steps-detail.jpg` (+ `-900`) | craftsmanship, large | Mid-build: base, gravel, tools |
 | `stairs-landing.jpg` (+ `-900`) | craftsmanship, small | Close-up of an edge, joint, or cut |
-| `stone-arch.jpg` (+ `-900`) | craftsmanship, third card | Wide shot showing scale / equipment |
+| `transform-after.jpg` (re-shoot, wider) | craftsmanship, third card (fire pit + wall) | Same pit and wall, wider: scale, truck or tools at the edge |
 | `patio-base.svg` (+ `-mobile`) | craftsmanship diagram | Cross-section illustration |
 
 `og-cover.jpg` is the social share image (1200×630). Update it whenever the hero changes.

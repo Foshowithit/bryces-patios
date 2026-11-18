@@ -45,10 +45,10 @@
   </g>
   <g font-size="22">
     <text x="632" y="248" text-anchor="end" font-weight="600" fill="#14171A">Pavers</text>
-    <text x="632" y="298" text-anchor="end" fill="#8a7a5c">Bedding layer</text>
+    <text x="632" y="298" text-anchor="end" fill="#6E5C3A">Bedding layer</text>
     <text x="632" y="424" text-anchor="end" font-weight="600" fill="#3B4147">Compacted stone base</text>
     <text x="632" y="452" text-anchor="end" font-size="19" fill="#5b6167">built in lifts</text>
-    <text x="632" y="538" text-anchor="end" font-weight="600" fill="#EFE9DD">Undisturbed soil</text>
+    <text x="632" y="538" text-anchor="end" font-weight="600" fill="#43352A">Undisturbed soil</text>
   </g>
 
   <g stroke="#14171A" stroke-width="1.6" opacity=".65">

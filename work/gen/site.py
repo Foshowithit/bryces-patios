@@ -8,13 +8,19 @@ templates reuse assets/css/style.css and assets/js/main.js unchanged.
 Run:  python3 work/gen/site.py
 """
 from __future__ import annotations
+import hashlib
 import html
 import os
 import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-V = "25637ae3"          # cache-buster, must match index.html
+# Cache-buster derived from the stylesheet itself. It used to be a hand-edited
+# constant and drifted stale four times, which is the whole class of bug where
+# a deploy ships new CSS under an old token and every returning visitor keeps
+# the old sheet. Computed here so a rebuild can never get it wrong.
+_CSS_BYTES = (Path(__file__).resolve().parents[2] / "assets" / "css" / "style.css").read_bytes()
+V = hashlib.sha256(_CSS_BYTES).hexdigest()[:8]
 # Video filename hash. Must match the file in assets/video/ and never
 # track the CSS cache-buster (that coupling 404d the sitemap video URL once).
 REEL_HASH = "dba670bb"
@@ -48,7 +54,7 @@ TOWN_IMG = {
     "North Attleboro": "transform-after", "Norton": "big-yard",
     "Foxborough": "patio-herringbone", "Seekonk": "walkway",
     "Rehoboth": "yard", "Plainville": "steps-detail",
-    "Franklin": "transform-before", "Taunton": "stone-arch",
+    "Franklin": "transform-before", "Taunton": "craft-edge",
     "Easton": "craft-base", "Sharon": "craft-edge",
 }
 TOWN_IMG_ALT = {
@@ -58,10 +64,9 @@ TOWN_IMG_ALT = {
     "big-yard": "A stone patio with lounge seating beside a house.",
     "patio-herringbone": "Herringbone pavers being laid across a patio field.",
     "walkway": "A flagstone path winding through a planted garden.",
-    "yard": "A finished paver patio and lawn edge at the side of a house.",
+    "yard": "Ground opened for a new patio base.",
     "steps-detail": "Stone steps rising through a shaded garden slope.",
     "transform-before": "The same patio partway through the build, pavers still going down.",
-    "stone-arch": "A large flat stone set as a step in a low garden wall.",
     "craft-base": "Weathered stone steps rising through a garden slope.",
     "craft-edge": "A dry-laid fieldstone wall holding a garden bed.",
 }
@@ -505,7 +510,7 @@ SERVICES = [
         blurb=("Most lots around here have a back corner that has not been touched in twenty years. "
                "Brush, saplings, vines and the pile of everything the last owner left get taken out, "
                "and what is underneath gets graded so the ground is usable instead of just empty."),
-        img="big-yard", img_alt="A cleared back yard brought to grade, with the patio and pool surround built into it.",
+        img="yard", img_alt="Ground opened up before any stone goes down.",
         fig_caption="Cleared, graded, then built on. The yard reaches its final levels before any stone goes down.",
         prose=[
             "Clearing is a question of what you want the ground to do afterwards. Opening a view is one job. "
@@ -981,6 +986,7 @@ def head(*, title, desc, canonical, ld_blocks, extra_head="") -> str:
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Inter:wght@300..700&display=swap" rel="stylesheet">
+<script>document.documentElement.className=document.documentElement.className.replace("no-js","js");</script>
 <link rel="stylesheet" href="/assets/css/style.css?v={V}">
 <link rel="alternate" type="application/atom+xml" title="Bryce's Patios guides" href="{BASE}/feed.xml">
 <link rel="alternate" type="text/plain" title="llms.txt" href="{BASE}/llms.txt">
@@ -1139,7 +1145,7 @@ WEBSITE_LD = {
 def render_shell(*, title, desc, url, trail, body, ld_extra, svc_links, town_links) -> str:
     lds = [WEBSITE_LD, business_ld(), page_ld(url, title.split(" | ")[0], trail)] + ld_extra
     return f"""<!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 {head(title=title, desc=desc, canonical=url, ld_blocks=lds)}
 <body>
 {NAV}

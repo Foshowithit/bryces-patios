@@ -12,9 +12,13 @@ _masters/
 # local working/scratch files — but the site generator SHIPS (it is the build)
 work/*
 !work/gen/
+!work/gate/
+work/gate/*
+!work/gate/check-site.py
 !work/indexnow-ping.sh
 !work/.indexnow-key
 work/gen/__pycache__/
+work/gate/__pycache__/
 
 # Pre-grading negatives — the input grade-photos.py reads, never requested by the
 # site. 9.5 MB of it. Rebuild the shipped files from these, don't ship them.
