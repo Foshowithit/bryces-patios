@@ -52,7 +52,7 @@ TOP_TOWNS = ["Mansfield", "Foxborough", "Attleboro", "North Attleboro",
 TOWN_IMG = {
     "Mansfield": "project-dining", "Attleboro": "project-walkway",
     "North Attleboro": "transform-after", "Norton": "big-yard",
-    "Foxborough": "patio-herringbone", "Seekonk": "walkway",
+    "Foxborough": "patio-diagonal", "Seekonk": "walkway",
     "Rehoboth": "yard", "Plainville": "steps-detail",
     "Franklin": "transform-before", "Taunton": "craft-edge",
     "Easton": "craft-base", "Sharon": "craft-edge",
@@ -62,7 +62,7 @@ TOWN_IMG_ALT = {
     "project-walkway": "A flagstone walkway lined with garden beds in evening light.",
     "transform-after": "A finished paver patio beside a house.",
     "big-yard": "A stone patio with lounge seating beside a house.",
-    "patio-herringbone": "Herringbone pavers being laid across a patio field.",
+    "patio-diagonal": "Red brick pavers set in a diagonal pattern.",
     "walkway": "A flagstone path winding through a planted garden.",
     "yard": "Ground opened for a new patio base.",
     "steps-detail": "Stone steps rising through a shaded garden slope.",
@@ -461,7 +461,7 @@ SERVICES = [
     ),
     dict(
         key="snow-plowing", town_pages=False,
-        title="Snow Plowing & Driveway Clearing in Mansfield, MA | Bryce's Patios",
+        title="Snow Plowing in Mansfield, MA | Bryce's Patios",
         name="Snow Plowing", short="snow",
         h1="Snow plowing and driveway clearing in {town}, MA",
         meta=("Driveway and walkway snow clearing in {town}, MA and the towns around it, "
@@ -682,7 +682,7 @@ GUIDES = [
         note=("Stone choice is a budget conversation as much as a design one, and the "
               "right answer is usually a mix: a hard-wearing surface with one feature "
               "that carries the look."),
-        img="patio-herringbone", img_alt="Herringbone pavers being laid across a patio field.",
+        img="patio-diagonal", img_alt="Red brick pavers set in a diagonal pattern.",
     ),
     dict(
         key="the-quote", tag="05. The quote", title="What a real estimate includes",

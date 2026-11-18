@@ -75,7 +75,7 @@ def _negative(stem: str) -> Path | None:
 # Wide images get a full frame at 1600 + a 900 variant; square/tall ones keep
 # their own aspect and a 1200 + 900 pair.
 WIDE = {
-    "hero-finished", "patio-firepit-build", "patio-herringbone", "project-walkway",
+    "hero-finished", "patio-firepit-build", "patio-diagonal", "project-walkway",
     "project-dining", "steps-detail", "yard", "craft-edge", "craft-base",
     "about-site", "transform-before", "transform-after", "big-yard", "walkway",
 }
@@ -116,7 +116,7 @@ TWEAK = {
     # same white-granite family as the three above, sitting beside them in the
     # process triplet: it gets the same downward move so the row does not step
     # from grey stone straight into paper.
-    "patio-herringbone": dict(bright=92, sat=84, clarity=24),
+    "patio-diagonal": dict(bright=92, sat=84, clarity=24),
     # before/after must be identical treatments or the comparison is a lie
     "transform-before": dict(),
     "transform-after": dict(),

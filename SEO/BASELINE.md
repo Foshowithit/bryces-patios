@@ -244,7 +244,7 @@ Verified by normalized cross-correlation against the source shots (cv2
 |---|---|---|
 | `craft-base`, `craft-edge`, `steps-detail` | AI render | real crop of an in-progress build (pic4) |
 | `transform-before` | AI render | real crop, pavers over the aggregate base (pic4) |
-| `patio-herringbone` | AI render | real herringbone pavers over the setting bed (pic4) |
+| `patio-diagonal` | AI render | real herringbone pavers over the setting bed (pic4) |
 | `project-dining`, `project-walkway`, `transform-after` | AI render | real finished curved patios, walks and steps |
 
 Copy follow-up in the same push: every alt text, the work-section disclosure and the
@@ -1176,7 +1176,7 @@ Built live via the ego browser at `business.google.com`. Location id `1285038938
 - **10 services:** Brick paver installation, Concrete work, Driveway installation, Driveway repairs, Excavation & grading, Hardscaping, Patio paving, Paver installation, Paving job site preparation, Paving-related drainage. (Google caps the service list at 10.)
 - **Description:** the voice-gated 501-char block (gate: SHIP, fatal=0 tier1=0 p1=0).
 - Phone `(508) 212-6433`; website `https://brycespatios.work/`.
-- **7 real photos** from the site's `assets/img/` (hero-finished, patio-herringbone, project-walkway, project-firepit, project-dining, craft-edge, steps-detail).
+- **7 real photos** from the site's `assets/img/` (hero-finished, patio-diagonal, project-walkway, project-firepit, project-dining, craft-edge, steps-detail).
 - Hours: **not set yet** (the step was skipped — the Google hours picker is a shadow-DOM widget that resists automation; add from the dashboard or in the human sitting).
 
 **Blocked on a human (do not attempt by automation):**
