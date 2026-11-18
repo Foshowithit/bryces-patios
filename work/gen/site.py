@@ -983,9 +983,8 @@ def head(*, title, desc, canonical, ld_blocks, extra_head="") -> str:
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2314171A'/%3E%3Cg fill='%23F7F4EE'%3E%3Crect x='4' y='5' width='14' height='10' rx='1.6'/%3E%3Crect x='20' y='5' width='8' height='10' rx='1.6'/%3E%3Crect x='4' y='17' width='8' height='10' rx='1.6'/%3E%3Crect x='14' y='17' width='14' height='10' rx='1.6'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="{BASE}/assets/img/apple-touch-icon.png">
 <link rel="manifest" href="{BASE}/site.webmanifest">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Inter:wght@300..700&display=swap" rel="stylesheet">
+<link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.className=document.documentElement.className.replace("no-js","js");</script>
 <link rel="stylesheet" href="/assets/css/style.css?v={V}">
 <link rel="alternate" type="application/atom+xml" title="Bryce's Patios guides" href="{BASE}/feed.xml">
