@@ -12,7 +12,7 @@ bryces-patios/
 ├── index.html            ← the whole site (one page)
 ├── assets/
 │   ├── css/style.css     ← the design system
-│   ├── js/main.js        ← nav, slider, form, film
+│   ├── js/main.js        ← nav, form, film
 │   └── img/              ← photos and diagrams
 ├── _masters/             ← full-size PNG originals — do NOT upload this folder
 ├── robots.txt
@@ -23,10 +23,10 @@ bryces-patios/
 about → learn → service area → estimate form → footer.
 
 **What it does:** sticky nav with a scroll progress bar, a mobile slide-out menu, scroll
-reveals, a draggable before/after slider (mouse, touch, and arrow keys), a 3-step estimate
-form with validation that opens a pre-filled text message to Bryce, a sticky
-"call / get an estimate" bar on phones, and a "Watch the build" film that animates through
-the photography. It respects reduced-motion settings and works with JavaScript disabled.
+reveals, a 3-step estimate form with validation that opens a pre-filled text message to
+Bryce, a sticky "call / get an estimate" bar on phones, and a "Watch the build" film that
+animates through the photography. It respects reduced-motion settings and works with
+JavaScript disabled.
 
 ---
 
@@ -48,9 +48,11 @@ Bryce should claim; they will 404 until he does.
 
 ## 3. What's real and what isn't
 
-**The photography is AI-generated.** It is there so the site launched looking finished
-instead of looking empty. It is **not** Bryce's work, and the site says so out loud under the
-featured-work section. Real job photos should replace these as soon as possible — see §5.
+**The photography is real.** Every frame is Bryce's own phone shot of a real job around
+Mansfield, graded by `tools/grade-photos.py` so the set reads as one portfolio, and the page
+says so out loud under the featured-work section ("no renders, no stock"). Nothing on the
+site is AI-generated. What the phone cannot supply is detail, so the remaining upgrade is a
+proper shoot — see §5 and `work/BRYCE-SHOT-LIST.md`.
 
 **The About section contains no invented biography.** No fake years in business, no made-up
 credentials, no fabricated family history. It describes how the work is done, which is true
@@ -126,9 +128,9 @@ site. Nothing else to change.
 
 `og-cover.jpg` is the social share image (1200×630). Update it whenever the hero changes.
 
-**Priority order:** the before/after pair first (the slider is the most persuasive thing on
-the page and it only works if the two shots line up), then the three project photos, then
-the hero.
+**Priority order:** a matched before/after pair first (it is the most persuasive thing a
+patio site can show, and it only works if the two shots line up), then the three project
+photos, then the hero.
 
 Each photo also needs a `-900.jpg` version (900px wide) for phones. On a Mac:
 

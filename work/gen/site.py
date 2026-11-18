@@ -52,18 +52,18 @@ TOWN_IMG = {
     "Easton": "craft-base", "Sharon": "craft-edge",
 }
 TOWN_IMG_ALT = {
-    "project-dining": "A finished curved paver patio with a low seat wall.",
-    "project-walkway": "A paver walkway cut in a straight line along the house, with a raised edge course and a planted bed.",
+    "project-dining": "An outdoor dining patio set with wicker chairs.",
+    "project-walkway": "A flagstone walkway lined with garden beds in evening light.",
     "transform-after": "A finished paver patio beside a house.",
-    "big-yard": "A wide curved paver patio across a large back yard.",
+    "big-yard": "A stone patio with lounge seating beside a house.",
     "patio-herringbone": "Herringbone pavers being laid across a patio field.",
-    "walkway": "A paver walkway curving between a lawn and a planted bed.",
+    "walkway": "A flagstone path winding through a planted garden.",
     "yard": "A finished paver patio and lawn edge at the side of a house.",
-    "steps-detail": "A granite ledge cap set over a fieldstone wall, with lawn meeting the stone.",
+    "steps-detail": "Stone steps rising through a shaded garden slope.",
     "transform-before": "The same patio partway through the build, pavers still going down.",
     "stone-arch": "A large flat stone set as a step in a low garden wall.",
-    "craft-base": "Cut bluestone treads set proud of a fieldstone riser and capped level.",
-    "craft-edge": "A granite cap set level over a fieldstone wall, cut along the edge.",
+    "craft-base": "Weathered stone steps rising through a garden slope.",
+    "craft-edge": "A dry-laid fieldstone wall holding a garden bed.",
 }
 
 # One-line, town-specific summary rendered above the detail paragraphs. Deliberately
@@ -299,7 +299,7 @@ SERVICES = [
                "bedding layer, and pavers restrained at the edge so the field can't "
                "creep. The pavers you see are only the top of a layered system. Everything that decides "
                "whether it holds its shape over the years is underneath."),
-        img="project-dining", img_alt="A finished curved paver patio with a low seat wall.",
+        img="project-dining", img_alt="An outdoor dining patio set with wicker chairs.",
         video=dict(
             src="patio-base-explainer-1080p-silent.mp4",
             poster="craft-base",
@@ -345,7 +345,7 @@ SERVICES = [
                "usually sits where water wants to run. That means the same discipline "
                "as a patio in a narrower trench: dig to depth, compact the base in "
                "lifts, set the slope so the path drains, and restrain both edges."),
-        img="project-walkway", img_alt="A paver walkway cut in a straight line along the house, with a raised edge course and a planted bed.",
+        img="project-walkway", img_alt="A flagstone walkway lined with garden beds in evening light.",
         prose=[
             "A walkway gets laid out around the path people already take, not the one that looks neatest on "
             "paper. Watch where the grass is worn and that is usually the line. From there the width gets set "
@@ -425,7 +425,7 @@ SERVICES = [
                "dropped onto a patio that wasn't planned for it. Building it into the "
                "layout from the start is what makes it feel like part of the yard "
                "instead of an afterthought."),
-        img="patio-firepit-build", img_alt="A paver patio and circular fire pit under construction.",
+        img="patio-firepit-build", img_alt="A stone fire pit set in a circular paver patio.",
         prose=[
             "The size most people actually enjoy is smaller than they expect. A pit three to four feet across "
             "inside is a comfortable circle for four to six people, and it throws heat you can feel from the "
@@ -548,7 +548,7 @@ SERVICES = [
                "machine work that digs the patio base is what fixes it. It is the first thing done on "
                "almost every job, and the least visible."),
         img="yard", img_alt="A patio bed cut and graded on site, with the machine still on the job.",
-        fig_caption="The bed cut, the levels set, the machine still on site. Everything above this gets built on it.",
+        fig_caption="The bed cut, the levels set, the ground opened before anything else. Everything above this gets built on it.",
         prose=[
             "A wet yard is rarely a drainage system problem. Usually the ground falls the wrong way, or it "
             "falls nowhere, and the water has no reason to leave. Fixing it means finding the low spot, "
@@ -602,7 +602,7 @@ GUIDES = [
         note=("<strong>Ask anyone bidding:</strong> how deep are you digging, and how "
               "thick is the base? A real job has a number for both. A vague answer is "
               "an answer."),
-        img="craft-base", img_alt="Cut bluestone treads set proud of a fieldstone riser and capped level.",
+        img="craft-base", img_alt="Weathered stone steps rising through a garden slope.",
         video=dict(
             src="patio-base-explainer-1080p-silent.mp4",
             poster="craft-base",
@@ -652,7 +652,7 @@ GUIDES = [
         note=("<strong>Best question to ask:</strong> how was the base compacted? "
               "A depth in inches is a good sign; compacted in lifts rather than "
               "dumped in one pass is what keeps it there."),
-        img="steps-detail", img_alt="A granite ledge cap set over a fieldstone wall, with lawn meeting the stone.",
+        img="steps-detail", img_alt="Stone steps rising through a shaded garden slope.",
     ),
     dict(
         key="materials", tag="04. Materials", title="Stone is a budget, not a style",
@@ -706,7 +706,7 @@ GUIDES = [
         note=("<strong>The tell:</strong> a bidder who asks about your grade and how "
               "you'll use the space is planning a build. One who only asks how you want "
               "it to look is quoting a surface."),
-        img="craft-edge", img_alt="A granite cap set level over a fieldstone wall, cut along the edge.",
+        img="craft-edge", img_alt="A dry-laid fieldstone wall holding a garden bed.",
     ),
     dict(
         key="your-questions", tag="06. Your questions", title="Ask us anything",
@@ -729,7 +729,7 @@ GUIDES = [
             ("\"Do you do repairs?\"", "Sunken pavers, spreading edges, a wall that's leaning. Small repairs are welcome, and we'll say if a rebuild makes more sense than a patch."),
     ],
         cta=True,
-        img="about-site", img_alt="A paver patio and stone seat wall beside a house.",
+        img="about-site", img_alt="A backyard pergola with string lights at dusk.",
     ),
 dict(
     key="paver-cost", tag="07. Cost", title="What drives the cost of a stone patio",
@@ -756,7 +756,7 @@ dict(
     ],
     note=("<strong>The tell:</strong> a real bid names the base and the drainage. "
           "A price with no breakdown is a number, not an estimate."),
-    img="project-dining", img_alt="A finished curved paver patio with a low seat wall.",
+    img="project-dining", img_alt="An outdoor dining patio set with wicker chairs.",
 ),
 dict(
     key="patio-vs-concrete", tag="08. Choices", title="Pavers, concrete or stamped concrete",
@@ -803,7 +803,7 @@ dict(
     ],
     note=("<strong>Easiest habit:</strong> shovel the same direction the water drains, "
           "so you are never pushing melt back against the house."),
-    img="craft-edge", img_alt="A granite cap set level over a fieldstone wall, cut along the edge.",
+    img="craft-edge", img_alt="A dry-laid fieldstone wall holding a garden bed.",
 ),
 dict(
     key="choosing-contractor", tag="10. Hiring", title="How to spot a good crew from a bad one",
@@ -827,7 +827,7 @@ dict(
         "The crew doing the work is named",
         "You get a written scope, not just a price",
     ],
-    img="craft-base", img_alt="Cut bluestone treads set proud of a fieldstone riser and capped level.",
+    img="craft-base", img_alt="Weathered stone steps rising through a garden slope.",
 ),
 dict(
     key="driveway-aprons", tag="11. Walkways", title="Walkways, steps and aprons",
@@ -848,7 +848,7 @@ dict(
         ("Walkways", "slope away from the house, base as deep as a patio"),
         ("Aprons", "built for plow and traffic, water sent clear"),
     ],
-    img="project-walkway", img_alt="A paver walkway cut in a straight line along the house, with a raised edge course and a planted bed.",
+    img="project-walkway", img_alt="A flagstone walkway lined with garden beds in evening light.",
 ),
 dict(
     key="yard-grades", tag="12. Yard water", title="Where does your yard drain?",
@@ -869,7 +869,7 @@ dict(
         "Check the corner against the house",
         "Take photos to show at the estimate",
     ],
-    img="craft-base", img_alt="Cut bluestone treads set proud of a fieldstone riser and capped level.",
+    img="craft-base", img_alt="Weathered stone steps rising through a garden slope.",
 ),
 dict(
     key="fire-pit-basics", tag="13. Fire pits", title="Fire pits that last",
@@ -900,7 +900,7 @@ dict(
     ],
     note=("<strong>Easiest thing to get right:</strong> put the pit on flat ground you already "
           "know drains well, and it will outlast one set in the yard's low spot."),
-    img="patio-firepit-build", img_alt="A paver patio and circular fire pit under construction.",
+    img="patio-firepit-build", img_alt="A stone fire pit set in a circular paver patio.",
 ),
 ]
 
@@ -1101,7 +1101,7 @@ def footer(service_links: list[tuple[str, str]], town_links: list[tuple[str, str
     <div class="footer__base">
       <p>&copy; <span id="year">2026</span> Bryce's Patios. All rights reserved.</p>
       <p class="footer__fine">Based in Mansfield, MA. Serving southeastern Massachusetts. {ADDR}. <a href="/feed.xml">Guides feed</a>.</p>
-      <p class="footer__fine">Every photo on this site is a real Bryce\u2019s Patios job around Mansfield, MA.</p>
+      <p class="footer__fine">Photography on this site shows the styles and materials Bryce\u2019s Patios builds. Finished-job photos are added as projects wrap.</p>
     </div>
   </div>
 </footer>

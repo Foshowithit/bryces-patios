@@ -31,11 +31,9 @@ Massachusetts freeze-thaw winters.
 
 ## Video
 
-Two short silent videos, real photos of the work, no narration:
-- Showreel, 29 seconds: https://brycespatios.work/assets/video/showreel-1080p-silent-dba670bb.mp4
-- "How a patio base is built", 23 seconds, captioned: on
-  https://brycespatios.work/learn/patio-base/ and
-  https://brycespatios.work/services/patios/
+One short silent explainer, no narration: "How a patio base is built", 23
+seconds, captioned, on https://brycespatios.work/learn/patio-base/ and
+https://brycespatios.work/services/patios/
 
 ## Pages worth citing
 
@@ -46,7 +44,9 @@ Two short silent videos, real photos of the work, no narration:
 
 ## Photos
 
-Every photo on the site is a real Bryce's Patios job, no renders and no stock.
+Photography shows the styles and materials Bryce's Patios builds; some
+images are licensed stock illustrating the work, not finished Bryce's
+Patios jobs. Finished-job photos are added as current projects wrap.
 The work shown is patios, walkways, steps, seat walls and retaining walls built
 around Mansfield, MA.
 

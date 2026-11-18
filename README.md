@@ -13,9 +13,11 @@ Hand-built HTML, CSS and JavaScript. No build step, no framework, no dependencie
 
 ## Read this first
 
-The site is live. The photography is AI-generated and disclosed on the page; it exists so the
-site launches looking finished rather than empty. Real job photos should replace it as soon
-as Bryce can shoot them.
+The site is live. Every photograph on it is **Bryce's own phone frame of a real job** - no
+renders, no stock, and the page says so. What they get is a measured grade
+(`tools/grade-photos.py`): one deterministic recipe, so 16 phone frames read as one
+portfolio. What they cannot get is detail the phone never captured, so a proper shoot is
+still the biggest single upgrade left - see [work/BRYCE-SHOT-LIST.md](work/BRYCE-SHOT-LIST.md).
 
 Everything on the page is real:
 
@@ -37,7 +39,7 @@ Full details, including the remaining launch work: **[LAUNCH.md](LAUNCH.md)**.
 ```
 index.html                  the whole site — one page
 assets/css/style.css        design system
-assets/js/main.js           nav, before/after slider, estimate form, film
+assets/js/main.js           nav, estimate form, film
 assets/img/                 photos and diagrams used by the page
 social/SOCIAL-KIT.md        handles, bios, 30-day content calendar, captions, hashtags
 social/highlight-covers/    8 Instagram highlight covers (1080×1920)
@@ -54,7 +56,8 @@ service area → estimate form → footer.
 ## Interactions
 
 - Sticky nav with scroll progress and a mobile slide-out menu
-- **Draggable before/after slider** — mouse, touch, and arrow keys
+- **Before/after stills** — the two frames share one grade and are used as standalone
+  photos, not an interactive slider
 - **3-step estimate form** with per-step validation; on finish it opens a pre-filled
   text message to Bryce, with a copy fallback and a call link
 - **"Watch the build"** — an animated sequence built from the stills. Swap in real
