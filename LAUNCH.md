@@ -117,7 +117,7 @@ site. Nothing else to change.
 |---|---|---|
 | `hero.jpg` (+ `hero-900.jpg`) | top of the page | Your best finished job, wide, late afternoon |
 | `big-yard.jpg` (+ `-900`) | featured work, card 1 | Wide backyard patio with deck/pool |
-| `patio-diagonal.jpg` (+ `-900`) | featured work, card 2 | Herringbone detail running to deck stairs |
+| `patio-diagonal.jpg` (+ `-900`) | featured work, card 2 | Close-up of red brick pavers set diagonally in an existing surface |
 | `walkway.jpg` (+ `-900`) | featured work, card 3 | Walkway or grade change mid-job |
 | `yard.jpg` (+ `-900`) | before/after "before" frame | Bare / rough yard, from a fixed spot |
 | `big-yard.jpg` (reused) | before/after "after" frame | **Same spot, same height, same lens** |

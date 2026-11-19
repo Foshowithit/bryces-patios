@@ -244,7 +244,7 @@ Verified by normalized cross-correlation against the source shots (cv2
 |---|---|---|
 | `craft-base`, `craft-edge`, `steps-detail` | AI render | real crop of an in-progress build (pic4) |
 | `transform-before` | AI render | real crop, pavers over the aggregate base (pic4) |
-| `patio-diagonal` | AI render | real herringbone pavers over the setting bed (pic4) |
+| `patio-diagonal` | AI render | real close-up of red brick pavers set diagonally in an existing surface (pic4) |
 | `project-dining`, `project-walkway`, `transform-after` | AI render | real finished curved patios, walks and steps |
 
 Copy follow-up in the same push: every alt text, the work-section disclosure and the
