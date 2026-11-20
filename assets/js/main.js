@@ -340,7 +340,7 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     { at: 4.00,  text: 'The build starts under the pavers. Base, then bedding.' },
     { at: 7.60,  text: 'Pavers go down to the grade, cut to the edge.' },
     { at: 11.20, text: 'Curves and borders that tie the yard together.' },
-    { at: 14.80, text: 'Herringbone laid tight over the setting bed.' },
+    { at: 14.80, text: 'Red brick pavers set diagonally in close-up.' },
     { at: 18.20, text: 'Walkways and steps built to the grade.' },
     { at: 21.80, text: 'Wide patios, one continuous level to walk on.' },
     { at: 25.40, text: 'Every one of these belongs to a neighbor.' },
